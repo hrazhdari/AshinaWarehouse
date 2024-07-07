@@ -1,0 +1,14 @@
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\bin\Debug\net8.0\AWMS.datalayer.deps.json
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\bin\Debug\net8.0\AWMS.datalayer.runtimeconfig.json
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\bin\Debug\net8.0\AWMS.datalayer.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\bin\Debug\net8.0\AWMS.datalayer.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.csproj.AssemblyReference.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.AssemblyInfoInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.AssemblyInfo.cs
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.csproj.CoreCompileInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\refint\AWMS.datalayer.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\AWMS.datalayer.genruntimeconfig.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net8.0\ref\AWMS.datalayer.dll
