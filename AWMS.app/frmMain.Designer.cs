@@ -28,93 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            toolStrip1 = new ToolStrip();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
-            companyManagementToolStripMenuItem = new ToolStripMenuItem();
-            statusStrip1 = new StatusStrip();
-            toolStripStatusLabel1 = new ToolStripStatusLabel();
-            toolStrip1.SuspendLayout();
-            statusStrip1.SuspendLayout();
+            ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            toolStripStatusLabel1 = new DevExpress.XtraBars.BarButtonItem();
+            ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             SuspendLayout();
             // 
-            // toolStrip1
+            // ribbonControl1
             // 
-            toolStrip1.BackColor = Color.LightBlue;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
-            toolStrip1.Location = new Point(0, 0);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(922, 39);
-            toolStrip1.TabIndex = 0;
-            toolStrip1.Text = "toolStrip1";
+            ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(26);
+            ribbonControl1.ExpandCollapseItem.Id = 0;
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, toolStripStatusLabel1, skinPaletteRibbonGalleryBarItem1 });
+            ribbonControl1.Location = new Point(0, 0);
+            ribbonControl1.MaxItemId = 4;
+            ribbonControl1.Name = "ribbonControl1";
+            ribbonControl1.OptionsMenuMinWidth = 283;
+            ribbonControl1.PageHeaderItemLinks.Add(skinPaletteRibbonGalleryBarItem1);
+            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
+            ribbonControl1.Size = new Size(790, 177);
+            ribbonControl1.StatusBar = ribbonStatusBar1;
             // 
-            // toolStripDropDownButton1
+            // barButtonItem1
             // 
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { companyManagementToolStripMenuItem });
-            toolStripDropDownButton1.ForeColor = Color.Black;
-            toolStripDropDownButton1.Image = Properties.Resources.icons8_management_32;
-            toolStripDropDownButton1.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(123, 36);
-            toolStripDropDownButton1.Text = "Management";
-            // 
-            // companyManagementToolStripMenuItem
-            // 
-            companyManagementToolStripMenuItem.Image = Properties.Resources.icons8_company_16;
-            companyManagementToolStripMenuItem.Name = "companyManagementToolStripMenuItem";
-            companyManagementToolStripMenuItem.Size = new Size(200, 22);
-            companyManagementToolStripMenuItem.Text = "Company Management";
-            companyManagementToolStripMenuItem.Click += companyManagementToolStripMenuItem_Click;
-            // 
-            // statusStrip1
-            // 
-            statusStrip1.BackColor = Color.LightBlue;
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Location = new Point(0, 644);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(922, 22);
-            statusStrip1.TabIndex = 1;
-            statusStrip1.Text = "statusStrip1";
+            barButtonItem1.Caption = "Company And Contract";
+            barButtonItem1.Id = 1;
+            barButtonItem1.ImageOptions.Image = Properties.Resources.icons8_company_32;
+            barButtonItem1.Name = "barButtonItem1";
+            barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            barButtonItem1.ItemClick += companyManagementToolStripMenuItem_Click;
             // 
             // toolStripStatusLabel1
             // 
-            toolStripStatusLabel1.BackColor = Color.Transparent;
-            toolStripStatusLabel1.Font = new Font("Tahoma", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            toolStripStatusLabel1.ForeColor = Color.Black;
+            toolStripStatusLabel1.Caption = "Date";
+            toolStripStatusLabel1.Id = 2;
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(109, 17);
-            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // ribbonPage1
+            // 
+            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
+            ribbonPage1.ImageOptions.Image = Properties.Resources.icons8_management_32;
+            ribbonPage1.Name = "ribbonPage1";
+            ribbonPage1.Text = "Management";
+            // 
+            // ribbonPageGroup1
+            // 
+            ribbonPageGroup1.ItemLinks.Add(barButtonItem1);
+            ribbonPageGroup1.Name = "ribbonPageGroup1";
+            // 
+            // ribbonStatusBar1
+            // 
+            ribbonStatusBar1.ItemLinks.Add(toolStripStatusLabel1);
+            ribbonStatusBar1.Location = new Point(0, 553);
+            ribbonStatusBar1.Name = "ribbonStatusBar1";
+            ribbonStatusBar1.Ribbon = ribbonControl1;
+            ribbonStatusBar1.Size = new Size(790, 24);
+            // 
+            // skinPaletteRibbonGalleryBarItem1
+            // 
+            skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            skinPaletteRibbonGalleryBarItem1.Id = 3;
+            skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.GhostWhite;
-            ClientSize = new Size(922, 666);
-            Controls.Add(statusStrip1);
-            Controls.Add(toolStrip1);
+            ClientSize = new Size(790, 577);
+            Controls.Add(ribbonStatusBar1);
+            Controls.Add(ribbonControl1);
             HelpButton = true;
             IsMdiContainer = true;
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmMain";
+            Ribbon = ribbonControl1;
             StartPosition = FormStartPosition.CenterScreen;
+            StatusBar = ribbonStatusBar1;
             Text = "AWMS :: Ashina Warehouse Management Software";
             WindowState = FormWindowState.Maximized;
             Load += frmMain_Load;
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ToolStrip toolStrip1;
-        private ToolStripDropDownButton toolStripDropDownButton1;
-        private ToolStripMenuItem companyManagementToolStripMenuItem;
-        private StatusStrip statusStrip1;
-        private ToolStripStatusLabel toolStripStatusLabel1;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem toolStripStatusLabel1;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
     }
 }
