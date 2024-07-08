@@ -313,6 +313,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(groupBox2);
             Name = "frmCompanyManagment";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Company Management";
             Load += frmCompanyManagment_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

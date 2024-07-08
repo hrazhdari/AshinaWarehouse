@@ -9,6 +9,7 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\AWMS.app.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\AWMS.app.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\Azure.Core.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\Azure.Identity.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\EPPlus.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\Humanizer.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.dll
@@ -74,6 +75,7 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\System.Identit
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\System.Memory.Data.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\System.Xml.XPath.XmlDocument.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.resources.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.resources.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.resources.dll
@@ -154,11 +156,12 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.Gener
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.AssemblyInfoInputs.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.AssemblyInfo.cs
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.csproj.CoreCompileInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.sourcelink.json
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.csproj.Up2Date
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\refint\AWMS.app.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\AWMS.app.genruntimeconfig.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net8.0-windows\ref\AWMS.app.dll
-D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\EPPlus.dll
-D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\System.Xml.XPath.XmlDocument.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\Resources\icons8_warehouse_48.png
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net8.0-windows\Resources\warehouse2024.ico

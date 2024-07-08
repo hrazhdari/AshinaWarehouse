@@ -8,6 +8,7 @@ D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\AWMS.core.GeneratedMS
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\AWMS.core.AssemblyInfoInputs.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\AWMS.core.AssemblyInfo.cs
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\AWMS.core.csproj.CoreCompileInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\AWMS.core.sourcelink.json
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\AWMS.core.csproj.Up2Date
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\AWMS.core.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net8.0\refint\AWMS.core.dll

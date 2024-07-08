@@ -23,7 +23,7 @@ namespace AWMS.app
                 var services = serviceScope.ServiceProvider;
                 try
                 {
-                    var form = services.GetRequiredService<Forms.frmCompanyManagment>();
+                    var form = services.GetRequiredService<frmMain>();
                     Application.Run(form);
                 }
                 catch (Exception ex)
