@@ -10,8 +10,9 @@ namespace AWMS.datalayer.Context
     public class AWMScontext : DbContext
     {
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Mr> Mrs { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
-        
+
         public AWMScontext(DbContextOptions<AWMScontext> options) : base(options)
         {
 
@@ -24,14 +25,11 @@ namespace AWMS.datalayer.Context
             // Seed initial data
             modelBuilder.Entity<Company>().HasData(
                 new Company { CompanyID = 1, CompanyName = "Petro Paydar Iranian", Abbreviation = "PPI" },
-                new Company { CompanyID = 2, CompanyName = "MAPNA", Abbreviation = "MAPNA" }
+                new Company { CompanyID = 2, CompanyName = "Teco", Abbreviation = "TESCO" }
             );
-
-            //modelBuilder.Entity<Member>().HasData(
-            //    new Member { Id = 1, Name = "Member 1", Email = "member1@example.com" },
-            //    new Member { Id = 2, Name = "Member 2", Email = "member2@example.com" }
-            //);
-
+            modelBuilder.Entity<Mr>().HasData(
+                new Mr { MrId = 1, MrName = "-"}
+            );
         }
     }
 }

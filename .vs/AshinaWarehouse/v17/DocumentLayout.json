@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,36 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmMain.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\frmMain.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\frmMain.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\frmMain.cs",
-              "RelativeToolTip": "AWMS.app\\frmMain.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T13:11:11.065Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmMain.cs [Design]",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\frmMain.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\frmMain.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\frmMain.cs [Design]",
-              "RelativeToolTip": "AWMS.app\\frmMain.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T13:01:23.812Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }

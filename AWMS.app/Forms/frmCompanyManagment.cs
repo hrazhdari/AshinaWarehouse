@@ -17,10 +17,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using DevExpress.XtraEditors;
 
 namespace AWMS.app.Forms
 {
-    public partial class frmCompanyManagment : frmBase.frmBase
+    public partial class frmCompanyManagment : XtraForm
     {
         private readonly ICompanyService _CompanyService;
         private bool isAddingNewCompany = false;
@@ -86,7 +87,7 @@ namespace AWMS.app.Forms
             dataGridView1.Columns["Companyid"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns["CompanyName"].Width = 150; // عرض ستون را به 150 پیکسل تنظیم می‌کند
             dataGridView1.Columns["Abbreviation"].Width = 120; // عرض ستون را به 120 پیکسل تنظیم می‌کند
-            dataGridView1.Columns["Abbreviation"].DefaultCellStyle.Alignment=DataGridViewContentAlignment.MiddleCenter; 
+            dataGridView1.Columns["Abbreviation"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -197,7 +198,8 @@ namespace AWMS.app.Forms
                 var Companies = await _CompanyService.GetAllCompaniesAsync();
 
                 // تنظیم داده‌ها به DataGridView
-                dataGridView1.DataSource = Companies;
+                //gridControl1.ToolTipController.Active = true;
+                gridControl1.DataSource = Companies;
             }
             catch (Exception ex)
             {
@@ -665,6 +667,16 @@ namespace AWMS.app.Forms
                     ExportToExcel(dataGridView1, sfd.FileName);
                 }
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btndelete_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

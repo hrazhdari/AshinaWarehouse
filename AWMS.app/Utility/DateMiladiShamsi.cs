@@ -23,17 +23,17 @@ namespace AWMS.app.Utility
             // ایجاد یک نمونه از PersianCalendar
             PersianCalendar persianCalendar = new PersianCalendar();
 
-            // استخراج سال، ماه و روز شمسی
+            // استخراج سال، ماه و روز جلالی
             int persianYear = persianCalendar.GetYear(currentDate);
             int persianMonth = persianCalendar.GetMonth(currentDate);
             int persianDay = persianCalendar.GetDayOfMonth(currentDate);
 
-            // ساخت رشته تاریخ شمسی
+            // ساخت رشته تاریخ جلالی
             string persianDate = $"{persianYear}/{persianMonth}/{persianDay}";
 
-            // نمایش تاریخ شمسی
-            //return "تاریخ شمسی: " + persianDate;
-            return "Persian Date: " + persianDate;
+            // نمایش تاریخ جلالی
+            //return "تاریخ جلالی: " + persianDate;
+            return "Jalali Date: " + persianDate;
         }
 
 

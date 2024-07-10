@@ -23,7 +23,7 @@ namespace AWMS.app
                 var services = serviceScope.ServiceProvider;
                 try
                 {
-                    var form = services.GetRequiredService<frmMain>();
+                    var form = services.GetRequiredService<Forms.frmMain>();
                     Application.Run(form);
                 }
                 catch (Exception ex)
@@ -42,9 +42,10 @@ namespace AWMS.app
                     string connectionString = configuration.GetConnectionString("DefaultConnection");
                     services.AddLibraryServices(connectionString);
 
-                    services.AddTransient<frmMain>();
+                    services.AddTransient<Forms.frmMain>();
                     //services.AddTransient<Forms.frmBase.frmBase>();
                     services.AddTransient<Forms.frmCompanyManagment>();
+                    services.AddTransient<Forms.RibbonMaterial.frmMr>();
                     
                    });
 

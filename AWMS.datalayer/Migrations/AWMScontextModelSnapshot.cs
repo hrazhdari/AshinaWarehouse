@@ -17,7 +17,7 @@ namespace AWMS.datalayer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "7.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -59,14 +59,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 5, 23, 22, 2, 816, DateTimeKind.Local).AddTicks(3779)
+                            EnteredDate = new DateTime(2024, 7, 9, 18, 29, 52, 699, DateTimeKind.Local).AddTicks(8958)
                         },
                         new
                         {
                             CompanyID = 2,
-                            Abbreviation = "MAPNA",
-                            CompanyName = "MAPNA",
-                            EnteredDate = new DateTime(2024, 7, 5, 23, 22, 2, 816, DateTimeKind.Local).AddTicks(3828)
+                            Abbreviation = "TESCO",
+                            CompanyName = "Teco",
+                            EnteredDate = new DateTime(2024, 7, 9, 18, 29, 52, 699, DateTimeKind.Local).AddTicks(9012)
                         });
                 });
 
@@ -101,6 +101,37 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("CompanyID");
 
                     b.ToTable("CompanyContracts");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Mr", b =>
+                {
+                    b.Property<int>("MrId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MrId"));
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MrDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MrName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MrId");
+
+                    b.ToTable("Mrs");
+
+                    b.HasData(
+                        new
+                        {
+                            MrId = 1,
+                            EnteredDate = new DateTime(2024, 7, 9, 18, 29, 52, 699, DateTimeKind.Local).AddTicks(9129),
+                            MrName = "-"
+                        });
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.CompanyContract", b =>

@@ -63,6 +63,16 @@ namespace AWMS.app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap adateoccurring_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("adateoccurring_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AnbarPic {
             get {
                 object obj = ResourceManager.GetObject("AnbarPic", resourceCulture);
@@ -106,6 +116,76 @@ namespace AWMS.app.Properties {
         internal static System.Drawing.Bitmap d05c16d8b6f335f528896a78bf32443b {
             get {
                 object obj = ResourceManager.GetObject("d05c16d8b6f335f528896a78bf32443b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap deleteheader_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("deleteheader_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttopdf_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("exporttopdf_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttopdf_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("exporttopdf_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttopdf_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("exporttopdf_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttoxls_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxls_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttoxls_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxls_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttoxls_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxls_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -393,9 +473,49 @@ namespace AWMS.app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap none_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("none_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngaaa_com_470043 {
             get {
                 object obj = ResourceManager.GetObject("pngaaa.com-470043", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap print_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("print_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap print_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("print_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap properties_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("properties_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
