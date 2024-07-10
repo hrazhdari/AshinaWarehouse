@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWMS.app", "AWMS.app\AWMS.app.csproj", "{89D8F00C-F3D8-4FD2-9904-504DD587455F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWMS.app", "AWMS.app\AWMS.app.csproj", "{89D8F00C-F3D8-4FD2-9904-504DD587455F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWMS.datalayer", "AWMS.datalayer\AWMS.datalayer.csproj", "{3B90FBC6-487B-46DA-947C-49825B341C03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWMS.datalayer", "AWMS.datalayer\AWMS.datalayer.csproj", "{3B90FBC6-487B-46DA-947C-49825B341C03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWMS.core", "AWMS.core\AWMS.core.csproj", "{DA341CFF-FFF2-4230-977E-656E47AC0C7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWMS.core", "AWMS.core\AWMS.core.csproj", "{DA341CFF-FFF2-4230-977E-656E47AC0C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWMS.dto", "AWMS.dto\AWMS.dto.csproj", "{F8DC9077-A301-4213-A38D-FCEB52DD31E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{DA341CFF-FFF2-4230-977E-656E47AC0C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA341CFF-FFF2-4230-977E-656E47AC0C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA341CFF-FFF2-4230-977E-656E47AC0C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DC9077-A301-4213-A38D-FCEB52DD31E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DC9077-A301-4213-A38D-FCEB52DD31E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DC9077-A301-4213-A38D-FCEB52DD31E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DC9077-A301-4213-A38D-FCEB52DD31E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

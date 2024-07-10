@@ -36,16 +36,23 @@ namespace AWMS.app.Forms
 
         private void CompanybarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var CompanyManagmentForm = _serviceProvider.GetRequiredService<Forms.frmCompanyManagment>();
-            CompanyManagmentForm.MdiParent = this;
-            CompanyManagmentForm.Show();
+            var CompanyManagementForm = _serviceProvider.GetRequiredService<Forms.frmCompanyManagment>();
+            CompanyManagementForm.MdiParent = this;
+            CompanyManagementForm.Show();
         }
 
         private void MrbarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var MrManagmentForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmMr>();
-            MrManagmentForm.MdiParent = this;
-            MrManagmentForm.Show();
+            var MrManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmMr>();
+            MrManagementForm.MdiParent = this;
+            MrManagementForm.Show();
+        }
+
+        private void PoBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var PoManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmPo>();
+            PoManagementForm.MdiParent = this;
+            PoManagementForm.Show();
         }
     }
 }

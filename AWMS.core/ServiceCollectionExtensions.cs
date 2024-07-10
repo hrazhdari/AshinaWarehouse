@@ -17,8 +17,7 @@ namespace AWMS.core
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IMrService, MrService>();
-
-
+            services.AddScoped<IPoService, PoService>();
 
             return services;
         }

@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using AWMS.dto;
 
 namespace AWMS.datalayer.Repositories
 {
@@ -20,6 +22,16 @@ namespace AWMS.datalayer.Repositories
         public async Task<IEnumerable<Mr>> GetAllAsync()
         {
             return await _context.Mrs.ToListAsync();
+        }
+        public async Task<IEnumerable<MrIdAndMrNameDto>> GetMrIdAndNameAsync()
+        {
+            return await _context.Mrs
+                .Select(mr => new MrIdAndMrNameDto
+                {
+                    MrId = mr.MrId,
+                    MrName = mr.MrName
+                })
+                .ToListAsync();
         }
 
         public async Task<Mr> GetByIdAsync(int id)

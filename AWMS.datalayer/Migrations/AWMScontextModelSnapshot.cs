@@ -59,14 +59,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 9, 18, 29, 52, 699, DateTimeKind.Local).AddTicks(8958)
+                            EnteredDate = new DateTime(2024, 7, 10, 16, 8, 7, 111, DateTimeKind.Local).AddTicks(7366)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 7, 9, 18, 29, 52, 699, DateTimeKind.Local).AddTicks(9012)
+                            EnteredDate = new DateTime(2024, 7, 10, 16, 8, 7, 111, DateTimeKind.Local).AddTicks(7370)
                         });
                 });
 
@@ -129,8 +129,46 @@ namespace AWMS.datalayer.Migrations
                         new
                         {
                             MrId = 1,
-                            EnteredDate = new DateTime(2024, 7, 9, 18, 29, 52, 699, DateTimeKind.Local).AddTicks(9129),
+                            EnteredDate = new DateTime(2024, 7, 10, 16, 8, 7, 111, DateTimeKind.Local).AddTicks(7195),
                             MrName = "-"
+                        });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Po", b =>
+                {
+                    b.Property<int>("PoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PoId"));
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("MrId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("PoDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PoName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PoId");
+
+                    b.HasIndex("MrId");
+
+                    b.ToTable("Pos");
+
+                    b.HasData(
+                        new
+                        {
+                            PoId = 1,
+                            EnteredDate = new DateTime(2024, 7, 10, 16, 8, 7, 111, DateTimeKind.Local).AddTicks(7347),
+                            MrId = 1,
+                            PoName = "-"
                         });
                 });
 
@@ -141,6 +179,22 @@ namespace AWMS.datalayer.Migrations
                         .HasForeignKey("CompanyID");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Po", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.Mr", "Mr")
+                        .WithMany("Pos")
+                        .HasForeignKey("MrId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Mr");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Mr", b =>
+                {
+                    b.Navigation("Pos");
                 });
 #pragma warning restore 612, 618
         }

@@ -19,7 +19,7 @@ namespace AWMS.datalayer.Entities
         public string? MrDescription { get; set; }
         [DataType(DataType.Date)]
         public DateTime? EnteredDate { get; set; }
-        //public virtual ICollection<Po> Pos { get; set; }
+        public virtual ICollection<Po> Pos { get; set; }
         //public virtual ICollection<PackingList> PackingLists { get; set; }
     }
 }

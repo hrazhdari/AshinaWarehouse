@@ -1,4 +1,5 @@
 ﻿using AWMS.datalayer.Entities;
+using AWMS.dto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,12 +7,13 @@ namespace AWMS.core.Interfaces
 {
     public interface IMrService
     {
-        Task<IEnumerable<Mr>> GetAllMrsAsync();
-        Task<Mr> GetMrByIdAsync(int id);
+        Task<IEnumerable<MrDto>> GetAllMrsAsync();
+        Task<MrDto> GetMrByIdAsync(int id);
         Task<int?> GetByMrNameAsync(string MrName);
-        Task<int> AddMrAsync(Mr Mr);
-        Task UpdateMrAsync(Mr Mr);
+        Task<int> AddMrAsync(MrDto Mr);
+        Task UpdateMrAsync(MrDto Mr);
         Task DeleteMrAsync(int MrId);
-        Task DeleteMultipleMrsWithTransactionAsync(IEnumerable<Mr> mrs);
+        Task DeleteMultipleMrsWithTransactionAsync(IEnumerable<MrDto> mrs);
+        Task<IEnumerable<MrIdAndMrNameDto>> GetMrIdAndNameAsync();
     }
 }

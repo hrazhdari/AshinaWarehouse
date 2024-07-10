@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AWMS.datalayer\AWMS.datalayer.csproj" />
+    <ProjectReference Include="..\AWMS.dto\AWMS.dto.csproj" />
   </ItemGroup>
 
 </Project>

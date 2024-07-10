@@ -34,7 +34,7 @@
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             MrbarButtonItem = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            PoBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             barBtnPl = new DevExpress.XtraBars.BarButtonItem();
@@ -84,7 +84,7 @@
             ribbonControl1.Cursor = Cursors.Hand;
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(22, 24, 22, 24);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, barButtonItem5, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2 });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(3, 2, 3, 2);
             ribbonControl1.MaxItemId = 33;
@@ -108,18 +108,19 @@
             // 
             MrbarButtonItem.Caption = "Mr";
             MrbarButtonItem.Id = 4;
-            MrbarButtonItem.ImageOptions.Image = (Image)resources.GetObject("barButtonItem4.ImageOptions.Image");
-            MrbarButtonItem.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem4.ImageOptions.LargeImage");
+            MrbarButtonItem.ImageOptions.Image = (Image)resources.GetObject("MrbarButtonItem.ImageOptions.Image");
+            MrbarButtonItem.ImageOptions.LargeImage = (Image)resources.GetObject("MrbarButtonItem.ImageOptions.LargeImage");
             MrbarButtonItem.Name = "MrbarButtonItem";
             MrbarButtonItem.ItemClick += MrbarButtonItem_ItemClick;
             // 
-            // barButtonItem5
+            // PoBarButtonItem
             // 
-            barButtonItem5.Caption = "Po";
-            barButtonItem5.Id = 5;
-            barButtonItem5.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
-            barButtonItem5.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
-            barButtonItem5.Name = "barButtonItem5";
+            PoBarButtonItem.Caption = "Po";
+            PoBarButtonItem.Id = 5;
+            PoBarButtonItem.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
+            PoBarButtonItem.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
+            PoBarButtonItem.Name = "PoBarButtonItem";
+            PoBarButtonItem.ItemClick += PoBarButtonItem_ItemClick;
             // 
             // skinPaletteDropDownButtonItem1
             // 
@@ -263,7 +264,7 @@
             // ribbonPageGroup2
             // 
             ribbonPageGroup2.ItemLinks.Add(MrbarButtonItem);
-            ribbonPageGroup2.ItemLinks.Add(barButtonItem5);
+            ribbonPageGroup2.ItemLinks.Add(PoBarButtonItem);
             ribbonPageGroup2.Name = "ribbonPageGroup2";
             ribbonPageGroup2.Text = "Mr~Po";
             // 
@@ -417,7 +418,7 @@
         private DevExpress.XtraBars.BarButtonItem CompanybarButtonItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem MrbarButtonItem;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem PoBarButtonItem;
         private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;

@@ -43,9 +43,9 @@ namespace AWMS.app
                     services.AddLibraryServices(connectionString);
 
                     services.AddTransient<Forms.frmMain>();
-                    //services.AddTransient<Forms.frmBase.frmBase>();
                     services.AddTransient<Forms.frmCompanyManagment>();
                     services.AddTransient<Forms.RibbonMaterial.frmMr>();
+                    services.AddTransient<Forms.RibbonMaterial.frmPo>();
                     
                    });
 

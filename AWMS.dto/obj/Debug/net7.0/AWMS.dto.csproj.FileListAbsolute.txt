@@ -1,0 +1,12 @@
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\bin\Debug\net7.0\AWMS.dto.deps.json
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\bin\Debug\net7.0\AWMS.dto.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\bin\Debug\net7.0\AWMS.dto.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\AWMS.dto.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\AWMS.dto.AssemblyInfoInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\AWMS.dto.AssemblyInfo.cs
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\AWMS.dto.csproj.CoreCompileInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\AWMS.dto.sourcelink.json
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\AWMS.dto.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\refint\AWMS.dto.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\AWMS.dto.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.dto\obj\Debug\net7.0\ref\AWMS.dto.dll

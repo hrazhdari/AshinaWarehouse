@@ -4270,6 +4270,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AWMS.datalayer": "1.0.0",
+          "AWMS.dto": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.20",
           "Microsoft.Extensions.DependencyInjection": "7.0.0"
@@ -4285,6 +4286,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "AWMS.dto": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.20",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -4295,6 +4297,16 @@
         },
         "runtime": {
           "bin/placeholder/AWMS.datalayer.dll": {}
+        }
+      },
+      "AWMS.dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/AWMS.dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AWMS.dto.dll": {}
         }
       }
     }
@@ -11068,11 +11080,17 @@
       "type": "project",
       "path": "../AWMS.datalayer/AWMS.datalayer.csproj",
       "msbuildProject": "../AWMS.datalayer/AWMS.datalayer.csproj"
+    },
+    "AWMS.dto/1.0.0": {
+      "type": "project",
+      "path": "../AWMS.dto/AWMS.dto.csproj",
+      "msbuildProject": "../AWMS.dto/AWMS.dto.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
       "AWMS.core >= 1.0.0",
+      "AWMS.dto >= 1.0.0",
       "DevExpress.Win.Design >= 23.2.3",
       "EPPlus >= 4.5.3.3",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.20",
@@ -11118,6 +11136,9 @@
           "projectReferences": {
             "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\AWMS.core.csproj": {
               "projectPath": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\AWMS.core.csproj"
+            },
+            "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\AWMS.dto.csproj": {
+              "projectPath": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\AWMS.dto.csproj"
             }
           }
         }

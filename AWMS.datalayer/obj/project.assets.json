@@ -1200,6 +1200,16 @@
             "rid": "win"
           }
         }
+      },
+      "AWMS.dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/AWMS.dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AWMS.dto.dll": {}
+        }
       }
     }
   },
@@ -3244,10 +3254,16 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "AWMS.dto/1.0.0": {
+      "type": "project",
+      "path": "../AWMS.dto/AWMS.dto.csproj",
+      "msbuildProject": "../AWMS.dto/AWMS.dto.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "AWMS.dto >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.20",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.20",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.20",
@@ -3289,7 +3305,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\AWMS.dto.csproj": {
+              "projectPath": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\AWMS.dto.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

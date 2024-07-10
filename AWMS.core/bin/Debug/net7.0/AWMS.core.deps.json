@@ -9,6 +9,7 @@
       "AWMS.core/1.0.0": {
         "dependencies": {
           "AWMS.datalayer": "1.0.0",
+          "AWMS.dto": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.20",
           "Microsoft.Extensions.DependencyInjection": "7.0.0"
@@ -637,6 +638,7 @@
       },
       "AWMS.datalayer/1.0.0": {
         "dependencies": {
+          "AWMS.dto": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.20",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -644,6 +646,11 @@
         },
         "runtime": {
           "AWMS.datalayer.dll": {}
+        }
+      },
+      "AWMS.dto/1.0.0": {
+        "runtime": {
+          "AWMS.dto.dll": {}
         }
       }
     }
@@ -1082,6 +1089,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "AWMS.datalayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AWMS.dto/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

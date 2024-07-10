@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA341CFF-FFF2-4230-977E-656E47AC0C7B}|AWMS.core\\AWMS.core.csproj|d:\\mybigproject\\ashinawarehouse\\awms.core\\poservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA341CFF-FFF2-4230-977E-656E47AC0C7B}|AWMS.core\\AWMS.core.csproj|solutionrelative:awms.core\\poservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmPo.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAgwJMAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T14:49:30.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PoService.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\PoService.cs",
+              "RelativeDocumentMoniker": "AWMS.core\\PoService.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\PoService.cs",
+              "RelativeToolTip": "AWMS.core\\PoService.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAgwC8AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T14:47:25.406Z",
+              "EditorCaption": ""
             }
           ]
         }

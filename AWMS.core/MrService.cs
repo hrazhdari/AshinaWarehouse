@@ -1,81 +1,121 @@
-﻿using AWMS.datalayer;
+﻿using AWMS.dto;
 using AWMS.datalayer.Entities;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AWMS.core.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using AWMS.datalayer;
 
-namespace AWMS.core
+public class MrService : IMrService
 {
-    public class MrService : IMrService
+    private readonly IUnitOfWork _unitOfWork;
+
+    public MrService(IUnitOfWork unitOfWork)
     {
-        private readonly IUnitOfWork _unitOfWork;
+        _unitOfWork = unitOfWork;
+    }
 
-        public MrService(IUnitOfWork unitOfWork)
+    public async Task<IEnumerable<MrDto>> GetAllMrsAsync()
+    {
+        var mrs = await _unitOfWork.Mrs.GetAllAsync();
+        return mrs.Select(mr => new MrDto
         {
-            _unitOfWork = unitOfWork;
-        }
+            MrId = mr.MrId,
+            MrName = mr.MrName,
+            MrDescription = mr.MrDescription,
+            EnteredDate = mr.EnteredDate
+        }).ToList();
+    }
 
-        public async Task<IEnumerable<Mr>> GetAllMrsAsync()
-        {
-            return await _unitOfWork.Mrs.GetAllAsync();
-        }
+    public async Task<MrDto> GetMrByIdAsync(int id)
+    {
+        var mr = await _unitOfWork.Mrs.GetByIdAsync(id);
+        if (mr == null) return null;
 
-        public async Task<Mr> GetMrByIdAsync(int id)
+        return new MrDto
         {
-            return await _unitOfWork.Mrs.GetByIdAsync(id);
-        }
+            MrId = mr.MrId,
+            MrName = mr.MrName,
+            MrDescription = mr.MrDescription,
+            EnteredDate = mr.EnteredDate
+        };
+    }
 
-        public async Task<int> AddMrAsync(Mr Mr)
+    public async Task<int> AddMrAsync(MrDto mrDto)
+    {
+        var mr = new Mr
         {
-            await _unitOfWork.Mrs.AddAsync(Mr);
+            MrName = mrDto.MrName,
+            MrDescription = mrDto.MrDescription,
+            EnteredDate = mrDto.EnteredDate
+        };
+
+        await _unitOfWork.Mrs.AddAsync(mr);
+        await _unitOfWork.CompleteAsync();
+        return mr.MrId;
+    }
+
+    public async Task UpdateMrAsync(MrDto mrDto)
+    {
+        var mr = await _unitOfWork.Mrs.GetByIdAsync(mrDto.MrId);
+        if (mr != null)
+        {
+            mr.MrName = mrDto.MrName;
+            mr.MrDescription = mrDto.MrDescription;
+            mr.EnteredDate = mrDto.EnteredDate;
+
+            _unitOfWork.Mrs.Update(mr);
             await _unitOfWork.CompleteAsync();
-            return Mr.MrId;
         }
+    }
 
-        public async Task UpdateMrAsync(Mr Mr)
+    public async Task DeleteMrAsync(int id)
+    {
+        var mr = await _unitOfWork.Mrs.GetByIdAsync(id);
+        if (mr != null)
         {
-            _unitOfWork.Mrs.Update(Mr);
+            _unitOfWork.Mrs.Delete(mr);
             await _unitOfWork.CompleteAsync();
         }
+    }
 
-        public async Task DeleteMrAsync(int id)
+    public async Task<int?> GetByMrNameAsync(string mrName)
+    {
+        return await _unitOfWork.Mrs.GetByNameAsync(mrName);
+    }
+
+    public async Task DeleteMultipleMrsWithTransactionAsync(IEnumerable<MrDto> mrDtos)
+    {
+        using (var transaction = await _unitOfWork.BeginTransactionAsync())
         {
-            var Mr = await _unitOfWork.Mrs.GetByIdAsync(id);
-            if (Mr != null)
+            try
             {
-                _unitOfWork.Mrs.Delete(Mr);
-                await _unitOfWork.CompleteAsync();
-            }
-        }
-
-        public async Task<int?> GetByMrNameAsync(string Mrname)
-        {
-            return await _unitOfWork.Mrs.GetByNameAsync(Mrname);
-        }
-
-        public async Task DeleteMultipleMrsWithTransactionAsync(IEnumerable<Mr> mrs)
-        {
-            using (var transaction = await _unitOfWork.BeginTransactionAsync())
-            {
-                try
+                foreach (var mrDto in mrDtos)
                 {
-                    foreach (var mr in mrs)
+                    var mr = await _unitOfWork.Mrs.GetByIdAsync(mrDto.MrId);
+                    if (mr != null)
                     {
-                        if (mr != null)
-                        {
-                            _unitOfWork.Mrs.Delete(mr);
-                        }
+                        _unitOfWork.Mrs.Delete(mr);
                     }
-                    await _unitOfWork.CompleteAsync();
-                    await transaction.CommitAsync();
                 }
-                catch (Exception)
-                {
-                    await transaction.RollbackAsync();
-                    throw;
-                }
+                await _unitOfWork.CompleteAsync();
+                await transaction.CommitAsync();
+            }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                throw;
             }
         }
+    }
+
+    public async Task<IEnumerable<MrIdAndMrNameDto>> GetMrIdAndNameAsync()
+    {
+        var mrs = await _unitOfWork.Mrs.GetAllAsync();
+        return mrs.Select(mr => new MrIdAndMrNameDto
+        {
+            MrId = mr.MrId,
+            MrName = mr.MrName
+        }).ToList();
     }
 }

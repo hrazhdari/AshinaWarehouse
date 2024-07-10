@@ -13,3 +13,6 @@ D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net7.0\refint\AWMS.data
 D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net7.0\AWMS.datalayer.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net7.0\AWMS.datalayer.genruntimeconfig.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net7.0\ref\AWMS.datalayer.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\bin\Debug\net7.0\AWMS.dto.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\bin\Debug\net7.0\AWMS.dto.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.datalayer\obj\Debug\net7.0\AWMS.dat.7D864CBD.Up2Date

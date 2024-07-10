@@ -17,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using AWMS.core.Interfaces;
 using AWMS.core;
 using AWMS.app.Utility;
-using AWMS.datalayer.Entities;
+using AWMS.dto;
 using DevExpress.XtraGrid;
 using OfficeOpenXml.Style;
 using OfficeOpenXml;
@@ -118,7 +118,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                 return; // Exit the method if the Mr name is not unique
             }
 
-            var newMr = new Mr()
+            var newMr = new MrDto()
             {
                 MrName = mrName,
                 MrDescription = mrDescription,
@@ -203,7 +203,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                 await Task.Delay(10); // Adjust the delay time if needed
             }
         }
-        private async Task<int> AddMrRecordAsync(Mr newMr)
+        private async Task<int> AddMrRecordAsync(MrDto newMr)
         {
             try
             {
@@ -289,14 +289,14 @@ namespace AWMS.app.Forms.RibbonMaterial
                 if (result == DialogResult.Yes)
                 {
                     // Initialize a list to hold IDs of selected items to delete
-                    List<Mr> selectedMrs = new List<Mr>();
+                    List<MrDto> selectedMrs = new List<MrDto>();
 
                     // Iterate through all selected rows
                     int[] selectedRows = gridView.GetSelectedRows();
                     foreach (int selectedRowHandle in selectedRows)
                     {
                         // Get the corresponding Mr entity
-                        Mr selectedMr = gridView.GetRow(selectedRowHandle) as Mr;
+                        MrDto selectedMr = gridView.GetRow(selectedRowHandle) as MrDto;
                         if (selectedMr != null)
                         {
                             selectedMrs.Add(selectedMr);

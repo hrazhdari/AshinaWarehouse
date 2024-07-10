@@ -9,6 +9,7 @@ namespace AWMS.datalayer
     {
         ICompanyRepository Companies { get; }
         IMrRepository Mrs { get; }
+        IPoRepository Pos { get; }
         Task<int> CompleteAsync();
         Task<IDbContextTransaction> BeginTransactionAsync();
     }
