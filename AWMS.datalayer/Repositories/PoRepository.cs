@@ -19,7 +19,12 @@ namespace AWMS.datalayer.Repositories
 
         public async Task<IEnumerable<Po>> GetAllAsync()
         {
+
             return await _context.Pos.ToListAsync();
+        }
+        public IEnumerable<Po> GetAll()
+        {
+            return  _context.Pos.ToList();
         }
 
         public async Task<Po> GetByIdAsync(int id)
@@ -42,9 +47,9 @@ namespace AWMS.datalayer.Repositories
         public async Task<int?> GetByNameAsync(string PoName)
         {
             return await _context.Pos
-                      .Where(p => p.PoName==PoName)
-                      .Select(p => (int?)p.PoId)
-                      .FirstOrDefaultAsync();
+                  .Where(p => p.PoName == PoName)
+                  .Select(p => (int?)p.PoId)
+                  .FirstOrDefaultAsync();
         }
         public async Task<int> AddAsync(Po Po)
         {

@@ -2,7 +2,9 @@ D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.core.deps.json
 D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.core.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.core.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.datalayer.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.dto.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.datalayer.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.dto.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net7.0\AWMS.core.csproj.AssemblyReference.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net7.0\AWMS.core.GeneratedMSBuildEditorConfig.editorconfig
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net7.0\AWMS.core.AssemblyInfoInputs.cache
@@ -14,5 +16,3 @@ D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net7.0\AWMS.core.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net7.0\refint\AWMS.core.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net7.0\AWMS.core.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.core\obj\Debug\net7.0\ref\AWMS.core.dll
-D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.dto.dll
-D:\MyBigProject\AshinaWarehouse\AWMS.core\bin\Debug\net7.0\AWMS.dto.pdb

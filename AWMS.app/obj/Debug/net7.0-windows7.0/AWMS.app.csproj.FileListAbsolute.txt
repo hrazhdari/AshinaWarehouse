@@ -183,7 +183,9 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\runtimes\wi
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\runtimes\win\lib\netstandard2.0\System.ServiceProcess.ServiceController.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.core.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.datalayer.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.dto.dll
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.core.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.dto.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.datalayer.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.csproj.AssemblyReference.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmBase.frmBase.resources
@@ -191,6 +193,7 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Fo
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmCompanyManagment.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmMain.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmMr.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPo.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Properties.Resources.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Utility.CustomMessageBox.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.csproj.GenerateResource.cache
@@ -205,6 +208,3 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\refint\AWMS
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.genruntimeconfig.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\ref\AWMS.app.dll
-D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPo.resources
-D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.dto.dll
-D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.dto.pdb

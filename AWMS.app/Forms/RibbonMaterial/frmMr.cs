@@ -143,8 +143,8 @@ namespace AWMS.app.Forms.RibbonMaterial
                 // Add a small delay to ensure the data is loaded
                 await Task.Delay(500);
 
-                // Make sure the data is properly loaded before getting the row handle
-                gridView1.RefreshData();
+                //// Make sure the data is properly loaded before getting the row handle
+                //gridView1.RefreshData();
 
                 // Get the handle of the newly added row
                 int newRowHandle = gridView1.LocateByValue("MrId", isAdded);

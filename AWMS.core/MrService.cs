@@ -26,7 +26,17 @@ public class MrService : IMrService
             EnteredDate = mr.EnteredDate
         }).ToList();
     }
-
+    public IEnumerable<MrDto> GetAllMrs()
+    {
+        var mrs =  _unitOfWork.Mrs.GetAll();
+        return mrs.Select(mr => new MrDto
+        {
+            MrId = mr.MrId,
+            MrName = mr.MrName,
+            MrDescription = mr.MrDescription,
+            EnteredDate = mr.EnteredDate
+        }).ToList();
+    }
     public async Task<MrDto> GetMrByIdAsync(int id)
     {
         var mr = await _unitOfWork.Mrs.GetByIdAsync(id);
@@ -112,6 +122,16 @@ public class MrService : IMrService
     public async Task<IEnumerable<MrIdAndMrNameDto>> GetMrIdAndNameAsync()
     {
         var mrs = await _unitOfWork.Mrs.GetAllAsync();
+        return mrs.Select(mr => new MrIdAndMrNameDto
+        {
+            MrId = mr.MrId,
+            MrName = mr.MrName
+        }).ToList();
+    }
+
+    public IEnumerable<MrIdAndMrNameDto> GetMrIdAndName()
+    {
+        var mrs = _unitOfWork.Mrs.GetAll();
         return mrs.Select(mr => new MrIdAndMrNameDto
         {
             MrId = mr.MrId,

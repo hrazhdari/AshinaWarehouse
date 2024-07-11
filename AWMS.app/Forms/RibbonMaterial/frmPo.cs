@@ -20,11 +20,10 @@ using System.Windows.Forms;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {
-    public partial class frmPo : frmBase.frmBase
+    public partial class frmPo : XtraForm
     {
         private readonly IMrService _MrService;
         private readonly IPoService _PoService;
-        
         private int _highlightedRowHandle = GridControl.InvalidRowHandle;
         public frmPo(IMrService MrService, IPoService PoService)
         {
@@ -32,22 +31,65 @@ namespace AWMS.app.Forms.RibbonMaterial
             this._MrService = MrService;
             this._PoService = PoService;
             lblPoEnterDate.Text = DateTime.Now.ToString();
-
-            LoadData();
+            LoadGrid();
             InitializeGrid();
+            LoadData();
         }
-        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        private void LoadGrid()
         {
-            //if (e.RowHandle == gridView1.FocusedRowHandle && _isRowAdded)
-            //{
-            //    // Customize the appearance of the focused row (newly added row)
-            //    e.Appearance.BackColor = Color.LightGreen; // Set your desired background color
-            //}
-            //else
-            //{
-            //    // Reset the text underline for non-duplicate rows
-            //    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Regular);
-            //}
+            try
+            {
+                // Change mouse cursor to wait state
+                Cursor.Current = Cursors.WaitCursor;
+
+                // Await the asynchronous operation
+                var Pos = _PoService.GetAllPos();
+                gridControl1.DataSource = Pos;
+            }
+            catch (Exception ex)
+            {
+                // Handle errors
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
+            finally
+            {
+                // Set mouse cursor back to default state
+                Cursor.Current = Cursors.Default;
+            }
+        }
+        private void InitializeGrid()
+        {
+            GridView gridView = gridView1;
+
+            if (gridView != null)
+            {
+                gridView.OptionsSelection.MultiSelect = true;
+                gridView.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
+
+                gridView.CellValueChanged += GridView_CellValueChanged;
+            }
+        }
+        private void LoadData()
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                // دریافت داده‌ها
+                var Mrs = _MrService.GetMrIdAndName();
+
+                // تنظیم منبع داده برای لوکاپ‌ها
+                lookUpEdit1.Properties.DataSource = Mrs;
+                repositoryItemLookUpEdit1.DataSource = Mrs;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
         private async void btnAddPo_Click(object sender, EventArgs e)
         {
@@ -82,45 +124,23 @@ namespace AWMS.app.Forms.RibbonMaterial
                 int? duplicateRowHandleNullable = await _PoService.GetByPoNameAsync(poName);
                 if (duplicateRowHandleNullable.HasValue)
                 {
-                    int duplicateRowHandle = duplicateRowHandleNullable.Value;
-                    MessageBox.Show("Po Name already exists. Please enter a unique Po Name.", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    int duplicateRowHandle = gridView1.LocateByValue("PoName", poName);
 
-                    // Save the original appearance properties for the duplicate row
-                    Font originalFont = gridView1.Appearance.Row.Font.Clone() as Font;
-                    Color originalForeColor = gridView1.Appearance.Row.ForeColor;
-
-                    // Change the color of the duplicate row in the GridView using RowCellStyle event
-                    gridView1.RowCellStyle += (s, args) =>
-                    {
-                        if (args.RowHandle == duplicateRowHandle)
-                        {
-                            args.Appearance.BackColor = Color.LightSalmon; // Set your desired color for duplicate row
-                        }
-                    };
-
-                    // Sort the grid by the column (replace "YourColumnName" with the actual column name)
-                    gridView1.ClearSorting();
-                    gridView1.ClearGrouping();
-                    gridView1.SortInfo.ClearAndAddRange(new GridColumnSortInfo[] {
-                    new GridColumnSortInfo(gridView1.Columns["PoId"], ColumnSortOrder.Ascending)
-                });
-
-                    // Focus on the duplicate row after sorting
+                    gridView1.ClearSelection();
+                    gridView1.SelectRow(duplicateRowHandle);
                     gridView1.FocusedRowHandle = duplicateRowHandle;
+                    gridView1.MakeRowVisible(duplicateRowHandle);
+
+                    _highlightedRowHandle = duplicateRowHandle;
+                    gridView1.RowStyle += GridView1_DuplicateRowStyle;
+                    gridView1.RefreshRow(duplicateRowHandle); // Force the row to refresh its style
 
                     await Task.Delay(3000);
 
-                    // Reset the appearance of the duplicate row after the delay
-                    gridView1.RowCellStyle += (s, args) =>
-                    {
-                        if (args.RowHandle == duplicateRowHandle)
-                        {
-                            args.Appearance.BackColor = originalForeColor;
-                            args.Appearance.ForeColor = originalForeColor;
-                            args.Appearance.Font = originalFont;
-                        }
-                    };
-                    return;
+                    gridView1.RowStyle -= GridView1_DuplicateRowStyle;
+                    gridView1.RefreshRow(duplicateRowHandle); // Reset the row style
+
+                    return; // Exit the method if the Mr name is not unique
                 }
             }
             catch (Exception ex)
@@ -145,20 +165,31 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             btnAddPo.Enabled = true;
 
-            if (isAdded>0)
+            if (isAdded > 0)
             {
-                XtraMessageBox.Show("Po record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 progressBarControl1.Position = 0;
 
-                LoadData();
-                InitializeGrid();
+                LoadGrid();
 
-                int newRowHandle = gridView1.GetRowHandle(gridView1.DataRowCount - 1);
-                gridView1.FocusedRowHandle = newRowHandle;
+                // Get the handle of the newly added row
+                int newRowHandle = gridView1.LocateByValue("PoId", isAdded);
 
-                await Task.Delay(3000);
-                ResetRowHighlighting();
+                if (newRowHandle >= 0)
+                {
+                    gridView1.ClearSelection();
+                    gridView1.SelectRow(newRowHandle);
+                    gridView1.FocusedRowHandle = newRowHandle;
+                    gridView1.MakeRowVisible(newRowHandle);
+
+                    _highlightedRowHandle = newRowHandle;
+                    gridView1.RowStyle += GridView1_NewRowStyle;
+                    gridView1.RefreshRow(newRowHandle); // Force the row to refresh its style
+
+                    await Task.Delay(3000);
+
+                    gridView1.RowStyle -= GridView1_NewRowStyle;
+                    gridView1.RefreshRow(newRowHandle); // Reset the row style
+                }
             }
             else
             {
@@ -167,24 +198,27 @@ namespace AWMS.app.Forms.RibbonMaterial
                 progressBarControl1.Position = 0;
             }
         }
-
-        private void ResetRowHighlighting()
+        private void GridView1_DuplicateRowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            // Reset the appearance of the new row and duplicate row
-            
-            // Reset the appearance of the entire grid
-            gridView1.Appearance.FocusedRow.BackColor = Color.Empty;
-            gridView1.Appearance.FocusedCell.ForeColor = Color.Empty;
-            gridView1.Appearance.FocusedCell.BackColor = Color.Empty;
-            gridView1.Appearance.FocusedCell.Font = new Font(gridView1.Appearance.FocusedCell.Font, FontStyle.Regular);
-
-            // Force the grid to repaint
-            gridView1.Invalidate();
+            if (e.RowHandle == _highlightedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LightSalmon;
+                e.Appearance.Options.UseBackColor = true; // Ensure the background color is used
+                e.HighPriority = true; // Ensure this style has higher priority than the default focus style
+            }
         }
-
+        private void GridView1_NewRowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (e.RowHandle == _highlightedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LightGreen;
+                e.Appearance.Options.UseBackColor = true; // Ensure the background color is used
+                e.HighPriority = true; // Ensure this style has higher priority than the default focus style
+            }
+        }
         private async Task UpdateProgressBarAsync()
         {
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 100; i += 5)
             {
                 progressBarControl1.Position = i;
 
@@ -205,109 +239,71 @@ namespace AWMS.app.Forms.RibbonMaterial
                 return -1;
             }
         }
-
-        private async void LoadData()
+        private async void GridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            // Handle cell value changes for any column
+            GridView gridView = sender as GridView;
+
+            // Get the new values
+            int newpoId = Convert.ToInt32(gridView.GetRowCellValue(e.RowHandle, "PoId"));
+            string newPoName = Convert.ToString(gridView.GetRowCellValue(e.RowHandle, "PoName")).Trim();
+            string newPoDescription = Convert.ToString(gridView.GetRowCellValue(e.RowHandle, "PoDescription")).Trim();
+            DateTime newEnteredDate = Convert.ToDateTime(gridView.GetRowCellValue(e.RowHandle, "EnteredDate"));
+            var selectedMRId = 0;
+
+            // Retrieve the selected value from repositoryItemLookUpEdit1
+            var editValue = gridView.GetRowCellValue(e.RowHandle, "MrId"); // Replace "YourColumnName" with the actual column name
+
+            if (editValue == null || editValue == DBNull.Value)
+            {
+                // Default value when nothing is selected
+                MessageBox.Show("Please Select a valid Mr Name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                // User has selected an item, proceed with the original logic
+                // Convert the editValue to the appropriate type
+                selectedMRId = Convert.ToInt32(editValue);
+            }
+
+            // Update default values or perform additional logic based on the new values
+            // You can customize this section to fit your specific requirements
+
+            // Save changes to the database
             try
             {
-                // تغییر نشانگر موس به حالت لودینگ
-                Cursor.Current = Cursors.WaitCursor;
+                var poToUpdate = await _PoService.GetPoByIdAsync(newpoId);
+                if (poToUpdate != null)
+                {
+                    // Update the corresponding entity in the database
+                    poToUpdate.MrId = selectedMRId;
+                    poToUpdate.PoName = newPoName;
+                    poToUpdate.PoDescription = newPoDescription;
+                    poToUpdate.EnteredDate = newEnteredDate;
 
-                // بارگذاری داده‌ها
-                var Mrs = await _MrService.GetMrIdAndNameAsync();
+                    // Save changes to the database
+                    await _PoService.UpdatePoAsync(poToUpdate);
 
-                lookUpEdit1.Properties.DataSource = Mrs;
-                //repositoryItemLookUpEdit1.DataSource = _mrList;
+                    // Get the updated row handle
+                    int updatedRowHandle = gridView.LocateByValue("PoId", newpoId);
+
+                    // Set the focused row handle to the updated row
+                    gridView.FocusedRowHandle = updatedRowHandle;
+
+                    // If the updated row is the new row, focus on the next row
+                    if (gridView.IsNewItemRow(updatedRowHandle))
+                    {
+                        gridView.FocusedRowHandle = updatedRowHandle + 1;
+                        gridView.FocusedColumn = gridView.VisibleColumns[0];
+                        gridView.ShowEditor();
+                    }
+                }
             }
             catch (Exception ex)
             {
-                // مدیریت خطاها
-                MessageBox.Show("Error loading data: " + ex.Message);
+                HandleException(ex, "Error saving data");
             }
-            finally
-            {
-                // بازگرداندن نشانگر موس به حالت پیش‌فرض
-                Cursor.Current = Cursors.Default;
-            }
-        }
-        //private List<Po> GetListOfPosFromDatabase()
-        //{
-        //    // Replace this with your actual data retrieval logic from the database
-        //    // For now, returning a dummy list
-        //    return _dbContextWithoutUnitOfWork.Pos.ToList();
-        //}
-        //private List<Mr> GetListOfMrsFromDatabase()
-        //{
-        //    // Replace this with your actual data retrieval logic from the database
-        //    // For now, returning a dummy list
-        //    return _dbContextWithoutUnitOfWork.Mrs.ToList();
-        //}
-
-        private void InitializeGrid()
-        {
-            GridView gridView = gridView1;
-
-            if (gridView != null)
-            {
-                // Enable multi-row selection
-                gridView.OptionsSelection.MultiSelect = true;
-                gridView.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
-
-                gridView.CellValueChanged += GridView_CellValueChanged; // Handle the CellValueChanged event
-                // Set the data source for the grid
-                //poBindingSource.DataSource = _poList;
-                //gridControl1.DataSource = poBindingSource;
-
-            }
-        }
-
-        private void GridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            //// Handle cell value changes for any column
-            //GridView gridView = sender as GridView;
-
-            //// Get the new values
-            //string newpoName = Convert.ToString(gridView.GetRowCellValue(e.RowHandle, "PoName"));
-            //string newpoDescription = Convert.ToString(gridView.GetRowCellValue(e.RowHandle, "PoDescription"));
-
-            //// Update default values or perform additional logic based on the new values
-            //// You can customize this section to fit your specific requirements
-
-            //// Save changes to the database
-            //try
-            //{
-            //    // Assuming you have an instance of your DbContext named dbContextWithoutUnitOfWork
-            //    int poId = Convert.ToInt32(gridView.GetRowCellValue(e.RowHandle, "PoId"));
-            //    var poToUpdate = _dbContextWithoutUnitOfWork.Pos.FirstOrDefault(po => po.PoId == poId);
-
-            //    if (poToUpdate != null)
-            //    {
-            //        // Update the corresponding entity in the dbContextWithoutUnitOfWork
-            //        poToUpdate.PoName = newpoName;
-            //        poToUpdate.PoDescription = newpoDescription;
-
-            //        // Save changes to the database
-            //        _dbContextWithoutUnitOfWork.SaveChanges();
-
-            //        // Get the updated row handle
-            //        int updatedRowHandle = gridView.GetRowHandle(_poList.IndexOf(poToUpdate));
-
-            //        // Set the focused row handle to the updated row
-            //        gridView.FocusedRowHandle = updatedRowHandle;
-
-            //        // If the updated row is the new row, focus on the next row
-            //        if (gridView.IsNewItemRow(updatedRowHandle))
-            //        {
-            //            gridView.FocusedRowHandle = updatedRowHandle + 1;
-            //            gridView.FocusedColumn = gridView.VisibleColumns[0];
-            //            gridView.ShowEditor();
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    HandleException(ex, "Error saving data");
-            //}
         }
 
         private void HandleException(Exception ex, string message)
@@ -321,23 +317,6 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        private void SaveGridData(string filter, string title, Action<string> exportAction)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = filter,
-                Title = title
-            };
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                exportAction.Invoke(saveFileDialog.FileName);
-                DevExpress.XtraEditors.XtraMessageBox.Show($"{Path.GetExtension(saveFileDialog.FileName)} file saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-   
 
         private void DeleteSelectedRows()
         {
@@ -373,20 +352,14 @@ namespace AWMS.app.Forms.RibbonMaterial
             //            }
             //        }
 
-                //    // Save changes to the database
-                //    _dbContextWithoutUnitOfWork.SaveChanges();
+            //    // Save changes to the database
+            //    _dbContextWithoutUnitOfWork.SaveChanges();
 
-                //    // Refresh the BindingSource to reflect the changes
-                //    poBindingSource.DataSource = _dbContextWithoutUnitOfWork.Pos.ToList();
-                //    poBindingSource.ResetBindings(false);
+            //    // Refresh the BindingSource to reflect the changes
+            //    poBindingSource.DataSource = _dbContextWithoutUnitOfWork.Pos.ToList();
+            //    poBindingSource.ResetBindings(false);
             //    }
             //}
-        }
-
-        private void frmPo_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //_unitOfWork.Dispose();
-            //_dbContextWithoutUnitOfWork.Dispose();
         }
     }
 }

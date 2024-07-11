@@ -21,12 +21,24 @@ public class PoService : IPoService
         return Pos.Select(Po => new PoDto
         {
             PoId = Po.PoId,
+            MrId = Po.MrId,
             PoName = Po.PoName,
             PoDescription = Po.PoDescription,
             EnteredDate = Po.EnteredDate
         }).ToList();
     }
-
+    public IEnumerable<PoDto> GetAllPos()
+    {
+        var Pos = _unitOfWork.Pos.GetAll();
+        return Pos.Select(Po => new PoDto
+        {
+            PoId = Po.PoId,
+            MrId = Po.MrId,
+            PoName = Po.PoName,
+            PoDescription = Po.PoDescription,
+            EnteredDate = Po.EnteredDate
+        }).ToList();
+    }
     public async Task<PoDto> GetPoByIdAsync(int id)
     {
         var Po = await _unitOfWork.Pos.GetByIdAsync(id);
@@ -61,6 +73,7 @@ public class PoService : IPoService
         var Po = await _unitOfWork.Pos.GetByIdAsync(PoDto.PoId);
         if (Po != null)
         {
+            Po.MrId = PoDto.MrId;
             Po.PoName = PoDto.PoName;
             Po.PoDescription = PoDto.PoDescription;
             Po.EnteredDate = PoDto.EnteredDate;

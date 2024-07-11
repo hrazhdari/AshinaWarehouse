@@ -504,7 +504,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMrDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colEnteredDate;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem ExcelExportBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem DeleteBarButtonItem;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
