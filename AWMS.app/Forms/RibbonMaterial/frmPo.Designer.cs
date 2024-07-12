@@ -28,7 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            DevExpress.XtraBars.Bar bar1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPo));
+            ExportExcelBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            DeleteBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            barManager1 = new DevExpress.XtraBars.BarManager(components);
+            barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+            barDockControl3 = new DevExpress.XtraBars.BarDockControl();
+            barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             labelControl3 = new DevExpress.XtraEditors.LabelControl();
             barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -49,6 +59,7 @@
             groupBox1 = new GroupBox();
             lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            splitContainer1 = new SplitContainer();
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colPoId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,6 +68,8 @@
             colPoName = new DevExpress.XtraGrid.Columns.GridColumn();
             colPoDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             colEnteredDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            bar1 = new DevExpress.XtraBars.Bar();
+            ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)progressBarControl1.Properties).BeginInit();
@@ -70,10 +83,101 @@
             splitContainerControl1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)lookUpEdit1.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEdit1).BeginInit();
             SuspendLayout();
+            // 
+            // bar1
+            // 
+            bar1.BarName = "Tools";
+            bar1.DockCol = 0;
+            bar1.DockRow = 0;
+            bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            bar1.FloatLocation = new Point(514, 487);
+            bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(ExportExcelBarButtonItem), new DevExpress.XtraBars.LinkPersistInfo(DeleteBarButtonItem) });
+            bar1.OptionsBar.AllowQuickCustomization = false;
+            bar1.OptionsBar.AutoPopupMode = DevExpress.XtraBars.BarAutoPopupMode.None;
+            bar1.OptionsBar.DistanceBetweenItems = 5;
+            bar1.OptionsBar.UseWholeRow = true;
+            bar1.StandaloneBarDockControl = standaloneBarDockControl1;
+            bar1.Text = "Tools";
+            // 
+            // ExportExcelBarButtonItem
+            // 
+            ExportExcelBarButtonItem.Caption = "Excel";
+            ExportExcelBarButtonItem.Id = 0;
+            ExportExcelBarButtonItem.ImageOptions.Image = Properties.Resources.exporttoxls_16x162;
+            ExportExcelBarButtonItem.ImageOptions.LargeImage = Properties.Resources.exporttoxls_16x162;
+            ExportExcelBarButtonItem.Name = "ExportExcelBarButtonItem";
+            ExportExcelBarButtonItem.ItemClick += ExportExcelBarButtonItem_ItemClick;
+            // 
+            // DeleteBarButtonItem
+            // 
+            DeleteBarButtonItem.Caption = "Delete";
+            DeleteBarButtonItem.Id = 1;
+            DeleteBarButtonItem.ImageOptions.Image = Properties.Resources.none_16x161;
+            DeleteBarButtonItem.ImageOptions.LargeImage = Properties.Resources.none_16x161;
+            DeleteBarButtonItem.Name = "DeleteBarButtonItem";
+            DeleteBarButtonItem.ItemClick += DeleteBarButtonItem_ItemClick;
+            // 
+            // standaloneBarDockControl1
+            // 
+            standaloneBarDockControl1.CausesValidation = false;
+            standaloneBarDockControl1.Dock = DockStyle.Top;
+            standaloneBarDockControl1.Location = new Point(0, 0);
+            standaloneBarDockControl1.Manager = barManager1;
+            standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            standaloneBarDockControl1.Size = new Size(948, 23);
+            standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // barManager1
+            // 
+            barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] { bar1 });
+            barManager1.DockControls.Add(barDockControl1);
+            barManager1.DockControls.Add(barDockControl2);
+            barManager1.DockControls.Add(barDockControl3);
+            barManager1.DockControls.Add(barDockControl4);
+            barManager1.DockControls.Add(standaloneBarDockControl1);
+            barManager1.Form = this;
+            barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ExportExcelBarButtonItem, DeleteBarButtonItem });
+            barManager1.MaxItemId = 3;
+            // 
+            // barDockControl1
+            // 
+            barDockControl1.CausesValidation = false;
+            barDockControl1.Dock = DockStyle.Top;
+            barDockControl1.Location = new Point(0, 0);
+            barDockControl1.Manager = barManager1;
+            barDockControl1.Size = new Size(1237, 0);
+            // 
+            // barDockControl2
+            // 
+            barDockControl2.CausesValidation = false;
+            barDockControl2.Dock = DockStyle.Bottom;
+            barDockControl2.Location = new Point(0, 592);
+            barDockControl2.Manager = barManager1;
+            barDockControl2.Size = new Size(1237, 0);
+            // 
+            // barDockControl3
+            // 
+            barDockControl3.CausesValidation = false;
+            barDockControl3.Dock = DockStyle.Left;
+            barDockControl3.Location = new Point(0, 0);
+            barDockControl3.Manager = barManager1;
+            barDockControl3.Size = new Size(0, 592);
+            // 
+            // barDockControl4
+            // 
+            barDockControl4.CausesValidation = false;
+            barDockControl4.Dock = DockStyle.Right;
+            barDockControl4.Location = new Point(1237, 0);
+            barDockControl4.Manager = barManager1;
+            barDockControl4.Size = new Size(0, 592);
             // 
             // labelControl3
             // 
@@ -248,7 +352,7 @@
             // 
             // splitContainerControl1.Panel2
             // 
-            splitContainerControl1.Panel2.Controls.Add(gridControl1);
+            splitContainerControl1.Panel2.Controls.Add(splitContainer1);
             splitContainerControl1.Panel2.Text = "Panel2";
             splitContainerControl1.Size = new Size(1237, 592);
             splitContainerControl1.SplitterPosition = 279;
@@ -293,6 +397,24 @@
             labelControl4.TabIndex = 15;
             labelControl4.Text = "Mr :";
             // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(standaloneBarDockControl1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(gridControl1);
+            splitContainer1.Size = new Size(948, 592);
+            splitContainer1.SplitterDistance = 32;
+            splitContainer1.TabIndex = 1;
+            // 
             // gridControl1
             // 
             gridControl1.Dock = DockStyle.Fill;
@@ -302,8 +424,8 @@
             gridControl1.Margin = new Padding(3, 2, 3, 2);
             gridControl1.Name = "gridControl1";
             gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEdit1 });
-            gridControl1.Size = new Size(948, 592);
-            gridControl1.TabIndex = 0;
+            gridControl1.Size = new Size(948, 556);
+            gridControl1.TabIndex = 1;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
             // gridView1
@@ -321,6 +443,7 @@
             // 
             // colPoId
             // 
+            colPoId.Caption = "Po Id";
             colPoId.FieldName = "PoId";
             colPoId.ImageOptions.Image = (Image)resources.GetObject("colPoId.ImageOptions.Image");
             colPoId.MinWidth = 21;
@@ -354,6 +477,7 @@
             // 
             // colPoName
             // 
+            colPoName.Caption = "Po Name";
             colPoName.FieldName = "PoName";
             colPoName.ImageOptions.Image = (Image)resources.GetObject("colPoName.ImageOptions.Image");
             colPoName.MinWidth = 21;
@@ -367,6 +491,7 @@
             colPoDescription.AppearanceCell.Options.UseTextOptions = true;
             colPoDescription.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             colPoDescription.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            colPoDescription.Caption = "Po Description";
             colPoDescription.FieldName = "PoDescription";
             colPoDescription.ImageOptions.Image = (Image)resources.GetObject("colPoDescription.ImageOptions.Image");
             colPoDescription.MinWidth = 21;
@@ -377,6 +502,7 @@
             // 
             // colEnteredDate
             // 
+            colEnteredDate.Caption = "Entered Date";
             colEnteredDate.FieldName = "EnteredDate";
             colEnteredDate.ImageOptions.Image = (Image)resources.GetObject("colEnteredDate.ImageOptions.Image");
             colEnteredDate.MinWidth = 21;
@@ -396,8 +522,13 @@
             Controls.Add(barDockControlRight);
             Controls.Add(barDockControlBottom);
             Controls.Add(barDockControlTop);
+            Controls.Add(barDockControl3);
+            Controls.Add(barDockControl4);
+            Controls.Add(barDockControl2);
+            Controls.Add(barDockControl1);
             Name = "frmPo";
             Text = "Po";
+            ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)progressBarControl1.Properties).EndInit();
@@ -413,6 +544,10 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)lookUpEdit1.Properties).EndInit();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEdit1).EndInit();
@@ -440,15 +575,25 @@
         private DevExpress.XtraEditors.LabelControl lblpoName;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private GroupBox groupBox1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarDockControl barDockControl1;
+        private DevExpress.XtraBars.BarDockControl barDockControl2;
+        private DevExpress.XtraBars.BarDockControl barDockControl3;
+        private DevExpress.XtraBars.BarDockControl barDockControl4;
+        private DevExpress.XtraBars.BarButtonItem ExportExcelBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem DeleteBarButtonItem;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private SplitContainer splitContainer1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colPoId;
         private DevExpress.XtraGrid.Columns.GridColumn colMrId;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colPoName;
         private DevExpress.XtraGrid.Columns.GridColumn colPoDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colEnteredDate;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
-        private GroupBox groupBox1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
     }
 }

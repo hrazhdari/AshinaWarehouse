@@ -322,7 +322,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         #region ExcelRport
         private void ExcelExportBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx", FileName = "output.xlsx" })
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx", FileName = "MrExcelOutPut.xlsx" })
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {

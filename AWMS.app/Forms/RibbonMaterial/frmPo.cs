@@ -1,4 +1,5 @@
-﻿using AWMS.core;
+﻿using AWMS.app.Utility;
+using AWMS.core;
 using AWMS.core.Interfaces;
 using AWMS.dto;
 using DevExpress.Data;
@@ -318,48 +319,61 @@ namespace AWMS.app.Forms.RibbonMaterial
             MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void DeleteSelectedRows()
+        private async Task DeleteSelectedRows()
         {
-            //GridView gridView = gridView1;
+            GridView gridView = gridView1;
 
-            //if (gridView != null && gridView.SelectedRowsCount > 0)
-            //{
-            //    // Confirm deletion with a prompt for each selected row
-            //    DialogResult result = MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (gridView != null && gridView.SelectedRowsCount > 0)
+            {
+                // Confirm deletion with a prompt for each selected row
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        // Iterate through all selected rows
-            //        int[] selectedRows = gridView.GetSelectedRows();
-            //        foreach (int selectedRowHandle in selectedRows)
-            //        {
-            //            // Get the corresponding Mr entity
-            //            Po selectedPo = gridView.GetRow(selectedRowHandle) as Po;
+                if (result == DialogResult.Yes)
+                {
+                    // Initialize a list to hold IDs of selected items to delete
+                    List<PoDto> selectedPos = new List<PoDto>();
 
-            //            if (selectedPo != null)
-            //            {
-            //                // Remove the entity from the list
-            //                _poList.Remove(selectedPo);
-            //                try
-            //                {
-            //                    // Remove the entity from the database
-            //                    _dbContextWithoutUnitOfWork.Pos.Remove(selectedPo);
-            //                }
-            //                catch
-            //                {
-            //                    // Handle exception as needed
-            //                }
-            //            }
-            //        }
+                    // Iterate through all selected rows
+                    int[] selectedRows = gridView.GetSelectedRows();
+                    foreach (int selectedRowHandle in selectedRows)
+                    {
+                        // Get the corresponding Po entity
+                        PoDto selectedPo = gridView.GetRow(selectedRowHandle) as PoDto;
+                        if (selectedPo != null)
+                        {
+                            selectedPos.Add(selectedPo);
+                        }
+                    }
 
-            //    // Save changes to the database
-            //    _dbContextWithoutUnitOfWork.SaveChanges();
+                    // Delete selected Po entities using a transaction
+                    try
+                    {
+                        await _PoService.DeleteMultiplePosWithTransactionAsync(selectedPos);
 
-            //    // Refresh the BindingSource to reflect the changes
-            //    poBindingSource.DataSource = _dbContextWithoutUnitOfWork.Pos.ToList();
-            //    poBindingSource.ResetBindings(false);
-            //    }
-            //}
+                        // If deletion is successful, refresh the grid
+                        LoadGrid(); // Assuming this method reloads data into the grid
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to delete selected items. Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+        private  void DeleteBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DeleteSelectedRows();
+        }
+
+        private void ExportExcelBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx", FileName = "PoExcelOutPut.xlsx" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportFromGridViewDevexpress.ExportToExcel(gridView1, sfd.FileName); // فرض می‌کنیم gridView1 نام GridView DevExpress شماست
+                }
+            }
         }
     }
 }
