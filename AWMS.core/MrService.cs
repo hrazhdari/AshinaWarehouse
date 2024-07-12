@@ -74,7 +74,7 @@ public class MrService : IMrService
             mr.MrDescription = mrDto.MrDescription;
             mr.EnteredDate = mrDto.EnteredDate;
 
-            _unitOfWork.Mrs.Update(mr);
+            await _unitOfWork.Mrs.UpdateAsync(mr);
             await _unitOfWork.CompleteAsync();
         }
     }
@@ -84,7 +84,7 @@ public class MrService : IMrService
         var mr = await _unitOfWork.Mrs.GetByIdAsync(id);
         if (mr != null)
         {
-            _unitOfWork.Mrs.Delete(mr);
+            await _unitOfWork.Mrs.DeleteAsync(mr);
             await _unitOfWork.CompleteAsync();
         }
     }
@@ -105,7 +105,7 @@ public class MrService : IMrService
                     var mr = await _unitOfWork.Mrs.GetByIdAsync(mrDto.MrId);
                     if (mr != null)
                     {
-                        _unitOfWork.Mrs.Delete(mr);
+                        await _unitOfWork.Mrs.DeleteAsync(mr);
                     }
                 }
                 await _unitOfWork.CompleteAsync();

@@ -16,6 +16,9 @@
     <Compile Update="Forms\RibbonMaterial\frmMr.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonMaterial\frmPl.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonMaterial\frmPo.cs">
       <SubType>Form</SubType>
     </Compile>

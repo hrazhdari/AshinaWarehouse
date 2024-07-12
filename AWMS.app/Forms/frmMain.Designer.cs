@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -117,8 +116,8 @@
             // 
             PoBarButtonItem.Caption = "Po";
             PoBarButtonItem.Id = 5;
-            PoBarButtonItem.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
-            PoBarButtonItem.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
+            PoBarButtonItem.ImageOptions.Image = (Image)resources.GetObject("PoBarButtonItem.ImageOptions.Image");
+            PoBarButtonItem.ImageOptions.LargeImage = (Image)resources.GetObject("PoBarButtonItem.ImageOptions.LargeImage");
             PoBarButtonItem.Name = "PoBarButtonItem";
             PoBarButtonItem.ItemClick += PoBarButtonItem_ItemClick;
             // 
@@ -142,6 +141,7 @@
             barBtnPl.ImageOptions.Image = (Image)resources.GetObject("barBtnPl.ImageOptions.Image");
             barBtnPl.ImageOptions.LargeImage = (Image)resources.GetObject("barBtnPl.ImageOptions.LargeImage");
             barBtnPl.Name = "barBtnPl";
+            barBtnPl.ItemClick += barBtnPl_ItemClick;
             // 
             // barBtnPk
             // 

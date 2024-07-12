@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace AWMS.datalayer.Entities
 {
@@ -12,17 +9,21 @@ namespace AWMS.datalayer.Entities
     {
         public Po()
         {
-            EnteredDate=DateTime.Now;
+            
         }
         [Key]
         public int PoId { get; set; }
         public int? MrId { get; set; }
+        [Required]
+        [MaxLength(150)]
         public string PoName { get; set; }
+        [MaxLength(500)]
         public string? PoDescription { get; set; }
         [DataType(DataType.Date)]
         public DateTime? EnteredDate { get; set; }
-        [ForeignKey(nameof(MrId))]
-        public virtual  Mr Mr { get; set; }
-        //public virtual ICollection<PackingList> PackingLists { get; set; }
+        
+        public virtual Mr Mr { get; set; }
+        public virtual ICollection<Shipment> Shipments { get; set; }
+        public virtual ICollection<PackingList> PackingLists { get; set; }
     }
 }

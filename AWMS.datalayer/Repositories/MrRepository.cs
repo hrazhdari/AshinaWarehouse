@@ -3,9 +3,6 @@ using AWMS.datalayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using AWMS.dto;
 
 namespace AWMS.datalayer.Repositories
@@ -21,55 +18,62 @@ namespace AWMS.datalayer.Repositories
 
         public async Task<IEnumerable<Mr>> GetAllAsync()
         {
-            return await _context.Mrs.ToListAsync();
+            return await _context.Mrs.AsNoTracking().ToListAsync();
         }
+
         public IEnumerable<Mr> GetAll()
         {
-            return _context.Mrs.ToList();
+            return _context.Mrs.AsNoTracking().ToList();
         }
+
         public async Task<IEnumerable<MrIdAndMrNameDto>> GetMrIdAndNameAsync()
         {
             return await _context.Mrs
-            .Select(mr => new MrIdAndMrNameDto
-            {
-                MrId = mr.MrId,
-                MrName = mr.MrName
-            })
-            .ToListAsync();
+                .AsNoTracking()
+                .Select(mr => new MrIdAndMrNameDto
+                {
+                    MrId = mr.MrId,
+                    MrName = mr.MrName
+                })
+                .ToListAsync();
         }
+
         public IEnumerable<MrIdAndMrNameDto> GetMrIdAndName()
         {
             return _context.Mrs
-           .Select(mr => new MrIdAndMrNameDto
-           {
-               MrId = mr.MrId,
-               MrName = mr.MrName
-           })
-           .ToList();
+                .AsNoTracking()
+                .Select(mr => new MrIdAndMrNameDto
+                {
+                    MrId = mr.MrId,
+                    MrName = mr.MrName
+                })
+                .ToList();
         }
+
         public async Task<Mr> GetByIdAsync(int id)
         {
             return await _context.Mrs.FindAsync(id);
         }
 
-        public void Update(Mr mr)
+        public async Task UpdateAsync(Mr mr)
         {
             _context.Mrs.Update(mr);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(Mr mr)
+        public async Task DeleteAsync(Mr mr)
         {
             _context.Mrs.Remove(mr);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<int?> GetByNameAsync(string MrName)
         {
             return await _context.Mrs
-                      .Where(p => p.MrName == MrName)
-                      .Select(p => (int?)p.MrId)
-                      .FirstOrDefaultAsync();
+                .AsNoTracking()
+                .Where(p => p.MrName == MrName)
+                .Select(p => (int?)p.MrId)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<int> AddAsync(Mr mr)

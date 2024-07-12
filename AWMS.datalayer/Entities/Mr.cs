@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AWMS.datalayer.Entities
 {
@@ -11,15 +8,22 @@ namespace AWMS.datalayer.Entities
     {
         public Mr()
         {
-            EnteredDate=DateTime.Now;
+            
         }
         [Key]
         public int MrId { get; set; }
+
+        [Required]
+        [MaxLength(100)]
         public string MrName { get; set; }
+
+        [MaxLength(500)]
         public string? MrDescription { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime? EnteredDate { get; set; }
+
         public virtual ICollection<Po> Pos { get; set; }
-        //public virtual ICollection<PackingList> PackingLists { get; set; }
+        public virtual ICollection<PackingList> PackingLists { get; set; }
     }
 }

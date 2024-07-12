@@ -46,6 +46,7 @@ namespace AWMS.app
                     services.AddTransient<Forms.frmCompanyManagment>();
                     services.AddTransient<Forms.RibbonMaterial.frmMr>();
                     services.AddTransient<Forms.RibbonMaterial.frmPo>();
+                    services.AddTransient<Forms.RibbonMaterial.frmPl>();
                     
                    });
 

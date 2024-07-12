@@ -193,6 +193,7 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Fo
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmCompanyManagment.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmMain.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmMr.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPl.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPo.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Properties.Resources.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Utility.CustomMessageBox.resources

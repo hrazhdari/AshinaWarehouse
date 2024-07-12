@@ -14,7 +14,7 @@ namespace AWMS.datalayer.Repositories
         Task<Mr> GetByIdAsync(int id);
         Task<int?> GetByNameAsync(string MrName);
         Task<int> AddAsync(Mr mr);
-        void Update(Mr mr);
-        void Delete(Mr mr);
+        Task UpdateAsync(Mr mr);
+        Task DeleteAsync(Mr mr); 
     }
 }

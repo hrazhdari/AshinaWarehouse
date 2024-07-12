@@ -54,5 +54,12 @@ namespace AWMS.app.Forms
             PoManagementForm.MdiParent = this;
             PoManagementForm.Show();
         }
+
+        private void barBtnPl_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var PlManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmPl>();
+            PlManagementForm.MdiParent = this;
+            PlManagementForm.Show();
+        }
     }
 }
