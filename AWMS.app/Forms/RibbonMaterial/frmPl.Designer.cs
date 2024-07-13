@@ -170,7 +170,7 @@
             // 
             labelControl4.Appearance.ForeColor = Color.Black;
             labelControl4.Appearance.Options.UseForeColor = true;
-            labelControl4.Location = new Point(55, 335);
+            labelControl4.Location = new Point(55, 331);
             labelControl4.Margin = new Padding(3, 2, 3, 2);
             labelControl4.Name = "labelControl4";
             labelControl4.Size = new Size(19, 13);
@@ -221,7 +221,7 @@
             // 
             // labelControl1
             // 
-            labelControl1.Location = new Point(622, 438);
+            labelControl1.Location = new Point(622, 434);
             labelControl1.Margin = new Padding(3, 2, 3, 2);
             labelControl1.Name = "labelControl1";
             labelControl1.Size = new Size(55, 13);
@@ -248,7 +248,7 @@
             // 
             lblPlDescirption.Appearance.ForeColor = Color.Black;
             lblPlDescirption.Appearance.Options.UseForeColor = true;
-            lblPlDescirption.Location = new Point(55, 164);
+            lblPlDescirption.Location = new Point(55, 165);
             lblPlDescirption.Margin = new Padding(3, 2, 3, 2);
             lblPlDescirption.Name = "lblPlDescirption";
             lblPlDescirption.Size = new Size(74, 13);
@@ -418,7 +418,7 @@
             // btnAddDescription
             // 
             btnAddDescription.ImageOptions.Image = (Image)resources.GetObject("btnAddDescription.ImageOptions.Image");
-            btnAddDescription.Location = new Point(399, 162);
+            btnAddDescription.Location = new Point(399, 159);
             btnAddDescription.Margin = new Padding(3, 2, 3, 2);
             btnAddDescription.Name = "btnAddDescription";
             btnAddDescription.Size = new Size(122, 24);
@@ -428,7 +428,7 @@
             // 
             // lookUpEditDescription
             // 
-            lookUpEditDescription.Location = new Point(141, 160);
+            lookUpEditDescription.Location = new Point(141, 161);
             lookUpEditDescription.Margin = new Padding(3, 2, 3, 2);
             lookUpEditDescription.Name = "lookUpEditDescription";
             lookUpEditDescription.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -608,7 +608,7 @@
             // 
             labelControl32.Appearance.ForeColor = Color.Black;
             labelControl32.Appearance.Options.UseForeColor = true;
-            labelControl32.Location = new Point(625, 506);
+            labelControl32.Location = new Point(625, 503);
             labelControl32.Margin = new Padding(3, 2, 3, 2);
             labelControl32.Name = "labelControl32";
             labelControl32.Size = new Size(41, 13);
@@ -647,7 +647,7 @@
             // 
             // lookUpEditIRN
             // 
-            lookUpEditIRN.Location = new Point(141, 203);
+            lookUpEditIRN.Location = new Point(141, 207);
             lookUpEditIRN.Margin = new Padding(3, 2, 3, 2);
             lookUpEditIRN.Name = "lookUpEditIRN";
             lookUpEditIRN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -662,7 +662,7 @@
             // 
             labelControl30.Appearance.ForeColor = Color.Black;
             labelControl30.Appearance.Options.UseForeColor = true;
-            labelControl30.Location = new Point(55, 210);
+            labelControl30.Location = new Point(55, 211);
             labelControl30.Margin = new Padding(3, 2, 3, 2);
             labelControl30.Name = "labelControl30";
             labelControl30.Size = new Size(25, 13);
@@ -741,7 +741,7 @@
             // 
             labelControl25.Appearance.ForeColor = Color.Navy;
             labelControl25.Appearance.Options.UseForeColor = true;
-            labelControl25.Location = new Point(625, 219);
+            labelControl25.Location = new Point(625, 218);
             labelControl25.Margin = new Padding(3, 2, 3, 2);
             labelControl25.Name = "labelControl25";
             labelControl25.Size = new Size(71, 13);
@@ -772,7 +772,7 @@
             // 
             // LookupShipment
             // 
-            LookupShipment.Location = new Point(141, 245);
+            LookupShipment.Location = new Point(141, 248);
             LookupShipment.Margin = new Padding(3, 2, 3, 2);
             LookupShipment.Name = "LookupShipment";
             LookupShipment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -975,7 +975,7 @@
             // 
             labelControl15.Appearance.ForeColor = Color.Fuchsia;
             labelControl15.Appearance.Options.UseForeColor = true;
-            labelControl15.Location = new Point(568, 65);
+            labelControl15.Location = new Point(568, 62);
             labelControl15.Margin = new Padding(3, 2, 3, 2);
             labelControl15.Name = "labelControl15";
             labelControl15.Size = new Size(82, 13);
@@ -995,7 +995,7 @@
             // 
             // lookUpEditMr
             // 
-            lookUpEditMr.Location = new Point(141, 286);
+            lookUpEditMr.Location = new Point(141, 285);
             lookUpEditMr.Margin = new Padding(3, 2, 3, 2);
             lookUpEditMr.Name = "lookUpEditMr";
             lookUpEditMr.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -1010,7 +1010,7 @@
             // 
             labelControl12.Appearance.ForeColor = Color.Black;
             labelControl12.Appearance.Options.UseForeColor = true;
-            labelControl12.Location = new Point(55, 293);
+            labelControl12.Location = new Point(55, 289);
             labelControl12.Margin = new Padding(3, 2, 3, 2);
             labelControl12.Name = "labelControl12";
             labelControl12.Size = new Size(19, 13);
@@ -1019,7 +1019,7 @@
             // 
             // lookUpEditVendor
             // 
-            lookUpEditVendor.Location = new Point(141, 452);
+            lookUpEditVendor.Location = new Point(141, 455);
             lookUpEditVendor.Margin = new Padding(3, 2, 3, 2);
             lookUpEditVendor.Name = "lookUpEditVendor";
             lookUpEditVendor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -1058,7 +1058,7 @@
             // 
             labelControl10.Appearance.ForeColor = Color.Black;
             labelControl10.Appearance.Options.UseForeColor = true;
-            labelControl10.Location = new Point(625, 141);
+            labelControl10.Location = new Point(625, 138);
             labelControl10.Margin = new Padding(3, 2, 3, 2);
             labelControl10.Name = "labelControl10";
             labelControl10.Size = new Size(54, 13);
@@ -1067,7 +1067,7 @@
             // 
             // lookUpEditSupplier
             // 
-            lookUpEditSupplier.Location = new Point(141, 410);
+            lookUpEditSupplier.Location = new Point(141, 414);
             lookUpEditSupplier.Margin = new Padding(3, 2, 3, 2);
             lookUpEditSupplier.Name = "lookUpEditSupplier";
             lookUpEditSupplier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -1091,7 +1091,7 @@
             // 
             // lookUpEditAreaUnit
             // 
-            lookUpEditAreaUnit.Location = new Point(141, 369);
+            lookUpEditAreaUnit.Location = new Point(141, 372);
             lookUpEditAreaUnit.Margin = new Padding(3, 2, 3, 2);
             lookUpEditAreaUnit.Name = "lookUpEditAreaUnit";
             lookUpEditAreaUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -1137,7 +1137,7 @@
             // 
             labelControl7.Appearance.ForeColor = Color.DarkCyan;
             labelControl7.Appearance.Options.UseForeColor = true;
-            labelControl7.Location = new Point(309, 65);
+            labelControl7.Location = new Point(309, 62);
             labelControl7.Margin = new Padding(3, 2, 3, 2);
             labelControl7.Name = "labelControl7";
             labelControl7.Size = new Size(65, 13);
@@ -1175,7 +1175,7 @@
             // 
             // txtNetWeight
             // 
-            txtNetWeight.Location = new Point(711, 181);
+            txtNetWeight.Location = new Point(711, 184);
             txtNetWeight.Margin = new Padding(3, 2, 3, 2);
             txtNetWeight.Name = "txtNetWeight";
             txtNetWeight.Properties.Appearance.Options.UseTextOptions = true;

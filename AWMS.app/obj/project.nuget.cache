@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Ss/tKFuZMRo=",
+  "dgSpecHash": "kDxcjzbamLQ=",
   "success": true,
   "projectFilePath": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\AWMS.app.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HAMID\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\HAMID\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\HAMID\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages\\devexpress.charts\\23.2.3\\devexpress.charts.23.2.3.nupkg.sha512",
     "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages\\devexpress.charts.core\\23.2.3\\devexpress.charts.core.23.2.3.nupkg.sha512",
     "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages\\devexpress.codeparser\\23.2.3\\devexpress.codeparser.23.2.3.nupkg.sha512",

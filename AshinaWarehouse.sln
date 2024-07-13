@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWMS.datalayer", "AWMS.data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWMS.core", "AWMS.core\AWMS.core.csproj", "{DA341CFF-FFF2-4230-977E-656E47AC0C7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWMS.dto", "AWMS.dto\AWMS.dto.csproj", "{F8DC9077-A301-4213-A38D-FCEB52DD31E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWMS.dto", "AWMS.dto\AWMS.dto.csproj", "{F8DC9077-A301-4213-A38D-FCEB52DD31E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWMS.dapper", "AWMS.dapper\AWMS.dapper.csproj", "{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F8DC9077-A301-4213-A38D-FCEB52DD31E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8DC9077-A301-4213-A38D-FCEB52DD31E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8DC9077-A301-4213-A38D-FCEB52DD31E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

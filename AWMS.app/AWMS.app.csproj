@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AWMS.core\AWMS.core.csproj" />
+    <ProjectReference Include="..\AWMS.dapper\AWMS.dapper.csproj" />
     <ProjectReference Include="..\AWMS.dto\AWMS.dto.csproj" />
   </ItemGroup>
 

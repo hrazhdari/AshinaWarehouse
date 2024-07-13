@@ -1,0 +1,16 @@
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\bin\Debug\net7.0\AWMS.dapper.deps.json
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\bin\Debug\net7.0\AWMS.dapper.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\bin\Debug\net7.0\AWMS.dapper.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\bin\Debug\net7.0\AWMS.dto.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\bin\Debug\net7.0\AWMS.dto.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.csproj.AssemblyReference.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.AssemblyInfoInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.AssemblyInfo.cs
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.csproj.CoreCompileInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.sourcelink.json
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dap.8B2805C5.Up2Date
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\refint\AWMS.dapper.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\AWMS.dapper.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.dapper\obj\Debug\net7.0\ref\AWMS.dapper.dll

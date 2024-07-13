@@ -10,6 +10,7 @@ namespace AWMS.datalayer
         ICompanyRepository Companies { get; }
         IMrRepository Mrs { get; }
         IPoRepository Pos { get; }
+        IDescriptionForPkRepository DescriptionForPks { get; }
         Task<int> CompleteAsync();
         Task<IDbContextTransaction> BeginTransactionAsync();
     }

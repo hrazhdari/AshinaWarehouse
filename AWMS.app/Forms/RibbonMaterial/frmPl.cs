@@ -1,6 +1,11 @@
-﻿using DevExpress.XtraEditors;
+﻿using AWMS.core.Interfaces;
+using AWMS.dapper;
+using AWMS.dapper.Repositories;
+using AWMS.dto;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Drawing;
 using DevExpress.XtraReports.Parameters;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,60 +16,26 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {
     public partial class frmPl : XtraForm
     {
         private BackgroundWorker backgroundWorker;
-        //private readonly UnitOfWork _unitOfWork;
-        //private List<PackingList> _plList;
-        //private List<Irn> _irnList;
-        //private List<Shipment> _shipList;
-        //private List<Mr> _mrList;
-        //private List<Po> _poList;
-        //private List<AreaUnit> _areaList;
-        //private List<Supplier> _supplierList;
-        //private List<Vendor> _vendorList;
-        //private List<Descipline> _desciplineList;
-        //private List<DescriptionForPk> _descriptionList;
+        private readonly IPackingListDapperRepository _packingListDapperRepository;
+        private readonly IServiceProvider _serviceProvider;
+        private readonly IDescriptionForPkService _descriptionForPkService;
         private bool _isRowAdded;
-        public frmPl()
+        public frmPl(IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider, IDescriptionForPkService descriptionForPkService)
         {
             InitializeComponent();
-            //_unitOfWork = new UnitOfWork(new DatabaseContext());
-
-            //lblLastArchive.Text = _unitOfWork.PlRepository.GetLAstArcvhiveNo();
-
-            //_irnList = _unitOfWork.IrnRepository.GetAllIrn().ToList();
-            //irnBindingSource.DataSource = _irnList.ToList();
-
-            //_shipList = _unitOfWork.ShipRepository.GetAllShipment().ToList();
-            //shipmentBindingSource.DataSource = _shipList;
-
-            //_mrList = _unitOfWork.MrRepository.GetAllMr().ToList();
-            //mrBindingSource.DataSource = _mrList;
-
-            //_poList = _unitOfWork.PoRepository.GetAllPo().ToList();
-            //poBindingSource.DataSource = _poList;
-
-            //_areaList = _unitOfWork.AreaRepository.GetAllAreaUnit().ToList();
-            //areaUnitBindingSource.DataSource = _areaList;
-
-            //_supplierList = _unitOfWork.SupplierRepository.GetAllSupplier().ToList();
-            //supplierBindingSource.DataSource = _supplierList;
-
-            //_vendorList = _unitOfWork.VendorRepository.GetAllVendor().ToList();
-            //vendorBindingSource.DataSource = _vendorList;
-
-            //_desciplineList = _unitOfWork.DesciplineRepository.GetAllDescipline().ToList();
-            //desciplineBindingSource.DataSource = _desciplineList;
-
-            //_descriptionList = _unitOfWork.DescripRepository.GetAllDescriptionForPK().ToList();
-            //descriptionForPkBindingSource.DataSource = _descriptionList;
-
-
+            _packingListDapperRepository = PackingListDapperRepository;
             lblEnteredPlDate.Text = DateTime.Now.ToString();
+            _serviceProvider = serviceProvider;
+            this._descriptionForPkService = descriptionForPkService;
+
+            LoadLoolUps();
         }
         #region showing load panel in main form
         public void InitializeAndShow()
@@ -85,6 +56,10 @@ namespace AWMS.app.Forms.RibbonMaterial
             }
         }
         #endregion
+        private void LoadLoolUps()
+        {
+            DesRecordAddedHandler(null, null);
+        }
         private void txtPlNumber_Leave(object sender, EventArgs e)
         {
             string plNo = txtPlNumber.Text.Trim();
@@ -106,11 +81,8 @@ namespace AWMS.app.Forms.RibbonMaterial
         }
         private bool IsDuplicatePLNO(string plNo)
         {
-            // Assume you have a method or query to check if the PLNO is a duplicate
-            // You need to replace this with the actual logic to check duplicates in your data
             //var duplicatePLNO = _unitOfWork.PlRepository.GetPlByPlNo(plNo);
-
-            return false;// duplicatePLNO != null;
+            return false; //duplicatePLNO != null;
         }
 
         private async void txtplName_Leave(object sender, EventArgs e)
@@ -144,26 +116,17 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         private async Task<bool> IsDuplicatePLName(string plName)
         {
-            //if (_unitOfWork != null && _unitOfWork.PlRepository != null)
-            //{
-            //    try
-            //    {
-            //        bool isDuplicate = await _unitOfWork.PlRepository.GetPlByPlNameBoolAsync(plName);
-            //        Console.WriteLine($"IsDuplicatePLName result for {plName}: {isDuplicate}");
-            //        return isDuplicate;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        // Log the exception details for debugging
-            //        Console.WriteLine($"Exception in IsDuplicatePLName: {ex.Message}");
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-                // Handle the case where _unitOfWork or _unitOfWork.PlRepository is null
+
+            try
+            {
+                bool isDuplicate = await _packingListDapperRepository.ExistsByPlNameAsync(plName);
+                return isDuplicate;
+            }
+            catch (Exception ex)
+            {
                 return false;
-            //}
+            }
+
         }
 
 
@@ -286,7 +249,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             //else
             //{
             //    // Handle the case where _unitOfWork or _unitOfWork.PlRepository is null
-                return false;
+            return false;
             //}
         }
 
@@ -306,7 +269,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             }
             else
             {
-                 plArchive = string.IsNullOrWhiteSpace(txtPlNumber.Text) ? null : txtPlNumber.Text.Trim();
+                plArchive = string.IsNullOrWhiteSpace(txtPlNumber.Text) ? null : txtPlNumber.Text.Trim();
             }
             string plNumber = string.IsNullOrWhiteSpace(txtPlNumber.Text) ? null : txtPlNumber.Text.Trim();
             string opiNumber = string.IsNullOrWhiteSpace(txtOpiNumber.Text) ? null : txtOpiNumber.Text.Trim();
@@ -423,14 +386,14 @@ namespace AWMS.app.Forms.RibbonMaterial
                 txtPlNumber.Text = string.Empty;
                 txtOpiNumber.Text = string.Empty;
                 txtplName.Text = string.Empty;
-                txtProject.Text = string.Empty; 
+                txtProject.Text = string.Empty;
                 txtRemarkCustom.Text = string.Empty;
                 txtBLNumber.Text = string.Empty;
                 txtinvoicenumber.Text = string.Empty;
                 txtIRCNumber.Text = string.Empty;
-                txtlcNumber.Text = string.Empty;    
+                txtlcNumber.Text = string.Empty;
                 txtGrossWeight.Text = string.Empty;
-                txtNetWeight.Text = string.Empty;   
+                txtNetWeight.Text = string.Empty;
                 txtRemarkPl.Text = string.Empty;
                 txtVessel.Text = string.Empty;
                 txtVolume.Text = string.Empty;
@@ -438,7 +401,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                 lblEnterDate.Text = DateTime.Now.ToString();
                 chkBalance.Checked = false;
                 chkSite.Checked = false;
-                radioGroup1.SelectedIndex= 0;
+                radioGroup1.SelectedIndex = 0;
                 txtPlNumber.Focus();
             }
             else
@@ -478,11 +441,14 @@ namespace AWMS.app.Forms.RibbonMaterial
             //frmDescriptionForPKPL frmDescriptionForPKPL = new frmDescriptionForPKPL();
             //frmDescriptionForPKPL.DesRecordAdded += DesRecordAddedHandler;
             //frmDescriptionForPKPL.ShowDialog();
+            var frmDescriptionForPKPL = _serviceProvider.GetRequiredService<Forms.frmSmall.frmDescriptionForPKPL>();
+            frmDescriptionForPKPL.DesRecordAdded += DesRecordAddedHandler;
+            frmDescriptionForPKPL.ShowDialog();
         }
         private void DesRecordAddedHandler(object sender, EventArgs e)
         {
-            //_descriptionList = _unitOfWork.DescripRepository.GetAllDescriptionForPK().ToList();
-            //descriptionForPkBindingSource.DataSource = _descriptionList;
+            var descriptionForPkService = _descriptionForPkService.GetAllDescriptionForPks();
+            lookUpEditDescription.Properties.DataSource = descriptionForPkService;
         }
 
         private void txtPlNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -517,15 +483,51 @@ namespace AWMS.app.Forms.RibbonMaterial
             //        lblLastArchive.Text = "0";
             //    }
             //}
-          
+
         }
 
         private void frmPl_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
-                //_unitOfWork.Dispose();
-                //_dbContextWithoutUnitOfWork.Dispose();
-            
+
+            //_unitOfWork.Dispose();
+            //_dbContextWithoutUnitOfWork.Dispose();
+
         }
+
+
+
+
+
+
+
+
+
+        //private async void btnGetPackingList_Click(object sender, EventArgs e)
+        //{
+        //    int idToFetch = Convert.ToInt32(txtPackingListId.Text);
+
+        //    try
+        //    {
+        //        PackingListDto packingList = await _repository.GetByIdAsync(idToFetch);
+        //        // Use the fetched packingList object to populate your UI or perform other operations
+        //        DisplayPackingListDetails(packingList);
+        //    }
+        //    catch (KeyNotFoundException ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Packing List Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+        //private void DisplayPackingListDetails(PackingListDto packingList)
+        //{
+        //    // Example: Display details in TextBoxes or other UI controls
+        //    txtName.Text = packingList.PLName;
+        //    txtArchiveNO.Text = packingList.ArchiveNO.ToString();
+        //    // Populate other UI elements as needed
+        //}
     }
 }

@@ -1,31 +1,18 @@
-﻿//using AWSapp.frmBase;
-//using AWSapp.frmSmall;
-//using AWSapp.RibbonDashboard;
-//using AWSapp.RibbonMaterial;
-//using AWSapp.RibbonReport;
-//using AWSapp.RibbonSearch;
-//using AWSapp.RibbonVoucher;
-//using AWSapp.Utility;
+﻿using AWMS.app.Forms.frmBase;
 using AWMS.app.Utility;
 using DevExpress.XtraBars;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraWaitForm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Windows.Forms;
 
 namespace AWMS.app.Forms
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private readonly IServiceProvider _serviceProvider;
+
         public frmMain(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
@@ -36,7 +23,7 @@ namespace AWMS.app.Forms
 
         private void CompanybarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var CompanyManagementForm = _serviceProvider.GetRequiredService<Forms.frmCompanyManagment>();
+            var CompanyManagementForm = _serviceProvider.GetRequiredService<frmCompanyManagment>();
             CompanyManagementForm.MdiParent = this;
             CompanyManagementForm.Show();
         }
@@ -57,9 +44,11 @@ namespace AWMS.app.Forms
 
         private void barBtnPl_ItemClick(object sender, ItemClickEventArgs e)
         {
+            SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
             var PlManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmPl>();
             PlManagementForm.MdiParent = this;
             PlManagementForm.Show();
+            SplashScreenManager.CloseForm();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace AWMS.datalayer
 
         public IMrRepository Mrs => GetRepository<IMrRepository, MrRepository>();
         public IPoRepository Pos => GetRepository<IPoRepository, PoRepository>();
+        public IDescriptionForPkRepository DescriptionForPks => GetRepository<IDescriptionForPkRepository, DescriptionForPkRepository>();
         public ICompanyRepository Companies => GetRepository<ICompanyRepository, CompanyRepository>();
 
         private TRepository GetRepository<TRepository, TImplementation>()
