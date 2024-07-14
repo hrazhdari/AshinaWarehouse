@@ -16,5 +16,6 @@ namespace AWMS.core.Interfaces
         Task DeletePoAsync(int PoId);
         Task DeleteMultiplePosWithTransactionAsync(IEnumerable<PoDto> Pos);
         Task<IEnumerable<PoIdAndPoNameDto>> GetPoIdAndNameAsync();
+        IEnumerable<PoIdAndPoNameDto> GetPoIdAndName();
     }
 }

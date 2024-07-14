@@ -16,7 +16,22 @@
     <Compile Update="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmSmall\frmAreaUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\frmSmall\frmDescriptionForPKPL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmSmall\frmIRN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmSmall\frmShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmSmall\frmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\frmSmall\frmVendor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonMaterial\frmMr.cs">

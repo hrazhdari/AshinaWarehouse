@@ -22,6 +22,12 @@ namespace AWMS.datalayer
         public IPoRepository Pos => GetRepository<IPoRepository, PoRepository>();
         public IDescriptionForPkRepository DescriptionForPks => GetRepository<IDescriptionForPkRepository, DescriptionForPkRepository>();
         public ICompanyRepository Companies => GetRepository<ICompanyRepository, CompanyRepository>();
+        public IIrnRepository Irns => GetRepository<IIrnRepository, IrnRepository>();
+        public IShipmentRepository Shipments => GetRepository<IShipmentRepository, ShipmentRepository>();
+        public IAreaUnitRepository AreaUnits => GetRepository<IAreaUnitRepository, AreaUnitRepository>();
+        public ISupplierRepository Suppliers => GetRepository<ISupplierRepository, SupplierRepository>();
+        public IVendorRepository Vendors => GetRepository<IVendorRepository, VendorRepository>();
+        public IDesciplineRepository Desciplines => GetRepository<IDesciplineRepository, DesciplineRepository>();
 
         private TRepository GetRepository<TRepository, TImplementation>()
             where TRepository : class

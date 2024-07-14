@@ -55,5 +55,9 @@ namespace AWMS.datalayer.Repositories
             await _context.SaveChangesAsync();
             return DescriptionForPk.DescriptionForPkId;
         }
+        public async Task<bool> ExistsDescriptionForPkAsync(string Description)
+        {
+            return await _context.DescriptionForPks.AnyAsync(i => i.Description == Description);
+        }
     }
 }

@@ -21,7 +21,7 @@ public class DescriptionForPkService : IDescriptionForPkService
         return DescriptionForPks.Select(DescriptionForPk => new DescriptionForPkDto
         {
             DescriptionForPkId = DescriptionForPk.DescriptionForPkId,
-            Description=DescriptionForPk.Description
+            Description = DescriptionForPk.Description
         }).ToList();
     }
     public IEnumerable<DescriptionForPkDto> GetAllDescriptionForPks()
@@ -103,5 +103,10 @@ public class DescriptionForPkService : IDescriptionForPkService
                 throw;
             }
         }
+    }
+
+    public async Task<bool> ExistsDescriptionForPkIdAsync(string Description)
+    {
+        return await _unitOfWork.DescriptionForPks.ExistsDescriptionForPkAsync(Description);
     }
 }

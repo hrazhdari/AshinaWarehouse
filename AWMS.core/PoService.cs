@@ -132,4 +132,14 @@ public class PoService : IPoService
             PoName = Po.PoName
         }).ToList();
     }
+
+    public IEnumerable<PoIdAndPoNameDto> GetPoIdAndName()
+    {
+        var Pos =  _unitOfWork.Pos.GetPoIdAndName();
+        return Pos.Select(Po => new PoIdAndPoNameDto
+        {
+            PoId = Po.PoId,
+            PoName = Po.PoName
+        }).ToList();
+    }
 }

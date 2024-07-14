@@ -22,20 +22,38 @@ namespace AWMS.app.Forms.RibbonMaterial
 {
     public partial class frmPl : XtraForm
     {
-        private BackgroundWorker backgroundWorker;
         private readonly IPackingListDapperRepository _packingListDapperRepository;
         private readonly IServiceProvider _serviceProvider;
         private readonly IDescriptionForPkService _descriptionForPkService;
-        private bool _isRowAdded;
-        public frmPl(IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider, IDescriptionForPkService descriptionForPkService)
+        private readonly IIrnService _irnService;
+        private readonly IShipmentService _shipmentService;
+        private readonly IAreaUnitService _areaUnitService;
+        private readonly ISupplierService _supplierService;
+        private readonly IVendorService _vendorService;
+        private readonly IDesciplineService _desciplineService;
+        private readonly IMrService _mrService;
+        private readonly IPoService _poService;
+        public frmPl(IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider,
+            IDescriptionForPkService descriptionForPkService,
+            IIrnService irnService, IShipmentService shipmentService, IAreaUnitService areaUnitService,
+            IVendorService vendorService, ISupplierService supplierService, IDesciplineService desciplineService,
+            IMrService mrService, IPoService poService)
         {
             InitializeComponent();
             _packingListDapperRepository = PackingListDapperRepository;
             lblEnteredPlDate.Text = DateTime.Now.ToString();
             _serviceProvider = serviceProvider;
-            this._descriptionForPkService = descriptionForPkService;
 
-            LoadLoolUps();
+            this._descriptionForPkService = descriptionForPkService;
+            this._irnService = irnService;
+            this._shipmentService = shipmentService;
+            this._areaUnitService = areaUnitService;
+            this._supplierService = supplierService;
+            this._vendorService = vendorService;
+            this._desciplineService = desciplineService;
+            this._mrService = mrService;
+            this._poService = poService;
+            LoadLookUps();
         }
         #region showing load panel in main form
         public void InitializeAndShow()
@@ -56,15 +74,27 @@ namespace AWMS.app.Forms.RibbonMaterial
             }
         }
         #endregion
-        private void LoadLoolUps()
+        private void LoadLookUps()
         {
-            DesRecordAddedHandler(null, null);
+            DesRecordAddedHandler(this,EventArgs.Empty);
+            IRNRecordAddedHandler(this, EventArgs.Empty);
+            ShipRecordAddedHandler(this, EventArgs.Empty);
+            RefreshMr_Click(this, EventArgs.Empty);
+            RefreshPO_Click(this, EventArgs.Empty);
+            areaRecordAddedHandler(this, EventArgs.Empty);
+            supplierRecordAddedHandler(this, EventArgs.Empty);
+            vendorRecordAddedHandler(this, EventArgs.Empty);
+            lookUpEditDescipline.Properties.DataSource = _desciplineService.GetAllDesciplines();
         }
-        private void txtPlNumber_Leave(object sender, EventArgs e)
+        private async void txtPlNumber_Leave(object sender, EventArgs e)
         {
             string plNo = txtPlNumber.Text.Trim();
-            if (plNo == "") { return; }
-            bool isDuplicate = IsDuplicatePLNO(plNo);
+            if (string.IsNullOrEmpty(plNo))
+            {
+                return;
+            }
+
+            bool isDuplicate = await IsDuplicatePLNO(plNo);
             if (isDuplicate)
             {
                 MessageBox.Show("Warning: Duplicate PL Number found!", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -79,16 +109,27 @@ namespace AWMS.app.Forms.RibbonMaterial
                 txtPlNumber.BackColor = Color.White;
             }
         }
-        private bool IsDuplicatePLNO(string plNo)
+        private async Task<bool> IsDuplicatePLNO(string plNo)
         {
-            //var duplicatePLNO = _unitOfWork.PlRepository.GetPlByPlNo(plNo);
-            return false; //duplicatePLNO != null;
+            try
+            {
+                return await _packingListDapperRepository.ExistsByPlNoAsync(plNo);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details for debugging
+                Console.WriteLine($"Exception in IsDuplicatePLNO: {ex.Message}");
+                return false; // Return false in case of exception
+            }
         }
-
         private async void txtplName_Leave(object sender, EventArgs e)
         {
             string plName = txtplName.Text.Trim();
-            if (plName == "") return;
+            if (string.IsNullOrEmpty(plName))
+            {
+                return;
+            }
+
             try
             {
                 bool isDuplicate = await IsDuplicatePLName(plName);
@@ -110,111 +151,99 @@ namespace AWMS.app.Forms.RibbonMaterial
             catch (Exception ex)
             {
                 // Log the exception details for debugging
-                Console.WriteLine($"Exception in txtplName_TextChanged: {ex.Message}");
+                Console.WriteLine($"Exception in txtplName_Leave: {ex.Message}");
+                MessageBox.Show("An error occurred while checking the PL Name. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private async Task<bool> IsDuplicatePLName(string plName)
         {
-
             try
             {
-                bool isDuplicate = await _packingListDapperRepository.ExistsByPlNameAsync(plName);
-                return isDuplicate;
+                return await _packingListDapperRepository.ExistsByPlNameAsync(plName);
             }
             catch (Exception ex)
             {
-                return false;
+                // Log the exception details for debugging
+                Console.WriteLine($"Exception in IsDuplicatePLName: {ex.Message}");
+                return false; // Return false in case of exception
             }
-
         }
-
-
         private void btnAddIrn_Click(object sender, EventArgs e)
         {
             //When I Don't Want Refresh Any Data
             //frmIRN frmirn = new frmIRN(attachEventHandler: false);
-            //frmIRN frmirn = new frmIRN();
-            //frmirn.IRNRecordAdded += IRNRecordAddedHandler;
-            //frmirn.ShowDialog();
-        }
-        private void IRNRecordAddedHandler(object sender, EventArgs e)
-        {
-            //_irnList = _unitOfWork.IrnRepository.GetAllIrn().ToList();
-            //irnBindingSource.DataSource = _irnList;
-        }
 
+            var frmirn = _serviceProvider.GetRequiredService<Forms.frmSmall.frmIRN>();
+            frmirn.IRNRecordAdded += IRNRecordAddedHandler;
+            frmirn.ShowDialog();
+        }
+        private void IRNRecordAddedHandler(object? sender, EventArgs e)
+        {
+            lookUpEditIRN.Properties.DataSource = _irnService.GetAllIrns(); ;
+        }
         private void btnAddShipment_Click(object sender, EventArgs e)
         {
-            //frmShipment frmship = new frmShipment();
-            //frmship.ShipRecordAdded += ShipRecordAddedHandler;
-            //frmship.ShowDialog();
+            var frmship = _serviceProvider.GetRequiredService<Forms.frmSmall.frmShipment>();
+            frmship.ShipRecordAdded += ShipRecordAddedHandler;
+            frmship.ShowDialog();
         }
-        private void ShipRecordAddedHandler(object sender, EventArgs e)
+        private void ShipRecordAddedHandler(object? sender, EventArgs e)
         {
-            //_shipList = _unitOfWork.ShipRepository.GetAllShipment().ToList();
-            //shipmentBindingSource.DataSource = _shipList;
+            LookupShipment.Properties.DataSource = _shipmentService.GetAllShipments(); ;
         }
-
         private void RefreshMr_Click(object sender, EventArgs e)
         {
-            //_mrList = _unitOfWork.MrRepository.GetAllMr().ToList();
-            //mrBindingSource.DataSource = _mrList;
+            lookUpEditMr.Properties.DataSource = _mrService.GetMrIdAndName();
         }
-
         private void RefreshPO_Click(object sender, EventArgs e)
         {
-            //_poList = _unitOfWork.PoRepository.GetAllPo().ToList();
-            //poBindingSource.DataSource = _poList;
+            lookUpEditPo.Properties.DataSource = _poService.GetPoIdAndName();
         }
-
         private void btnInsertArea_Click(object sender, EventArgs e)
         {
-            //frmAreaUnit frmarea = new frmAreaUnit();
-            //frmarea.AreaRecordAdded += areaRecordAddedHandler;
-            //frmarea.ShowDialog();
+            var frmarea = _serviceProvider.GetRequiredService<Forms.frmSmall.frmAreaUnit>();
+            frmarea.AreaRecordAdded += areaRecordAddedHandler;
+            frmarea.ShowDialog();
         }
-        private void areaRecordAddedHandler(object sender, EventArgs e)
+        private void areaRecordAddedHandler(object? sender, EventArgs e)
         {
-            //_areaList = _unitOfWork.AreaRepository.GetAllAreaUnit().ToList();
-            //areaUnitBindingSource.DataSource = _areaList;
+            lookUpEditAreaUnit.Properties.DataSource = _areaUnitService.GetAllAreaUnits();
         }
-
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
-            //frmSupplier frmsupplier = new frmSupplier();
-            //frmsupplier.SupplierRecordAdded += supplierRecordAddedHandler;
-            //frmsupplier.ShowDialog();
+            var frmsupplier = _serviceProvider.GetRequiredService<Forms.frmSmall.frmSupplier>();
+            frmsupplier.SupplierRecordAdded += supplierRecordAddedHandler;
+            frmsupplier.ShowDialog();
         }
-        private void supplierRecordAddedHandler(object sender, EventArgs e)
+        private void supplierRecordAddedHandler(object? sender, EventArgs e)
         {
-            //_supplierList = _unitOfWork.SupplierRepository.GetAllSupplier().ToList();
-            //supplierBindingSource.DataSource = _supplierList;
+            lookUpEditSupplier.Properties.DataSource = _supplierService.GetAllSuppliers();
         }
-
         private void btnAddVendor_Click(object sender, EventArgs e)
         {
-            //frmVendor frmvendor = new frmVendor();
-            //frmvendor.VendorRecordAdded += vendorRecordAddedHandler;
-            //frmvendor.ShowDialog();
+            var frmvendor = _serviceProvider.GetRequiredService<Forms.frmSmall.frmVendor>();
+            frmvendor.VendorRecordAdded += vendorRecordAddedHandler;
+            frmvendor.ShowDialog();
         }
-        private void vendorRecordAddedHandler(object sender, EventArgs e)
+        private void vendorRecordAddedHandler(object? sender, EventArgs e)
         {
-            //_vendorList = _unitOfWork.VendorRepository.GetAllVendor().ToList();
-            //vendorBindingSource.DataSource = _vendorList;
+            lookUpEditVendor.Properties.DataSource = _vendorService.GetAllVendors();
         }
-        private async void txtOpiNumber_Leave(object sender, EventArgs e)
+        private void txtOpiNumber_Leave(object sender, EventArgs e)
         {
             string OpiNumber = txtOpiNumber.Text.Trim();
-            if (OpiNumber == "") { return; }
+            if (string.IsNullOrEmpty(OpiNumber))
+            {
+                return;
+            }
+
             try
             {
-
-                bool isDuplicate = await IsDuplicateOpiNumber(OpiNumber);
+                bool isDuplicate = IsDuplicateOpiNumber(OpiNumber);
 
                 if (isDuplicate)
                 {
-                    MessageBox.Show("Warning: Duplicate OpiNumber Name found!", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Warning: Duplicate OpiNumber found!", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     lblDuplicateOpi.Text = "It's Duplicate But You Can Continue";
                     lblDuplicateOpi.ForeColor = Color.Coral;
                     txtOpiNumber.BackColor = Color.Bisque;
@@ -229,35 +258,27 @@ namespace AWMS.app.Forms.RibbonMaterial
             catch (Exception ex)
             {
                 // Log the exception details for debugging
-                //Console.WriteLine($"Exception in txtplName_TextChanged: {ex.Message}");
+                Console.WriteLine($"Exception in txtOpiNumber_Leave: {ex.Message}");
+                MessageBox.Show("An error occurred while checking the OpiNumber. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private async Task<bool> IsDuplicateOpiNumber(string OpiNumber)
+
+        private bool IsDuplicateOpiNumber(string OpiNumber)
         {
-            //if (_unitOfWork != null && _unitOfWork.PlRepository != null)
-            //{
-            //    try
-            //    {
-            //        bool isDuplicate = await _unitOfWork.PlRepository.GetPlByPlOpiNoBoolAsync(OpiNumber);
-            //        return isDuplicate;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    // Handle the case where _unitOfWork or _unitOfWork.PlRepository is null
-            return false;
-            //}
+            try
+            {
+                return  _packingListDapperRepository.ExistsByOpiNumber(OpiNumber);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details for debugging
+                Console.WriteLine($"Exception in IsDuplicateOpiNumber: {ex.Message}");
+                return false; // Return false in case of exception
+            }
         }
 
         private async void btnAddPl_Click(object sender, EventArgs e)
         {
-            string plArchive;
-            string plName;
-            int DesciplineId;
             if (lblDuplicate.Text == "Duplicate !")
             {
                 MessageBox.Show("Warning: Duplicate PL Number found!", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -267,190 +288,111 @@ namespace AWMS.app.Forms.RibbonMaterial
                 txtPlNumber.Focus();
                 return;
             }
-            else
-            {
-                plArchive = string.IsNullOrWhiteSpace(txtPlNumber.Text) ? null : txtPlNumber.Text.Trim();
-            }
-            string plNumber = string.IsNullOrWhiteSpace(txtPlNumber.Text) ? null : txtPlNumber.Text.Trim();
-            string opiNumber = string.IsNullOrWhiteSpace(txtOpiNumber.Text) ? null : txtOpiNumber.Text.Trim();
-            string invoiceNumber = string.IsNullOrWhiteSpace(txtinvoicenumber.Text) ? null : txtinvoicenumber.Text.Trim();
+
             if (string.IsNullOrWhiteSpace(txtplName.Text))
             {
-                MessageBox.Show("Warning: Please Enter Pl Name!", "NOT Entered Pl Name Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                lblduplicateplname.Text = "Please Enter Pl Name!";
+                MessageBox.Show("Warning: Please Enter PL Name!", "Not Entered PL Name Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblduplicateplname.Text = "Please Enter PL Name!";
                 lblduplicateplname.ForeColor = Color.Coral;
                 txtplName.BackColor = Color.OrangeRed;
                 txtplName.Focus();
                 return;
             }
-            else if (lblduplicateplname.Text == "Duplicate !")
+
+            if (lblduplicateplname.Text == "Duplicate !")
             {
-                MessageBox.Show("Warning: Duplicate PL Number found!", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Warning: Duplicate PL Name found!", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lblduplicateplname.Text = "Duplicate !";
                 lblduplicateplname.ForeColor = Color.Red;
                 txtplName.BackColor = Color.OrangeRed;
                 txtplName.Focus();
                 return;
             }
-            else
+
+            try
             {
-                lblduplicateplname.Text = "";
-                txtplName.BackColor = Color.White;
-                plName = txtplName.Text.Trim();
+                var newPackingList = new PackingListDto()
+                {
+                    ArchiveNO = string.IsNullOrWhiteSpace(txtPlNumber.Text) ? null : txtPlNumber.Text.Trim(),
+                    PLNO = txtPlNumber.Text.Trim(),
+                    OPINO = txtOpiNumber.Text.Trim(),
+                    InvoiceNO = txtinvoicenumber.Text.Trim(),
+                    PLName = txtplName.Text.Trim(),
+                    DescriptionForPkId = Convert.ToInt32(lookUpEditDescription.EditValue ?? 1),
+                    IrnId = Convert.ToInt32(lookUpEditIRN.EditValue ?? 1),
+                    ShId = Convert.ToInt32(LookupShipment.EditValue ?? 1),
+                    MrId = Convert.ToInt32(lookUpEditMr.EditValue ?? 1),
+                    PoId = Convert.ToInt32(lookUpEditPo.EditValue ?? 1),
+                    AreaUnitID = Convert.ToInt32(lookUpEditAreaUnit.EditValue ?? 1),
+                    SupplierId = Convert.ToInt32(lookUpEditSupplier.EditValue ?? 1),
+                    VendorId = Convert.ToInt32(lookUpEditVendor.EditValue ?? 1),
+                    LocalForeign = radioGroup1.SelectedIndex != -1 ? radioGroup1.SelectedIndex + 1 : 1,
+                    Vessel = txtVessel.Text.Trim(),
+                    DesciplineId = Convert.ToInt32(lookUpEditDescipline.EditValue ?? 1),
+                    NetW = string.IsNullOrWhiteSpace(txtNetWeight.Text) ? 0 : Convert.ToDecimal(txtNetWeight.Text),
+                    GrossW = string.IsNullOrWhiteSpace(txtGrossWeight.Text) ? 0 : Convert.ToDecimal(txtGrossWeight.Text),
+                    Volume = txtVolume.Text.Trim(),
+                    Remark = txtRemarkPl.Text.Trim(),
+                    MARDate = MARPLDate.DateTime != DateTime.MinValue ? MARPLDate.DateTime : DateTime.Now,
+                    Project = txtProject.Text.Trim(),
+                    RTINO = txtRTINumber.Text.Trim(),
+                    IRCNO = txtIRCNumber.Text.Trim(),
+                    LCNO = txtlcNumber.Text.Trim(),
+                    BLNO = txtBLNumber.Text.Trim(),
+                    Remarkcustoms = txtRemarkCustom.Text.Trim(),
+                    SitePL = chkSite.Checked,
+                    Balance = chkBalance.Checked
+                };
+
+                btnAddPl.Enabled = false;
+                await UpdateProgressBarAsync();
+
+                bool isAdded = await _packingListDapperRepository.AddAsync(newPackingList);
+                btnAddPl.Enabled = true;
+
+                if (isAdded)
+                {
+                    XtraMessageBox.Show("Packing List Record Added Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    progressBarControl1.Position = 0;
+                    ClearFormFields();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Failed to add Packing list record. Please check your input.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    progressBarControl1.Position = 0;
+                }
+
+                btnRefreshArchiveNO_Click(this,EventArgs.Empty);
             }
-            int plDescription = lookUpEditDescription.EditValue == null ? 1 : Convert.ToInt32(lookUpEditDescription.EditValue);
-            int IrnId = lookUpEditIRN.EditValue == null ? 1 : Convert.ToInt32(lookUpEditIRN.EditValue);
-            int ShipId = LookupShipment.EditValue == null ? 1 : Convert.ToInt32(LookupShipment.EditValue);
-            int MrId = lookUpEditMr.EditValue == null ? 1 : Convert.ToInt32(lookUpEditMr.EditValue);
-            int PoId = lookUpEditPo.EditValue == null ? 1 : Convert.ToInt32(lookUpEditPo.EditValue);
-            int AreaId = lookUpEditAreaUnit.EditValue == null ? 1 : Convert.ToInt32(lookUpEditAreaUnit.EditValue);
-            int SupplierId = lookUpEditSupplier.EditValue == null ? 1 : Convert.ToInt32(lookUpEditSupplier.EditValue);
-            int VendorId = lookUpEditVendor.EditValue == null ? 1 : Convert.ToInt32(lookUpEditVendor.EditValue);
-            int LocalForeign = radioGroup1.SelectedIndex != -1 ? radioGroup1.SelectedIndex + 1 : 1;
-            string Vessel = string.IsNullOrWhiteSpace(txtVessel.Text) ? null : txtVessel.Text.Trim();
-            if (lookUpEditDescipline.EditValue == null)
+            catch (Exception ex)
             {
-                MessageBox.Show("Warning: Please Select Descipline!", "NOT Selected Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                lblMostSelectDescipline.Text = "Please Select Descipline!";
-                lblMostSelectDescipline.ForeColor = Color.Red;
-                lookUpEditDescipline.BackColor = Color.OrangeRed;
-                lookUpEditDescipline.Focus();
-                return;
+                Console.WriteLine($"Exception in btnAddPl_Click: {ex.Message}");
+                XtraMessageBox.Show("An error occurred while adding Packing list record. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                lblMostSelectDescipline.Text = "";
-                lookUpEditDescipline.BackColor = Color.White;
-                DesciplineId = Convert.ToInt32(lookUpEditDescipline.EditValue);
-            }
-            decimal NetWeight = string.IsNullOrWhiteSpace(txtNetWeight.Text) ? 0 : Convert.ToDecimal(txtNetWeight.Text);
-            decimal GrossWeight = string.IsNullOrWhiteSpace(txtGrossWeight.Text) ? 0 : Convert.ToDecimal(txtGrossWeight.Text);
-            string Volume = string.IsNullOrWhiteSpace(txtVolume.Text) ? null : txtVolume.Text.Trim();
-            string RemarkPl = string.IsNullOrWhiteSpace(txtRemarkPl.Text) ? null : txtRemarkPl.Text.Trim();
-            DateTime MARDate = MARPLDate.DateTime != DateTime.MinValue ? MARPLDate.DateTime : DateTime.Now;
-            string Project = string.IsNullOrWhiteSpace(txtProject.Text) ? null : txtProject.Text.Trim();
-            string RtiNumber = string.IsNullOrWhiteSpace(txtRTINumber.Text) ? null : txtRTINumber.Text.Trim();
-            string IRCNumber = string.IsNullOrWhiteSpace(txtIRCNumber.Text) ? null : txtIRCNumber.Text.Trim();
-            string LCNumber = string.IsNullOrWhiteSpace(txtlcNumber.Text) ? null : txtlcNumber.Text.Trim();
-            string BLNumber = string.IsNullOrWhiteSpace(txtBLNumber.Text) ? null : txtBLNumber.Text.Trim();
-            string RemarkCustom = string.IsNullOrWhiteSpace(txtRemarkCustom.Text) ? null : txtRemarkCustom.Text.Trim();
-            bool SiteCheck = chkSite.Checked ? true : false;
-            bool BalanceCheck = chkBalance.Checked ? true : false;
-
-            //PackingList newpackinglist = new PackingList
-            //{
-            //    ArchiveNO= plArchive,
-            //    PLNO= plNumber,
-            //    OPINO= opiNumber,
-            //    InvoiceNO= invoiceNumber,
-            //    PLName= plName,
-            //    DescriptionForPkId = plDescription,
-            //    IrnId= IrnId,
-            //    ShId= ShipId,
-            //    MrId=MrId,
-            //    PoId= PoId,
-            //    AreaUnitID= AreaId,
-            //    SupplierId= SupplierId,
-            //    VendorId= VendorId,
-            //    LocalForeign= LocalForeign,
-            //    Vessel= Vessel,
-            //    DesciplineId= DesciplineId,
-            //    NetW=NetWeight,
-            //    GrossW=GrossWeight,
-            //    Volume= Volume,
-            //    Remark=RemarkPl,
-            //    MARDate= MARDate,
-            //    Project= Project,
-            //    RTINO=RtiNumber,
-            //    IRCNO=IRCNumber,
-            //    LCNO=LCNumber,
-            //    BLNO= BLNumber,
-            //    Remarkcustoms=RemarkCustom,
-            //    SitePL=SiteCheck,
-            //    Balance=BalanceCheck
-            //};
-
-            btnAddPl.Enabled = false;
-
-            await UpdateProgressBarAsync();
-
-            //bool isAdded = await AddPlRecordAsync(newpackinglist);
-            bool isAdded = false;
-            btnAddPl.Enabled = true;
-
-            if (isAdded)
-            {
-                XtraMessageBox.Show("Packing list record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                progressBarControl1.Position = 0;
-                txtPlNumber.Text = string.Empty;
-                txtOpiNumber.Text = string.Empty;
-                txtplName.Text = string.Empty;
-                txtProject.Text = string.Empty;
-                txtRemarkCustom.Text = string.Empty;
-                txtBLNumber.Text = string.Empty;
-                txtinvoicenumber.Text = string.Empty;
-                txtIRCNumber.Text = string.Empty;
-                txtlcNumber.Text = string.Empty;
-                txtGrossWeight.Text = string.Empty;
-                txtNetWeight.Text = string.Empty;
-                txtRemarkPl.Text = string.Empty;
-                txtVessel.Text = string.Empty;
-                txtVolume.Text = string.Empty;
-                txtRTINumber.Text = string.Empty;
-                lblEnterDate.Text = DateTime.Now.ToString();
-                chkBalance.Checked = false;
-                chkSite.Checked = false;
-                radioGroup1.SelectedIndex = 0;
-                txtPlNumber.Focus();
-            }
-            else
-            {
-                XtraMessageBox.Show("Failed to add Packing list record. Please check your input.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                progressBarControl1.Position = 0;
-            }
-            //lblLastArchive.Text = _unitOfWork.PlRepository.GetLAstArcvhiveNo();
         }
+
         private async Task UpdateProgressBarAsync()
         {
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 100; i += 10)
             {
                 progressBarControl1.Position = i;
-
-                // Simulate a small delay without blocking the UI
-                await Task.Delay(5); // Adjust the delay time if needed
+                await Task.Delay(10); // Simulate a small delay without blocking the UI
             }
         }
-        //private async Task<bool> AddPlRecordAsync(PackingList newpackinglist)
-        //{
-        //    try
-        //    {
-        //        // Add the Mr record to the database asynchronously
-        //        return await Task.Run(() => _unitOfWork.PlRepository.Addpl(newpackinglist));
-        //    }
-        //    catch (Exception)
-        //    {
-        //        // Handle exception (log, throw, etc.)
-        //        return false;
-        //    }
-        //}
 
         private void btnAddDescription_Click(object sender, EventArgs e)
         {
-            //frmDescriptionForPKPL frmDescriptionForPKPL = new frmDescriptionForPKPL();
-            //frmDescriptionForPKPL.DesRecordAdded += DesRecordAddedHandler;
-            //frmDescriptionForPKPL.ShowDialog();
             var frmDescriptionForPKPL = _serviceProvider.GetRequiredService<Forms.frmSmall.frmDescriptionForPKPL>();
             frmDescriptionForPKPL.DesRecordAdded += DesRecordAddedHandler;
             frmDescriptionForPKPL.ShowDialog();
         }
-        private void DesRecordAddedHandler(object sender, EventArgs e)
+        private void DesRecordAddedHandler(object? sender, EventArgs e)
         {
             var descriptionForPkService = _descriptionForPkService.GetAllDescriptionForPks();
             lookUpEditDescription.Properties.DataSource = descriptionForPkService;
         }
-
         private void txtPlNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if the pressed key is a number or the backspace key
@@ -463,71 +405,50 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         private void btnRefreshArchiveNO_Click(object sender, EventArgs e)
         {
-            //using(DatabaseContext _context=new DatabaseContext())
-            //{
-            //    var packingLists = _context.PackingLists.ToList();
-
-            //    if (packingLists.Any())
-            //    {
-            //        string lastArchiveNo = packingLists
-            //                                   .OrderByDescending(pl =>
-            //                                       int.TryParse(pl.ArchiveNO, out int result) ? result : 0)
-            //                                   .Select(pl => pl.ArchiveNO)
-            //                                   .FirstOrDefault();
-
-            //        lblLastArchive.Text = lastArchiveNo;
-            //    }
-            //    else
-            //    {
-
-            //        lblLastArchive.Text = "0";
-            //    }
-            //}
-
+            RefreshArchiveNO();
         }
-
-        private void frmPl_FormClosed(object sender, FormClosedEventArgs e)
+        private void RefreshArchiveNO()
         {
-
-            //_unitOfWork.Dispose();
-            //_dbContextWithoutUnitOfWork.Dispose();
-
+            try
+            {
+                var archiveNo = _packingListDapperRepository.LastArchiveNo();
+                lblLastArchive.Text = archiveNo;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in RefreshArchiveNO: {ex.Message}");
+                XtraMessageBox.Show("An error occurred while refreshing Archive Number. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void ClearFormFields()
+        {
+            txtPlNumber.Text = string.Empty;
+            txtOpiNumber.Text = string.Empty;
+            txtplName.Text = string.Empty;
+            txtProject.Text = string.Empty;
+            txtRemarkCustom.Text = string.Empty;
+            txtinvoicenumber.Text = string.Empty;
+            txtVessel.Text = string.Empty;
+            txtNetWeight.Text = string.Empty;
+            txtGrossWeight.Text = string.Empty;
+            txtVolume.Text = string.Empty;
+            txtRTINumber.Text = string.Empty;
+            txtIRCNumber.Text = string.Empty;
+            txtlcNumber.Text = string.Empty;
+            txtBLNumber.Text = string.Empty;
+            txtRemarkPl.Text = string.Empty;
+            chkSite.Checked = false;
+            chkBalance.Checked = false;
+            txtPlNumber.Focus();
+            //lookUpEditIRN.EditValue = 1;
+            //LookupShipment.EditValue = 1;
+            //lookUpEditMr.EditValue = 1;
+            //lookUpEditPo.EditValue = 1;
+            //lookUpEditAreaUnit.EditValue = 1;
+            //lookUpEditSupplier.EditValue = 1;
+            //lookUpEditVendor.EditValue = 1;
+            //lookUpEditDescipline.EditValue = 1;
         }
 
-
-
-
-
-
-
-
-
-        //private async void btnGetPackingList_Click(object sender, EventArgs e)
-        //{
-        //    int idToFetch = Convert.ToInt32(txtPackingListId.Text);
-
-        //    try
-        //    {
-        //        PackingListDto packingList = await _repository.GetByIdAsync(idToFetch);
-        //        // Use the fetched packingList object to populate your UI or perform other operations
-        //        DisplayPackingListDetails(packingList);
-        //    }
-        //    catch (KeyNotFoundException ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Packing List Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-        //private void DisplayPackingListDetails(PackingListDto packingList)
-        //{
-        //    // Example: Display details in TextBoxes or other UI controls
-        //    txtName.Text = packingList.PLName;
-        //    txtArchiveNO.Text = packingList.ArchiveNO.ToString();
-        //    // Populate other UI elements as needed
-        //}
     }
 }

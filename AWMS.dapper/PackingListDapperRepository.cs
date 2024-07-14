@@ -43,54 +43,63 @@ namespace AWMS.dapper
             }
         }
 
-
-        public async Task AddAsync(PackingListDto packingListDto)
+        public async Task<bool> AddAsync(PackingListDto packingListDto)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            try
             {
-                await db.ExecuteAsync(
-                    "AddPackingList",
-                    new
-                    {
-                        packingListDto.ShId,
-                        packingListDto.MrId,
-                        packingListDto.PoId,
-                        packingListDto.IrnId,
-                        packingListDto.PLName,
-                        packingListDto.ArchiveNO,
-                        packingListDto.PLNO,
-                        packingListDto.OPINO,
-                        packingListDto.Project,
-                        packingListDto.AreaUnitID,
-                        packingListDto.SupplierId,
-                        packingListDto.DesciplineId,
-                        packingListDto.VendorId,
-                        packingListDto.DescriptionForPkId,
-                        packingListDto.NetW,
-                        packingListDto.GrossW,
-                        packingListDto.Volume,
-                        packingListDto.Vessel,
-                        packingListDto.EnteredBy,
-                        packingListDto.EnteredDate,
-                        packingListDto.MARDate,
-                        packingListDto.Remark,
-                        packingListDto.LocalForeign,
-                        packingListDto.RTINO,
-                        packingListDto.InvoiceNO,
-                        packingListDto.IRCNO,
-                        packingListDto.LCNO,
-                        packingListDto.BLNO,
-                        packingListDto.Remarkcustoms,
-                        packingListDto.EditedBy,
-                        packingListDto.EditedDate,
-                        packingListDto.PLDPF,
-                        packingListDto.Balance,
-                        packingListDto.Attachment,
-                        packingListDto.SitePL
-                    },
-                    commandType: CommandType.StoredProcedure);
+                using (IDbConnection db = new SqlConnection(_connectionString))
+                {
+                    var result = await db.ExecuteAsync(
+                        "AddPackingList",
+                        new
+                        {
+                            packingListDto.ShId,
+                            packingListDto.MrId,
+                            packingListDto.PoId,
+                            packingListDto.IrnId,
+                            packingListDto.PLName,
+                            packingListDto.ArchiveNO,
+                            packingListDto.PLNO,
+                            packingListDto.OPINO,
+                            packingListDto.Project,
+                            packingListDto.AreaUnitID,
+                            packingListDto.SupplierId,
+                            packingListDto.DesciplineId,
+                            packingListDto.VendorId,
+                            packingListDto.DescriptionForPkId,
+                            packingListDto.NetW,
+                            packingListDto.GrossW,
+                            packingListDto.Volume,
+                            packingListDto.Vessel,
+                            packingListDto.EnteredBy,
+                            packingListDto.EnteredDate,
+                            packingListDto.MARDate,
+                            packingListDto.Remark,
+                            packingListDto.LocalForeign,
+                            packingListDto.RTINO,
+                            packingListDto.InvoiceNO,
+                            packingListDto.IRCNO,
+                            packingListDto.LCNO,
+                            packingListDto.BLNO,
+                            packingListDto.Remarkcustoms,
+                            packingListDto.EditedBy,
+                            packingListDto.EditedDate,
+                            packingListDto.PLDPF,
+                            packingListDto.Balance,
+                            packingListDto.Attachment,
+                            packingListDto.SitePL
+                        },
+                        commandType: CommandType.StoredProcedure);
+
+                    return result > 0;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
+
 
         public async Task UpdateAsync(PackingListDto packingListDto)
         {
@@ -169,6 +178,52 @@ namespace AWMS.dapper
             {
                 return await db.ExecuteScalarAsync<bool>(
                     "ExistsPackingListByPlName", new { PlName = plName }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<bool> ExistsByPlNoAsync(string PlNo)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                return await db.ExecuteScalarAsync<bool>(
+                    "ExistsPackingListByPlNo", new { PlNo = PlNo }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public string LastArchiveNo()
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    var sql = "GetLastArchiveNo";
+                    var parameters = new DynamicParameters();
+                    var command = new CommandDefinition(
+                        sql,
+                        parameters,
+                        commandType: CommandType.StoredProcedure,
+                        commandTimeout: 60 // تنظیم CommandTimeout به 60 ثانیه
+                    );
+
+                    var result = db.QuerySingleOrDefault<string>(command);
+
+                    return result ?? "0"; // اگر نتیجه null بود، "0" برگردانده می‌شود.
+                }
+                catch
+                {
+                    return "0"; // در صورت بروز هرگونه ایراد، "0" برگردانده می‌شود.
+                }
+            }
+        }
+
+
+        public bool ExistsByOpiNumber(string OpiNumber)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var result = db.ExecuteScalar<int>(
+                    "ExistsPackingListByOpiNumber", new { OpiNumber }, commandType: CommandType.StoredProcedure);
+                return result == 1;
             }
         }
     }

@@ -3,56 +3,24 @@
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\frmsmall\\frmdescriptionforpkpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\frmsmall\\frmdescriptionforpkpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\frmsmall\\frmdescriptionforpkpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\frmsmall\\frmdescriptionforpkpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmmr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmmr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DA341CFF-FFF2-4230-977E-656E47AC0C7B}|AWMS.core\\AWMS.core.csproj|d:\\mybigproject\\ashinawarehouse\\awms.core\\descriptionforpkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA341CFF-FFF2-4230-977E-656E47AC0C7B}|AWMS.core\\AWMS.core.csproj|solutionrelative:awms.core\\descriptionforpkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\packinglistdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\packinglistdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DA341CFF-FFF2-4230-977E-656E47AC0C7B}|AWMS.core\\AWMS.core.csproj|d:\\mybigproject\\ashinawarehouse\\awms.core\\interfaces\\idescriptionforpkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA341CFF-FFF2-4230-977E-656E47AC0C7B}|AWMS.core\\AWMS.core.csproj|solutionrelative:awms.core\\interfaces\\idescriptionforpkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|d:\\mybigproject\\ashinawarehouse\\awms.datalayer\\repositories\\idescriptionforpkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|solutionrelative:awms.datalayer\\repositories\\idescriptionforpkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|d:\\mybigproject\\ashinawarehouse\\awms.datalayer\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|solutionrelative:awms.datalayer\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|d:\\mybigproject\\ashinawarehouse\\awms.datalayer\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|solutionrelative:awms.datalayer\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\packinglistdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\packinglistdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dto\\packinglistarchivenodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|solutionrelative:awms.dto\\packinglistarchivenodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\repositories\\ipackinglistdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,192 +34,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmPl.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
-              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAAwCgAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T14:13:52.945Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmDescriptionForPKPL.cs [Design]",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs [Design]",
-              "RelativeToolTip": "AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "frmPo.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmPo.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAMgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T17:24:33.835Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-07-14T13:45:33.236Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmMr.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmMr.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmMr.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmMr.cs",
-              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmMr.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAgwBwAAAADAAAA",
+              "DocumentIndex": 1,
+              "Title": "PackingListDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\PackingListDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\PackingListDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\PackingListDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\PackingListDapperRepository.cs",
+              "ViewState": "AQIAAMQAAAAAAAAAAAAowNkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T17:19:33.982Z",
+              "WhenOpened": "2024-07-14T12:57:37.319Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "DescriptionForPkService.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\DescriptionForPkService.cs",
-              "RelativeDocumentMoniker": "AWMS.core\\DescriptionForPkService.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\DescriptionForPkService.cs",
-              "RelativeToolTip": "AWMS.core\\DescriptionForPkService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGkAAAAFAAAA",
+              "Title": "IPackingListDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T17:01:37.696Z",
+              "WhenOpened": "2024-07-14T12:56:37.173Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IDescriptionForPkService.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\Interfaces\\IDescriptionForPkService.cs",
-              "RelativeDocumentMoniker": "AWMS.core\\Interfaces\\IDescriptionForPkService.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.core\\Interfaces\\IDescriptionForPkService.cs",
-              "RelativeToolTip": "AWMS.core\\Interfaces\\IDescriptionForPkService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAB2AAAA",
+              "DocumentIndex": 4,
+              "Title": "PackingListArchiveNoDto.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\PackingListArchiveNoDto.cs",
+              "RelativeDocumentMoniker": "AWMS.dto\\PackingListArchiveNoDto.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\PackingListArchiveNoDto.cs",
+              "RelativeToolTip": "AWMS.dto\\PackingListArchiveNoDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T16:58:26.654Z",
+              "WhenOpened": "2024-07-14T12:52:36.584Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "frmDescriptionForPKPL.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs",
-              "RelativeToolTip": "AWMS.app\\Forms\\frmSmall\\frmDescriptionForPKPL.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAuAAAA",
+              "Title": "frmPl.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
+              "ViewState": "AQIAAKEBAAAAAAAAAIAwwMEBAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T16:24:36.057Z",
+              "WhenOpened": "2024-07-14T12:49:39.488Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmMain.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\frmMain.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\frmMain.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\frmMain.cs",
-              "RelativeToolTip": "AWMS.app\\Forms\\frmMain.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAmwDMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T16:32:05.719Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IDescriptionForPkRepository.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\Repositories\\IDescriptionForPkRepository.cs",
-              "RelativeDocumentMoniker": "AWMS.datalayer\\Repositories\\IDescriptionForPkRepository.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\Repositories\\IDescriptionForPkRepository.cs",
-              "RelativeToolTip": "AWMS.datalayer\\Repositories\\IDescriptionForPkRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T16:38:00.698Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Program.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Program.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Program.cs",
-              "RelativeToolTip": "AWMS.app\\Program.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAwDgAAABlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T10:25:16.637Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "frmPl.cs [Design]",
               "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
               "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs",
               "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs [Design]",
               "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmPl.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T16:22:49.549Z",
+              "WhenOpened": "2024-07-14T12:49:24.649Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "AWMS.datalayer\\UnitOfWork.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\UnitOfWork.cs",
-              "RelativeToolTip": "AWMS.datalayer\\UnitOfWork.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T16:56:58.588Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "AWMS.datalayer\\IUnitOfWork.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\IUnitOfWork.cs",
-              "RelativeToolTip": "AWMS.datalayer\\IUnitOfWork.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T16:56:13.699Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IPackingListDapperRepository.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
-              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
-              "RelativeToolTip": "AWMS.dapper\\Repositories\\IPackingListDapperRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T15:14:59.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PackingListDapperRepository.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\PackingListDapperRepository.cs",
-              "RelativeDocumentMoniker": "AWMS.dapper\\PackingListDapperRepository.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\PackingListDapperRepository.cs",
-              "RelativeToolTip": "AWMS.dapper\\PackingListDapperRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAJ8AAABQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T14:10:44.866Z",
-              "EditorCaption": ""
             }
           ]
         }

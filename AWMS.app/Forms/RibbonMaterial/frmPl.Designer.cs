@@ -155,6 +155,7 @@
             // 
             // lookUpEditPo
             // 
+            lookUpEditPo.AllowDrop = true;
             lookUpEditPo.Location = new Point(141, 327);
             lookUpEditPo.Margin = new Padding(3, 2, 3, 2);
             lookUpEditPo.Name = "lookUpEditPo";
@@ -174,7 +175,7 @@
             labelControl4.Margin = new Padding(3, 2, 3, 2);
             labelControl4.Name = "labelControl4";
             labelControl4.Size = new Size(19, 13);
-            labelControl4.TabIndex = 15;
+            labelControl4.TabIndex = 0;
             labelControl4.Text = "Po :";
             // 
             // labelControl2
@@ -187,7 +188,7 @@
             labelControl2.Margin = new Padding(3, 2, 3, 2);
             labelControl2.Name = "labelControl2";
             labelControl2.Size = new Size(114, 17);
-            labelControl2.TabIndex = 13;
+            labelControl2.TabIndex = 0;
             labelControl2.Text = "Packing List (PL)";
             // 
             // progressBarControl1
@@ -212,7 +213,8 @@
             // 
             // txtplName
             // 
-            txtplName.Location = new Point(141, 125);
+            txtplName.AllowDrop = true;
+            txtplName.Location = new Point(141, 123);
             txtplName.Margin = new Padding(3, 2, 3, 2);
             txtplName.Name = "txtplName";
             txtplName.Size = new Size(381, 20);
@@ -252,18 +254,18 @@
             lblPlDescirption.Margin = new Padding(3, 2, 3, 2);
             lblPlDescirption.Name = "lblPlDescirption";
             lblPlDescirption.Size = new Size(74, 13);
-            lblPlDescirption.TabIndex = 8;
+            lblPlDescirption.TabIndex = 0;
             lblPlDescirption.Text = "PL Description :";
             // 
             // lblPlName
             // 
             lblPlName.Appearance.ForeColor = Color.Black;
             lblPlName.Appearance.Options.UseForeColor = true;
-            lblPlName.Location = new Point(55, 129);
+            lblPlName.Location = new Point(55, 127);
             lblPlName.Margin = new Padding(3, 2, 3, 2);
             lblPlName.Name = "lblPlName";
             lblPlName.Size = new Size(48, 13);
-            lblPlName.TabIndex = 6;
+            lblPlName.TabIndex = 0;
             lblPlName.Text = "PL Name :";
             // 
             // splitContainerControl1
@@ -386,7 +388,7 @@
             // 
             lblLastArchive.Appearance.ForeColor = Color.DeepPink;
             lblLastArchive.Appearance.Options.UseForeColor = true;
-            lblLastArchive.Location = new Point(174, 89);
+            lblLastArchive.Location = new Point(174, 90);
             lblLastArchive.Margin = new Padding(3, 2, 3, 2);
             lblLastArchive.Name = "lblLastArchive";
             lblLastArchive.Size = new Size(12, 13);
@@ -401,7 +403,7 @@
             labelControl3.Margin = new Padding(3, 2, 3, 2);
             labelControl3.Name = "labelControl3";
             labelControl3.Size = new Size(53, 13);
-            labelControl3.TabIndex = 18;
+            labelControl3.TabIndex = 0;
             labelControl3.Text = "PL Archive ";
             // 
             // labelControl35
@@ -412,11 +414,12 @@
             labelControl35.Margin = new Padding(3, 2, 3, 2);
             labelControl35.Name = "labelControl35";
             labelControl35.Size = new Size(44, 13);
-            labelControl35.TabIndex = 130;
+            labelControl35.TabIndex = 0;
             labelControl35.Text = "Number :";
             // 
             // btnAddDescription
             // 
+            btnAddDescription.AllowDrop = true;
             btnAddDescription.ImageOptions.Image = (Image)resources.GetObject("btnAddDescription.ImageOptions.Image");
             btnAddDescription.Location = new Point(399, 159);
             btnAddDescription.Margin = new Padding(3, 2, 3, 2);
@@ -428,6 +431,7 @@
             // 
             // lookUpEditDescription
             // 
+            lookUpEditDescription.AllowDrop = true;
             lookUpEditDescription.Location = new Point(141, 161);
             lookUpEditDescription.Margin = new Padding(3, 2, 3, 2);
             lookUpEditDescription.Name = "lookUpEditDescription";
@@ -443,7 +447,7 @@
             // 
             lblMostSelectDescipline.Appearance.ForeColor = Color.DarkGray;
             lblMostSelectDescipline.Appearance.Options.UseForeColor = true;
-            lblMostSelectDescipline.Location = new Point(711, 110);
+            lblMostSelectDescipline.Location = new Point(713, 132);
             lblMostSelectDescipline.Margin = new Padding(3, 2, 3, 2);
             lblMostSelectDescipline.Name = "lblMostSelectDescipline";
             lblMostSelectDescipline.Size = new Size(12, 13);
@@ -452,7 +456,7 @@
             // 
             // txtGrossWeight
             // 
-            txtGrossWeight.Location = new Point(711, 214);
+            txtGrossWeight.Location = new Point(711, 235);
             txtGrossWeight.Margin = new Padding(3, 2, 3, 2);
             txtGrossWeight.Name = "txtGrossWeight";
             txtGrossWeight.Properties.Appearance.Options.UseTextOptions = true;
@@ -478,7 +482,7 @@
             lblDuplicateOpi.Margin = new Padding(3, 2, 3, 2);
             lblDuplicateOpi.Name = "lblDuplicateOpi";
             lblDuplicateOpi.Size = new Size(12, 13);
-            lblDuplicateOpi.TabIndex = 125;
+            lblDuplicateOpi.TabIndex = 0;
             lblDuplicateOpi.Text = "...";
             // 
             // MARPLDate
@@ -521,6 +525,7 @@
             // 
             // radioGroup1
             // 
+            radioGroup1.AllowDrop = true;
             radioGroup1.EditValue = "Local";
             radioGroup1.Location = new Point(141, 489);
             radioGroup1.Margin = new Padding(3, 2, 3, 2);
@@ -557,7 +562,7 @@
             // 
             lblduplicateplname.Appearance.ForeColor = Color.DarkGray;
             lblduplicateplname.Appearance.Options.UseForeColor = true;
-            lblduplicateplname.Location = new Point(534, 129);
+            lblduplicateplname.Location = new Point(531, 127);
             lblduplicateplname.Margin = new Padding(3, 2, 3, 2);
             lblduplicateplname.Name = "lblduplicateplname";
             lblduplicateplname.Size = new Size(12, 13);
@@ -572,7 +577,7 @@
             lblDuplicate.Margin = new Padding(3, 2, 3, 2);
             lblDuplicate.Name = "lblDuplicate";
             lblDuplicate.Size = new Size(12, 13);
-            lblDuplicate.TabIndex = 82;
+            lblDuplicate.TabIndex = 0;
             lblDuplicate.Text = "...";
             // 
             // lblEnterDate
@@ -631,11 +636,12 @@
             labelControl31.Margin = new Padding(3, 2, 3, 2);
             labelControl31.Name = "labelControl31";
             labelControl31.Size = new Size(43, 13);
-            labelControl31.TabIndex = 77;
+            labelControl31.TabIndex = 0;
             labelControl31.Text = "Remark :";
             // 
             // btnAddIrn
             // 
+            btnAddIrn.AllowDrop = true;
             btnAddIrn.ImageOptions.Image = (Image)resources.GetObject("btnAddIrn.ImageOptions.Image");
             btnAddIrn.Location = new Point(399, 205);
             btnAddIrn.Margin = new Padding(3, 2, 3, 2);
@@ -647,6 +653,7 @@
             // 
             // lookUpEditIRN
             // 
+            lookUpEditIRN.AllowDrop = true;
             lookUpEditIRN.Location = new Point(141, 207);
             lookUpEditIRN.Margin = new Padding(3, 2, 3, 2);
             lookUpEditIRN.Name = "lookUpEditIRN";
@@ -666,7 +673,7 @@
             labelControl30.Margin = new Padding(3, 2, 3, 2);
             labelControl30.Name = "labelControl30";
             labelControl30.Size = new Size(25, 13);
-            labelControl30.TabIndex = 73;
+            labelControl30.TabIndex = 0;
             labelControl30.Text = "IRN :";
             // 
             // labelControl29
@@ -720,7 +727,7 @@
             // 
             // txtVolume
             // 
-            txtVolume.Location = new Point(711, 246);
+            txtVolume.Location = new Point(711, 267);
             txtVolume.Margin = new Padding(3, 2, 3, 2);
             txtVolume.Name = "txtVolume";
             txtVolume.Size = new Size(160, 20);
@@ -730,37 +737,38 @@
             // 
             labelControl26.Appearance.ForeColor = Color.Navy;
             labelControl26.Appearance.Options.UseForeColor = true;
-            labelControl26.Location = new Point(626, 250);
+            labelControl26.Location = new Point(626, 271);
             labelControl26.Margin = new Padding(3, 2, 3, 2);
             labelControl26.Name = "labelControl26";
             labelControl26.Size = new Size(41, 13);
-            labelControl26.TabIndex = 66;
+            labelControl26.TabIndex = 0;
             labelControl26.Text = "Volume :";
             // 
             // labelControl25
             // 
             labelControl25.Appearance.ForeColor = Color.Navy;
             labelControl25.Appearance.Options.UseForeColor = true;
-            labelControl25.Location = new Point(625, 218);
+            labelControl25.Location = new Point(625, 239);
             labelControl25.Margin = new Padding(3, 2, 3, 2);
             labelControl25.Name = "labelControl25";
             labelControl25.Size = new Size(71, 13);
-            labelControl25.TabIndex = 64;
+            labelControl25.TabIndex = 0;
             labelControl25.Text = "Gross Weight :";
             // 
             // labelControl24
             // 
             labelControl24.Appearance.ForeColor = Color.Navy;
             labelControl24.Appearance.Options.UseForeColor = true;
-            labelControl24.Location = new Point(625, 188);
+            labelControl24.Location = new Point(625, 209);
             labelControl24.Margin = new Padding(3, 2, 3, 2);
             labelControl24.Name = "labelControl24";
             labelControl24.Size = new Size(61, 13);
-            labelControl24.TabIndex = 62;
+            labelControl24.TabIndex = 0;
             labelControl24.Text = "Net Weight :";
             // 
             // btnAddShipment
             // 
+            btnAddShipment.AllowDrop = true;
             btnAddShipment.ImageOptions.Image = (Image)resources.GetObject("btnAddShipment.ImageOptions.Image");
             btnAddShipment.Location = new Point(399, 246);
             btnAddShipment.Margin = new Padding(3, 2, 3, 2);
@@ -772,6 +780,7 @@
             // 
             // LookupShipment
             // 
+            LookupShipment.AllowDrop = true;
             LookupShipment.Location = new Point(141, 248);
             LookupShipment.Margin = new Padding(3, 2, 3, 2);
             LookupShipment.Name = "LookupShipment";
@@ -791,11 +800,12 @@
             labelControl18.Margin = new Padding(3, 2, 3, 2);
             labelControl18.Name = "labelControl18";
             labelControl18.Size = new Size(51, 13);
-            labelControl18.TabIndex = 58;
+            labelControl18.TabIndex = 0;
             labelControl18.Text = "Shipment :";
             // 
             // btnAddVendor
             // 
+            btnAddVendor.AllowDrop = true;
             btnAddVendor.ImageOptions.Image = (Image)resources.GetObject("btnAddVendor.ImageOptions.Image");
             btnAddVendor.Location = new Point(399, 453);
             btnAddVendor.Margin = new Padding(3, 2, 3, 2);
@@ -807,6 +817,7 @@
             // 
             // btnAddSupplier
             // 
+            btnAddSupplier.AllowDrop = true;
             btnAddSupplier.ImageOptions.Image = (Image)resources.GetObject("btnAddSupplier.ImageOptions.Image");
             btnAddSupplier.Location = new Point(399, 412);
             btnAddSupplier.Margin = new Padding(3, 2, 3, 2);
@@ -818,6 +829,7 @@
             // 
             // btnInsertArea
             // 
+            btnInsertArea.AllowDrop = true;
             btnInsertArea.ImageOptions.Image = (Image)resources.GetObject("btnInsertArea.ImageOptions.Image");
             btnInsertArea.Location = new Point(399, 370);
             btnInsertArea.Margin = new Padding(3, 2, 3, 2);
@@ -846,7 +858,7 @@
             labelControl22.Margin = new Padding(3, 2, 3, 2);
             labelControl22.Name = "labelControl22";
             labelControl22.Size = new Size(65, 13);
-            labelControl22.TabIndex = 51;
+            labelControl22.TabIndex = 22;
             labelControl22.Text = "Have Balance";
             // 
             // labelControl21
@@ -857,7 +869,7 @@
             labelControl21.Margin = new Padding(3, 2, 3, 2);
             labelControl21.Name = "labelControl21";
             labelControl21.Size = new Size(88, 13);
-            labelControl21.TabIndex = 50;
+            labelControl21.TabIndex = 21;
             labelControl21.Text = "Directly to the site";
             // 
             // chkBalance
@@ -890,11 +902,12 @@
             labelControl20.Margin = new Padding(3, 2, 3, 2);
             labelControl20.Name = "labelControl20";
             labelControl20.Size = new Size(37, 13);
-            labelControl20.TabIndex = 45;
+            labelControl20.TabIndex = 0;
             labelControl20.Text = "Vessel :";
             // 
             // txtVessel
             // 
+            txtVessel.AllowDrop = true;
             txtVessel.Location = new Point(141, 540);
             txtVessel.Margin = new Padding(3, 2, 3, 2);
             txtVessel.Name = "txtVessel";
@@ -958,7 +971,7 @@
             labelControl14.Margin = new Padding(3, 2, 3, 2);
             labelControl14.Name = "labelControl14";
             labelControl14.Size = new Size(52, 13);
-            labelControl14.TabIndex = 37;
+            labelControl14.TabIndex = 0;
             labelControl14.Text = ".............";
             // 
             // txtinvoicenumber
@@ -979,7 +992,7 @@
             labelControl15.Margin = new Padding(3, 2, 3, 2);
             labelControl15.Name = "labelControl15";
             labelControl15.Size = new Size(82, 13);
-            labelControl15.TabIndex = 36;
+            labelControl15.TabIndex = 0;
             labelControl15.Text = "Invoice Number :";
             // 
             // labelControl13
@@ -990,11 +1003,12 @@
             labelControl13.Margin = new Padding(3, 2, 3, 2);
             labelControl13.Name = "labelControl13";
             labelControl13.Size = new Size(71, 13);
-            labelControl13.TabIndex = 33;
+            labelControl13.TabIndex = 0;
             labelControl13.Text = "Local/Foreign :";
             // 
             // lookUpEditMr
             // 
+            lookUpEditMr.AllowDrop = true;
             lookUpEditMr.Location = new Point(141, 285);
             lookUpEditMr.Margin = new Padding(3, 2, 3, 2);
             lookUpEditMr.Name = "lookUpEditMr";
@@ -1014,11 +1028,12 @@
             labelControl12.Margin = new Padding(3, 2, 3, 2);
             labelControl12.Name = "labelControl12";
             labelControl12.Size = new Size(19, 13);
-            labelControl12.TabIndex = 31;
+            labelControl12.TabIndex = 0;
             labelControl12.Text = "Mr :";
             // 
             // lookUpEditVendor
             // 
+            lookUpEditVendor.AllowDrop = true;
             lookUpEditVendor.Location = new Point(141, 455);
             lookUpEditVendor.Margin = new Padding(3, 2, 3, 2);
             lookUpEditVendor.Name = "lookUpEditVendor";
@@ -1038,12 +1053,12 @@
             labelControl11.Margin = new Padding(3, 2, 3, 2);
             labelControl11.Name = "labelControl11";
             labelControl11.Size = new Size(41, 13);
-            labelControl11.TabIndex = 29;
+            labelControl11.TabIndex = 0;
             labelControl11.Text = "Vendor :";
             // 
             // lookUpEditDescipline
             // 
-            lookUpEditDescipline.Location = new Point(711, 134);
+            lookUpEditDescipline.Location = new Point(711, 155);
             lookUpEditDescipline.Margin = new Padding(3, 2, 3, 2);
             lookUpEditDescipline.Name = "lookUpEditDescipline";
             lookUpEditDescipline.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -1058,15 +1073,16 @@
             // 
             labelControl10.Appearance.ForeColor = Color.Black;
             labelControl10.Appearance.Options.UseForeColor = true;
-            labelControl10.Location = new Point(625, 138);
+            labelControl10.Location = new Point(625, 159);
             labelControl10.Margin = new Padding(3, 2, 3, 2);
             labelControl10.Name = "labelControl10";
             labelControl10.Size = new Size(54, 13);
-            labelControl10.TabIndex = 27;
+            labelControl10.TabIndex = 0;
             labelControl10.Text = "Descipline :";
             // 
             // lookUpEditSupplier
             // 
+            lookUpEditSupplier.AllowDrop = true;
             lookUpEditSupplier.Location = new Point(141, 414);
             lookUpEditSupplier.Margin = new Padding(3, 2, 3, 2);
             lookUpEditSupplier.Name = "lookUpEditSupplier";
@@ -1086,11 +1102,12 @@
             labelControl9.Margin = new Padding(3, 2, 3, 2);
             labelControl9.Name = "labelControl9";
             labelControl9.Size = new Size(45, 13);
-            labelControl9.TabIndex = 25;
+            labelControl9.TabIndex = 0;
             labelControl9.Text = "Supplier :";
             // 
             // lookUpEditAreaUnit
             // 
+            lookUpEditAreaUnit.AllowDrop = true;
             lookUpEditAreaUnit.Location = new Point(141, 372);
             lookUpEditAreaUnit.Margin = new Padding(3, 2, 3, 2);
             lookUpEditAreaUnit.Name = "lookUpEditAreaUnit";
@@ -1110,7 +1127,7 @@
             labelControl8.Margin = new Padding(3, 2, 3, 2);
             labelControl8.Name = "labelControl8";
             labelControl8.Size = new Size(52, 13);
-            labelControl8.TabIndex = 23;
+            labelControl8.TabIndex = 0;
             labelControl8.Text = "Area Unit :";
             // 
             // labelControl6
@@ -1121,7 +1138,7 @@
             labelControl6.Margin = new Padding(3, 2, 3, 2);
             labelControl6.Name = "labelControl6";
             labelControl6.Size = new Size(146, 13);
-            labelControl6.TabIndex = 22;
+            labelControl6.TabIndex = 0;
             labelControl6.Text = "Opening Package's & Inspection";
             // 
             // txtOpiNumber
@@ -1141,7 +1158,7 @@
             labelControl7.Margin = new Padding(3, 2, 3, 2);
             labelControl7.Name = "labelControl7";
             labelControl7.Size = new Size(65, 13);
-            labelControl7.TabIndex = 21;
+            labelControl7.TabIndex = 0;
             labelControl7.Text = "OPI Number :";
             // 
             // labelControl5
@@ -1152,7 +1169,7 @@
             labelControl5.Margin = new Padding(3, 2, 3, 2);
             labelControl5.Name = "labelControl5";
             labelControl5.Size = new Size(39, 13);
-            labelControl5.TabIndex = 19;
+            labelControl5.TabIndex = 0;
             labelControl5.Text = "Archive ";
             // 
             // txtPlNumber
@@ -1175,7 +1192,7 @@
             // 
             // txtNetWeight
             // 
-            txtNetWeight.Location = new Point(711, 184);
+            txtNetWeight.Location = new Point(711, 205);
             txtNetWeight.Margin = new Padding(3, 2, 3, 2);
             txtNetWeight.Name = "txtNetWeight";
             txtNetWeight.Properties.Appearance.Options.UseTextOptions = true;
@@ -1197,11 +1214,11 @@
             // 
             labelControl36.Appearance.ForeColor = Color.Plum;
             labelControl36.Appearance.Options.UseForeColor = true;
-            labelControl36.Location = new Point(55, 89);
+            labelControl36.Location = new Point(55, 90);
             labelControl36.Margin = new Padding(3, 2, 3, 2);
             labelControl36.Name = "labelControl36";
             labelControl36.Size = new Size(106, 13);
-            labelControl36.TabIndex = 131;
+            labelControl36.TabIndex = 0;
             labelControl36.Text = "Last Archive Number :";
             // 
             // frmPl
@@ -1215,7 +1232,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmPl";
             Text = "Packing List";
-            FormClosed += frmPl_FormClosed;
             ((System.ComponentModel.ISupportInitialize)lookUpEditPo.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)progressBarControl1.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtplName.Properties).EndInit();

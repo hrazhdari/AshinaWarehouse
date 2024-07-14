@@ -10,6 +10,7 @@ namespace AWMS.core.Interfaces
         Task<IEnumerable<DescriptionForPkDto>> GetAllDescriptionForPksAsync();
         IEnumerable<DescriptionForPkDto> GetAllDescriptionForPks();
         Task<DescriptionForPkDto> GetDescriptionForPkByIdAsync(int DescriptionForPkId);
+        Task<bool> ExistsDescriptionForPkIdAsync(string Description);
         Task<int> AddDescriptionForPkAsync(DescriptionForPkDto DescriptionForPk);
         Task UpdateDescriptionForPkAsync(DescriptionForPkDto DescriptionForPk);
         Task DeleteDescriptionForPkAsync(int DescriptionForPkId);

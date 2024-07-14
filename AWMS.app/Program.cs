@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using AWMS.dapper.Repositories;
 using AWMS.dapper;
 using AWMS.app.Forms.frmSmall;
+using AWMS.core.Services;
 
 namespace AWMS.app
 {
@@ -65,6 +66,12 @@ namespace AWMS.app
                     services.AddScoped<IMrService, MrService>();
                     services.AddScoped<IPoService, PoService>();
                     services.AddScoped<IDescriptionForPkService, DescriptionForPkService>();
+                    services.AddScoped<IIrnService, IrnService>();
+                    services.AddScoped<IShipmentService, ShipmentService>();
+                    services.AddScoped<IAreaUnitService, AreaUnitService>();
+                    services.AddScoped<ISupplierService, SupplierService>();
+                    services.AddScoped<IVendorService, VendorService>();
+                    services.AddScoped<IDesciplineService, DesciplineService>();
 
                     //Dapper Repositories
                     services.AddScoped<IPackingListDapperRepository, PackingListDapperRepository>();
@@ -76,6 +83,11 @@ namespace AWMS.app
                     services.AddTransient<frmPo>();
                     services.AddTransient<frmPl>();
                     services.AddTransient<frmDescriptionForPKPL>();
+                    services.AddTransient<frmIRN>();
+                    services.AddTransient<frmShipment>();
+                    services.AddTransient<frmAreaUnit>();
+                    services.AddTransient<frmSupplier>();
+                    services.AddTransient<frmVendor>();
                 });
 
         // بارگذاری تنظیمات از فایل appsettings.json

@@ -99,14 +99,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 12, 22, 41, 20, 719, DateTimeKind.Local).AddTicks(6999)
+                            EnteredDate = new DateTime(2024, 7, 14, 21, 8, 9, 101, DateTimeKind.Local).AddTicks(3344)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 7, 12, 22, 41, 20, 719, DateTimeKind.Local).AddTicks(7071)
+                            EnteredDate = new DateTime(2024, 7, 14, 21, 8, 9, 101, DateTimeKind.Local).AddTicks(3423)
                         });
                 });
 
@@ -320,7 +320,7 @@ namespace AWMS.datalayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PLId"));
 
                     b.Property<string>("ArchiveNO")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("AreaUnitID")
                         .HasColumnType("int");
@@ -380,13 +380,13 @@ namespace AWMS.datalayer.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("OPINO")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PLDPF")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PLNO")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PLName")
                         .IsRequired()
@@ -428,23 +428,45 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("PLId");
 
-                    b.HasIndex("AreaUnitID");
+                    b.HasIndex("ArchiveNO")
+                        .HasDatabaseName("IX_PackingList_ArchiveNO");
 
-                    b.HasIndex("DesciplineId");
+                    b.HasIndex("AreaUnitID")
+                        .HasDatabaseName("IX_PackingList_AreaUnitID");
 
-                    b.HasIndex("DescriptionForPkId");
+                    b.HasIndex("DesciplineId")
+                        .HasDatabaseName("IX_PackingList_DesciplineId");
 
-                    b.HasIndex("IrnId");
+                    b.HasIndex("DescriptionForPkId")
+                        .HasDatabaseName("IX_PackingList_DescriptionForPkId");
 
-                    b.HasIndex("MrId");
+                    b.HasIndex("IrnId")
+                        .HasDatabaseName("IX_PackingList_IrnId");
 
-                    b.HasIndex("PoId");
+                    b.HasIndex("MrId")
+                        .HasDatabaseName("IX_PackingList_MrId");
 
-                    b.HasIndex("ShId");
+                    b.HasIndex("OPINO")
+                        .IsUnique()
+                        .HasDatabaseName("IX_PackingList_OPINO")
+                        .HasFilter("[OPINO] IS NOT NULL");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("PLNO")
+                        .IsUnique()
+                        .HasDatabaseName("IX_PackingList_PLNO")
+                        .HasFilter("[PLNO] IS NOT NULL");
 
-                    b.HasIndex("VendorId");
+                    b.HasIndex("PoId")
+                        .HasDatabaseName("IX_PackingList_PoId");
+
+                    b.HasIndex("ShId")
+                        .HasDatabaseName("IX_PackingList_ShId");
+
+                    b.HasIndex("SupplierId")
+                        .HasDatabaseName("IX_PackingList_SupplierId");
+
+                    b.HasIndex("VendorId")
+                        .HasDatabaseName("IX_PackingList_VendorId");
 
                     b.ToTable("PackingLists");
                 });

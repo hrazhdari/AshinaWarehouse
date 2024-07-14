@@ -1,5 +1,6 @@
 ﻿using AWMS.datalayer.Context;
 using AWMS.datalayer.Entities;
+using AWMS.dto;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace AWMS.datalayer.Repositories
         }
         public IEnumerable<Po> GetAll()
         {
-            return  _context.Pos.ToList();
+            return _context.Pos.ToList();
         }
 
         public async Task<Po> GetByIdAsync(int id)
@@ -56,6 +57,18 @@ namespace AWMS.datalayer.Repositories
             await _context.Pos.AddAsync(Po);
             await _context.SaveChangesAsync();
             return Po.PoId;
+        }
+
+        public IEnumerable<PoIdAndPoNameDto> GetPoIdAndName()
+        {
+            return _context.Pos
+             .AsNoTracking()
+             .Select(po => new PoIdAndPoNameDto
+             {
+                 PoId = po.PoId,
+                 PoName = po.PoName
+             })
+             .ToList();
         }
     }
 }

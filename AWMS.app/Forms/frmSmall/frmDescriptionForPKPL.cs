@@ -30,7 +30,7 @@ namespace AWMS.app.Forms.frmSmall
         {
 
             progressBarControl1.Properties.Maximum = 100;
-            progressBarControl1.Properties.Step = 1;
+            progressBarControl1.Properties.Step = 10;
 
             string Descriptionpk = txtDescription.Text.Trim();
 
@@ -40,7 +40,14 @@ namespace AWMS.app.Forms.frmSmall
                 txtDescription.Focus();
                 return;
             }
+            // Check for duplicate mrName
+            bool duplicateRowHandle = await _descriptionForPkService.ExistsDescriptionForPkIdAsync(Descriptionpk);
 
+            if (duplicateRowHandle != false)
+            {
+                MessageBox.Show("Description already exists. Please enter a unique Description.", "Duplicate Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var newDescriptionForPk = new DescriptionForPkDto()
             {
                 Description = Descriptionpk,
@@ -75,12 +82,12 @@ namespace AWMS.app.Forms.frmSmall
         }
         private async Task UpdateProgressBarAsync()
         {
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 100; i+=10)
             {
                 progressBarControl1.Position = i;
 
                 // Simulate a small delay without blocking the UI
-                await Task.Delay(5); // Adjust the delay time if needed
+                await Task.Delay(10); // Adjust the delay time if needed
             }
         }
         private async Task<int> AddDesRecordAsync(DescriptionForPkDto newDescriptionForPk)
