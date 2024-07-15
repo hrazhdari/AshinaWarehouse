@@ -99,14 +99,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 14, 21, 8, 9, 101, DateTimeKind.Local).AddTicks(3344)
+                            EnteredDate = new DateTime(2024, 7, 15, 12, 14, 27, 685, DateTimeKind.Local).AddTicks(448)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 7, 14, 21, 8, 9, 101, DateTimeKind.Local).AddTicks(3423)
+                            EnteredDate = new DateTime(2024, 7, 15, 12, 14, 27, 685, DateTimeKind.Local).AddTicks(501)
                         });
                 });
 
@@ -309,6 +309,97 @@ namespace AWMS.datalayer.Migrations
                             MrId = 1,
                             MrName = "-"
                         });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>
+                {
+                    b.Property<int>("PKID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PKID"));
+
+                    b.Property<DateTime?>("ArrivalDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Desciption")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Dimension")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("EditedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EditedDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("EnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("date");
+
+                    b.Property<decimal?>("GrossW")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("MSRDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("MSREnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MSRNO")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("MSRPDF")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("MSRRev")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("MSRRevDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("MSRRevEnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("MSRStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("NetW")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PK")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PLId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Volume")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("PKID");
+
+                    b.HasIndex("MSRNO")
+                        .HasDatabaseName("IX_Package_MSRNO");
+
+                    b.HasIndex("PK")
+                        .HasDatabaseName("IX_Package_PK");
+
+                    b.HasIndex("PLId")
+                        .HasDatabaseName("IX_Package_PLId");
+
+                    b.ToTable("Packages");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.PackingList", b =>
@@ -639,6 +730,17 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.PackingList", "PackingList")
+                        .WithMany("Packages")
+                        .HasForeignKey("PLId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PackingList");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.PackingList", b =>
                 {
                     b.HasOne("AWMS.datalayer.Entities.AreaUnit", "AreaUnit")
@@ -756,6 +858,11 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("PackingLists");
 
                     b.Navigation("Pos");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.PackingList", b =>
+                {
+                    b.Navigation("Packages");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Po", b =>

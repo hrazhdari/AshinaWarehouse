@@ -68,7 +68,6 @@ namespace AWMS.datalayer.Entities
         public virtual Vendor Vendor { get; set; }
         public virtual Irn Irn { get; set; }
         public virtual DescriptionForPk DescriptionForPk { get; set; }
-
-        //public virtual ICollection<Package> Packages { get; set; }
+        public virtual ICollection<Package> Packages { get; set; }
     }
 }

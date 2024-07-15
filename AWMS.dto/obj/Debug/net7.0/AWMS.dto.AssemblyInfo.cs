@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AWMS.dto")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+249a70f75f59d8a9507e83c5d76f6a9f6f6b0b15")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f7f503dd0279d5bf9787d810f10618b8b1871cc")]
 [assembly: System.Reflection.AssemblyProductAttribute("AWMS.dto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AWMS.dto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

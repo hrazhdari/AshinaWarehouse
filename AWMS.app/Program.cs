@@ -75,6 +75,7 @@ namespace AWMS.app
 
                     //Dapper Repositories
                     services.AddScoped<IPackingListDapperRepository, PackingListDapperRepository>();
+                    services.AddScoped<IPackageDapperRepository, PackageDapperRepository>();
 
                     // افزودن سرویس‌های فرم‌ها به سرویس‌ها
                     services.AddTransient<frmMain>();
@@ -88,6 +89,7 @@ namespace AWMS.app
                     services.AddTransient<frmAreaUnit>();
                     services.AddTransient<frmSupplier>();
                     services.AddTransient<frmVendor>();
+                    services.AddTransient<frmPK>();
                 });
 
         // بارگذاری تنظیمات از فایل appsettings.json

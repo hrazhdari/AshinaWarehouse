@@ -79,6 +79,11 @@ namespace AWMS.datalayer.Entities.Configurations
                 .HasForeignKey(pl => pl.DescriptionForPkId)
                 .OnDelete(DeleteBehavior.SetNull);
 
+            builder.HasMany(pl => pl.Packages)
+               .WithOne(p => p.PackingList)
+               .HasForeignKey(p => p.PLId)
+               .OnDelete(DeleteBehavior.Cascade);
+
             // مشخص کردن نوع ستون SQL Server برای ویژگی‌های اعشاری
             builder.Property(pl => pl.GrossW).HasColumnType("decimal(18,2)");
             builder.Property(pl => pl.NetW).HasColumnType("decimal(18,2)");

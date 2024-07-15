@@ -150,6 +150,7 @@
             barBtnPk.ImageOptions.Image = (Image)resources.GetObject("barBtnPk.ImageOptions.Image");
             barBtnPk.ImageOptions.LargeImage = (Image)resources.GetObject("barBtnPk.ImageOptions.LargeImage");
             barBtnPk.Name = "barBtnPk";
+            barBtnPk.ItemClick += barBtnPk_ItemClick;
             // 
             // barButtonItem6
             // 

@@ -193,6 +193,16 @@ namespace AWMS.app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exporttoxls_16x163 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxls_16x163", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exporttoxls_32x32 {
             get {
                 object obj = ResourceManager.GetObject("exporttoxls_32x32", resourceCulture);
@@ -496,6 +506,16 @@ namespace AWMS.app.Properties {
         internal static System.Drawing.Bitmap none_16x161 {
             get {
                 object obj = ResourceManager.GetObject("none_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap none_16x162 {
+            get {
+                object obj = ResourceManager.GetObject("none_16x162", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

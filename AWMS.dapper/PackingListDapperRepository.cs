@@ -226,5 +226,13 @@ namespace AWMS.dapper
                 return result == 1;
             }
         }
+
+        public async Task<IEnumerable<PackingListAllPlNameDto>> GetAllPlNameAsync()
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                return await db.QueryAsync<PackingListAllPlNameDto>("GetAllPackingListsNames", commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
