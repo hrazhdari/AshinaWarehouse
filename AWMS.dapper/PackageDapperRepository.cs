@@ -220,5 +220,38 @@ namespace AWMS.dapper
                 return affectedRows > 0;
             }
         }
+
+        public async Task DeleteMultiplePKsWithTransactionAsync(IEnumerable<PackagePKIDDto> PKIDs)
+        {
+            using (var connection = CreateConnection())
+            {
+                 connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        var table = new DataTable();
+                        table.Columns.Add("PKID", typeof(int));
+
+                        foreach (var PKID in PKIDs)
+                        {
+                            table.Rows.Add(PKID.PKID);
+                        }
+
+                        var parameters = new DynamicParameters();
+                        parameters.Add("@PKIDList", table.AsTableValuedParameter("dbo.PackagePKIDDtoType"));
+
+                        await connection.ExecuteAsync("DeletePackages", parameters, transaction: transaction, commandType: CommandType.StoredProcedure);
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }

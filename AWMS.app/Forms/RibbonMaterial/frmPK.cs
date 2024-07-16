@@ -16,6 +16,8 @@ using System.Windows.Forms;
 using AWMS.dapper;
 using AWMS.dto;
 using AWMS.dapper.Repositories;
+using AWMS.app.Utility;
+using AWMS.core.Interfaces;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {
@@ -34,7 +36,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         }
         private async void LoadLookup()
         {
-            lookUpEditPl.Properties.DataSource=await _packingListDapperRepository.GetAllPlNameAsync();
+            lookUpEditPl.Properties.DataSource = await _packingListDapperRepository.GetAllPlNameAsync();
         }
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
@@ -62,13 +64,19 @@ namespace AWMS.app.Forms.RibbonMaterial
                 plid = Convert.ToInt32(lookUpEditPl.EditValue);
             }
 
-            int lastPK = 1;//_unitOfWork.PackageRepository.GetLastPackage(plid);
-            int CountPK = 1; //_unitOfWork.PackageRepository.GetPackageCount(plid);
-            lblcount.Text = "Count Of PK : " + CountPK;
-            lblLastPK.Text = "Last PK : " + lastPK;
+            LoadLabelData(plid);
 
             InitializeGrid();
         }
+
+        private void LoadLabelData(int plid)
+        {
+            int lastPK = _packageDapperRepository.GetLastPackage(plid);
+            int CountPK = _packageDapperRepository.GetPackageCount(plid);
+            lblcount.Text = "Count Of PK : " + CountPK;
+            lblLastPK.Text = "Last PK : " + lastPK;
+        }
+
         private void InitializeGrid()
         {
             int plid;
@@ -80,12 +88,9 @@ namespace AWMS.app.Forms.RibbonMaterial
             {
                 plid = Convert.ToInt32(lookUpEditPl.EditValue);
             }
-            //using (DatabaseContext dbContext = new DatabaseContext())
-            //{
-            //    IDapper dapper = new DapperService(dbContext);
-            //    _pkList = dapper.GetPackageOfSelectedPlWithDapper(plid);
-            //    packageBindingSource.DataSource = _pkList;
-            //}
+
+            gridcontrol.DataSource = _packageDapperRepository.GetPackageByPLId(plid);
+
         }
         private async void btnAddPK_Click(object sender, EventArgs e)
         {
@@ -123,70 +128,58 @@ namespace AWMS.app.Forms.RibbonMaterial
             {
                 ArDate = ArrivalDate.DateTime;
             }
-            //Package newpack = new Package
-            //{
-            //    PLId = plid,
-            //    PK = Pk,
-            //    NetW=NetWeight,
-            //    GrossW=GrossWeight,
-            //    Volume = Volume,
-            //    Desciption = descripPK,
-            //    Remark=RemarkPl,
-            //    ArrivalDate=ArDate
-            //};
+            var newpack = new PackageDto()
+            {
+                PLId = plid,
+                PK = Pk,
+                NetW = NetWeight,
+                GrossW = GrossWeight,
+                Volume = Volume,
+                Desciption = descripPK,
+                Remark = RemarkPl,
+                ArrivalDate = ArDate
+            };
 
-            //btnAddPK.Enabled = false;
+            btnAddPK.Enabled = false;
 
-            //await UpdateProgressBarAsync();
+            await UpdateProgressBarAsync();
 
-            //bool isAdded = await AddPKRecordAsync(newpack);
+            bool isAdded = _packageDapperRepository.AddPackage(newpack);
 
-            //btnAddPK.Enabled = true;
+            btnAddPK.Enabled = true;
 
-            //if (isAdded)
-            //{
-            //    XtraMessageBox.Show("PK record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    progressBarControl1.Position = 0;
-            //    InitializeGrid();
+            if (isAdded)
+            {
+                //XtraMessageBox.Show("PK record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                progressBarControl1.Position = 0;
+                InitializeGrid();
+                LoadLabelData(plid);
 
-            //    int newRowHandle = gridView1.GetRowHandle(gridView1.DataRowCount - 1);
-            //    gridView1.FocusedRowHandle = newRowHandle;
+                int newRowHandle = gridView1.GetRowHandle(gridView1.DataRowCount - 1);
+                gridView1.FocusedRowHandle = newRowHandle;
 
-            //    _isRowAdded = true;
-            //    await Task.Delay(2000);
-            //    ResetRowHighlighting();
-            //}
-            //else
-            //{
-            //    XtraMessageBox.Show("Failed to add PK record. Please check your input.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _isRowAdded = true;
+                await Task.Delay(2000);
+                ResetRowHighlighting();
+            }
+            else
+            {
+                XtraMessageBox.Show("Failed to add PK record. Please check your input.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //    progressBarControl1.Position = 0;
+                progressBarControl1.Position = 0;
 
-            //}
+            }
         }
         private async Task UpdateProgressBarAsync()
         {
-            for (int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 100; i += 5)
             {
                 progressBarControl1.Position = i;
 
-                // Simulate a small delay without blocking the UI
-                await Task.Delay(2); // Adjust the delay time if needed
+                //Simulate a small delay without blocking the UI
+                await Task.Delay(10); // Adjust the delay time if needed
             }
         }
-        //private async Task<bool> AddPKRecordAsync(Package newpack)
-        //{
-        //    try
-        //    {
-        //        // Add the Mr record to the database asynchronously
-        //        return await Task.Run(() => _unitOfWork.PackageRepository.AddPackage(newpack));
-        //    }
-        //    catch (Exception)
-        //    {
-        //        // Handle exception (log, throw, etc.)
-        //        return false;
-        //    }
-        //}
 
         private async void txtPKNumber_Leave(object sender, EventArgs e)
         {
@@ -225,8 +218,8 @@ namespace AWMS.app.Forms.RibbonMaterial
                 return false;
             }
 
-            bool PkExist = false;// _unitOfWork.PackageRepository.CheckPkExist(plid, pkNumber);
-            int pkId = 1;// _unitOfWork.PackageRepository.GetPkId(plid, pkNumber);
+            bool PkExist = _packageDapperRepository.CheckPkExist(plid, pkNumber);
+            int pkId = _packageDapperRepository.GetPkId(plid, pkNumber);
 
             if (PkExist)
             {
@@ -292,140 +285,138 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if (e.RowHandle >= 0) // Make sure it's a data row, not a new row or group row
+            // Get the changed value
+            var newValue = e.Value;
+
+            // Get the current row handle
+            int rowHandle = e.RowHandle;
+
+            // Get the column name
+            string columnName = e.Column.FieldName;
+
+            // Get the PKID of the current row
+            int pkId = Convert.ToInt32(gridView1.GetRowCellValue(rowHandle, "PKID"));
+
+            // Update the corresponding property in the data source
+            var package = (PackageDto)gridView1.GetRow(rowHandle);
+            switch (columnName)
             {
-                int pkId = Convert.ToInt32(gridView1.GetRowCellValue(e.RowHandle, "PKID"));
-
-                // Assuming you have a method to update a package in the database
-                //using (var dbContext = new DatabaseContext())
-                //{
-                //    var packageToUpdate = dbContext.Packages.Find(pkId);
-
-                //    if (packageToUpdate != null)
-                //    {
-                //        // Iterate through all columns and update corresponding properties
-                //        foreach (GridColumn col in gridView1.Columns)
-                //        {
-                //            if (col.FieldName != "PKID" && col.FieldName != "PLId" && col.FieldName != "EditedDate")
-                //            {
-                //                object cellValue = gridView1.GetRowCellValue(e.RowHandle, col);
-
-                //                // Check if the cell value is not null
-                //                if (cellValue != null)
-                //                {
-                //                    // Update the corresponding property of the Package entity
-                //                    var property = packageToUpdate.GetType().GetProperty(col.FieldName);
-                //                    if (property != null)
-                //                    {
-                //                        Type propertyType = property.PropertyType;
-                //                        Type underlyingType = Nullable.GetUnderlyingType(propertyType);
-
-                //                        if (underlyingType != null)
-                //                        {
-                //                            // Handle nullable properties
-                //                            property.SetValue(packageToUpdate, Convert.ChangeType(cellValue, underlyingType));
-                //                        }
-                //                        else
-                //                        {
-                //                            // Handle non-nullable properties
-                //                            property.SetValue(packageToUpdate, Convert.ChangeType(cellValue, propertyType));
-                //                        }
-                //                    }
-                //                }
-                //            }
-                //        }
-
-                //        // Save changes to the database
-                //        dbContext.SaveChanges();
-                //    }
-                //} // The using statement ensures that dbContext is disposed when this block is exited
+                case "PK":
+                    package.PK = Convert.ToInt32(newValue);
+                    break;
+                case "PLId":
+                    package.PLId = Convert.ToInt32(newValue);
+                    break;
+                case "NetW":
+                    package.NetW = Convert.ToDecimal(newValue);
+                    break;
+                case "GrossW":
+                    package.GrossW = Convert.ToDecimal(newValue);
+                    break;
+                case "Dimension":
+                    package.Dimension = newValue.ToString();
+                    break;
+                case "Volume":
+                    package.Volume = newValue.ToString();
+                    break;
+                case "ArrivalDate":
+                    package.ArrivalDate = Convert.ToDateTime(newValue);
+                    break;
+                case "Desciption":
+                    package.Desciption = newValue.ToString();
+                    break;
+                case "Remark":
+                    package.Remark = newValue.ToString();
+                    break;
+                case "EnteredDate":
+                    package.EnteredDate = Convert.ToDateTime(newValue);
+                    break;
+                case "MSRNO":
+                    package.MSRNO = newValue.ToString();
+                    break;
+                case "MSRPDF":
+                    package.MSRPDF = newValue.ToString();
+                    break;
+                case "MSRDate":
+                    package.MSRDate = Convert.ToDateTime(newValue);
+                    break;
+                case "MSRRevDate":
+                    package.MSRRevDate = Convert.ToDateTime(newValue);
+                    break;
+                default:
+                    // Handle any other columns or log an error if needed
+                    break;
             }
-        }
 
-        private void SaveGridData(string filter, string title, Action<string> exportAction)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = filter,
-                Title = title
-            };
+            // Update the database
+            bool isUpdated = _packageDapperRepository.UpdatePackage(pkId, package);
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            // Show a message based on the update result
+            if (isUpdated)
             {
-                exportAction.Invoke(saveFileDialog.FileName);
-                DevExpress.XtraEditors.XtraMessageBox.Show($"{Path.GetExtension(saveFileDialog.FileName)} file saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        //private void barButtonItems_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    if (e.Item == barButtonItem1)
-        //    {
-        //        SaveGridData("PDF Files|*.pdf", "Save PDF File", fileName => gridView1.ExportToPdf(fileName));
-        //    }
-        //    else if (e.Item == barButtonItem2)
-        //    {
-        //        SaveGridData("Excel Files|*.xlsx", "Save Excel File", fileName => gridView1.ExportToXlsx(fileName));
-        //    }
-        //    else if (e.Item == barButtonItem3)
-        //    {
-        //        gridView1.Print();
-        //    }
-        //    else if (e.Item == barButtonItemDelete)
-        //    {
-        //        DeleteSelectedRows();
-        //    }
-        //}
-
-        private void DeleteSelectedRows()
-        {
-            GridView gridView = gridView1;
-            int plid;
-            if (lookUpEditPl.EditValue == null || string.IsNullOrWhiteSpace(lookUpEditPl.EditValue.ToString()))
-            {
-                return;
+                XtraMessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                e.Column.AppearanceCell.BackColor = Color.LightGreen; // Change the cell background color to light green
             }
             else
             {
-                plid = Convert.ToInt32(lookUpEditPl.EditValue);
+                XtraMessageBox.Show("Failed to update the record. Please check your input.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Column.AppearanceCell.BackColor = Color.OrangeRed; // Change the cell background color to orange red
             }
+
+            // Force the grid to repaint to reflect the changes
+            gridView1.RefreshRow(rowHandle);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx", FileName = "PkExcelOutPut.xlsx" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportFromGridViewDevexpress.ExportToExcel(gridView1, sfd.FileName); // فرض می‌کنیم gridView1 نام GridView DevExpress شماست
+                }
+            }
+        }
+
+        private async void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           await DeleteSelectedRows();
+        }
+        private async Task DeleteSelectedRows()
+        {
+            GridView gridView = gridView1;
+
             if (gridView != null && gridView.SelectedRowsCount > 0)
             {
-                // Confirm deletion with a prompt for each selected row
                 DialogResult result = MessageBox.Show("Are you sure you want to delete the selected item(s)?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                //if (result == DialogResult.Yes)
-                //{
-                //    using (var dbContext = new DatabaseContext())
-                //    {
-                //        IDapper dapper = new DapperService(dbContext);
-                //        // Iterate through all selected rows
-                //        int[] selectedRows = gridView.GetSelectedRows();
-                //        foreach (int selectedRowHandle in selectedRows)
-                //        {
+                if (result == DialogResult.Yes)
+                {
+                    List<PackagePKIDDto> selectedPKIDs = new List<PackagePKIDDto>();
 
-                //            // Get the corresponding Package entity
-                //            Package selectedPackage = gridView.GetRow(selectedRowHandle) as Package;
+                    // Get the selected rows directly from gridView
+                    foreach (int rowHandle in gridView.GetSelectedRows())
+                    {
+                        if (gridView.GetRow(rowHandle) is PackageDto selectedPackage)
+                        {
+                            selectedPKIDs.Add(new PackagePKIDDto { PKID = selectedPackage.PKID });
+                        }
+                    }
 
-                //            if (selectedPackage != null)
-                //            {
-
-                //                int PKID = selectedPackage.PKID;
-
-
-
-                //                    dapper.deletePackageOfSelectedPlWithDapper(plid, PKID);
-
-                //            }
-                //        }
-
-                //        // Refresh the grid after deletion
-                //        InitializeGrid();
-                //    }
-                //}
+                    try
+                    {
+                        await _packageDapperRepository.DeleteMultiplePKsWithTransactionAsync(selectedPKIDs);
+                        InitializeGrid(); // Reload data into the grid after deletion
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to delete selected items. Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
 
-        ////
+
     }
 }

@@ -59,6 +59,15 @@
             txtNetWeight = new DevExpress.XtraEditors.CalcEdit();
             txtPKNumber = new DevExpress.XtraEditors.SpinEdit();
             splitContainer1 = new SplitContainer();
+            standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            barManager1 = new DevExpress.XtraBars.BarManager(components);
+            bar1 = new DevExpress.XtraBars.Bar();
+            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+            barDockControl3 = new DevExpress.XtraBars.BarDockControl();
+            barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             gridcontrol = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colPKID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -83,15 +92,6 @@
             colMSRRevEnteredBy = new DevExpress.XtraGrid.Columns.GridColumn();
             colMSRRevDate = new DevExpress.XtraGrid.Columns.GridColumn();
             repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            barManager1 = new DevExpress.XtraBars.BarManager(components);
-            barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            barDockControl2 = new DevExpress.XtraBars.BarDockControl();
-            barDockControl3 = new DevExpress.XtraBars.BarDockControl();
-            barDockControl4 = new DevExpress.XtraBars.BarDockControl();
-            bar1 = new DevExpress.XtraBars.Bar();
-            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ArrivalDate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ArrivalDate.Properties.CalendarTimeProperties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtPkDescription.Properties).BeginInit();
@@ -112,10 +112,10 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridcontrol).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEdit1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
             SuspendLayout();
             // 
             // labelControl2
@@ -496,6 +496,92 @@
             splitContainer1.SplitterDistance = 29;
             splitContainer1.TabIndex = 1;
             // 
+            // standaloneBarDockControl1
+            // 
+            standaloneBarDockControl1.CausesValidation = false;
+            standaloneBarDockControl1.Dock = DockStyle.Fill;
+            standaloneBarDockControl1.Location = new Point(0, 0);
+            standaloneBarDockControl1.Manager = barManager1;
+            standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            standaloneBarDockControl1.Size = new Size(882, 29);
+            standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // barManager1
+            // 
+            barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] { bar1 });
+            barManager1.DockControls.Add(barDockControl1);
+            barManager1.DockControls.Add(barDockControl2);
+            barManager1.DockControls.Add(barDockControl3);
+            barManager1.DockControls.Add(barDockControl4);
+            barManager1.DockControls.Add(standaloneBarDockControl1);
+            barManager1.Form = this;
+            barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItem1, barButtonItem2 });
+            barManager1.MaxItemId = 2;
+            // 
+            // bar1
+            // 
+            bar1.BarName = "Custom 2";
+            bar1.DockCol = 0;
+            bar1.DockRow = 0;
+            bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            bar1.FloatLocation = new Point(366, 190);
+            bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItem1), new DevExpress.XtraBars.LinkPersistInfo(barButtonItem2) });
+            bar1.OptionsBar.AllowQuickCustomization = false;
+            bar1.OptionsBar.DistanceBetweenItems = 5;
+            bar1.OptionsBar.UseWholeRow = true;
+            bar1.StandaloneBarDockControl = standaloneBarDockControl1;
+            bar1.Text = "Custom 2";
+            // 
+            // barButtonItem1
+            // 
+            barButtonItem1.Caption = "Export Excel";
+            barButtonItem1.Id = 0;
+            barButtonItem1.ImageOptions.Image = Properties.Resources.exporttoxls_16x163;
+            barButtonItem1.ImageOptions.LargeImage = Properties.Resources.exporttoxls_16x163;
+            barButtonItem1.Name = "barButtonItem1";
+            barButtonItem1.ItemClick += barButtonItem1_ItemClick;
+            // 
+            // barButtonItem2
+            // 
+            barButtonItem2.Caption = "Delete Item";
+            barButtonItem2.Id = 1;
+            barButtonItem2.ImageOptions.Image = Properties.Resources.none_16x162;
+            barButtonItem2.ImageOptions.LargeImage = Properties.Resources.none_16x162;
+            barButtonItem2.Name = "barButtonItem2";
+            barButtonItem2.ItemClick += barButtonItem2_ItemClick;
+            // 
+            // barDockControl1
+            // 
+            barDockControl1.CausesValidation = false;
+            barDockControl1.Dock = DockStyle.Top;
+            barDockControl1.Location = new Point(0, 0);
+            barDockControl1.Manager = barManager1;
+            barDockControl1.Size = new Size(1184, 0);
+            // 
+            // barDockControl2
+            // 
+            barDockControl2.CausesValidation = false;
+            barDockControl2.Dock = DockStyle.Bottom;
+            barDockControl2.Location = new Point(0, 646);
+            barDockControl2.Manager = barManager1;
+            barDockControl2.Size = new Size(1184, 0);
+            // 
+            // barDockControl3
+            // 
+            barDockControl3.CausesValidation = false;
+            barDockControl3.Dock = DockStyle.Left;
+            barDockControl3.Location = new Point(0, 0);
+            barDockControl3.Manager = barManager1;
+            barDockControl3.Size = new Size(0, 646);
+            // 
+            // barDockControl4
+            // 
+            barDockControl4.CausesValidation = false;
+            barDockControl4.Dock = DockStyle.Right;
+            barDockControl4.Location = new Point(1184, 0);
+            barDockControl4.Manager = barManager1;
+            barDockControl4.Size = new Size(0, 646);
+            // 
             // gridcontrol
             // 
             gridcontrol.Dock = DockStyle.Fill;
@@ -522,6 +608,8 @@
             gridView1.OptionsSelection.MultiSelect = true;
             gridView1.OptionsView.ShowAutoFilterRow = true;
             gridView1.OptionsView.ShowFooter = true;
+            gridView1.RowCellStyle += gridView1_RowCellStyle;
+            gridView1.CellValueChanged += gridView1_CellValueChanged;
             // 
             // colPKID
             // 
@@ -701,90 +789,6 @@
             repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             repositoryItemLookUpEdit1.ValueMember = "MrId";
             // 
-            // standaloneBarDockControl1
-            // 
-            standaloneBarDockControl1.CausesValidation = false;
-            standaloneBarDockControl1.Dock = DockStyle.Fill;
-            standaloneBarDockControl1.Location = new Point(0, 0);
-            standaloneBarDockControl1.Manager = barManager1;
-            standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            standaloneBarDockControl1.Size = new Size(882, 29);
-            standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // barManager1
-            // 
-            barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] { bar1 });
-            barManager1.DockControls.Add(barDockControl1);
-            barManager1.DockControls.Add(barDockControl2);
-            barManager1.DockControls.Add(barDockControl3);
-            barManager1.DockControls.Add(barDockControl4);
-            barManager1.DockControls.Add(standaloneBarDockControl1);
-            barManager1.Form = this;
-            barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItem1, barButtonItem2 });
-            barManager1.MaxItemId = 2;
-            // 
-            // barDockControl1
-            // 
-            barDockControl1.CausesValidation = false;
-            barDockControl1.Dock = DockStyle.Top;
-            barDockControl1.Location = new Point(0, 0);
-            barDockControl1.Manager = barManager1;
-            barDockControl1.Size = new Size(1184, 0);
-            // 
-            // barDockControl2
-            // 
-            barDockControl2.CausesValidation = false;
-            barDockControl2.Dock = DockStyle.Bottom;
-            barDockControl2.Location = new Point(0, 646);
-            barDockControl2.Manager = barManager1;
-            barDockControl2.Size = new Size(1184, 0);
-            // 
-            // barDockControl3
-            // 
-            barDockControl3.CausesValidation = false;
-            barDockControl3.Dock = DockStyle.Left;
-            barDockControl3.Location = new Point(0, 0);
-            barDockControl3.Manager = barManager1;
-            barDockControl3.Size = new Size(0, 646);
-            // 
-            // barDockControl4
-            // 
-            barDockControl4.CausesValidation = false;
-            barDockControl4.Dock = DockStyle.Right;
-            barDockControl4.Location = new Point(1184, 0);
-            barDockControl4.Manager = barManager1;
-            barDockControl4.Size = new Size(0, 646);
-            // 
-            // bar1
-            // 
-            bar1.BarName = "Custom 2";
-            bar1.DockCol = 0;
-            bar1.DockRow = 0;
-            bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            bar1.FloatLocation = new Point(366, 190);
-            bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItem1), new DevExpress.XtraBars.LinkPersistInfo(barButtonItem2) });
-            bar1.OptionsBar.AllowQuickCustomization = false;
-            bar1.OptionsBar.DistanceBetweenItems = 5;
-            bar1.OptionsBar.UseWholeRow = true;
-            bar1.StandaloneBarDockControl = standaloneBarDockControl1;
-            bar1.Text = "Custom 2";
-            // 
-            // barButtonItem1
-            // 
-            barButtonItem1.Caption = "Export Excel";
-            barButtonItem1.Id = 0;
-            barButtonItem1.ImageOptions.Image = Properties.Resources.exporttoxls_16x163;
-            barButtonItem1.ImageOptions.LargeImage = Properties.Resources.exporttoxls_16x163;
-            barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            barButtonItem2.Caption = "Delete Item";
-            barButtonItem2.Id = 1;
-            barButtonItem2.ImageOptions.Image = Properties.Resources.none_16x162;
-            barButtonItem2.ImageOptions.LargeImage = Properties.Resources.none_16x162;
-            barButtonItem2.Name = "barButtonItem2";
-            // 
             // frmPK
             // 
             Appearance.Options.UseFont = true;
@@ -825,10 +829,10 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridcontrol).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEdit1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
