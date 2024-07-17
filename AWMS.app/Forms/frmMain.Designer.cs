@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -71,6 +72,7 @@
             ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
+            skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).BeginInit();
@@ -83,13 +85,14 @@
             ribbonControl1.Cursor = Cursors.Hand;
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(22, 24, 22, 24);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1 });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(3, 2, 3, 2);
-            ribbonControl1.MaxItemId = 33;
+            ribbonControl1.MaxItemId = 37;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 248;
             ribbonControl1.PageHeaderItemLinks.Add(skinPaletteDropDownButtonItem1);
+            ribbonControl1.PageHeaderItemLinks.Add(skinDropDownButtonItem1);
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage3, ribbonPage5, ribbonPage6, ribbonPage4, ribbonPage2, ribbonPage7 });
             ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemHypertextLabel1, repositoryItemHypertextLabel2 });
             ribbonControl1.Size = new Size(1203, 177);
@@ -175,6 +178,7 @@
             barButtonItem8.ImageOptions.Image = (Image)resources.GetObject("barButtonItem8.ImageOptions.Image");
             barButtonItem8.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem8.ImageOptions.LargeImage");
             barButtonItem8.Name = "barButtonItem8";
+            barButtonItem8.ItemClick += barButtonItem8_ItemClick;
             // 
             // barButtonItem9
             // 
@@ -384,6 +388,13 @@
             documentManager1.View = tabbedView1;
             documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView1 });
             // 
+            // skinDropDownButtonItem1
+            // 
+            skinDropDownButtonItem1.ActAsDropDown = true;
+            skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            skinDropDownButtonItem1.Id = 36;
+            skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
@@ -453,5 +464,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel2;
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
+        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
     }
 }

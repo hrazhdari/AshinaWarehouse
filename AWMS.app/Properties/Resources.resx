@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BACKlOC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BACKlOC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_synchronize_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8_synchronize_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -256,6 +259,9 @@
   <data name="icons8_microsoft_excel_2019_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8_microsoft_excel_2019_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="none_16x162" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\none_16x162.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="exporttoxls_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exporttoxls_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -268,7 +274,7 @@
   <data name="icons8_company_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8_company_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="none_16x162" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\none_16x162.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BACKlOCITEM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BACKlOCITEM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

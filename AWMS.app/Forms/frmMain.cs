@@ -59,5 +59,14 @@ namespace AWMS.app.Forms
             PkManagementForm.Show();
             SplashScreenManager.CloseForm();
         }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+            var ItemLocManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmItemLoc>();
+            ItemLocManagementForm.MdiParent = this;
+            ItemLocManagementForm.Show();
+            SplashScreenManager.CloseForm();
+        }
     }
 }

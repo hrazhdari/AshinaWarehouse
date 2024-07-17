@@ -220,3 +220,4 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\refint\AWMS
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.genruntimeconfig.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\ref\AWMS.app.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmItemLoc.resources

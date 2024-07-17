@@ -90,6 +90,7 @@ namespace AWMS.app
                     services.AddTransient<frmSupplier>();
                     services.AddTransient<frmVendor>();
                     services.AddTransient<frmPK>();
+                    services.AddTransient<frmItemLoc>();
                 });
 
         // بارگذاری تنظیمات از فایل appsettings.json

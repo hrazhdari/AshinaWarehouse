@@ -46,6 +46,7 @@
             lblMrDescirption = new DevExpress.XtraEditors.LabelControl();
             lblpoName = new DevExpress.XtraEditors.LabelControl();
             splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            label1 = new Label();
             labelControl6 = new DevExpress.XtraEditors.LabelControl();
             lblLastPK = new DevExpress.XtraEditors.LabelControl();
             lblcount = new DevExpress.XtraEditors.LabelControl();
@@ -134,7 +135,7 @@
             // ArrivalDate
             // 
             ArrivalDate.EditValue = null;
-            ArrivalDate.Location = new Point(102, 247);
+            ArrivalDate.Location = new Point(102, 268);
             ArrivalDate.Margin = new Padding(3, 2, 3, 2);
             ArrivalDate.Name = "ArrivalDate";
             ArrivalDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -179,7 +180,7 @@
             // 
             // txtPkDescription
             // 
-            txtPkDescription.Location = new Point(102, 276);
+            txtPkDescription.Location = new Point(102, 297);
             txtPkDescription.Margin = new Padding(3, 2, 3, 2);
             txtPkDescription.Name = "txtPkDescription";
             txtPkDescription.Size = new Size(174, 80);
@@ -234,7 +235,7 @@
             // 
             // labelControl1
             // 
-            labelControl1.Location = new Point(16, 251);
+            labelControl1.Location = new Point(16, 272);
             labelControl1.Margin = new Padding(3, 2, 3, 2);
             labelControl1.Name = "labelControl1";
             labelControl1.Size = new Size(64, 13);
@@ -248,7 +249,7 @@
             // 
             // lblMrDescirption
             // 
-            lblMrDescirption.Location = new Point(15, 290);
+            lblMrDescirption.Location = new Point(15, 311);
             lblMrDescirption.Margin = new Padding(3, 2, 3, 2);
             lblMrDescirption.Name = "lblMrDescirption";
             lblMrDescirption.Size = new Size(75, 13);
@@ -274,6 +275,7 @@
             // splitContainerControl1.Panel1
             // 
             splitContainerControl1.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            splitContainerControl1.Panel1.Controls.Add(label1);
             splitContainerControl1.Panel1.Controls.Add(labelControl6);
             splitContainerControl1.Panel1.Controls.Add(lblLastPK);
             splitContainerControl1.Panel1.Controls.Add(lblcount);
@@ -306,6 +308,18 @@
             splitContainerControl1.SplitterPosition = 292;
             splitContainerControl1.TabIndex = 74;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Silver;
+            label1.Font = new Font("Tahoma", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(255, 255, 128);
+            label1.Location = new Point(15, 159);
+            label1.Name = "label1";
+            label1.Size = new Size(164, 12);
+            label1.TabIndex = 86;
+            label1.Text = "Last Pk You Can Add > 2147483647";
+            // 
             // labelControl6
             // 
             labelControl6.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
@@ -325,7 +339,7 @@
             lblLastPK.Appearance.Options.UseForeColor = true;
             lblLastPK.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             lblLastPK.ImageOptions.Image = (Image)resources.GetObject("lblLastPK.ImageOptions.Image");
-            lblLastPK.Location = new Point(159, 90);
+            lblLastPK.Location = new Point(149, 90);
             lblLastPK.Margin = new Padding(3, 2, 3, 2);
             lblLastPK.Name = "lblLastPK";
             lblLastPK.Size = new Size(30, 20);
@@ -349,7 +363,7 @@
             // 
             // txtremark
             // 
-            txtremark.Location = new Point(102, 365);
+            txtremark.Location = new Point(102, 386);
             txtremark.Margin = new Padding(3, 2, 3, 2);
             txtremark.Name = "txtremark";
             txtremark.Size = new Size(174, 80);
@@ -357,7 +371,7 @@
             // 
             // labelControl5
             // 
-            labelControl5.Location = new Point(15, 379);
+            labelControl5.Location = new Point(15, 400);
             labelControl5.Margin = new Padding(3, 2, 3, 2);
             labelControl5.Name = "labelControl5";
             labelControl5.Size = new Size(58, 13);
@@ -366,7 +380,7 @@
             // 
             // txtVolume
             // 
-            txtVolume.Location = new Point(102, 219);
+            txtVolume.Location = new Point(102, 240);
             txtVolume.Margin = new Padding(3, 2, 3, 2);
             txtVolume.Name = "txtVolume";
             txtVolume.Size = new Size(174, 20);
@@ -376,7 +390,7 @@
             // 
             labelControl26.Appearance.ForeColor = Color.Navy;
             labelControl26.Appearance.Options.UseForeColor = true;
-            labelControl26.Location = new Point(15, 223);
+            labelControl26.Location = new Point(15, 244);
             labelControl26.Margin = new Padding(3, 2, 3, 2);
             labelControl26.Name = "labelControl26";
             labelControl26.Size = new Size(41, 13);
@@ -385,7 +399,7 @@
             // 
             // txtGrossWeight
             // 
-            txtGrossWeight.Location = new Point(102, 190);
+            txtGrossWeight.Location = new Point(102, 211);
             txtGrossWeight.Margin = new Padding(3, 2, 3, 2);
             txtGrossWeight.Name = "txtGrossWeight";
             txtGrossWeight.Properties.Appearance.Options.UseTextOptions = true;
@@ -407,7 +421,7 @@
             // 
             labelControl25.Appearance.ForeColor = Color.Navy;
             labelControl25.Appearance.Options.UseForeColor = true;
-            labelControl25.Location = new Point(15, 194);
+            labelControl25.Location = new Point(15, 215);
             labelControl25.Margin = new Padding(3, 2, 3, 2);
             labelControl25.Name = "labelControl25";
             labelControl25.Size = new Size(71, 13);
@@ -418,7 +432,7 @@
             // 
             labelControl24.Appearance.ForeColor = Color.Navy;
             labelControl24.Appearance.Options.UseForeColor = true;
-            labelControl24.Location = new Point(15, 171);
+            labelControl24.Location = new Point(15, 192);
             labelControl24.Margin = new Padding(3, 2, 3, 2);
             labelControl24.Name = "labelControl24";
             labelControl24.Size = new Size(61, 13);
@@ -427,7 +441,7 @@
             // 
             // txtNetWeight
             // 
-            txtNetWeight.Location = new Point(102, 162);
+            txtNetWeight.Location = new Point(102, 183);
             txtNetWeight.Margin = new Padding(3, 2, 3, 2);
             txtNetWeight.Name = "txtNetWeight";
             txtNetWeight.Properties.Appearance.Options.UseTextOptions = true;
@@ -923,5 +937,6 @@
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private Label label1;
     }
 }

@@ -93,6 +93,26 @@ namespace AWMS.app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BACKlOC {
+            get {
+                object obj = ResourceManager.GetObject("BACKlOC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BACKlOCITEM {
+            get {
+                object obj = ResourceManager.GetObject("BACKlOCITEM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap building_png_11553999958wpob5lcadu {
             get {
                 object obj = ResourceManager.GetObject("building-png-11553999958wpob5lcadu", resourceCulture);
