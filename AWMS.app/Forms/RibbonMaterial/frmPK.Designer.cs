@@ -462,17 +462,19 @@
             txtPKNumber.Properties.AppearanceReadOnly.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             txtPKNumber.Properties.AppearanceReadOnly.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             txtPKNumber.Properties.AutoHeight = false;
+            txtPKNumber.Properties.BeepOnError = true;
             txtPKNumber.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             txtPKNumber.Properties.ContextImageOptions.Alignment = DevExpress.XtraEditors.ContextImageAlignment.Far;
             txtPKNumber.Properties.ContextImageOptions.Image = (Image)resources.GetObject("txtPKNumber.Properties.ContextImageOptions.Image");
             txtPKNumber.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             txtPKNumber.Properties.IsFloatValue = false;
             txtPKNumber.Properties.MaskSettings.Set("mask", "d");
-            txtPKNumber.Properties.MaskSettings.Set("autoHideDecimalSeparator", true);
+            txtPKNumber.Properties.MaskSettings.Set("autoHideDecimalSeparator", false);
             txtPKNumber.Properties.MaskSettings.Set("hideInsignificantZeros", null);
-            txtPKNumber.Properties.MaxValue = new decimal(new int[] { 10000000, 0, 0, 0 });
+            txtPKNumber.Properties.MaxValue = new decimal(new int[] { int.MaxValue, 0, 0, 0 });
             txtPKNumber.Properties.MinValue = new decimal(new int[] { 1, 0, 0, 0 });
             txtPKNumber.Properties.SpinStyle = DevExpress.XtraEditors.Controls.SpinStyles.Horizontal;
+            txtPKNumber.Properties.UseMaskAsDisplayFormat = true;
             txtPKNumber.Size = new Size(210, 39);
             txtPKNumber.TabIndex = 1;
             txtPKNumber.EditValueChanged += txtPKNumber_EditValueChanged;
@@ -613,6 +615,7 @@
             // 
             // colPKID
             // 
+            colPKID.Caption = "PK ID";
             colPKID.FieldName = "PKID";
             colPKID.MinWidth = 21;
             colPKID.Name = "colPKID";
@@ -620,6 +623,7 @@
             // 
             // colPLId
             // 
+            colPLId.Caption = "PL ID";
             colPLId.FieldName = "PLId";
             colPLId.MinWidth = 21;
             colPLId.Name = "colPLId";
@@ -628,6 +632,7 @@
             // 
             // colPK
             // 
+            colPK.Caption = "PK";
             colPK.FieldName = "PK";
             colPK.MinWidth = 21;
             colPK.Name = "colPK";
@@ -637,6 +642,7 @@
             // 
             // colNetW
             // 
+            colNetW.Caption = "NetW";
             colNetW.FieldName = "NetW";
             colNetW.MinWidth = 21;
             colNetW.Name = "colNetW";
@@ -646,6 +652,7 @@
             // 
             // colGrossW
             // 
+            colGrossW.Caption = "GrossW";
             colGrossW.FieldName = "GrossW";
             colGrossW.MinWidth = 21;
             colGrossW.Name = "colGrossW";
@@ -655,6 +662,7 @@
             // 
             // colVolume
             // 
+            colVolume.Caption = "Volume";
             colVolume.FieldName = "Volume";
             colVolume.MinWidth = 21;
             colVolume.Name = "colVolume";
@@ -662,6 +670,7 @@
             // 
             // colArrivalDate
             // 
+            colArrivalDate.Caption = "Arrival Date";
             colArrivalDate.FieldName = "ArrivalDate";
             colArrivalDate.MinWidth = 21;
             colArrivalDate.Name = "colArrivalDate";
@@ -671,6 +680,7 @@
             // 
             // colDesciption
             // 
+            colDesciption.Caption = "Desciption";
             colDesciption.FieldName = "Desciption";
             colDesciption.MinWidth = 21;
             colDesciption.Name = "colDesciption";
@@ -680,6 +690,7 @@
             // 
             // colRemark
             // 
+            colRemark.Caption = "Remark";
             colRemark.FieldName = "Remark";
             colRemark.MinWidth = 21;
             colRemark.Name = "colRemark";
@@ -687,6 +698,7 @@
             // 
             // colEnteredBy
             // 
+            colEnteredBy.Caption = "Entered By";
             colEnteredBy.FieldName = "EnteredBy";
             colEnteredBy.MinWidth = 21;
             colEnteredBy.Name = "colEnteredBy";
@@ -696,6 +708,7 @@
             // 
             // colEnteredDate
             // 
+            colEnteredDate.Caption = "Entered Date";
             colEnteredDate.FieldName = "EnteredDate";
             colEnteredDate.MinWidth = 21;
             colEnteredDate.Name = "colEnteredDate";
@@ -705,6 +718,7 @@
             // 
             // colEditedBy
             // 
+            colEditedBy.Caption = "Edited By";
             colEditedBy.FieldName = "EditedBy";
             colEditedBy.MinWidth = 21;
             colEditedBy.Name = "colEditedBy";
@@ -712,6 +726,7 @@
             // 
             // colEditedDate
             // 
+            colEditedDate.Caption = "Edited Date";
             colEditedDate.FieldName = "EditedDate";
             colEditedDate.MinWidth = 21;
             colEditedDate.Name = "colEditedDate";
@@ -720,6 +735,7 @@
             // 
             // colMSRNO
             // 
+            colMSRNO.Caption = "MSR NO";
             colMSRNO.FieldName = "MSRNO";
             colMSRNO.MinWidth = 21;
             colMSRNO.Name = "colMSRNO";
@@ -729,6 +745,7 @@
             // 
             // colMSRPDF
             // 
+            colMSRPDF.Caption = "MSR PDF";
             colMSRPDF.FieldName = "MSRPDF";
             colMSRPDF.MinWidth = 21;
             colMSRPDF.Name = "colMSRPDF";
@@ -736,6 +753,7 @@
             // 
             // colMSRDate
             // 
+            colMSRDate.Caption = "MSR Date";
             colMSRDate.FieldName = "MSRDate";
             colMSRDate.MinWidth = 21;
             colMSRDate.Name = "colMSRDate";
@@ -745,6 +763,7 @@
             // 
             // colMSREnteredBy
             // 
+            colMSREnteredBy.Caption = "MSR Entered By";
             colMSREnteredBy.FieldName = "MSREnteredBy";
             colMSREnteredBy.MinWidth = 21;
             colMSREnteredBy.Name = "colMSREnteredBy";
@@ -754,6 +773,7 @@
             // 
             // colMSRStatus
             // 
+            colMSRStatus.Caption = "MSR Status";
             colMSRStatus.FieldName = "MSRStatus";
             colMSRStatus.MinWidth = 21;
             colMSRStatus.Name = "colMSRStatus";
@@ -761,6 +781,7 @@
             // 
             // colMSRRev
             // 
+            colMSRRev.Caption = "MSR Rev";
             colMSRRev.FieldName = "MSRRev";
             colMSRRev.MinWidth = 21;
             colMSRRev.Name = "colMSRRev";
@@ -768,6 +789,7 @@
             // 
             // colMSRRevEnteredBy
             // 
+            colMSRRevEnteredBy.Caption = "MSR Rev Entered By";
             colMSRRevEnteredBy.FieldName = "MSRRevEnteredBy";
             colMSRRevEnteredBy.MinWidth = 21;
             colMSRRevEnteredBy.Name = "colMSRRevEnteredBy";
@@ -775,6 +797,7 @@
             // 
             // colMSRRevDate
             // 
+            colMSRRevDate.Caption = "MSR Rev Date";
             colMSRRevDate.FieldName = "MSRRevDate";
             colMSRRevDate.MinWidth = 21;
             colMSRRevDate.Name = "colMSRRevDate";

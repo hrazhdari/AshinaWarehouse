@@ -25,7 +25,6 @@ namespace AWMS.app.Forms.RibbonMaterial
     {
         private readonly IPackageDapperRepository _packageDapperRepository;
         private readonly IPackingListDapperRepository _packingListDapperRepository;
-        private BackgroundWorker backgroundWorker;
         private bool _isRowAdded;
         public frmPK(IPackageDapperRepository packageDapperRepository, IPackingListDapperRepository packingListDapperRepository)
         {
@@ -190,7 +189,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         {
             txtPKNumber.BackColor = Color.GhostWhite;
         }
-        private int duplicateRowHandle;
+
         private int FindRowHandleByPkId(int pkId)
         {
             for (int i = 0; i < gridView1.RowCount; i++)

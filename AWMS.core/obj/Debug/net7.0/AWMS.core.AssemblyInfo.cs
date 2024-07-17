@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AWMS.core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c82e3eaee69ced8bf3786d8fcaa5ecd49b702a6c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3668ef82b92a23b8ef1e32ba9822ff0a59cc8e7e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AWMS.core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AWMS.core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

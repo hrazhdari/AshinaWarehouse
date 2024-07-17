@@ -22,6 +22,10 @@ namespace AWMS.datalayer.Context
         public DbSet<DescriptionForPk> DescriptionForPks { get; set; }
         public DbSet<AreaUnit> AreaUnits { get; set; }
         public DbSet<Package> Packages { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Scope> Scopes { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<UnitPrice> UnitPrices { get; set; }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
@@ -49,6 +53,10 @@ namespace AWMS.datalayer.Context
             modelBuilder.ApplyConfiguration(new DesciplineConfiguration());
             modelBuilder.ApplyConfiguration(new AreaUnitConfiguration());
             modelBuilder.ApplyConfiguration(new PackageConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
+            modelBuilder.ApplyConfiguration(new UnitPriceConfiguration());
+            modelBuilder.ApplyConfiguration(new UnitConfiguration());
+            modelBuilder.ApplyConfiguration(new ScopeConfiguration());
 
             // Seed initial data
             modelBuilder.Entity<Mr>().HasData(

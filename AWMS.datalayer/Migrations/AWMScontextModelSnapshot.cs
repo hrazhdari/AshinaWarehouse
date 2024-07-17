@@ -99,14 +99,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 15, 12, 14, 27, 685, DateTimeKind.Local).AddTicks(448)
+                            EnteredDate = new DateTime(2024, 7, 17, 9, 25, 29, 6, DateTimeKind.Local).AddTicks(6081)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 7, 15, 12, 14, 27, 685, DateTimeKind.Local).AddTicks(501)
+                            EnteredDate = new DateTime(2024, 7, 17, 9, 25, 29, 6, DateTimeKind.Local).AddTicks(6136)
                         });
                 });
 
@@ -277,6 +277,137 @@ namespace AWMS.datalayer.Migrations
                             IrnDescription = "-",
                             IrnName = "-"
                         });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Item", b =>
+                {
+                    b.Property<int>("ItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemId"));
+
+                    b.Property<string>("BaseMaterial")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BatchNo")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("ColorCode")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal?>("DamageQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("EditedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EditedDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("EnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("date");
+
+                    b.Property<decimal?>("GrossW")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("HeatNo")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool?>("Hold")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("IncorectQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("ItemCodeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ItemOfPk")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LabelNo")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MTRNo")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<decimal?>("NIS")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("NetW")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("OverQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("PKID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("Qty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("ScopeID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("ShortageQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("StorageCode")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Tag")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("UnitID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UnitPriceID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ItemId");
+
+                    b.HasIndex("Description")
+                        .HasDatabaseName("IX_Item_Description");
+
+                    b.HasIndex("PKID")
+                        .HasDatabaseName("IX_Item_PKID");
+
+                    b.HasIndex("ScopeID")
+                        .HasDatabaseName("IX_Item_ScopeID");
+
+                    b.HasIndex("Tag")
+                        .HasDatabaseName("IX_Item_Tag");
+
+                    b.HasIndex("UnitID")
+                        .HasDatabaseName("IX_Item_UnitID");
+
+                    b.HasIndex("UnitPriceID")
+                        .HasDatabaseName("IX_Item_UnitPriceID");
+
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Mr", b =>
@@ -600,6 +731,27 @@ namespace AWMS.datalayer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.Scope", b =>
+                {
+                    b.Property<int>("ScopeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScopeID"));
+
+                    b.Property<string>("ScopeName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("ScopeID");
+
+                    b.HasIndex("ScopeName")
+                        .HasDatabaseName("IX_Scope_ScopeName");
+
+                    b.ToTable("Scopes");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.Shipment", b =>
                 {
                     b.Property<int>("ShipmentId")
@@ -672,6 +824,48 @@ namespace AWMS.datalayer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.Unit", b =>
+                {
+                    b.Property<int>("UnitID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UnitID"));
+
+                    b.Property<string>("UnitName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("UnitID");
+
+                    b.HasIndex("UnitName")
+                        .HasDatabaseName("IX_Unit_UnitName");
+
+                    b.ToTable("Units");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.UnitPrice", b =>
+                {
+                    b.Property<int>("UnitPriceID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UnitPriceID"));
+
+                    b.Property<string>("UnitPriceName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("UnitPriceID");
+
+                    b.HasIndex("UnitPriceName")
+                        .HasDatabaseName("IX_UnitPrice_UnitPriceName");
+
+                    b.ToTable("UnitPrices");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.Vendor", b =>
                 {
                     b.Property<int>("VendorID")
@@ -728,6 +922,38 @@ namespace AWMS.datalayer.Migrations
                         .HasForeignKey("CompanyID");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Item", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.Package", "Package")
+                        .WithMany("Items")
+                        .HasForeignKey("PKID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AWMS.datalayer.Entities.Scope", "Scope")
+                        .WithMany("Items")
+                        .HasForeignKey("ScopeID")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("AWMS.datalayer.Entities.Unit", "Unit")
+                        .WithMany("Items")
+                        .HasForeignKey("UnitID")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("AWMS.datalayer.Entities.UnitPrice", "UnitPrice")
+                        .WithMany("Items")
+                        .HasForeignKey("UnitPriceID")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Package");
+
+                    b.Navigation("Scope");
+
+                    b.Navigation("Unit");
+
+                    b.Navigation("UnitPrice");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>
@@ -860,6 +1086,11 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("Pos");
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.PackingList", b =>
                 {
                     b.Navigation("Packages");
@@ -872,6 +1103,11 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("Shipments");
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.Scope", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.Shipment", b =>
                 {
                     b.Navigation("PackingLists");
@@ -880,6 +1116,16 @@ namespace AWMS.datalayer.Migrations
             modelBuilder.Entity("AWMS.datalayer.Entities.Supplier", b =>
                 {
                     b.Navigation("PackingLists");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Unit", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.UnitPrice", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Vendor", b =>

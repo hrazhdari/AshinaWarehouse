@@ -54,6 +54,12 @@ namespace AWMS.datalayer.Entities.Configurations
                 .HasForeignKey(p => p.PLId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // پیکربندی رابطه بین Package و Item
+            builder.HasMany(p => p.Items)
+                .WithOne(i => i.Package)
+                .HasForeignKey(i => i.PKID)
+                .OnDelete(DeleteBehavior.Cascade);
+
             // اضافه کردن ایندکس‌ها
             builder.HasIndex(p => p.PLId).HasDatabaseName("IX_Package_PLId");
             builder.HasIndex(p => p.MSRNO).HasDatabaseName("IX_Package_MSRNO");
