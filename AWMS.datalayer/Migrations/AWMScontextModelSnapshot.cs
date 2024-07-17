@@ -99,14 +99,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 17, 9, 25, 29, 6, DateTimeKind.Local).AddTicks(6081)
+                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2703)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 7, 17, 9, 25, 29, 6, DateTimeKind.Local).AddTicks(6136)
+                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2708)
                         });
                 });
 
@@ -215,6 +215,31 @@ namespace AWMS.datalayer.Migrations
                         {
                             DesciplineId = 11,
                             DesciplineName = "Other"
+                        },
+                        new
+                        {
+                            DesciplineId = 12,
+                            DesciplineName = "Hydraulics"
+                        },
+                        new
+                        {
+                            DesciplineId = 13,
+                            DesciplineName = "HVAC"
+                        },
+                        new
+                        {
+                            DesciplineId = 14,
+                            DesciplineName = "Automation"
+                        },
+                        new
+                        {
+                            DesciplineId = 15,
+                            DesciplineName = "Safety"
+                        },
+                        new
+                        {
+                            DesciplineId = 16,
+                            DesciplineName = "Quality Control"
                         });
                 });
 
@@ -408,6 +433,62 @@ namespace AWMS.datalayer.Migrations
                         .HasDatabaseName("IX_Item_UnitPriceID");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Location", b =>
+                {
+                    b.Property<int>("LocationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationID"));
+
+                    b.Property<int?>("EditedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EditedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LocationName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("LocationID");
+
+                    b.HasIndex("LocationName")
+                        .HasDatabaseName("IX_Location_LocationName");
+
+                    b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            LocationID = 1,
+                            EnteredBy = 88,
+                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2584),
+                            LocationName = "L02A101A"
+                        },
+                        new
+                        {
+                            LocationID = 2,
+                            EnteredBy = 88,
+                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2641),
+                            LocationName = "L02A102A"
+                        },
+                        new
+                        {
+                            LocationID = 3,
+                            EnteredBy = 88,
+                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2643),
+                            LocationName = "W02A02B"
+                        });
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Mr", b =>
@@ -750,6 +831,28 @@ namespace AWMS.datalayer.Migrations
                         .HasDatabaseName("IX_Scope_ScopeName");
 
                     b.ToTable("Scopes");
+
+                    b.HasData(
+                        new
+                        {
+                            ScopeID = 1,
+                            ScopeName = "Fitting"
+                        },
+                        new
+                        {
+                            ScopeID = 2,
+                            ScopeName = "Flange"
+                        },
+                        new
+                        {
+                            ScopeID = 3,
+                            ScopeName = "Pipe"
+                        },
+                        new
+                        {
+                            ScopeID = 4,
+                            ScopeName = "Elbow"
+                        });
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Shipment", b =>
@@ -843,6 +946,158 @@ namespace AWMS.datalayer.Migrations
                         .HasDatabaseName("IX_Unit_UnitName");
 
                     b.ToTable("Units");
+
+                    b.HasData(
+                        new
+                        {
+                            UnitID = 1,
+                            UnitName = "PC"
+                        },
+                        new
+                        {
+                            UnitID = 2,
+                            UnitName = "KG"
+                        },
+                        new
+                        {
+                            UnitID = 3,
+                            UnitName = "METER"
+                        },
+                        new
+                        {
+                            UnitID = 4,
+                            UnitName = "LITER"
+                        },
+                        new
+                        {
+                            UnitID = 5,
+                            UnitName = "BOX"
+                        },
+                        new
+                        {
+                            UnitID = 6,
+                            UnitName = "PACK"
+                        },
+                        new
+                        {
+                            UnitID = 7,
+                            UnitName = "SET"
+                        },
+                        new
+                        {
+                            UnitID = 8,
+                            UnitName = "PAIR"
+                        },
+                        new
+                        {
+                            UnitID = 9,
+                            UnitName = "DOZEN"
+                        },
+                        new
+                        {
+                            UnitID = 10,
+                            UnitName = "GALLON"
+                        },
+                        new
+                        {
+                            UnitID = 11,
+                            UnitName = "TON"
+                        },
+                        new
+                        {
+                            UnitID = 12,
+                            UnitName = "GRAM"
+                        },
+                        new
+                        {
+                            UnitID = 13,
+                            UnitName = "LB"
+                        },
+                        new
+                        {
+                            UnitID = 14,
+                            UnitName = "OZ"
+                        },
+                        new
+                        {
+                            UnitID = 15,
+                            UnitName = "INCH"
+                        },
+                        new
+                        {
+                            UnitID = 16,
+                            UnitName = "FOOT"
+                        },
+                        new
+                        {
+                            UnitID = 17,
+                            UnitName = "YARD"
+                        },
+                        new
+                        {
+                            UnitID = 18,
+                            UnitName = "CM"
+                        },
+                        new
+                        {
+                            UnitID = 19,
+                            UnitName = "MM"
+                        },
+                        new
+                        {
+                            UnitID = 20,
+                            UnitName = "SQM"
+                        },
+                        new
+                        {
+                            UnitID = 21,
+                            UnitName = "CUBICM"
+                        },
+                        new
+                        {
+                            UnitID = 22,
+                            UnitName = "LTR"
+                        },
+                        new
+                        {
+                            UnitID = 23,
+                            UnitName = "BLK"
+                        },
+                        new
+                        {
+                            UnitID = 24,
+                            UnitName = "PALLET"
+                        },
+                        new
+                        {
+                            UnitID = 25,
+                            UnitName = "ROLL"
+                        },
+                        new
+                        {
+                            UnitID = 26,
+                            UnitName = "SHEET"
+                        },
+                        new
+                        {
+                            UnitID = 27,
+                            UnitName = "TUBE"
+                        },
+                        new
+                        {
+                            UnitID = 28,
+                            UnitName = "CARTON"
+                        },
+                        new
+                        {
+                            UnitID = 29,
+                            UnitName = "BAG"
+                        },
+                        new
+                        {
+                            UnitID = 30,
+                            UnitName = "CAN"
+                        });
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.UnitPrice", b =>
@@ -864,6 +1119,308 @@ namespace AWMS.datalayer.Migrations
                         .HasDatabaseName("IX_UnitPrice_UnitPriceName");
 
                     b.ToTable("UnitPrices");
+
+                    b.HasData(
+                        new
+                        {
+                            UnitPriceID = 1,
+                            UnitPriceName = "Euro"
+                        },
+                        new
+                        {
+                            UnitPriceID = 2,
+                            UnitPriceName = "Rial"
+                        },
+                        new
+                        {
+                            UnitPriceID = 3,
+                            UnitPriceName = "Dollar US"
+                        },
+                        new
+                        {
+                            UnitPriceID = 4,
+                            UnitPriceName = "Pound UK"
+                        },
+                        new
+                        {
+                            UnitPriceID = 5,
+                            UnitPriceName = "Yen Japan"
+                        },
+                        new
+                        {
+                            UnitPriceID = 6,
+                            UnitPriceName = "Rupee India"
+                        },
+                        new
+                        {
+                            UnitPriceID = 7,
+                            UnitPriceName = "Yuan China"
+                        },
+                        new
+                        {
+                            UnitPriceID = 8,
+                            UnitPriceName = "Won South Korea"
+                        },
+                        new
+                        {
+                            UnitPriceID = 9,
+                            UnitPriceName = "Franc Switzerland"
+                        },
+                        new
+                        {
+                            UnitPriceID = 10,
+                            UnitPriceName = "Krone Denmark"
+                        },
+                        new
+                        {
+                            UnitPriceID = 11,
+                            UnitPriceName = "Lira Turkey"
+                        },
+                        new
+                        {
+                            UnitPriceID = 12,
+                            UnitPriceName = "Real Brazil"
+                        },
+                        new
+                        {
+                            UnitPriceID = 13,
+                            UnitPriceName = "Rand South Africa"
+                        },
+                        new
+                        {
+                            UnitPriceID = 14,
+                            UnitPriceName = "Baht Thailand"
+                        },
+                        new
+                        {
+                            UnitPriceID = 15,
+                            UnitPriceName = "Peso Mexico"
+                        },
+                        new
+                        {
+                            UnitPriceID = 16,
+                            UnitPriceName = "Ringgit Malaysia"
+                        },
+                        new
+                        {
+                            UnitPriceID = 17,
+                            UnitPriceName = "Zloty Poland"
+                        },
+                        new
+                        {
+                            UnitPriceID = 18,
+                            UnitPriceName = "Dirham UAE"
+                        },
+                        new
+                        {
+                            UnitPriceID = 19,
+                            UnitPriceName = "Dinar Kuwait"
+                        },
+                        new
+                        {
+                            UnitPriceID = 20,
+                            UnitPriceName = "Kuna Croatia"
+                        },
+                        new
+                        {
+                            UnitPriceID = 21,
+                            UnitPriceName = "Forint Hungary"
+                        },
+                        new
+                        {
+                            UnitPriceID = 22,
+                            UnitPriceName = "Leu Romania"
+                        },
+                        new
+                        {
+                            UnitPriceID = 23,
+                            UnitPriceName = "Shekel Israel"
+                        },
+                        new
+                        {
+                            UnitPriceID = 24,
+                            UnitPriceName = "Taka Bangladesh"
+                        },
+                        new
+                        {
+                            UnitPriceID = 25,
+                            UnitPriceName = "Krone Norway"
+                        },
+                        new
+                        {
+                            UnitPriceID = 26,
+                            UnitPriceName = "Krona Sweden"
+                        },
+                        new
+                        {
+                            UnitPriceID = 27,
+                            UnitPriceName = "Franc France"
+                        },
+                        new
+                        {
+                            UnitPriceID = 28,
+                            UnitPriceName = "Pound Egypt"
+                        },
+                        new
+                        {
+                            UnitPriceID = 29,
+                            UnitPriceName = "Euro Germany"
+                        },
+                        new
+                        {
+                            UnitPriceID = 30,
+                            UnitPriceName = "Dollar Australia"
+                        },
+                        new
+                        {
+                            UnitPriceID = 31,
+                            UnitPriceName = "Dollar Canada"
+                        },
+                        new
+                        {
+                            UnitPriceID = 32,
+                            UnitPriceName = "Dollar Singapore"
+                        },
+                        new
+                        {
+                            UnitPriceID = 33,
+                            UnitPriceName = "Pound Switzerland"
+                        },
+                        new
+                        {
+                            UnitPriceID = 34,
+                            UnitPriceName = "Franc Belgium"
+                        },
+                        new
+                        {
+                            UnitPriceID = 35,
+                            UnitPriceName = "Crown Czech Republic"
+                        },
+                        new
+                        {
+                            UnitPriceID = 36,
+                            UnitPriceName = "Krona Iceland"
+                        },
+                        new
+                        {
+                            UnitPriceID = 37,
+                            UnitPriceName = "Euro Ireland"
+                        },
+                        new
+                        {
+                            UnitPriceID = 38,
+                            UnitPriceName = "Lira Italy"
+                        },
+                        new
+                        {
+                            UnitPriceID = 39,
+                            UnitPriceName = "Dollar New Zealand"
+                        },
+                        new
+                        {
+                            UnitPriceID = 40,
+                            UnitPriceName = "Riyal Saudi Arabia"
+                        },
+                        new
+                        {
+                            UnitPriceID = 41,
+                            UnitPriceName = "Ruble Russia"
+                        },
+                        new
+                        {
+                            UnitPriceID = 42,
+                            UnitPriceName = "Pound Sterling"
+                        },
+                        new
+                        {
+                            UnitPriceID = 43,
+                            UnitPriceName = "Dollar Hong Kong"
+                        },
+                        new
+                        {
+                            UnitPriceID = 44,
+                            UnitPriceName = "Pound Lebanon"
+                        },
+                        new
+                        {
+                            UnitPriceID = 45,
+                            UnitPriceName = "Franc Belgium"
+                        },
+                        new
+                        {
+                            UnitPriceID = 46,
+                            UnitPriceName = "Dollar Taiwan"
+                        },
+                        new
+                        {
+                            UnitPriceID = 47,
+                            UnitPriceName = "Dinar Bahrain"
+                        },
+                        new
+                        {
+                            UnitPriceID = 48,
+                            UnitPriceName = "Dollar Brunei"
+                        },
+                        new
+                        {
+                            UnitPriceID = 49,
+                            UnitPriceName = "Pound Cyprus"
+                        },
+                        new
+                        {
+                            UnitPriceID = 50,
+                            UnitPriceName = "Dinar Jordan"
+                        },
+                        new
+                        {
+                            UnitPriceID = 51,
+                            UnitPriceName = "Baht Thailand"
+                        },
+                        new
+                        {
+                            UnitPriceID = 52,
+                            UnitPriceName = "Dollar Egypt"
+                        },
+                        new
+                        {
+                            UnitPriceID = 53,
+                            UnitPriceName = "Dollar China"
+                        },
+                        new
+                        {
+                            UnitPriceID = 54,
+                            UnitPriceName = "Euro Ukraine"
+                        },
+                        new
+                        {
+                            UnitPriceID = 55,
+                            UnitPriceName = "Dollar Mexico"
+                        },
+                        new
+                        {
+                            UnitPriceID = 56,
+                            UnitPriceName = "Euro Portugal"
+                        },
+                        new
+                        {
+                            UnitPriceID = 57,
+                            UnitPriceName = "Dollar Argentina"
+                        },
+                        new
+                        {
+                            UnitPriceID = 58,
+                            UnitPriceName = "Ruble Armenia"
+                        },
+                        new
+                        {
+                            UnitPriceID = 59,
+                            UnitPriceName = "Ruble Azerbaijan"
+                        },
+                        new
+                        {
+                            UnitPriceID = 60,
+                            UnitPriceName = "Euro Belgium"
+                        });
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Vendor", b =>

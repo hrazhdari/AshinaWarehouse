@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using AWMS.dto;
 
-namespace AWMS.dapper
+namespace AWMS.dapper.Repositories
 {
     public interface IPackageDapperRepository
     {

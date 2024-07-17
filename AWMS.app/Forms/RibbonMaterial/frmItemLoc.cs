@@ -22,34 +22,22 @@ namespace AWMS.app.Forms.RibbonMaterial
 {
     public partial class frmItemLoc : XtraForm
     {   private readonly IPackingListDapperRepository _packingListDapperRepository;
+        private readonly IUnitDapperRepository _unitDapperRepository;
+        private readonly IScopeDapperRepository _scopeDapperRepository;
+        private readonly ILocationDapperRepository _locationDapperRepository;
         int itemId;
         decimal itemQty;
         int repositorylocationId = 0;
-        public frmItemLoc(IPackingListDapperRepository packingListDapperRepository)
+        public frmItemLoc(IPackingListDapperRepository packingListDapperRepository,IUnitDapperRepository unitDapperRepository,
+            IScopeDapperRepository scopeDapperRepository,ILocationDapperRepository locationDapperRepository)
         {
             InitializeComponent();
             this._packingListDapperRepository= packingListDapperRepository;
+            this._unitDapperRepository = unitDapperRepository;
+            this._scopeDapperRepository = scopeDapperRepository;
+            this._locationDapperRepository = locationDapperRepository;
             LookUPLoad();
            
-
-            //using (UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext()))
-            //{
-            //    //IDapper dapper = new DapperService(dbContext);
-            //    _unitList = unitOfWork.DapperRepository.GetAllUnitWithDapper();
-            //    repositoryItemLookUpEditunit.DataSource = _unitList.ToList();
-            //}
-            //using (UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext()))
-            //{
-            //    //IDapper dapper = new DapperService(dbContext);
-            //    _scopeList = unitOfWork.DapperRepository.GetAllScopeWithDapper();
-            //    repositoryItemLookUpEditScope.DataSource = _scopeList.ToList();
-            //}
-            //using (UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext()))
-            //{
-            //    //IDapper dapper = new DapperService(dbContext);
-            //    _locList = unitOfWork.DapperRepository.GetAllLocationsWithDapper();
-            //    locationBindingSource.DataSource = _locList.ToList();
-            //}
             gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
             gridView1.OptionsBehavior.Editable = true;
             gridcontrol.DoubleClick += (sender, e) => gridcontrol_DoubleClick(sender, e);
@@ -60,6 +48,9 @@ namespace AWMS.app.Forms.RibbonMaterial
         private async void LookUPLoad()
         {
             lookUpEditPl.Properties.DataSource=await _packingListDapperRepository.GetAllPlNameAsync();
+            repositoryItemLookUpEditunit.DataSource=await _unitDapperRepository.GetAllAsync();
+            repositoryItemLookUpEditScope.DataSource = await _scopeDapperRepository.GetAllAsync();
+            lookUpEditLocation.Properties.DataSource = await _locationDapperRepository.GetAllAsync();
         }
         private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {

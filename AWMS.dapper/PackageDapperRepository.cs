@@ -6,6 +6,7 @@ using AWMS.dto;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using AWMS.dapper.Repositories;
 
 namespace AWMS.dapper
 {

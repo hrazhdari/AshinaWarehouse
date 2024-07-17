@@ -26,6 +26,7 @@ namespace AWMS.datalayer.Context
         public DbSet<Scope> Scopes { get; set; }
         public DbSet<Unit> Units { get; set; }
         public DbSet<UnitPrice> UnitPrices { get; set; }
+        public DbSet<Location> Locations { get; set; }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
@@ -57,6 +58,7 @@ namespace AWMS.datalayer.Context
             modelBuilder.ApplyConfiguration(new UnitPriceConfiguration());
             modelBuilder.ApplyConfiguration(new UnitConfiguration());
             modelBuilder.ApplyConfiguration(new ScopeConfiguration());
+            modelBuilder.ApplyConfiguration(new LocationConfiguration());
 
             // Seed initial data
             modelBuilder.Entity<Mr>().HasData(
@@ -87,20 +89,7 @@ namespace AWMS.datalayer.Context
             );
             modelBuilder.Entity<DescriptionForPk>().HasData(
                 new DescriptionForPk {DescriptionForPkId=1,Description="-" }
-            );
-            modelBuilder.Entity<Descipline>().HasData(
-                new Descipline { DesciplineId=1,DesciplineName="Piping"},
-                new Descipline { DesciplineId=2,DesciplineName="Support"},
-                new Descipline { DesciplineId=3,DesciplineName="Mechanical"},
-                new Descipline { DesciplineId=4,DesciplineName="Electrical"},
-                new Descipline { DesciplineId=5,DesciplineName="Instrument"},
-                new Descipline { DesciplineId=6,DesciplineName="Civil"},
-                new Descipline { DesciplineId=7,DesciplineName="Steel Structure"},
-                new Descipline { DesciplineId=8,DesciplineName="Steel Profile"},
-                new Descipline { DesciplineId=9,DesciplineName="Paint"},
-                new Descipline { DesciplineId=10,DesciplineName="Insulation"},
-                new Descipline { DesciplineId=11,DesciplineName="Other"}
-            );
+            );    
         }
     }
 }

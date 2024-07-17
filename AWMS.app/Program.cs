@@ -76,6 +76,9 @@ namespace AWMS.app
                     //Dapper Repositories
                     services.AddScoped<IPackingListDapperRepository, PackingListDapperRepository>();
                     services.AddScoped<IPackageDapperRepository, PackageDapperRepository>();
+                    services.AddScoped<IUnitDapperRepository, UnitDapperRepository>();
+                    services.AddScoped<IScopeDapperRepository, ScopeDapperRepository>();
+                    services.AddScoped<ILocationDapperRepository, LocationDapperRepository>();
 
                     // افزودن سرویس‌های فرم‌ها به سرویس‌ها
                     services.AddTransient<frmMain>();

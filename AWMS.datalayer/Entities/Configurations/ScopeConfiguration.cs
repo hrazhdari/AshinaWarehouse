@@ -22,6 +22,14 @@ namespace AWMS.datalayer.Entities.Configurations
 
             // اضافه کردن ایندکس‌ها
             builder.HasIndex(s => s.ScopeName).HasDatabaseName("IX_Scope_ScopeName");
+
+            // Adding initial data
+            builder.HasData(
+                new Scope { ScopeID = 1, ScopeName = "Fitting" },
+                new Scope { ScopeID = 2, ScopeName = "Flange" },
+                new Scope { ScopeID = 3, ScopeName = "Pipe" },
+                new Scope { ScopeID = 4, ScopeName = "Elbow" }
+                );
         }
     }
 }
