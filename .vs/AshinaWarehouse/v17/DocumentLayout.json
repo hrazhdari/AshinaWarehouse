@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|d:\\mybigproject\\ashinawarehouse\\awms.datalayer\\entities\\locitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|solutionrelative:awms.datalayer\\entities\\locitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmitemloc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmitemloc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +30,40 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LocItem.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\Entities\\LocItem.cs",
+              "RelativeDocumentMoniker": "AWMS.datalayer\\Entities\\LocItem.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\Entities\\LocItem.cs",
+              "RelativeToolTip": "AWMS.datalayer\\Entities\\LocItem.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAuwCgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T12:53:10.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "frmItemLoc.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAEcAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T12:37:13.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "frmItemLoc.cs [Design]",
               "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
               "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
               "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs [Design]",
               "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T11:39:53.671Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmItemLoc.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAQwCcAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T11:24:01.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-21T12:37:05.186Z"
             }
           ]
         }

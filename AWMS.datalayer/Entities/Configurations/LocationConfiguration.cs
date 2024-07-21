@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using AWMS.datalayer.Entities;
 
 namespace AWMS.datalayer.Entities.Configurations
 {
@@ -13,11 +12,15 @@ namespace AWMS.datalayer.Entities.Configurations
             builder.Property(l => l.LocationName)
                 .HasMaxLength(200)
                 .IsRequired();
-                                
 
             // اضافه کردن ایندکس برای LocationName
             builder.HasIndex(l => l.LocationName).HasDatabaseName("IX_Location_LocationName");
 
+            // تنظیم وابستگی یک به چند با LocItem
+            builder.HasMany(l => l.LocItems)
+                   .WithOne(li => li.Location)
+                   .HasForeignKey(li => li.LocationID)
+                   .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasData(
                 new Location { LocationID = 1, LocationName = "L02A101A", EnteredBy = 88, EnteredDate = DateTime.Now },

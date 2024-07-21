@@ -35,7 +35,7 @@
             xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             sidePanel2 = new DevExpress.XtraEditors.SidePanel();
-            gridcontrol = new DevExpress.XtraGrid.GridControl();
+            gridcontrolItem = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colItemId = new DevExpress.XtraGrid.Columns.GridColumn();
             colPKID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,15 +79,14 @@
             labelControl1 = new DevExpress.XtraEditors.LabelControl();
             chkEdit = new DevExpress.XtraEditors.CheckEdit();
             barManager2 = new DevExpress.XtraBars.BarManager(components);
-            bar5 = new DevExpress.XtraBars.Bar();
-            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
             barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             barDockControl4 = new DevExpress.XtraBars.BarDockControl();
+            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
             lblLastPK = new DevExpress.XtraEditors.LabelControl();
             lblcount = new DevExpress.XtraEditors.LabelControl();
             lookUpEditPl = new DevExpress.XtraEditors.LookUpEdit();
@@ -95,6 +94,11 @@
             labelControl3 = new DevExpress.XtraEditors.LabelControl();
             labelControl2 = new DevExpress.XtraEditors.LabelControl();
             xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            splitContainer1 = new SplitContainer();
+            panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            labelControl8 = new DevExpress.XtraEditors.LabelControl();
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colLocItemID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -113,10 +117,6 @@
             colEnteredDate1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colEditedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colEditedDate1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            labelControl7 = new DevExpress.XtraEditors.LabelControl();
             bar4 = new DevExpress.XtraBars.Bar();
             barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             bar3 = new DevExpress.XtraBars.Bar();
@@ -126,7 +126,7 @@
             xtraTabControl1.SuspendLayout();
             xtraTabPage1.SuspendLayout();
             sidePanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gridcontrol).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridcontrolItem).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditPK).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditunit).BeginInit();
@@ -138,12 +138,16 @@
             ((System.ComponentModel.ISupportInitialize)barManager2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)lookUpEditPl.Properties).BeginInit();
             xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)panelControl1).BeginInit();
+            panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditLocation).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemCalcEdit1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)panelControl1).BeginInit();
-            panelControl1.SuspendLayout();
             SuspendLayout();
             // 
             // xtraTabControl1
@@ -158,7 +162,7 @@
             xtraTabControl1.Margin = new Padding(3, 2, 3, 2);
             xtraTabControl1.Name = "xtraTabControl1";
             xtraTabControl1.SelectedTabPage = xtraTabPage1;
-            xtraTabControl1.Size = new Size(1077, 605);
+            xtraTabControl1.Size = new Size(1103, 605);
             xtraTabControl1.TabIndex = 0;
             xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { xtraTabPage1, xtraTabPage2 });
             // 
@@ -169,33 +173,33 @@
             xtraTabPage1.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage1.ImageOptions.Image");
             xtraTabPage1.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage1.Name = "xtraTabPage1";
-            xtraTabPage1.Size = new Size(1075, 561);
+            xtraTabPage1.Size = new Size(1101, 561);
             xtraTabPage1.Text = "Item's";
             // 
             // sidePanel2
             // 
-            sidePanel2.Controls.Add(gridcontrol);
+            sidePanel2.Controls.Add(gridcontrolItem);
             sidePanel2.Dock = DockStyle.Fill;
             sidePanel2.Location = new Point(0, 67);
             sidePanel2.Margin = new Padding(3, 2, 3, 2);
             sidePanel2.Name = "sidePanel2";
-            sidePanel2.Size = new Size(1075, 494);
+            sidePanel2.Size = new Size(1101, 494);
             sidePanel2.TabIndex = 11;
             sidePanel2.Text = "sidePanel2";
             // 
-            // gridcontrol
+            // gridcontrolItem
             // 
-            gridcontrol.Dock = DockStyle.Fill;
-            gridcontrol.EmbeddedNavigator.Margin = new Padding(3, 2, 3, 2);
-            gridcontrol.Enabled = false;
-            gridcontrol.Location = new Point(0, 0);
-            gridcontrol.MainView = gridView1;
-            gridcontrol.Margin = new Padding(3, 2, 3, 2);
-            gridcontrol.Name = "gridcontrol";
-            gridcontrol.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditunit, repositoryItemLookUpEditScope, repositoryItemLookUpEditPK, repositoryItemTextEditPLID });
-            gridcontrol.Size = new Size(1075, 494);
-            gridcontrol.TabIndex = 1;
-            gridcontrol.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
+            gridcontrolItem.Dock = DockStyle.Fill;
+            gridcontrolItem.EmbeddedNavigator.Margin = new Padding(3, 2, 3, 2);
+            gridcontrolItem.Enabled = false;
+            gridcontrolItem.Location = new Point(0, 0);
+            gridcontrolItem.MainView = gridView1;
+            gridcontrolItem.Margin = new Padding(3, 2, 3, 2);
+            gridcontrolItem.Name = "gridcontrolItem";
+            gridcontrolItem.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditunit, repositoryItemLookUpEditScope, repositoryItemLookUpEditPK, repositoryItemTextEditPLID });
+            gridcontrolItem.Size = new Size(1101, 494);
+            gridcontrolItem.TabIndex = 1;
+            gridcontrolItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
             // gridView1
             // 
@@ -204,7 +208,7 @@
             gridView1.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colItemId, colPKID, colItemOfPk, colTag, colUnitPriceID, colDescription, colUnitID, colQty, colOverQty, colShortageQty, colDamageQty, colIncorectQty, colScopeID, colHeatNo, colBatchNo, colRemark, colMTRNo, colColorCode, colLabelNo, colEnteredBy, colEnteredDate, colEditedBy, colEditedDate, colPrice, colNetW, colGrossW, colItemCodeId, colBaseMaterial, colHold, colNIS, colStorageCode });
             gridView1.DetailHeight = 284;
-            gridView1.GridControl = gridcontrol;
+            gridView1.GridControl = gridcontrolItem;
             gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             gridView1.Name = "gridView1";
             gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
@@ -529,7 +533,7 @@
             sidePanel1.Location = new Point(0, 0);
             sidePanel1.Margin = new Padding(3, 2, 3, 2);
             sidePanel1.Name = "sidePanel1";
-            sidePanel1.Size = new Size(1075, 67);
+            sidePanel1.Size = new Size(1101, 67);
             sidePanel1.TabIndex = 10;
             sidePanel1.Text = "sidePanel1";
             // 
@@ -550,7 +554,7 @@
             // 
             // lookUpEditLocation
             // 
-            lookUpEditLocation.Location = new Point(301, 34);
+            lookUpEditLocation.Location = new Point(301, 37);
             lookUpEditLocation.Margin = new Padding(3, 2, 3, 2);
             lookUpEditLocation.Name = "lookUpEditLocation";
             lookUpEditLocation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -577,7 +581,7 @@
             labelControl1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelControl1.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             labelControl1.ImageOptions.Image = (Image)resources.GetObject("labelControl1.ImageOptions.Image");
-            labelControl1.Location = new Point(963, 11);
+            labelControl1.Location = new Point(989, 11);
             labelControl1.Margin = new Padding(3, 2, 3, 2);
             labelControl1.Name = "labelControl1";
             labelControl1.Size = new Size(21, 20);
@@ -586,7 +590,7 @@
             // chkEdit
             // 
             chkEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            chkEdit.Location = new Point(987, 9);
+            chkEdit.Location = new Point(1013, 9);
             chkEdit.Margin = new Padding(3, 2, 3, 2);
             chkEdit.MenuManager = barManager2;
             chkEdit.Name = "chkEdit";
@@ -597,7 +601,6 @@
             // 
             // barManager2
             // 
-            barManager2.Bars.AddRange(new DevExpress.XtraBars.Bar[] { bar5 });
             barManager2.DockControls.Add(barDockControl1);
             barManager2.DockControls.Add(barDockControl2);
             barManager2.DockControls.Add(barDockControl3);
@@ -606,17 +609,43 @@
             barManager2.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItem1, barButtonItem3, barButtonItem4, barButtonItemDelete });
             barManager2.MaxItemId = 4;
             // 
-            // bar5
+            // barDockControl1
             // 
-            bar5.BarName = "Tools";
-            bar5.DockCol = 0;
-            bar5.DockRow = 0;
-            bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Right;
-            bar5.FloatLocation = new Point(1556, 282);
-            bar5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItem1), new DevExpress.XtraBars.LinkPersistInfo(barButtonItem3), new DevExpress.XtraBars.LinkPersistInfo(barButtonItem4), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemDelete) });
-            bar5.Offset = 80;
-            bar5.Text = "Tools";
-            bar5.Visible = false;
+            barDockControl1.CausesValidation = false;
+            barDockControl1.Dock = DockStyle.Top;
+            barDockControl1.Location = new Point(0, 0);
+            barDockControl1.Manager = barManager2;
+            barDockControl1.Margin = new Padding(3, 2, 3, 2);
+            barDockControl1.Size = new Size(1103, 0);
+            // 
+            // barDockControl2
+            // 
+            barDockControl2.CausesValidation = false;
+            barDockControl2.Dock = DockStyle.Bottom;
+            barDockControl2.Location = new Point(0, 605);
+            barDockControl2.Manager = barManager2;
+            barDockControl2.Margin = new Padding(3, 2, 3, 2);
+            barDockControl2.Size = new Size(1103, 0);
+            // 
+            // barDockControl3
+            // 
+            barDockControl3.CausesValidation = false;
+            barDockControl3.Dock = DockStyle.Left;
+            barDockControl3.Location = new Point(0, 0);
+            barDockControl3.Manager = barManager2;
+            barDockControl3.Margin = new Padding(3, 2, 3, 2);
+            barDockControl3.Size = new Size(0, 605);
+            // 
+            // barDockControl4
+            // 
+            barDockControl4.Appearance.FontStyleDelta = FontStyle.Bold;
+            barDockControl4.Appearance.Options.UseFont = true;
+            barDockControl4.CausesValidation = false;
+            barDockControl4.Dock = DockStyle.Right;
+            barDockControl4.Location = new Point(1103, 0);
+            barDockControl4.Manager = barManager2;
+            barDockControl4.Margin = new Padding(3, 2, 3, 2);
+            barDockControl4.Size = new Size(0, 605);
             // 
             // barButtonItem1
             // 
@@ -655,44 +684,6 @@
             superToolTip1.Items.Add(toolTipItem1);
             barButtonItemDelete.SuperTip = superToolTip1;
             // 
-            // barDockControl1
-            // 
-            barDockControl1.CausesValidation = false;
-            barDockControl1.Dock = DockStyle.Top;
-            barDockControl1.Location = new Point(0, 0);
-            barDockControl1.Manager = barManager2;
-            barDockControl1.Margin = new Padding(3, 2, 3, 2);
-            barDockControl1.Size = new Size(1103, 0);
-            // 
-            // barDockControl2
-            // 
-            barDockControl2.CausesValidation = false;
-            barDockControl2.Dock = DockStyle.Bottom;
-            barDockControl2.Location = new Point(0, 605);
-            barDockControl2.Manager = barManager2;
-            barDockControl2.Margin = new Padding(3, 2, 3, 2);
-            barDockControl2.Size = new Size(1103, 0);
-            // 
-            // barDockControl3
-            // 
-            barDockControl3.CausesValidation = false;
-            barDockControl3.Dock = DockStyle.Left;
-            barDockControl3.Location = new Point(0, 0);
-            barDockControl3.Manager = barManager2;
-            barDockControl3.Margin = new Padding(3, 2, 3, 2);
-            barDockControl3.Size = new Size(0, 605);
-            // 
-            // barDockControl4
-            // 
-            barDockControl4.Appearance.FontStyleDelta = FontStyle.Bold;
-            barDockControl4.Appearance.Options.UseFont = true;
-            barDockControl4.CausesValidation = false;
-            barDockControl4.Dock = DockStyle.Right;
-            barDockControl4.Location = new Point(1077, 0);
-            barDockControl4.Manager = barManager2;
-            barDockControl4.Margin = new Padding(3, 2, 3, 2);
-            barDockControl4.Size = new Size(26, 605);
-            // 
             // lblLastPK
             // 
             lblLastPK.Appearance.Font = new Font("Tahoma", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
@@ -725,7 +716,7 @@
             // 
             // lookUpEditPl
             // 
-            lookUpEditPl.Location = new Point(279, 8);
+            lookUpEditPl.Location = new Point(279, 11);
             lookUpEditPl.Margin = new Padding(3, 2, 3, 2);
             lookUpEditPl.Name = "lookUpEditPl";
             lookUpEditPl.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -776,26 +767,97 @@
             // 
             // xtraTabPage2
             // 
-            xtraTabPage2.Controls.Add(gridControl1);
-            xtraTabPage2.Controls.Add(panelControl1);
+            xtraTabPage2.Controls.Add(splitContainer1);
             xtraTabPage2.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage2.ImageOptions.Image");
             xtraTabPage2.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage2.Name = "xtraTabPage2";
-            xtraTabPage2.Size = new Size(1075, 561);
+            xtraTabPage2.Size = new Size(1101, 561);
             xtraTabPage2.Text = "Location's";
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(panelControl1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(gridControl1);
+            splitContainer1.Size = new Size(1101, 561);
+            splitContainer1.SplitterDistance = 36;
+            splitContainer1.TabIndex = 3;
+            // 
+            // panelControl1
+            // 
+            panelControl1.Controls.Add(labelControl7);
+            panelControl1.Controls.Add(labelControl9);
+            panelControl1.Controls.Add(labelControl8);
+            panelControl1.Dock = DockStyle.Fill;
+            panelControl1.Location = new Point(0, 0);
+            panelControl1.Margin = new Padding(3, 2, 3, 2);
+            panelControl1.Name = "panelControl1";
+            panelControl1.Size = new Size(1101, 36);
+            panelControl1.TabIndex = 3;
+            // 
+            // labelControl7
+            // 
+            labelControl7.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl7.Appearance.ForeColor = Color.Teal;
+            labelControl7.Appearance.Options.UseFont = true;
+            labelControl7.Appearance.Options.UseForeColor = true;
+            labelControl7.Location = new Point(10, 9);
+            labelControl7.Margin = new Padding(3, 2, 3, 2);
+            labelControl7.Name = "labelControl7";
+            labelControl7.Size = new Size(12, 14);
+            labelControl7.TabIndex = 0;
+            labelControl7.Text = "...";
+            // 
+            // labelControl9
+            // 
+            labelControl9.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl9.Appearance.ForeColor = Color.SeaGreen;
+            labelControl9.Appearance.Options.UseFont = true;
+            labelControl9.Appearance.Options.UseForeColor = true;
+            labelControl9.Location = new Point(181, 9);
+            labelControl9.Margin = new Padding(3, 2, 3, 2);
+            labelControl9.Name = "labelControl9";
+            labelControl9.Size = new Size(12, 14);
+            labelControl9.TabIndex = 2;
+            labelControl9.Text = "...";
+            // 
+            // labelControl8
+            // 
+            labelControl8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelControl8.Appearance.BackColor = Color.FromArgb(255, 255, 128);
+            labelControl8.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            labelControl8.Appearance.ForeColor = Color.Crimson;
+            labelControl8.Appearance.Options.UseBackColor = true;
+            labelControl8.Appearance.Options.UseFont = true;
+            labelControl8.Appearance.Options.UseForeColor = true;
+            labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            labelControl8.Location = new Point(1706, 16);
+            labelControl8.Margin = new Padding(3, 2, 3, 2);
+            labelControl8.Name = "labelControl8";
+            labelControl8.Size = new Size(0, 14);
+            labelControl8.TabIndex = 1;
             // 
             // gridControl1
             // 
-            gridControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gridControl1.Dock = DockStyle.Fill;
             gridControl1.EmbeddedNavigator.Margin = new Padding(3, 2, 3, 2);
-            gridControl1.Location = new Point(0, 50);
+            gridControl1.Location = new Point(0, 0);
             gridControl1.MainView = gridView2;
             gridControl1.Margin = new Padding(3, 2, 3, 2);
             gridControl1.MenuManager = barManager2;
             gridControl1.Name = "gridControl1";
             gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditLocation, repositoryItemCalcEdit1 });
-            gridControl1.Size = new Size(1075, 521);
-            gridControl1.TabIndex = 1;
+            gridControl1.Size = new Size(1101, 521);
+            gridControl1.TabIndex = 2;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
             // 
             // gridView2
@@ -819,9 +881,6 @@
             gridView2.OptionsView.ShowFooter = true;
             gridView2.OptionsView.ShowGroupPanel = false;
             gridView2.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            gridView2.InitNewRow += gridView2_InitNewRow;
-            gridView2.CellValueChanged += gridView2_CellValueChanged;
-            gridView2.ValidateRow += gridView2_ValidateRow;
             // 
             // colLocItemID
             // 
@@ -853,7 +912,6 @@
             repositoryItemLookUpEditLocation.Name = "repositoryItemLookUpEditLocation";
             repositoryItemLookUpEditLocation.NullText = "Select Location ...";
             repositoryItemLookUpEditLocation.ValueMember = "LocationID";
-            repositoryItemLookUpEditLocation.EditValueChanged += repositoryItemLookUpEditLocation_EditValueChanged;
             // 
             // colItemId1
             // 
@@ -969,60 +1027,6 @@
             colEditedDate1.VisibleIndex = 12;
             colEditedDate1.Width = 99;
             // 
-            // panelControl1
-            // 
-            panelControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panelControl1.Controls.Add(labelControl9);
-            panelControl1.Controls.Add(labelControl8);
-            panelControl1.Controls.Add(labelControl7);
-            panelControl1.Location = new Point(-1, 0);
-            panelControl1.Margin = new Padding(3, 2, 3, 2);
-            panelControl1.Name = "panelControl1";
-            panelControl1.Size = new Size(1077, 32);
-            panelControl1.TabIndex = 2;
-            // 
-            // labelControl9
-            // 
-            labelControl9.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelControl9.Appearance.ForeColor = Color.SeaGreen;
-            labelControl9.Appearance.Options.UseFont = true;
-            labelControl9.Appearance.Options.UseForeColor = true;
-            labelControl9.Location = new Point(181, 17);
-            labelControl9.Margin = new Padding(3, 2, 3, 2);
-            labelControl9.Name = "labelControl9";
-            labelControl9.Size = new Size(12, 14);
-            labelControl9.TabIndex = 2;
-            labelControl9.Text = "...";
-            // 
-            // labelControl8
-            // 
-            labelControl8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            labelControl8.Appearance.BackColor = Color.FromArgb(255, 255, 128);
-            labelControl8.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            labelControl8.Appearance.ForeColor = Color.Crimson;
-            labelControl8.Appearance.Options.UseBackColor = true;
-            labelControl8.Appearance.Options.UseFont = true;
-            labelControl8.Appearance.Options.UseForeColor = true;
-            labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            labelControl8.Location = new Point(781, 16);
-            labelControl8.Margin = new Padding(3, 2, 3, 2);
-            labelControl8.Name = "labelControl8";
-            labelControl8.Size = new Size(0, 14);
-            labelControl8.TabIndex = 1;
-            // 
-            // labelControl7
-            // 
-            labelControl7.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelControl7.Appearance.ForeColor = Color.Teal;
-            labelControl7.Appearance.Options.UseFont = true;
-            labelControl7.Appearance.Options.UseForeColor = true;
-            labelControl7.Location = new Point(10, 17);
-            labelControl7.Margin = new Padding(3, 2, 3, 2);
-            labelControl7.Name = "labelControl7";
-            labelControl7.Size = new Size(12, 14);
-            labelControl7.TabIndex = 0;
-            labelControl7.Text = "...";
-            // 
             // bar4
             // 
             bar4.BarName = "Tools";
@@ -1092,7 +1096,7 @@
             xtraTabControl1.ResumeLayout(false);
             xtraTabPage1.ResumeLayout(false);
             sidePanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gridcontrol).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridcontrolItem).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditPK).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditunit).EndInit();
@@ -1105,13 +1109,17 @@
             ((System.ComponentModel.ISupportInitialize)barManager2).EndInit();
             ((System.ComponentModel.ISupportInitialize)lookUpEditPl.Properties).EndInit();
             xtraTabPage2.ResumeLayout(false);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)panelControl1).EndInit();
+            panelControl1.ResumeLayout(false);
+            panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditLocation).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemCalcEdit1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)panelControl1).EndInit();
-            panelControl1.ResumeLayout(false);
-            panelControl1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1122,7 +1130,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraEditors.SidePanel sidePanel2;
-        private DevExpress.XtraGrid.GridControl gridcontrol;
+        private DevExpress.XtraGrid.GridControl gridcontrolItem;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colItemId;
         private DevExpress.XtraGrid.Columns.GridColumn colPKID;
@@ -1166,7 +1174,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.CheckEdit chkEdit;
         private DevExpress.XtraBars.BarManager barManager2;
-        private DevExpress.XtraBars.Bar bar5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
@@ -1186,7 +1193,11 @@
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar2;
+        private SplitContainer splitContainer1;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn colLocItemID;
@@ -1194,6 +1205,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditLocation;
         private DevExpress.XtraGrid.Columns.GridColumn colItemId1;
         private DevExpress.XtraGrid.Columns.GridColumn colQty1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn colQtyInLoc1;
         private DevExpress.XtraGrid.Columns.GridColumn colOverQty1;
         private DevExpress.XtraGrid.Columns.GridColumn colShortageQty1;
         private DevExpress.XtraGrid.Columns.GridColumn colDamageQty1;
@@ -1203,10 +1216,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEnteredDate1;
         private DevExpress.XtraGrid.Columns.GridColumn colEditedBy1;
         private DevExpress.XtraGrid.Columns.GridColumn colEditedDate1;
-        private DevExpress.XtraGrid.Columns.GridColumn colQtyInLoc1;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }

@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AWMS.datalayer.Entities
 {
@@ -12,8 +9,9 @@ namespace AWMS.datalayer.Entities
     {
         public Item()
         {
-
+            LocItems = new HashSet<LocItem>();
         }
+
         [Key]
         public int ItemId { get; set; }
         public int? PKID { get; set; }
@@ -48,6 +46,7 @@ namespace AWMS.datalayer.Entities
         public bool? Hold { get; set; }
         public decimal? NIS { get; set; }
         public string? StorageCode { get; set; }
+
         [ForeignKey(nameof(PKID))]
         public virtual Package Package { get; set; }
         [ForeignKey(nameof(ScopeID))]
@@ -57,7 +56,6 @@ namespace AWMS.datalayer.Entities
         [ForeignKey(nameof(UnitPriceID))]
         public virtual UnitPrice UnitPrice { get; set; }
 
-        //public virtual ICollection<LocItem> LocItems { get; set;}
-
+        public virtual ICollection<LocItem> LocItems { get; set; }
     }
 }

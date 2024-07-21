@@ -27,6 +27,7 @@ namespace AWMS.datalayer.Context
         public DbSet<Unit> Units { get; set; }
         public DbSet<UnitPrice> UnitPrices { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<LocItem> LocItems { get; set; }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
@@ -59,6 +60,7 @@ namespace AWMS.datalayer.Context
             modelBuilder.ApplyConfiguration(new UnitConfiguration());
             modelBuilder.ApplyConfiguration(new ScopeConfiguration());
             modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            modelBuilder.ApplyConfiguration(new LocItemConfiguration());
 
             // Seed initial data
             modelBuilder.Entity<Mr>().HasData(

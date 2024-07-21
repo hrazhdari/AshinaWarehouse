@@ -22,7 +22,6 @@ namespace AWMS.datalayer.Entities
         public int? EditedBy { get; set; }
         [DataType(DataType.Date)]
         public DateTime? EditedDate { get; private set; }
-
-        //public virtual ICollection<LocItem> LocItems { get; set; }
+        public virtual ICollection<LocItem> LocItems { get; set; }
     }
 }

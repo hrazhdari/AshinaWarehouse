@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWMS.datalayer.Migrations
 {
     [DbContext(typeof(AWMScontext))]
-    [Migration("20240717200530_AddLocation")]
-    partial class AddLocation
+    [Migration("20240721190611_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,14 +102,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2703)
+                            EnteredDate = new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(9692)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2708)
+                            EnteredDate = new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(9706)
                         });
                 });
 
@@ -417,17 +417,11 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("ItemId");
 
-                    b.HasIndex("Description")
-                        .HasDatabaseName("IX_Item_Description");
-
                     b.HasIndex("PKID")
                         .HasDatabaseName("IX_Item_PKID");
 
                     b.HasIndex("ScopeID")
                         .HasDatabaseName("IX_Item_ScopeID");
-
-                    b.HasIndex("Tag")
-                        .HasDatabaseName("IX_Item_Tag");
 
                     b.HasIndex("UnitID")
                         .HasDatabaseName("IX_Item_UnitID");
@@ -436,6 +430,61 @@ namespace AWMS.datalayer.Migrations
                         .HasDatabaseName("IX_Item_UnitPriceID");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.LocItem", b =>
+                {
+                    b.Property<int>("LocItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocItemID"));
+
+                    b.Property<decimal?>("DamageQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("EditedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EditedDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("EnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("date");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LocationID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("NISQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("OverQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("Qty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("RejectQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("ShortageQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("LocItemID");
+
+                    b.HasIndex("ItemId")
+                        .HasDatabaseName("IX_LocItem_ItemId");
+
+                    b.HasIndex("LocationID")
+                        .HasDatabaseName("IX_LocItem_LocationID");
+
+                    b.ToTable("LocItems");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Location", b =>
@@ -475,21 +524,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2584),
+                            EnteredDate = new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(8116),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2641),
+                            EnteredDate = new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(8169),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 7, 18, 0, 35, 30, 543, DateTimeKind.Local).AddTicks(2643),
+                            EnteredDate = new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(8172),
                             LocationName = "W02A02B"
                         });
                 });
@@ -1516,6 +1565,25 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("UnitPrice");
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.LocItem", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.Item", "Item")
+                        .WithMany("LocItems")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AWMS.datalayer.Entities.Location", "Location")
+                        .WithMany("LocItems")
+                        .HasForeignKey("LocationID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+
+                    b.Navigation("Location");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>
                 {
                     b.HasOne("AWMS.datalayer.Entities.PackingList", "PackingList")
@@ -1637,6 +1705,16 @@ namespace AWMS.datalayer.Migrations
             modelBuilder.Entity("AWMS.datalayer.Entities.Irn", b =>
                 {
                     b.Navigation("PackingLists");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Item", b =>
+                {
+                    b.Navigation("LocItems");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Location", b =>
+                {
+                    b.Navigation("LocItems");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Mr", b =>

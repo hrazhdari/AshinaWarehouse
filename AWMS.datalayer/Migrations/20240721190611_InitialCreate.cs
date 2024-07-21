@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AWMS.datalayer.Migrations
 {
-    /// <inheritdoc />
-    public partial class InitialDatabase : Migration
+    // <inheritdoc />
+    public partial class InitialCreate : Migration
     {
-        /// <inheritdoc />
+        // <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -91,6 +91,23 @@ namespace AWMS.datalayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Locations",
+                columns: table => new
+                {
+                    LocationID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LocationName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    EnteredBy = table.Column<int>(type: "int", nullable: true),
+                    EnteredDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EditedBy = table.Column<int>(type: "int", nullable: true),
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Locations", x => x.LocationID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Mrs",
                 columns: table => new
                 {
@@ -106,6 +123,19 @@ namespace AWMS.datalayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Scopes",
+                columns: table => new
+                {
+                    ScopeID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ScopeName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Scopes", x => x.ScopeID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Suppliers",
                 columns: table => new
                 {
@@ -118,6 +148,32 @@ namespace AWMS.datalayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Suppliers", x => x.SupplierId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UnitPrices",
+                columns: table => new
+                {
+                    UnitPriceID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UnitPriceName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UnitPrices", x => x.UnitPriceID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Units",
+                columns: table => new
+                {
+                    UnitID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UnitName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Units", x => x.UnitID);
                 });
 
             migrationBuilder.CreateTable(
@@ -216,9 +272,9 @@ namespace AWMS.datalayer.Migrations
                     PoId = table.Column<int>(type: "int", nullable: true),
                     IrnId = table.Column<int>(type: "int", nullable: true),
                     PLName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    ArchiveNO = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PLNO = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OPINO = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ArchiveNO = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    PLNO = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    OPINO = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Project = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AreaUnitID = table.Column<int>(type: "int", nullable: true),
                     SupplierId = table.Column<int>(type: "int", nullable: true),
@@ -306,6 +362,147 @@ namespace AWMS.datalayer.Migrations
                         onDelete: ReferentialAction.SetNull);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Packages",
+                columns: table => new
+                {
+                    PKID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PLId = table.Column<int>(type: "int", nullable: false),
+                    PK = table.Column<int>(type: "int", nullable: false),
+                    NetW = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    GrossW = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Dimension = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Volume = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    ArrivalDate = table.Column<DateTime>(type: "date", nullable: true),
+                    Desciption = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Remark = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    EnteredBy = table.Column<int>(type: "int", nullable: true),
+                    EnteredDate = table.Column<DateTime>(type: "date", nullable: true),
+                    EditedBy = table.Column<int>(type: "int", nullable: true),
+                    EditedDate = table.Column<DateTime>(type: "date", nullable: true),
+                    MSRNO = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    MSRPDF = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    MSRDate = table.Column<DateTime>(type: "date", nullable: true),
+                    MSREnteredBy = table.Column<int>(type: "int", nullable: true),
+                    MSRStatus = table.Column<bool>(type: "bit", nullable: true),
+                    MSRRev = table.Column<int>(type: "int", nullable: true),
+                    MSRRevEnteredBy = table.Column<int>(type: "int", nullable: true),
+                    MSRRevDate = table.Column<DateTime>(type: "date", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Packages", x => x.PKID);
+                    table.ForeignKey(
+                        name: "FK_Packages_PackingLists_PLId",
+                        column: x => x.PLId,
+                        principalTable: "PackingLists",
+                        principalColumn: "PLId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    ItemId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PKID = table.Column<int>(type: "int", nullable: false),
+                    ItemOfPk = table.Column<int>(type: "int", nullable: true),
+                    Tag = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    UnitID = table.Column<int>(type: "int", nullable: true),
+                    Qty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    OverQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ShortageQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DamageQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    IncorectQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ScopeID = table.Column<int>(type: "int", nullable: true),
+                    HeatNo = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    BatchNo = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Remark = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    MTRNo = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    ColorCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    LabelNo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    EnteredBy = table.Column<int>(type: "int", nullable: true),
+                    EnteredDate = table.Column<DateTime>(type: "date", nullable: true),
+                    EditedBy = table.Column<int>(type: "int", nullable: true),
+                    EditedDate = table.Column<DateTime>(type: "date", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    UnitPriceID = table.Column<int>(type: "int", nullable: true),
+                    NetW = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    GrossW = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ItemCodeId = table.Column<int>(type: "int", nullable: true),
+                    BaseMaterial = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Hold = table.Column<bool>(type: "bit", nullable: true),
+                    NIS = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    StorageCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.ItemId);
+                    table.ForeignKey(
+                        name: "FK_Items_Packages_PKID",
+                        column: x => x.PKID,
+                        principalTable: "Packages",
+                        principalColumn: "PKID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Items_Scopes_ScopeID",
+                        column: x => x.ScopeID,
+                        principalTable: "Scopes",
+                        principalColumn: "ScopeID",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_Items_UnitPrices_UnitPriceID",
+                        column: x => x.UnitPriceID,
+                        principalTable: "UnitPrices",
+                        principalColumn: "UnitPriceID",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_Items_Units_UnitID",
+                        column: x => x.UnitID,
+                        principalTable: "Units",
+                        principalColumn: "UnitID",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LocItems",
+                columns: table => new
+                {
+                    LocItemID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LocationID = table.Column<int>(type: "int", nullable: false),
+                    ItemId = table.Column<int>(type: "int", nullable: false),
+                    Qty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    OverQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ShortageQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DamageQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    RejectQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    NISQty = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    EnteredBy = table.Column<int>(type: "int", nullable: true),
+                    EnteredDate = table.Column<DateTime>(type: "date", nullable: true),
+                    EditedBy = table.Column<int>(type: "int", nullable: true),
+                    EditedDate = table.Column<DateTime>(type: "date", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LocItems", x => x.LocItemID);
+                    table.ForeignKey(
+                        name: "FK_LocItems_Items_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Items",
+                        principalColumn: "ItemId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LocItems_Locations_LocationID",
+                        column: x => x.LocationID,
+                        principalTable: "Locations",
+                        principalColumn: "LocationID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AreaUnits",
                 columns: new[] { "AreaUnitID", "AreaUnitDescription", "AreaUnitName", "AreaUnitTrain", "EnteredDate", "Remark" },
@@ -316,8 +513,8 @@ namespace AWMS.datalayer.Migrations
                 columns: new[] { "CompanyID", "Abbreviation", "CompanyLogo", "CompanyName", "EnteredDate", "Local_Foreign", "Remark" },
                 values: new object[,]
                 {
-                    { 1, "PPI", null, "Petro Paydar Iranian", new DateTime(2024, 7, 12, 22, 41, 20, 719, DateTimeKind.Local).AddTicks(6999), null, null },
-                    { 2, "TESCO", null, "Teco", new DateTime(2024, 7, 12, 22, 41, 20, 719, DateTimeKind.Local).AddTicks(7071), null, null }
+                    { 1, "PPI", null, "Petro Paydar Iranian", new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(9692), null, null },
+                    { 2, "TESCO", null, "Teco", new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(9706), null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -335,7 +532,12 @@ namespace AWMS.datalayer.Migrations
                     { 8, "Steel Profile" },
                     { 9, "Paint" },
                     { 10, "Insulation" },
-                    { 11, "Other" }
+                    { 11, "Other" },
+                    { 12, "Hydraulics" },
+                    { 13, "HVAC" },
+                    { 14, "Automation" },
+                    { 15, "Safety" },
+                    { 16, "Quality Control" }
                 });
 
             migrationBuilder.InsertData(
@@ -349,14 +551,139 @@ namespace AWMS.datalayer.Migrations
                 values: new object[] { 1, null, "-", "-", null });
 
             migrationBuilder.InsertData(
+                table: "Locations",
+                columns: new[] { "LocationID", "EditedBy", "EditedDate", "EnteredBy", "EnteredDate", "LocationName" },
+                values: new object[,]
+                {
+                    { 1, null, null, 88, new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(8116), "L02A101A" },
+                    { 2, null, null, 88, new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(8169), "L02A102A" },
+                    { 3, null, null, 88, new DateTime(2024, 7, 21, 23, 36, 11, 523, DateTimeKind.Local).AddTicks(8172), "W02A02B" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Mrs",
                 columns: new[] { "MrId", "EnteredDate", "MrDescription", "MrName" },
                 values: new object[] { 1, null, null, "-" });
 
             migrationBuilder.InsertData(
+                table: "Scopes",
+                columns: new[] { "ScopeID", "ScopeName" },
+                values: new object[,]
+                {
+                    { 1, "Fitting" },
+                    { 2, "Flange" },
+                    { 3, "Pipe" },
+                    { 4, "Elbow" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Suppliers",
                 columns: new[] { "SupplierId", "EnteredDate", "SupplierName", "SupplierRemark" },
                 values: new object[] { 1, null, "-", "-" });
+
+            migrationBuilder.InsertData(
+                table: "UnitPrices",
+                columns: new[] { "UnitPriceID", "UnitPriceName" },
+                values: new object[,]
+                {
+                    { 1, "Euro" },
+                    { 2, "Rial" },
+                    { 3, "Dollar US" },
+                    { 4, "Pound UK" },
+                    { 5, "Yen Japan" },
+                    { 6, "Rupee India" },
+                    { 7, "Yuan China" },
+                    { 8, "Won South Korea" },
+                    { 9, "Franc Switzerland" },
+                    { 10, "Krone Denmark" },
+                    { 11, "Lira Turkey" },
+                    { 12, "Real Brazil" },
+                    { 13, "Rand South Africa" },
+                    { 14, "Baht Thailand" },
+                    { 15, "Peso Mexico" },
+                    { 16, "Ringgit Malaysia" },
+                    { 17, "Zloty Poland" },
+                    { 18, "Dirham UAE" },
+                    { 19, "Dinar Kuwait" },
+                    { 20, "Kuna Croatia" },
+                    { 21, "Forint Hungary" },
+                    { 22, "Leu Romania" },
+                    { 23, "Shekel Israel" },
+                    { 24, "Taka Bangladesh" },
+                    { 25, "Krone Norway" },
+                    { 26, "Krona Sweden" },
+                    { 27, "Franc France" },
+                    { 28, "Pound Egypt" },
+                    { 29, "Euro Germany" },
+                    { 30, "Dollar Australia" },
+                    { 31, "Dollar Canada" },
+                    { 32, "Dollar Singapore" },
+                    { 33, "Pound Switzerland" },
+                    { 34, "Franc Belgium" },
+                    { 35, "Crown Czech Republic" },
+                    { 36, "Krona Iceland" },
+                    { 37, "Euro Ireland" },
+                    { 38, "Lira Italy" },
+                    { 39, "Dollar New Zealand" },
+                    { 40, "Riyal Saudi Arabia" },
+                    { 41, "Ruble Russia" },
+                    { 42, "Pound Sterling" },
+                    { 43, "Dollar Hong Kong" },
+                    { 44, "Pound Lebanon" },
+                    { 45, "Franc Belgium" },
+                    { 46, "Dollar Taiwan" },
+                    { 47, "Dinar Bahrain" },
+                    { 48, "Dollar Brunei" },
+                    { 49, "Pound Cyprus" },
+                    { 50, "Dinar Jordan" },
+                    { 51, "Baht Thailand" },
+                    { 52, "Dollar Egypt" },
+                    { 53, "Dollar China" },
+                    { 54, "Euro Ukraine" },
+                    { 55, "Dollar Mexico" },
+                    { 56, "Euro Portugal" },
+                    { 57, "Dollar Argentina" },
+                    { 58, "Ruble Armenia" },
+                    { 59, "Ruble Azerbaijan" },
+                    { 60, "Euro Belgium" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Units",
+                columns: new[] { "UnitID", "UnitName" },
+                values: new object[,]
+                {
+                    { 1, "PC" },
+                    { 2, "KG" },
+                    { 3, "METER" },
+                    { 4, "LITER" },
+                    { 5, "BOX" },
+                    { 6, "PACK" },
+                    { 7, "SET" },
+                    { 8, "PAIR" },
+                    { 9, "DOZEN" },
+                    { 10, "GALLON" },
+                    { 11, "TON" },
+                    { 12, "GRAM" },
+                    { 13, "LB" },
+                    { 14, "OZ" },
+                    { 15, "INCH" },
+                    { 16, "FOOT" },
+                    { 17, "YARD" },
+                    { 18, "CM" },
+                    { 19, "MM" },
+                    { 20, "SQM" },
+                    { 21, "CUBICM" },
+                    { 22, "LTR" },
+                    { 23, "BLK" },
+                    { 24, "PALLET" },
+                    { 25, "ROLL" },
+                    { 26, "SHEET" },
+                    { 27, "TUBE" },
+                    { 28, "CARTON" },
+                    { 29, "BAG" },
+                    { 30, "CAN" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Vendors",
@@ -379,47 +706,106 @@ namespace AWMS.datalayer.Migrations
                 column: "CompanyID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_AreaUnitID",
+                name: "IX_Item_PKID",
+                table: "Items",
+                column: "PKID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Item_ScopeID",
+                table: "Items",
+                column: "ScopeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Item_UnitID",
+                table: "Items",
+                column: "UnitID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Item_UnitPriceID",
+                table: "Items",
+                column: "UnitPriceID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Location_LocationName",
+                table: "Locations",
+                column: "LocationName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Package_MSRNO",
+                table: "Packages",
+                column: "MSRNO");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Package_PK",
+                table: "Packages",
+                column: "PK");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Package_PLId",
+                table: "Packages",
+                column: "PLId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PackingList_ArchiveNO",
+                table: "PackingLists",
+                column: "ArchiveNO");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PackingList_AreaUnitID",
                 table: "PackingLists",
                 column: "AreaUnitID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_DesciplineId",
+                name: "IX_PackingList_DesciplineId",
                 table: "PackingLists",
                 column: "DesciplineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_DescriptionForPkId",
+                name: "IX_PackingList_DescriptionForPkId",
                 table: "PackingLists",
                 column: "DescriptionForPkId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_IrnId",
+                name: "IX_PackingList_IrnId",
                 table: "PackingLists",
                 column: "IrnId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_MrId",
+                name: "IX_PackingList_MrId",
                 table: "PackingLists",
                 column: "MrId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_PoId",
+                name: "IX_PackingList_OPINO",
+                table: "PackingLists",
+                column: "OPINO",
+                unique: true,
+                filter: "[OPINO] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PackingList_PLNO",
+                table: "PackingLists",
+                column: "PLNO",
+                unique: true,
+                filter: "[PLNO] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PackingList_PoId",
                 table: "PackingLists",
                 column: "PoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_ShId",
+                name: "IX_PackingList_ShId",
                 table: "PackingLists",
                 column: "ShId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_SupplierId",
+                name: "IX_PackingList_SupplierId",
                 table: "PackingLists",
                 column: "SupplierId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingLists_VendorId",
+                name: "IX_PackingList_VendorId",
                 table: "PackingLists",
                 column: "VendorId");
 
@@ -429,22 +815,58 @@ namespace AWMS.datalayer.Migrations
                 column: "MrId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Scope_ScopeName",
+                table: "Scopes",
+                column: "ScopeName");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Shipments_PoId",
                 table: "Shipments",
                 column: "PoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UnitPrice_UnitPriceName",
+                table: "UnitPrices",
+                column: "UnitPriceName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Unit_UnitName",
+                table: "Units",
+                column: "UnitName");
         }
 
-        /// <inheritdoc />
+        // <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "CompanyContracts");
 
             migrationBuilder.DropTable(
-                name: "PackingLists");
+                name: "LocItems");
 
             migrationBuilder.DropTable(
                 name: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Items");
+
+            migrationBuilder.DropTable(
+                name: "Locations");
+
+            migrationBuilder.DropTable(
+                name: "Packages");
+
+            migrationBuilder.DropTable(
+                name: "Scopes");
+
+            migrationBuilder.DropTable(
+                name: "UnitPrices");
+
+            migrationBuilder.DropTable(
+                name: "Units");
+
+            migrationBuilder.DropTable(
+                name: "PackingLists");
 
             migrationBuilder.DropTable(
                 name: "AreaUnits");
