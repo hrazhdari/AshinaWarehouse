@@ -99,46 +99,89 @@ namespace AWMS.dapper
         //    }
         //}
 
-        public async Task AddItemWithAddLocitemWithTriggerAsync(ItemDto itemDto, int locationId)
+        //public async Task AddItemWithAddLocitemWithTriggerAsync(ItemDto itemDto, int locationId)
+        //{
+        //    using (var connection = CreateConnection())
+        //    {
+        //        var parameters = new DynamicParameters();
+        //        parameters.Add("@PKID", itemDto.PKID);
+        //        parameters.Add("@ItemOfPk", itemDto.ItemOfPk);
+        //        parameters.Add("@Tag", itemDto.Tag);
+        //        parameters.Add("@Description", itemDto.Description);
+        //        parameters.Add("@UnitID", itemDto.UnitID);
+        //        parameters.Add("@Qty", itemDto.Qty);
+        //        parameters.Add("@OverQty", itemDto.OverQty);
+        //        parameters.Add("@ShortageQty", itemDto.ShortageQty);
+        //        parameters.Add("@DamageQty", itemDto.DamageQty);
+        //        parameters.Add("@IncorectQty", itemDto.IncorectQty);
+        //        parameters.Add("@ScopeID", itemDto.ScopeID);
+        //        parameters.Add("@HeatNo", itemDto.HeatNo);
+        //        parameters.Add("@BatchNo", itemDto.BatchNo);
+        //        parameters.Add("@Remark", itemDto.Remark);
+        //        parameters.Add("@MTRNo", itemDto.MTRNo);
+        //        parameters.Add("@ColorCode", itemDto.ColorCode);
+        //        parameters.Add("@LabelNo", itemDto.LabelNo);
+        //        parameters.Add("@EnteredBy", itemDto.EnteredBy);
+        //        parameters.Add("@EnteredDate", itemDto.EnteredDate);
+        //        parameters.Add("@EditedBy", itemDto.EditedBy);
+        //        parameters.Add("@EditedDate", itemDto.EditedDate);
+        //        parameters.Add("@Price", itemDto.Price);
+        //        parameters.Add("@UnitPriceID", itemDto.UnitPriceID);
+        //        parameters.Add("@NetW", itemDto.NetW);
+        //        parameters.Add("@GrossW", itemDto.GrossW);
+        //        parameters.Add("@ItemCodeId", itemDto.ItemCodeId);
+        //        parameters.Add("@BaseMaterial", itemDto.BaseMaterial);
+        //        parameters.Add("@Hold", itemDto.Hold);
+        //        parameters.Add("@NIS", itemDto.NIS);
+        //        parameters.Add("@LocationID", locationId); // New parameter
+
+        //        await connection.ExecuteAsync("sp_AddItemWithAddLocitemWithTrigger", parameters, commandType: CommandType.StoredProcedure);
+        //    }
+        //}
+
+        public async Task<int> AddItemWithAddLocitemWithTriggerAsync(ItemDto item, int locationId)
         {
-            using (var connection = CreateConnection())
+            using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@PKID", itemDto.PKID);
-                parameters.Add("@ItemOfPk", itemDto.ItemOfPk);
-                parameters.Add("@Tag", itemDto.Tag);
-                parameters.Add("@Description", itemDto.Description);
-                parameters.Add("@UnitID", itemDto.UnitID);
-                parameters.Add("@Qty", itemDto.Qty);
-                parameters.Add("@OverQty", itemDto.OverQty);
-                parameters.Add("@ShortageQty", itemDto.ShortageQty);
-                parameters.Add("@DamageQty", itemDto.DamageQty);
-                parameters.Add("@IncorectQty", itemDto.IncorectQty);
-                parameters.Add("@ScopeID", itemDto.ScopeID);
-                parameters.Add("@HeatNo", itemDto.HeatNo);
-                parameters.Add("@BatchNo", itemDto.BatchNo);
-                parameters.Add("@Remark", itemDto.Remark);
-                parameters.Add("@MTRNo", itemDto.MTRNo);
-                parameters.Add("@ColorCode", itemDto.ColorCode);
-                parameters.Add("@LabelNo", itemDto.LabelNo);
-                parameters.Add("@EnteredBy", itemDto.EnteredBy);
-                parameters.Add("@EnteredDate", itemDto.EnteredDate);
-                parameters.Add("@EditedBy", itemDto.EditedBy);
-                parameters.Add("@EditedDate", itemDto.EditedDate);
-                parameters.Add("@Price", itemDto.Price);
-                parameters.Add("@UnitPriceID", itemDto.UnitPriceID);
-                parameters.Add("@NetW", itemDto.NetW);
-                parameters.Add("@GrossW", itemDto.GrossW);
-                parameters.Add("@ItemCodeId", itemDto.ItemCodeId);
-                parameters.Add("@BaseMaterial", itemDto.BaseMaterial);
-                parameters.Add("@Hold", itemDto.Hold);
-                parameters.Add("@NIS", itemDto.NIS);
-                parameters.Add("@LocationID", locationId); // New parameter
+                parameters.Add("PKID", item.PKID);
+                parameters.Add("ItemOfPk", item.ItemOfPk);
+                parameters.Add("Tag", item.Tag);
+                parameters.Add("Description", item.Description);
+                parameters.Add("UnitID", item.UnitID);
+                parameters.Add("Qty", item.Qty);
+                parameters.Add("OverQty", item.OverQty);
+                parameters.Add("ShortageQty", item.ShortageQty);
+                parameters.Add("DamageQty", item.DamageQty);
+                parameters.Add("IncorectQty", item.IncorectQty);
+                parameters.Add("ScopeID", item.ScopeID);
+                parameters.Add("HeatNo", item.HeatNo);
+                parameters.Add("BatchNo", item.BatchNo);
+                parameters.Add("Remark", item.Remark);
+                parameters.Add("MTRNo", item.MTRNo);
+                parameters.Add("ColorCode", item.ColorCode);
+                parameters.Add("LabelNo", item.LabelNo);
+                parameters.Add("EnteredBy", item.EnteredBy);
+                parameters.Add("EnteredDate", item.EnteredDate);
+                parameters.Add("EditedBy", item.EditedBy);
+                parameters.Add("EditedDate", item.EditedDate);
+                parameters.Add("Price", item.Price);
+                parameters.Add("UnitPriceID", item.UnitPriceID);
+                parameters.Add("NetW", item.NetW);
+                parameters.Add("GrossW", item.GrossW);
+                parameters.Add("ItemCodeId", item.ItemCodeId);
+                parameters.Add("BaseMaterial", item.BaseMaterial);
+                parameters.Add("Hold", item.Hold);
+                parameters.Add("NIS", item.NIS);
+                parameters.Add("LocationID", locationId);
+
+                parameters.Add("NewItemId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 await connection.ExecuteAsync("sp_AddItemWithAddLocitemWithTrigger", parameters, commandType: CommandType.StoredProcedure);
+
+                return parameters.Get<int>("NewItemId");
             }
         }
-
 
         public async Task AddAsync(ItemDto item)
         {
@@ -203,7 +246,7 @@ namespace AWMS.dapper
             using (var connection = CreateConnection())
             {
                 var items = await connection.QueryAsync<ItemDto>(
-                    "sp_GetItemsByPlIdWithLoopAndMergeJoin",
+                    "sp_GetItemsByPlIdWithTempTable",
                     new { PlId },
                     commandType: CommandType.StoredProcedure);
 
@@ -261,5 +304,39 @@ namespace AWMS.dapper
                 await connection.ExecuteAsync("sp_UpdateItem", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public async Task DeleteMultipleItemsWithTransactionAsync(IEnumerable<ItemDto> items)
+        {
+            using (var connection = CreateConnection())
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        var table = new DataTable();
+                        table.Columns.Add("ItemID", typeof(int));
+
+                        foreach (var item in items)
+                        {
+                            table.Rows.Add(item.ItemId);
+                        }
+
+                        var parameters = new DynamicParameters();
+                        parameters.Add("@ItemIDList", table.AsTableValuedParameter("dbo.ItemIDListType"));
+
+                        await connection.ExecuteAsync("DeleteItems", parameters, transaction: transaction, commandType: CommandType.StoredProcedure);
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
     }
 }

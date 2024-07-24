@@ -49,6 +49,13 @@ namespace AWMS.dapper
                 return await connection.QueryAsync<UnitDto>("spGetAllUnits", commandType: CommandType.StoredProcedure);
             }
         }
+        public IEnumerable<UnitDto> GetAll()
+        {
+            using (var connection = CreateConnection())
+            {
+                return  connection.Query<UnitDto>("spGetAllUnits", commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public async Task<UnitDto> GetByIdAsync(int id)
         {

@@ -49,6 +49,13 @@ namespace AWMS.dapper
                 return await connection.QueryAsync<ScopeDto>("spGetAllScopes", commandType: CommandType.StoredProcedure);
             }
         }
+        public IEnumerable<ScopeDto> GetAll()
+        {
+            using (var connection = CreateConnection())
+            {
+                return connection.Query<ScopeDto>("spGetAllScopes", commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public async Task<ScopeDto> GetByIdAsync(int id)
         {

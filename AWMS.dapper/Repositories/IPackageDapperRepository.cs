@@ -15,6 +15,7 @@ namespace AWMS.dapper.Repositories
         PackageDto GetPackageByPK(int pk);
         bool GetPackageByPackageNameBool(string packageName);
         int GetLastPackage(int plId);
+        int GetLastPKID(int plId);
         int? GetPackageByPKID(int packageId);
         int GetPackageCount(int plId);
         bool CheckPkExist(int plId, int pkNumber);

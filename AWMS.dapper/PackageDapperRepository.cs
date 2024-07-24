@@ -143,6 +143,27 @@ namespace AWMS.dapper
             }
         }
 
+        public int GetLastPKID(int plId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                string sql = "dbo.GetLastPKID";
+                var parameters = new DynamicParameters();
+                parameters.Add("@PLId", plId);
+
+                var result = connection.QuerySingleOrDefault<int>(sql, parameters, commandType: CommandType.StoredProcedure);
+
+                if (result == 0)
+                {
+                    Console.WriteLine($"No PKID found for PLId: {plId}");
+                }
+
+                return result;
+            }
+        }
+
+
+
         public int GetPackageCount(int plId)
         {
             using (var connection = CreateConnection())

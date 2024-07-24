@@ -73,6 +73,8 @@
             colStorageCode = new DevExpress.XtraGrid.Columns.GridColumn();
             repositoryItemTextEditPLID = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             sidePanel1 = new DevExpress.XtraEditors.SidePanel();
+            btndeleteItem = new DevExpress.XtraEditors.SimpleButton();
+            btnAddNewItem = new DevExpress.XtraEditors.SimpleButton();
             labelControl6 = new DevExpress.XtraEditors.LabelControl();
             lookUpEditLocation = new DevExpress.XtraEditors.LookUpEdit();
             labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -212,6 +214,7 @@
             gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             gridView1.Name = "gridView1";
             gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
             gridView1.OptionsEditForm.PopupEditFormWidth = 600;
             gridView1.OptionsMenu.ShowAddNewSummaryItem = DevExpress.Utils.DefaultBoolean.True;
             gridView1.OptionsSelection.MultiSelect = true;
@@ -219,8 +222,6 @@
             gridView1.OptionsView.ShowFooter = true;
             gridView1.OptionsView.ShowGroupPanel = false;
             gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            gridView1.CellValueChanged += gridView1_CellValueChanged;
-            gridView1.ValidateRow += gridView1_ValidateRow;
             // 
             // colItemId
             // 
@@ -518,6 +519,8 @@
             // 
             sidePanel1.Appearance.BorderColor = Color.SeaShell;
             sidePanel1.Appearance.Options.UseBorderColor = true;
+            sidePanel1.Controls.Add(btndeleteItem);
+            sidePanel1.Controls.Add(btnAddNewItem);
             sidePanel1.Controls.Add(labelControl6);
             sidePanel1.Controls.Add(lookUpEditLocation);
             sidePanel1.Controls.Add(labelControl5);
@@ -536,6 +539,32 @@
             sidePanel1.Size = new Size(1101, 67);
             sidePanel1.TabIndex = 10;
             sidePanel1.Text = "sidePanel1";
+            // 
+            // btndeleteItem
+            // 
+            btndeleteItem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btndeleteItem.Appearance.BorderColor = Color.FromArgb(255, 128, 0);
+            btndeleteItem.Appearance.Options.UseBorderColor = true;
+            btndeleteItem.ImageOptions.Image = Properties.Resources.cancel_16x16;
+            btndeleteItem.Location = new Point(894, 35);
+            btndeleteItem.Name = "btndeleteItem";
+            btndeleteItem.Size = new Size(89, 23);
+            btndeleteItem.TabIndex = 93;
+            btndeleteItem.Text = "Delete Item";
+            btndeleteItem.Click += btndeleteItem_Click;
+            // 
+            // btnAddNewItem
+            // 
+            btnAddNewItem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddNewItem.Appearance.BorderColor = Color.FromArgb(255, 128, 0);
+            btnAddNewItem.Appearance.Options.UseBorderColor = true;
+            btnAddNewItem.ImageOptions.Image = Properties.Resources.add_16x16;
+            btnAddNewItem.Location = new Point(989, 35);
+            btnAddNewItem.Name = "btnAddNewItem";
+            btnAddNewItem.Size = new Size(101, 23);
+            btnAddNewItem.TabIndex = 92;
+            btnAddNewItem.Text = "Add New Item";
+            btnAddNewItem.Click += btnAddNewItem_Click;
             // 
             // labelControl6
             // 
@@ -881,6 +910,7 @@
             gridView2.OptionsView.ShowFooter = true;
             gridView2.OptionsView.ShowGroupPanel = false;
             gridView2.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            gridView2.ValidateRow += gridView2_ValidateRow;
             // 
             // colLocItemID
             // 
@@ -1216,5 +1246,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEnteredDate1;
         private DevExpress.XtraGrid.Columns.GridColumn colEditedBy1;
         private DevExpress.XtraGrid.Columns.GridColumn colEditedDate1;
+        private DevExpress.XtraEditors.SimpleButton btnAddNewItem;
+        private DevExpress.XtraEditors.SimpleButton btndeleteItem;
     }
 }

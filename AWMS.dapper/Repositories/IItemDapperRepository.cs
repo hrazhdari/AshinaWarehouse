@@ -12,6 +12,8 @@ namespace AWMS.dapper.Repositories
         Task AddAsync(ItemDto item);
         Task UpdateAsync(ItemDto item);
         Task DeleteAsync(int id);
-        Task AddItemWithAddLocitemWithTriggerAsync(ItemDto itemDto, int locationId);
+        //Task AddItemWithAddLocitemWithTriggerAsync(ItemDto itemDto, int locationId);
+        Task<int> AddItemWithAddLocitemWithTriggerAsync(ItemDto item, int locationId);
+        Task DeleteMultipleItemsWithTransactionAsync(IEnumerable<ItemDto> items);
     }
 }

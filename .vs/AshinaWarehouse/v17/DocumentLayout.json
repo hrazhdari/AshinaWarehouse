@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|d:\\mybigproject\\ashinawarehouse\\awms.datalayer\\entities\\locitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B90FBC6-487B-46DA-947C-49825B341C03}|AWMS.datalayer\\AWMS.datalayer.csproj|solutionrelative:awms.datalayer\\entities\\locitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmitemloc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,6 +13,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|D:\\MyBigProject\\AshinaWarehouse\\awms.app\\forms\\ribbonmaterial\\frmitemloc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmitemloc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\locitemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\locitemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\repositories\\ilocitemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\repositories\\ilocitemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dto\\locitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|solutionrelative:awms.dto\\locitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +43,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LocItem.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\Entities\\LocItem.cs",
-              "RelativeDocumentMoniker": "AWMS.datalayer\\Entities\\LocItem.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.datalayer\\Entities\\LocItem.cs",
-              "RelativeToolTip": "AWMS.datalayer\\Entities\\LocItem.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAuwCgAAAABAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Program.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Program.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Program.cs",
+              "RelativeToolTip": "AWMS.app\\Program.cs",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAAAGEAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-21T12:53:10.739Z",
+              "WhenOpened": "2024-07-24T10:37:19.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmItemLoc.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAAAEcAAAAXAAAA",
+              "DocumentIndex": 5,
+              "Title": "LocItemDto.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\LocItemDto.cs",
+              "RelativeDocumentMoniker": "AWMS.dto\\LocItemDto.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\LocItemDto.cs",
+              "RelativeToolTip": "AWMS.dto\\LocItemDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-21T12:37:13.944Z",
+              "WhenOpened": "2024-07-24T09:51:13.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ILocItemDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\ILocItemDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\ILocItemDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\ILocItemDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\Repositories\\ILocItemDapperRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-24T09:49:18.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LocItemDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\LocItemDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\LocItemDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\LocItemDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\LocItemDapperRepository.cs",
+              "ViewState": "AQIAAHQAAAAAAAAAAAAuwJQAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-24T09:43:55.433Z",
               "EditorCaption": ""
             },
             {
@@ -63,7 +101,21 @@
               "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs [Design]",
               "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-21T12:37:05.186Z"
+              "WhenOpened": "2024-07-22T07:15:59.382Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmItemLoc.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmItemLoc.cs",
+              "ViewState": "AQIAAJgAAAAAAAAAAIAwwJcBAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T12:37:13.944Z",
+              "EditorCaption": ""
             }
           ]
         }

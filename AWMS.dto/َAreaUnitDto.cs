@@ -10,5 +10,6 @@ namespace AWMS.dto
         public string? AreaUnitTrain { get; set; }
         public DateTime? EnteredDate { get; set; }
         public string? Remark { get; set; }
+
     }
 }
