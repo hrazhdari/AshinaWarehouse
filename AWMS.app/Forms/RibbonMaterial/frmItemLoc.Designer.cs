@@ -30,8 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemLoc));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             sidePanel2 = new DevExpress.XtraEditors.SidePanel();
@@ -98,6 +98,23 @@
             xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             splitContainer1 = new SplitContainer();
             panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            labelControl24 = new DevExpress.XtraEditors.LabelControl();
+            labelControl23 = new DevExpress.XtraEditors.LabelControl();
+            labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            btnDeleteLocItem = new DevExpress.XtraEditors.SimpleButton();
+            labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            btnAddNewLocItem = new DevExpress.XtraEditors.SimpleButton();
+            labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            labelControl10 = new DevExpress.XtraEditors.LabelControl();
             labelControl7 = new DevExpress.XtraEditors.LabelControl();
             labelControl9 = new DevExpress.XtraEditors.LabelControl();
             labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -182,10 +199,10 @@
             // 
             sidePanel2.Controls.Add(gridcontrolItem);
             sidePanel2.Dock = DockStyle.Fill;
-            sidePanel2.Location = new Point(0, 67);
+            sidePanel2.Location = new Point(0, 72);
             sidePanel2.Margin = new Padding(3, 2, 3, 2);
             sidePanel2.Name = "sidePanel2";
-            sidePanel2.Size = new Size(1101, 494);
+            sidePanel2.Size = new Size(1101, 489);
             sidePanel2.TabIndex = 11;
             sidePanel2.Text = "sidePanel2";
             // 
@@ -199,7 +216,7 @@
             gridcontrolItem.Margin = new Padding(3, 2, 3, 2);
             gridcontrolItem.Name = "gridcontrolItem";
             gridcontrolItem.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditunit, repositoryItemLookUpEditScope, repositoryItemLookUpEditPK, repositoryItemTextEditPLID });
-            gridcontrolItem.Size = new Size(1101, 494);
+            gridcontrolItem.Size = new Size(1101, 489);
             gridcontrolItem.TabIndex = 1;
             gridcontrolItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
@@ -322,6 +339,7 @@
             colOverQty.FieldName = "OverQty";
             colOverQty.MinWidth = 21;
             colOverQty.Name = "colOverQty";
+            colOverQty.UnboundDataType = typeof(decimal);
             colOverQty.Visible = true;
             colOverQty.VisibleIndex = 8;
             colOverQty.Width = 34;
@@ -331,6 +349,7 @@
             colShortageQty.FieldName = "ShortageQty";
             colShortageQty.MinWidth = 21;
             colShortageQty.Name = "colShortageQty";
+            colShortageQty.UnboundDataType = typeof(decimal);
             colShortageQty.Visible = true;
             colShortageQty.VisibleIndex = 9;
             colShortageQty.Width = 54;
@@ -340,6 +359,7 @@
             colDamageQty.FieldName = "DamageQty";
             colDamageQty.MinWidth = 21;
             colDamageQty.Name = "colDamageQty";
+            colDamageQty.UnboundDataType = typeof(decimal);
             colDamageQty.Visible = true;
             colDamageQty.VisibleIndex = 10;
             colDamageQty.Width = 60;
@@ -349,6 +369,7 @@
             colIncorectQty.FieldName = "IncorectQty";
             colIncorectQty.MinWidth = 21;
             colIncorectQty.Name = "colIncorectQty";
+            colIncorectQty.UnboundDataType = typeof(decimal);
             colIncorectQty.Visible = true;
             colIncorectQty.VisibleIndex = 11;
             colIncorectQty.Width = 54;
@@ -536,7 +557,7 @@
             sidePanel1.Location = new Point(0, 0);
             sidePanel1.Margin = new Padding(3, 2, 3, 2);
             sidePanel1.Name = "sidePanel1";
-            sidePanel1.Size = new Size(1101, 67);
+            sidePanel1.Size = new Size(1101, 72);
             sidePanel1.TabIndex = 10;
             sidePanel1.Text = "sidePanel1";
             // 
@@ -709,9 +730,9 @@
             barButtonItemDelete.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItemDelete.ImageOptions.LargeImage");
             barButtonItemDelete.Name = "barButtonItemDelete";
             barButtonItemDelete.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipItem1.Text = "Delete Selected Row's";
-            superToolTip1.Items.Add(toolTipItem1);
-            barButtonItemDelete.SuperTip = superToolTip1;
+            toolTipItem3.Text = "Delete Selected Row's";
+            superToolTip3.Items.Add(toolTipItem3);
+            barButtonItemDelete.SuperTip = superToolTip3;
             // 
             // lblLastPK
             // 
@@ -818,11 +839,28 @@
             // 
             splitContainer1.Panel2.Controls.Add(gridControl1);
             splitContainer1.Size = new Size(1101, 561);
-            splitContainer1.SplitterDistance = 36;
+            splitContainer1.SplitterDistance = 46;
             splitContainer1.TabIndex = 3;
             // 
             // panelControl1
             // 
+            panelControl1.Controls.Add(labelControl24);
+            panelControl1.Controls.Add(labelControl23);
+            panelControl1.Controls.Add(labelControl22);
+            panelControl1.Controls.Add(labelControl20);
+            panelControl1.Controls.Add(labelControl21);
+            panelControl1.Controls.Add(labelControl18);
+            panelControl1.Controls.Add(labelControl19);
+            panelControl1.Controls.Add(labelControl17);
+            panelControl1.Controls.Add(labelControl16);
+            panelControl1.Controls.Add(btnDeleteLocItem);
+            panelControl1.Controls.Add(labelControl15);
+            panelControl1.Controls.Add(btnAddNewLocItem);
+            panelControl1.Controls.Add(labelControl14);
+            panelControl1.Controls.Add(labelControl13);
+            panelControl1.Controls.Add(labelControl12);
+            panelControl1.Controls.Add(labelControl11);
+            panelControl1.Controls.Add(labelControl10);
             panelControl1.Controls.Add(labelControl7);
             panelControl1.Controls.Add(labelControl9);
             panelControl1.Controls.Add(labelControl8);
@@ -830,8 +868,229 @@
             panelControl1.Location = new Point(0, 0);
             panelControl1.Margin = new Padding(3, 2, 3, 2);
             panelControl1.Name = "panelControl1";
-            panelControl1.Size = new Size(1101, 36);
+            panelControl1.Size = new Size(1101, 46);
             panelControl1.TabIndex = 3;
+            // 
+            // labelControl24
+            // 
+            labelControl24.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl24.Appearance.ForeColor = Color.MediumPurple;
+            labelControl24.Appearance.Options.UseFont = true;
+            labelControl24.Appearance.Options.UseForeColor = true;
+            labelControl24.Location = new Point(711, 16);
+            labelControl24.Margin = new Padding(3, 2, 3, 2);
+            labelControl24.Name = "labelControl24";
+            labelControl24.Size = new Size(12, 14);
+            labelControl24.TabIndex = 104;
+            labelControl24.Text = "...";
+            // 
+            // labelControl23
+            // 
+            labelControl23.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl23.Appearance.ForeColor = Color.MediumPurple;
+            labelControl23.Appearance.Options.UseFont = true;
+            labelControl23.Appearance.Options.UseForeColor = true;
+            labelControl23.Location = new Point(488, 16);
+            labelControl23.Margin = new Padding(3, 2, 3, 2);
+            labelControl23.Name = "labelControl23";
+            labelControl23.Size = new Size(12, 14);
+            labelControl23.TabIndex = 103;
+            labelControl23.Text = "...";
+            // 
+            // labelControl22
+            // 
+            labelControl22.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl22.Appearance.ForeColor = Color.MediumPurple;
+            labelControl22.Appearance.Options.UseFont = true;
+            labelControl22.Appearance.Options.UseForeColor = true;
+            labelControl22.Location = new Point(292, 15);
+            labelControl22.Margin = new Padding(3, 2, 3, 2);
+            labelControl22.Name = "labelControl22";
+            labelControl22.Size = new Size(12, 14);
+            labelControl22.TabIndex = 102;
+            labelControl22.Text = "...";
+            // 
+            // labelControl20
+            // 
+            labelControl20.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl20.Appearance.ForeColor = Color.LightSlateGray;
+            labelControl20.Appearance.Options.UseFont = true;
+            labelControl20.Appearance.Options.UseForeColor = true;
+            labelControl20.Location = new Point(545, 27);
+            labelControl20.Margin = new Padding(3, 2, 3, 2);
+            labelControl20.Name = "labelControl20";
+            labelControl20.Size = new Size(110, 14);
+            labelControl20.TabIndex = 101;
+            labelControl20.Text = "Shortage SumQty : ";
+            // 
+            // labelControl21
+            // 
+            labelControl21.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl21.Appearance.ForeColor = Color.LightSlateGray;
+            labelControl21.Appearance.Options.UseFont = true;
+            labelControl21.Appearance.Options.UseForeColor = true;
+            labelControl21.Location = new Point(656, 27);
+            labelControl21.Margin = new Padding(3, 2, 3, 2);
+            labelControl21.Name = "labelControl21";
+            labelControl21.Size = new Size(12, 14);
+            labelControl21.TabIndex = 100;
+            labelControl21.Text = "...";
+            // 
+            // labelControl18
+            // 
+            labelControl18.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl18.Appearance.ForeColor = Color.LightSlateGray;
+            labelControl18.Appearance.Options.UseFont = true;
+            labelControl18.Appearance.Options.UseForeColor = true;
+            labelControl18.Location = new Point(346, 27);
+            labelControl18.Margin = new Padding(3, 2, 3, 2);
+            labelControl18.Name = "labelControl18";
+            labelControl18.Size = new Size(86, 14);
+            labelControl18.TabIndex = 99;
+            labelControl18.Text = "Over SumQty : ";
+            // 
+            // labelControl19
+            // 
+            labelControl19.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl19.Appearance.ForeColor = Color.LightSlateGray;
+            labelControl19.Appearance.Options.UseFont = true;
+            labelControl19.Appearance.Options.UseForeColor = true;
+            labelControl19.Location = new Point(433, 27);
+            labelControl19.Margin = new Padding(3, 2, 3, 2);
+            labelControl19.Name = "labelControl19";
+            labelControl19.Size = new Size(12, 14);
+            labelControl19.TabIndex = 98;
+            labelControl19.Text = "...";
+            // 
+            // labelControl17
+            // 
+            labelControl17.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl17.Appearance.ForeColor = Color.LightSlateGray;
+            labelControl17.Appearance.Options.UseFont = true;
+            labelControl17.Appearance.Options.UseForeColor = true;
+            labelControl17.Location = new Point(131, 27);
+            labelControl17.Margin = new Padding(3, 2, 3, 2);
+            labelControl17.Name = "labelControl17";
+            labelControl17.Size = new Size(105, 14);
+            labelControl17.TabIndex = 97;
+            labelControl17.Text = "LocItem SumQty : ";
+            // 
+            // labelControl16
+            // 
+            labelControl16.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl16.Appearance.ForeColor = Color.LightSlateGray;
+            labelControl16.Appearance.Options.UseFont = true;
+            labelControl16.Appearance.Options.UseForeColor = true;
+            labelControl16.Location = new Point(238, 27);
+            labelControl16.Margin = new Padding(3, 2, 3, 2);
+            labelControl16.Name = "labelControl16";
+            labelControl16.Size = new Size(12, 14);
+            labelControl16.TabIndex = 96;
+            labelControl16.Text = "...";
+            // 
+            // btnDeleteLocItem
+            // 
+            btnDeleteLocItem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDeleteLocItem.Appearance.BorderColor = Color.FromArgb(255, 128, 0);
+            btnDeleteLocItem.Appearance.Options.UseBorderColor = true;
+            btnDeleteLocItem.ImageOptions.Image = Properties.Resources.cancel_16x16;
+            btnDeleteLocItem.Location = new Point(864, 11);
+            btnDeleteLocItem.Name = "btnDeleteLocItem";
+            btnDeleteLocItem.Size = new Size(107, 23);
+            btnDeleteLocItem.TabIndex = 95;
+            btnDeleteLocItem.Text = "Delete LocItem";
+            btnDeleteLocItem.Click += btnDeleteLocItem_Click;
+            // 
+            // labelControl15
+            // 
+            labelControl15.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl15.Appearance.ForeColor = Color.Crimson;
+            labelControl15.Appearance.Options.UseFont = true;
+            labelControl15.Appearance.Options.UseForeColor = true;
+            labelControl15.Location = new Point(573, 7);
+            labelControl15.Margin = new Padding(3, 2, 3, 2);
+            labelControl15.Name = "labelControl15";
+            labelControl15.Size = new Size(82, 14);
+            labelControl15.TabIndex = 8;
+            labelControl15.Text = "ShoratgeQty : ";
+            // 
+            // btnAddNewLocItem
+            // 
+            btnAddNewLocItem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddNewLocItem.Appearance.BorderColor = Color.FromArgb(255, 128, 0);
+            btnAddNewLocItem.Appearance.Options.UseBorderColor = true;
+            btnAddNewLocItem.ImageOptions.Image = Properties.Resources.add_16x16;
+            btnAddNewLocItem.Location = new Point(977, 11);
+            btnAddNewLocItem.Name = "btnAddNewLocItem";
+            btnAddNewLocItem.Size = new Size(113, 23);
+            btnAddNewLocItem.TabIndex = 94;
+            btnAddNewLocItem.Text = "Add New LocItem";
+            btnAddNewLocItem.Click += btnAddNewLocItem_Click;
+            // 
+            // labelControl14
+            // 
+            labelControl14.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl14.Appearance.ForeColor = Color.MediumSeaGreen;
+            labelControl14.Appearance.Options.UseFont = true;
+            labelControl14.Appearance.Options.UseForeColor = true;
+            labelControl14.Location = new Point(374, 7);
+            labelControl14.Margin = new Padding(3, 2, 3, 2);
+            labelControl14.Name = "labelControl14";
+            labelControl14.Size = new Size(58, 14);
+            labelControl14.TabIndex = 7;
+            labelControl14.Text = "OverQty : ";
+            // 
+            // labelControl13
+            // 
+            labelControl13.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl13.Appearance.ForeColor = Color.SeaGreen;
+            labelControl13.Appearance.Options.UseFont = true;
+            labelControl13.Appearance.Options.UseForeColor = true;
+            labelControl13.Location = new Point(178, 7);
+            labelControl13.Margin = new Padding(3, 2, 3, 2);
+            labelControl13.Name = "labelControl13";
+            labelControl13.Size = new Size(58, 14);
+            labelControl13.TabIndex = 6;
+            labelControl13.Text = "ItemQty : ";
+            // 
+            // labelControl12
+            // 
+            labelControl12.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl12.Appearance.ForeColor = Color.Teal;
+            labelControl12.Appearance.Options.UseFont = true;
+            labelControl12.Appearance.Options.UseForeColor = true;
+            labelControl12.Location = new Point(11, 15);
+            labelControl12.Margin = new Padding(3, 2, 3, 2);
+            labelControl12.Name = "labelControl12";
+            labelControl12.Size = new Size(50, 14);
+            labelControl12.TabIndex = 5;
+            labelControl12.Text = "ItemID : ";
+            // 
+            // labelControl11
+            // 
+            labelControl11.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl11.Appearance.ForeColor = Color.Crimson;
+            labelControl11.Appearance.Options.UseFont = true;
+            labelControl11.Appearance.Options.UseForeColor = true;
+            labelControl11.Location = new Point(656, 7);
+            labelControl11.Margin = new Padding(3, 2, 3, 2);
+            labelControl11.Name = "labelControl11";
+            labelControl11.Size = new Size(12, 14);
+            labelControl11.TabIndex = 4;
+            labelControl11.Text = "...";
+            // 
+            // labelControl10
+            // 
+            labelControl10.Appearance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl10.Appearance.ForeColor = Color.MediumSeaGreen;
+            labelControl10.Appearance.Options.UseFont = true;
+            labelControl10.Appearance.Options.UseForeColor = true;
+            labelControl10.Location = new Point(433, 7);
+            labelControl10.Margin = new Padding(3, 2, 3, 2);
+            labelControl10.Name = "labelControl10";
+            labelControl10.Size = new Size(12, 14);
+            labelControl10.TabIndex = 3;
+            labelControl10.Text = "...";
             // 
             // labelControl7
             // 
@@ -839,7 +1098,7 @@
             labelControl7.Appearance.ForeColor = Color.Teal;
             labelControl7.Appearance.Options.UseFont = true;
             labelControl7.Appearance.Options.UseForeColor = true;
-            labelControl7.Location = new Point(10, 9);
+            labelControl7.Location = new Point(62, 15);
             labelControl7.Margin = new Padding(3, 2, 3, 2);
             labelControl7.Name = "labelControl7";
             labelControl7.Size = new Size(12, 14);
@@ -852,7 +1111,7 @@
             labelControl9.Appearance.ForeColor = Color.SeaGreen;
             labelControl9.Appearance.Options.UseFont = true;
             labelControl9.Appearance.Options.UseForeColor = true;
-            labelControl9.Location = new Point(181, 9);
+            labelControl9.Location = new Point(238, 7);
             labelControl9.Margin = new Padding(3, 2, 3, 2);
             labelControl9.Name = "labelControl9";
             labelControl9.Size = new Size(12, 14);
@@ -885,9 +1144,10 @@
             gridControl1.MenuManager = barManager2;
             gridControl1.Name = "gridControl1";
             gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditLocation, repositoryItemCalcEdit1 });
-            gridControl1.Size = new Size(1101, 521);
+            gridControl1.Size = new Size(1101, 511);
             gridControl1.TabIndex = 2;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
+           
             // 
             // gridView2
             // 
@@ -906,11 +1166,12 @@
             gridView2.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             gridView2.OptionsEditForm.PopupEditFormWidth = 686;
             gridView2.OptionsScrollAnnotations.ShowFocusedRow = DevExpress.Utils.DefaultBoolean.True;
-            gridView2.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            gridView2.OptionsSelection.MultiSelect = true;
             gridView2.OptionsView.ShowFooter = true;
             gridView2.OptionsView.ShowGroupPanel = false;
             gridView2.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            gridView2.ValidateRow += gridView2_ValidateRow;
+            gridView2.InitNewRow += gridView2_InitNewRow;
+            gridView2.CellValueChanged += gridView2_CellValueChanged;
             // 
             // colLocItemID
             // 
@@ -942,6 +1203,7 @@
             repositoryItemLookUpEditLocation.Name = "repositoryItemLookUpEditLocation";
             repositoryItemLookUpEditLocation.NullText = "Select Location ...";
             repositoryItemLookUpEditLocation.ValueMember = "LocationID";
+            repositoryItemLookUpEditLocation.EditValueChanged += repositoryItemLookUpEditLocation_EditValueChanged;
             // 
             // colItemId1
             // 
@@ -952,6 +1214,7 @@
             // 
             // colQty1
             // 
+            colQty1.Caption = "Qty";
             colQty1.ColumnEdit = repositoryItemCalcEdit1;
             colQty1.FieldName = "Qty";
             colQty1.MinWidth = 21;
@@ -968,15 +1231,18 @@
             // 
             // colQtyInLoc1
             // 
+            colQtyInLoc1.Caption = "Qty In Loc";
             colQtyInLoc1.FieldName = "QtyInLoc";
             colQtyInLoc1.MinWidth = 21;
             colQtyInLoc1.Name = "colQtyInLoc1";
+            colQtyInLoc1.UnboundDataType = typeof(decimal);
             colQtyInLoc1.Visible = true;
             colQtyInLoc1.VisibleIndex = 3;
             colQtyInLoc1.Width = 81;
             // 
             // colOverQty1
             // 
+            colOverQty1.Caption = "Over Qty";
             colOverQty1.FieldName = "OverQty";
             colOverQty1.MinWidth = 21;
             colOverQty1.Name = "colOverQty1";
@@ -986,6 +1252,7 @@
             // 
             // colShortageQty1
             // 
+            colShortageQty1.Caption = "Shortage Qty";
             colShortageQty1.FieldName = "ShortageQty";
             colShortageQty1.MinWidth = 21;
             colShortageQty1.Name = "colShortageQty1";
@@ -995,6 +1262,7 @@
             // 
             // colDamageQty1
             // 
+            colDamageQty1.Caption = "Damage Qty";
             colDamageQty1.FieldName = "DamageQty";
             colDamageQty1.MinWidth = 21;
             colDamageQty1.Name = "colDamageQty1";
@@ -1004,6 +1272,7 @@
             // 
             // colRejectQty
             // 
+            colRejectQty.Caption = "Reject Qty";
             colRejectQty.FieldName = "RejectQty";
             colRejectQty.MinWidth = 21;
             colRejectQty.Name = "colRejectQty";
@@ -1013,6 +1282,7 @@
             // 
             // colNISQty
             // 
+            colNISQty.Caption = "NIS Qty";
             colNISQty.FieldName = "NISQty";
             colNISQty.MinWidth = 21;
             colNISQty.Name = "colNISQty";
@@ -1248,5 +1518,22 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEditedDate1;
         private DevExpress.XtraEditors.SimpleButton btnAddNewItem;
         private DevExpress.XtraEditors.SimpleButton btndeleteItem;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteLocItem;
+        private DevExpress.XtraEditors.SimpleButton btnAddNewLocItem;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
+        private DevExpress.XtraEditors.LabelControl labelControl24;
+        private DevExpress.XtraEditors.LabelControl labelControl23;
     }
 }

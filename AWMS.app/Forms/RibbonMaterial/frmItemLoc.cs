@@ -17,6 +17,7 @@ using AWMS.dto;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using DevExpress.XtraVerticalGrid;
+using AWMS.datalayer.Entities;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {
@@ -38,7 +39,7 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         public frmItemLoc(IPackingListDapperRepository packingListDapperRepository, IUnitDapperRepository unitDapperRepository,
             IScopeDapperRepository scopeDapperRepository, ILocationDapperRepository locationDapperRepository,
-            IPackageDapperRepository packageDapperRepository, IItemDapperRepository itemDapperRepository,ILocItemDapperRepository locItemDapperRepository)
+            IPackageDapperRepository packageDapperRepository, IItemDapperRepository itemDapperRepository, ILocItemDapperRepository locItemDapperRepository)
         {
             InitializeComponent();
             this._packingListDapperRepository = packingListDapperRepository;
@@ -47,7 +48,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             this._locationDapperRepository = locationDapperRepository;
             this._packageDapperRepository = packageDapperRepository;
             this._itemDapperRepository = itemDapperRepository;
-            this._locitemDapperRepository=locItemDapperRepository;
+            this._locitemDapperRepository = locItemDapperRepository;
             LookUPLoad();
 
             gridcontrolItem.DoubleClick += gridcontrol_DoubleClick;
@@ -55,6 +56,10 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             chkEdit.CheckedChanged += chkEdit_CheckedChanged;
             chkEdit_CheckedChanged(null, null);
+
+            ///Locitem Section
+            // رویداد برای محاسبه مقدار ستون محاسباتی
+            gridView2.CustomUnboundColumnData += gridView2_CustomUnboundColumnData;
         }
 
         private void chkEdit_CheckedChanged(object sender, EventArgs e)
@@ -126,6 +131,8 @@ namespace AWMS.app.Forms.RibbonMaterial
                     {
                         itemId = (int)gridView1.GetRowCellValue(hitInfo.RowHandle, "ItemId");
                         itemQty = Convert.ToDecimal(gridView1.GetRowCellValue(hitInfo.RowHandle, "Qty"));
+                        var itemOverQty = Convert.ToDecimal(gridView1.GetRowCellValue(hitInfo.RowHandle, "OverQty"));
+                        var itemShoratgeQty = Convert.ToDecimal(gridView1.GetRowCellValue(hitInfo.RowHandle, "ShortageQty"));
 
                         repositoryItemLookUpEditLocation.DataSource = await _locationDapperRepository.GetAllAsync();
                         // Retrieve locItems and update GridControl
@@ -134,19 +141,17 @@ namespace AWMS.app.Forms.RibbonMaterial
                         gridControl1.DataSource = bindingListLocItems;
 
                         xtraTabControl1.SelectedTabPage = xtraTabPage2;
-                        labelControl7.Text = "ItemID: " + itemId.ToString();
-                        labelControl9.Text = "ItemQty: " + itemQty.ToString();
+                        labelControl7.Text = itemId.ToString();
+                        labelControl9.Text = itemQty.ToString();
+                        labelControl10.Text = itemOverQty.ToString();
+                        labelControl11.Text = itemShoratgeQty.ToString();
+                        labelControl16.Text = "...";
+                        labelControl22.Text = "...";
+                        labelControl19.Text = "...";
+                        labelControl23.Text = "...";
+                        labelControl21.Text = "...";
+                        labelControl24.Text = "...";
                         labelControl8.Text = "";
-
-                        //Switch between XtraTabPages based on ItemId
-                        if (itemId == 1)
-                        {
-                            xtraTabControl1.SelectedTabPage = xtraTabPage1;
-                        }
-                        else if (itemId == 2)
-                        {
-                            xtraTabControl1.SelectedTabPage = xtraTabPage2;
-                        }
                     }
                     catch (Exception ex)
                     {
@@ -166,29 +171,32 @@ namespace AWMS.app.Forms.RibbonMaterial
 
                 if (modifiedItem != null)
                 {
-                    int locationId = 1; // مقدار پیش‌فرض
-
-                    if (lookUpEditLocation.EditValue != null)
+                    // اگر مقدار Qty معتبر باشد، عملیات ذخیره‌سازی انجام شود
+                    if (modifiedItem.Qty > 0)
                     {
-                        int tempLocationId;
-                        if (int.TryParse(lookUpEditLocation.EditValue.ToString(), out tempLocationId))
+                        int locationId = 1; // مقدار پیش‌فرض
+
+                        if (lookUpEditLocation.EditValue != null)
                         {
-                            locationId = tempLocationId;
+                            int tempLocationId;
+                            if (int.TryParse(lookUpEditLocation.EditValue.ToString(), out tempLocationId))
+                            {
+                                locationId = tempLocationId;
+                            }
                         }
-                    }
 
+                        if (isNewRowAdded)
+                        {
+                            var newItemId = await _itemDapperRepository.AddItemWithAddLocitemWithTriggerAsync(modifiedItem, locationId);
+                            isNewRowAdded = false; // بازنشانی پرچم پس از اضافه کردن
 
-                    if (isNewRowAdded)
-                    {
-                        var newItemId = await _itemDapperRepository.AddItemWithAddLocitemWithTriggerAsync(modifiedItem, locationId);
-                        isNewRowAdded = false; // بازنشانی پرچم پس از اضافه کردن
-
-                        modifiedItem.ItemId = newItemId;
-                        view.RefreshRow(e.RowHandle);
-                    }
-                    else
-                    {
-                        await _itemDapperRepository.UpdateAsync(modifiedItem);
+                            modifiedItem.ItemId = newItemId;
+                            view.RefreshRow(e.RowHandle);
+                        }
+                        else
+                        {
+                            await _itemDapperRepository.UpdateAsync(modifiedItem);
+                        }
                     }
                 }
             }
@@ -215,7 +223,14 @@ namespace AWMS.app.Forms.RibbonMaterial
                         EnteredDate = DateTime.Now,
                         PKID = LASTPKID,
                         UnitID = 1, // Set default value or based on your needs
-                        ScopeID = 1
+                        ScopeID = 1,
+                        OverQty = 0,
+                        ShortageQty = 0,
+                        DamageQty = 0,
+                        IncorectQty = 0,
+                        NIS = 0,
+                        NetW = 0,
+                        GrossW = 0
                     };
 
                     // Add new item to collection
@@ -231,7 +246,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     gridView1.ShowEditor();
                     gridView1.MakeRowVisible(newRowHandle, true);
 
-                    MessageBox.Show("New item added and waiting to be saved.", "New Item Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("New item added and waiting to be saved.\nPlease Enter The OverQty And ShortageQty first so that it is automatically inserted in LocItem Table, Otherwise You Have To Do It Manually.", "New Item Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -293,56 +308,141 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         /////////////////// End Of Item , Start LocItem
 
-
-        private async void gridView2_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        private void gridView2_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
         {
-                GridView view = sender as GridView;
-
-                if (e.RowHandle == DevExpress.XtraGrid.GridControl.NewItemRowHandle)
-                {   
-                    var newLocItem = view.GetRow(e.RowHandle) as LocItemDto;
-                    if (newLocItem != null)
-                    {
-                        newLocItem.ItemId = itemId; // Assuming itemId is a variable in your form
-                        await _locitemDapperRepository.AddAsync(newLocItem);
-                        var locitems = await _locitemDapperRepository.GetLocItemsByItemIdAsync(itemId);
-                        var bindingListLocItems = new BindingList<LocItemDto>(locitems.ToList());
-                        gridControl1.DataSource = bindingListLocItems;
-                }
-                }
+            if (e.Column.FieldName == "QtyInLoc" && e.IsGetData)
+            {
+                LocItemDto locItem = (LocItemDto)e.Row;
+                // محاسبه مقدار QtyInLoc
+                decimal qtyInLoc = locItem.Qty ?? 0;
+                qtyInLoc += locItem.OverQty ?? 0;
+                qtyInLoc -= locItem.ShortageQty ?? 0;
+                e.Value = qtyInLoc;
+            }
         }
-      
-        //private bool ValidateLocItem(LocItem locItem)
-        //{
-        //    try
-        //    {
-        //        // Calculate total QtyInLoc for the given ItemId
-        //        decimal totalQtyInLoc = locItemBindingSource
-        //            .Cast<LocItem>()
-        //            .Where(item => item.ItemId == locItem.ItemId && item.LocItemID != locItem.LocItemID)
-        //            .Sum(item => item.QtyInLoc ?? 0);
+        private async void gridView2_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view != null && e.Column.FieldName == "LocationID")
+            {
+                int newLocationId = (int)e.Value;
 
-        //        // Validate if total QtyInLoc is within the limit (itemQty)
-        //        bool isTotalQtyValid = totalQtyInLoc + (locItem.QtyInLoc ?? 0) <= itemQty + (locItem.OverQty ?? 0) - (locItem.ShortageQty ?? 0);
+                // دریافت ردیف فعلی
+                var currentRow = view.GetRow(e.RowHandle) as LocItemDto;
 
-        //        // Display a message in label8 based on the validation results
-        //        labelControl8.Text = isTotalQtyValid
-        //            ? "Validation passed."
-        //            : "Validation failed. Please check your data.";
+                // مقدار پیش‌فرض لوکیشن (در اینجا 1 در نظر گرفته شده است)
+                const int defaultLocationId = 1;
 
-        //        return isTotalQtyValid;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle or log the exception as needed
-        //        MessageBox.Show($"An error occurred in ValidateLocItem: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false; // Consider validation failed in case of an exception
-        //    }
-        //}
+                // بررسی اینکه لوکیشن جدید ثبت شده است
+                var existingLocItem = view.DataController.ListSource.Cast<LocItemDto>()
+                    .FirstOrDefault(item => item.LocationID == newLocationId && item.LocItemID != currentRow.LocItemID);
+
+                if (existingLocItem != null)
+                {
+                    if (newLocationId == defaultLocationId)
+                    {
+                        // اگر لوکیشن پیش‌فرض است، هیچ اقدامی انجام نمی‌دهیم
+                        return;
+                    }
+                    else
+                    {
+                        // لوکیشن قبلاً ثبت شده است، نمایش پیام اطلاعاتی
+                        MessageBox.Show("This location has already been registered.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // بازنشانی به مقدار قبلی (اختیاری)
+                        // view.SetRowCellValue(e.RowHandle, "LocationID", currentRow.LocationID); // previousValue باید مقدار قبلی باشد
+                        return;
+                    }
+                }
+
+                // Validation for new LocationID
+                if (newLocationId <= 0)
+                {
+                    MessageBox.Show("Please select a valid location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    view.SetRowCellValue(e.RowHandle, "LocationID", defaultLocationId); // بازنشانی به مقدار پیش‌فرض
+                    return;
+                }
+            }
+
+            // خواندن مقادیر از labelControl
+            decimal labelControl9Value = decimal.TryParse(labelControl9.Text, out var qtyValue) ? qtyValue : 0;
+            decimal labelControl10Value = decimal.TryParse(labelControl10.Text, out var overQtyValue) ? overQtyValue : 0;
+            decimal labelControl11Value = decimal.TryParse(labelControl11.Text, out var shortageQtyValue) ? shortageQtyValue : 0;
+
+            // دریافت لیست فعلی LocItems
+            var locItems = await _locitemDapperRepository.GetLocItemsByItemIdAsync(itemId); // itemId باید مقداردهی شده باشد
+
+            // جمع مقادیر قبلی
+            decimal totalQty = locItems.Sum(li => li.Qty ?? 0);
+            decimal totalOverQty = locItems.Sum(li => li.OverQty ?? 0);
+            decimal totalShortageQty = locItems.Sum(li => li.ShortageQty ?? 0);
 
 
+            if (e.RowHandle >= 0)
+            {
+                var updatedLocItem = view.GetRow(e.RowHandle) as LocItemDto;
+                if (updatedLocItem != null)
+                {
+                    // کسر مقدار قبلی از جمع کل
+                    var oldLocItem = locItems.FirstOrDefault(li => li.LocItemID == updatedLocItem.LocItemID);
+                    if (oldLocItem != null)
+                    {
+                        totalQty -= oldLocItem.Qty ?? 0;
+                        totalOverQty -= oldLocItem.OverQty ?? 0;
+                        totalShortageQty -= oldLocItem.ShortageQty ?? 0;
+                    }
+                    // اضافه کردن مقدار جدید به جمع کل
+                    totalQty += updatedLocItem.Qty ?? 0;
+                    totalOverQty += updatedLocItem.OverQty ?? 0;
+                    totalShortageQty += updatedLocItem.ShortageQty ?? 0;
 
+                    if (totalQty > labelControl9Value)
+                    {
+                        MessageBox.Show($"The total Qty ({totalQty}) exceeds the allowed amount in ItemQty ({labelControl9Value}).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (totalOverQty > labelControl10Value)
+                    {
+                        MessageBox.Show($"The total OverQty ({totalOverQty}) exceeds the allowed amount in OverQty ({labelControl10Value}).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (totalShortageQty > labelControl11Value)
+                    {
+                        MessageBox.Show($"The total ShortageQty ({totalShortageQty}) exceeds the allowed amount in ShortageQty ({labelControl11Value}).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    labelControl16.Text = totalQty.ToString("N2");
+                    labelControl19.Text = totalOverQty.ToString("N2");
+                    labelControl21.Text = totalShortageQty.ToString("N2");
+                    labelControl22.Text = (Convert.ToDecimal(labelControl16.Text) - Convert.ToDecimal(labelControl9.Text)).ToString();
+                    labelControl23.Text = (Convert.ToDecimal(labelControl19.Text) - Convert.ToDecimal(labelControl10.Text)).ToString();
+                    labelControl24.Text = (Convert.ToDecimal(labelControl21.Text) - Convert.ToDecimal(labelControl11.Text)).ToString();
+                    // به‌روزرسانی رکورد قبلی
+                    await UpdateLocItemAsync(updatedLocItem);
+                }
+            }
+        }
 
+        private async Task UpdateLocItemAsync(LocItemDto locItem)
+        {
+            try
+            {
+                // به‌روزرسانی رکورد در پایگاه داده
+                await _locitemDapperRepository.UpdateAsync(locItem);
+
+                // بازیابی داده‌های به‌روز شده
+                var locItems = await _locitemDapperRepository.GetLocItemsByItemIdAsync(locItem.ItemId);
+
+                // به روزرسانی نمایش GridControl
+                var bindingListLocItems = new BindingList<LocItemDto>(locItems.ToList());
+                gridControl1.DataSource = bindingListLocItems;
+            }
+            catch (Exception ex)
+            {
+                // ثبت خطا
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void repositoryItemLookUpEditLocation_EditValueChanged(object sender, EventArgs e)
         {
@@ -351,109 +451,114 @@ namespace AWMS.app.Forms.RibbonMaterial
             if (editor != null)
             {
                 // Get the selected item
-                //Location selectedLocation = editor.GetSelectedDataRow() as Location;
+                Location selectedLocation = editor.GetSelectedDataRow() as Location;
 
-                //// Perform actions based on the selected value
-                //if (selectedLocation != null)
-                //{
-                //    // Access the LocationID property
-                //    repositorylocationId = selectedLocation.LocationID;
+                // Perform actions based on the selected value
+                if (selectedLocation != null)
+                {
+                    // Access the LocationID property
+                    repositorylocationId = selectedLocation.LocationID;
 
-                //    // Do something with the LocationID
-                //    //MessageBox.Show($"Selected LocationID: {locationId}");
-                //}
-            }
-        }
-        //private void repositoryItemLookUpEditLocation_EditValueChanged(object sender, EventArgs e)
-        //{
-        //    LookUpEdit editor = sender as LookUpEdit;
-
-        //    if (editor != null)
-        //    {   ///hamid commmmmmmmmmmmmmmmmmmmment
-        //        //// Get the selected item
-        //        //Location selectedLocation = editor.GetSelectedDataRow() as Location;
-
-        //        //// Perform actions based on the selected value
-        //        //if (selectedLocation != null)
-        //        //{
-        //        //    // Access the LocationID property
-        //        //    repositorylocationId = selectedLocation.LocationID;
-
-        //        //    // Check if the location has already been registered in LocItem list
-        //        //    bool isLocationRegistered = locItemBindingSource
-        //        //        .Cast<LocItem>()
-        //        //        .Any(item => item.LocationID == repositorylocationId);
-
-        //        //    if (isLocationRegistered)
-        //        //    {
-        //        //        // Location is already registered, show a message or perform necessary actions
-        //        //        MessageBox.Show("This location has already been registered.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-        //        //        // You may want to clear the selection or handle it differently based on your requirements
-        //        //        // Clear the Location editor's value to indicate that the location is not valid
-        //        //        editor.EditValue = null;
-
-        //        //        // Optionally, you can also set repositorylocationId to 0 or another value to indicate an invalid location
-        //        //        repositorylocationId = 0;
-        //        //    }
-        //        //    else
-        //        //    {
-        //        //        // Location is not registered, continue with the selected location
-        //        //        // You can perform additional actions if needed
-        //        //    }
-        //        //}
-        //    }
-        //}
-
-        private void gridView2_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            try
-            {
-                GridView view = sender as GridView;
-
-                // Check if the modified row is not a new row
-                if (e.RowHandle >= 0)
-                {    //hamid commmmmmmmmmmmmmmmmmmmmmmmmmment
-                     //LocItem modifiedlocitem = view.GetRow(e.RowHandle) as LocItem;
-
-                    //if (modifiedlocitem != null)
-                    //{
-                    //    // Validate the LocItem data
-                    //    if (!ValidateLocItem(modifiedlocitem))
-                    //    {
-                    //        // Validation failed, set an error message
-                    //        view.SetColumnError(view.Columns["Qty"], "Validation failed. Please check your data.");
-                    //       // e.Valid = false; // Mark the row as invalid
-                    //    }
-                    //    else
-                    //    {
-                    //        //using (DatabaseContext _context = new DatabaseContext())
-                    //        //{
-                    //        //    ILocItemRepository locItemRepository = new LocItemService(_context);
-                    //        //    locItemRepository.UpdateLocitem(modifiedlocitem);
-                    //        //}
-                    //        using (UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext()))
-                    //        {
-                    //            unitOfWork.LocItemRepository.UpdateLocitem(modifiedlocitem);
-                    //            unitOfWork.Save();
-                    //        }
-                    //    }
-                    //}
+                    // Optionally, you can perform actions here if needed
                 }
-            }
-            catch (Exception ex)
-            {
-                // Handle or log the exception as needed
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void gridView2_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             GridView view = sender as GridView;
-            view.SetRowCellValue(e.RowHandle, "ItemId", itemId); // itemId should be accessible in this scope
+            if (view != null)
+            {
+                // تنظیم مقادیر پیش‌فرض برای ردیف‌های جدید
+                view.SetRowCellValue(e.RowHandle, "ItemId", itemId); // itemId باید در این بخش قابل دسترسی باشد
+                view.SetRowCellValue(e.RowHandle, "Qty", 0); // مقدار پیش‌فرض برای Qty
+                view.SetRowCellValue(e.RowHandle, "OverQty", 0); // مقدار پیش‌فرض برای OverQty
+                view.SetRowCellValue(e.RowHandle, "ShortageQty", 0); // مقدار پیش‌فرض برای ShortageQty
+                view.SetRowCellValue(e.RowHandle, "DamageQty", 0); // مقدار پیش‌فرض برای DamageQty
+                view.SetRowCellValue(e.RowHandle, "NISQty", 0); // مقدار پیش‌فرض برای NISQty
+                view.SetRowCellValue(e.RowHandle, "RejectQty", 0); // مقدار پیش‌فرض برای RejectQty
+                view.SetRowCellValue(e.RowHandle, "LocationID", 1); // تنظیم LocationID به 1 به‌عنوان مقدار پیش‌فرض
+            }
         }
 
-     
+        private async void btnAddNewLocItem_Click(object sender, EventArgs e)
+        {
+            GridView view = gridView2;
+
+            if (view == null) return;
+
+            var newLocItem = new LocItemDto
+            {
+                ItemId = itemId,
+                Qty = 0,
+                OverQty = 0,
+                ShortageQty = 0,
+                DamageQty = 0,
+                NISQty = 0,
+                RejectQty = 0,
+                LocationID = 1 // باید از جایی که LocationID تنظیم می‌شود، مقداردهی شود
+            };
+
+            if (newLocItem.LocationID == null || newLocItem.LocationID == 0)
+            {
+                MessageBox.Show("Please select a valid location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // اضافه کردن به دیتابیس و بررسی موفقیت
+            await _locitemDapperRepository.AddAsync(newLocItem);
+
+            // اضافه کردن به GridView
+            var locItems = await _locitemDapperRepository.GetLocItemsByItemIdAsync(itemId); // itemId باید مقداردهی شده باشد
+            gridControl1.DataSource = new BindingList<LocItemDto>(locItems.ToList());
+        }
+
+        private async void btnDeleteLocItem_Click(object sender, EventArgs e)
+        {
+            // گرفتن آیتم‌های انتخاب شده از گرید ویو
+            var selectedRows = gridView2.GetSelectedRows();
+            var selectedLocItems = new List<LocItemDto>();
+
+            foreach (var rowIndex in selectedRows)
+            {
+                var locItem = gridView2.GetRow(rowIndex) as LocItemDto;
+                if (locItem != null)
+                {
+                    selectedLocItems.Add(locItem);
+                }
+            }
+
+            if (selectedLocItems.Count == 0)
+            {
+                MessageBox.Show("Please select at least one item to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // تأیید حذف
+            var result = MessageBox.Show("Are you sure you want to delete the selected items?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    await _locitemDapperRepository.DeleteMultipleLocItemsWithTransactionAsync(selectedLocItems);
+                    MessageBox.Show("Items deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // بروزرسانی گرید ویو بعد از حذف
+                    foreach (var locItem in selectedLocItems)
+                    {
+                        var rowHandle = gridView2.FindRow(locItem);
+                        if (rowHandle >= 0)
+                        {
+                            gridView2.DeleteRow(rowHandle);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while deleting items: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

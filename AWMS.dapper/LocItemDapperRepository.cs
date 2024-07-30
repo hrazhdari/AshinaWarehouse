@@ -113,7 +113,6 @@ namespace AWMS.dapper
                 var parameters = new DynamicParameters();
                 parameters.Add("@LocItemID", locItem.LocItemID);
                 parameters.Add("@LocationID", locItem.LocationID);
-                parameters.Add("@ItemId", locItem.ItemId);
                 parameters.Add("@Qty", locItem.Qty);
                 parameters.Add("@OverQty", locItem.OverQty);
                 parameters.Add("@ShortageQty", locItem.ShortageQty);
@@ -123,9 +122,31 @@ namespace AWMS.dapper
                 parameters.Add("@EditedBy", locItem.EditedBy);
                 parameters.Add("@EditedDate", locItem.EditedDate);
 
-                await connection.ExecuteAsync("UpdateLocItem", parameters, commandType: CommandType.StoredProcedure);
+                try
+                {
+                    // چاپ مقادیر پارامترها برای اشکال‌زدایی
+                    Console.WriteLine($"LocItemID: {locItem.LocItemID}");
+                    Console.WriteLine($"LocationID: {locItem.LocationID}");
+                    Console.WriteLine($"Qty: {locItem.Qty}");
+                    Console.WriteLine($"OverQty: {locItem.OverQty}");
+                    Console.WriteLine($"ShortageQty: {locItem.ShortageQty}");
+                    Console.WriteLine($"DamageQty: {locItem.DamageQty}");
+                    Console.WriteLine($"RejectQty: {locItem.RejectQty}");
+                    Console.WriteLine($"NISQty: {locItem.NISQty}");
+                    Console.WriteLine($"EditedBy: {locItem.EditedBy}");
+                    Console.WriteLine($"EditedDate: {locItem.EditedDate}");
+
+                    await connection.ExecuteAsync("UpdateLocItem", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    // ثبت خطا برای اشکال‌زدایی
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
             }
         }
+
 
         public async Task<bool> IsLocationUsedAsync(int locationID, int itemId)
         {
