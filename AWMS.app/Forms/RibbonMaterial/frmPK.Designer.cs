@@ -75,6 +75,7 @@
             colPLId = new DevExpress.XtraGrid.Columns.GridColumn();
             colPK = new DevExpress.XtraGrid.Columns.GridColumn();
             colNetW = new DevExpress.XtraGrid.Columns.GridColumn();
+            repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             colGrossW = new DevExpress.XtraGrid.Columns.GridColumn();
             colVolume = new DevExpress.XtraGrid.Columns.GridColumn();
             colArrivalDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -116,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridcontrol).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemCalcEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEdit1).BeginInit();
             SuspendLayout();
             // 
@@ -606,7 +608,7 @@
             gridcontrol.MainView = gridView1;
             gridcontrol.Margin = new Padding(3, 2, 3, 2);
             gridcontrol.Name = "gridcontrol";
-            gridcontrol.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEdit1 });
+            gridcontrol.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEdit1, repositoryItemCalcEdit1 });
             gridcontrol.Size = new Size(882, 613);
             gridcontrol.TabIndex = 1;
             gridcontrol.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
@@ -633,6 +635,7 @@
             colPKID.FieldName = "PKID";
             colPKID.MinWidth = 21;
             colPKID.Name = "colPKID";
+            colPKID.OptionsColumn.AllowEdit = false;
             colPKID.Width = 81;
             // 
             // colPLId
@@ -641,6 +644,7 @@
             colPLId.FieldName = "PLId";
             colPLId.MinWidth = 21;
             colPLId.Name = "colPLId";
+            colPLId.OptionsColumn.AllowEdit = false;
             colPLId.OptionsColumn.ReadOnly = true;
             colPLId.Width = 81;
             // 
@@ -650,6 +654,7 @@
             colPK.FieldName = "PK";
             colPK.MinWidth = 21;
             colPK.Name = "colPK";
+            colPK.OptionsColumn.AllowEdit = false;
             colPK.Visible = true;
             colPK.VisibleIndex = 0;
             colPK.Width = 81;
@@ -657,6 +662,8 @@
             // colNetW
             // 
             colNetW.Caption = "NetW";
+            colNetW.ColumnEdit = repositoryItemCalcEdit1;
+            colNetW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colNetW.FieldName = "NetW";
             colNetW.MinWidth = 21;
             colNetW.Name = "colNetW";
@@ -664,9 +671,17 @@
             colNetW.VisibleIndex = 1;
             colNetW.Width = 81;
             // 
+            // repositoryItemCalcEdit1
+            // 
+            repositoryItemCalcEdit1.AutoHeight = false;
+            repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            // 
             // colGrossW
             // 
             colGrossW.Caption = "GrossW";
+            colGrossW.ColumnEdit = repositoryItemCalcEdit1;
+            colGrossW.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colGrossW.FieldName = "GrossW";
             colGrossW.MinWidth = 21;
             colGrossW.Name = "colGrossW";
@@ -716,6 +731,7 @@
             colEnteredBy.FieldName = "EnteredBy";
             colEnteredBy.MinWidth = 21;
             colEnteredBy.Name = "colEnteredBy";
+            colEnteredBy.OptionsColumn.AllowEdit = false;
             colEnteredBy.Visible = true;
             colEnteredBy.VisibleIndex = 5;
             colEnteredBy.Width = 81;
@@ -726,6 +742,7 @@
             colEnteredDate.FieldName = "EnteredDate";
             colEnteredDate.MinWidth = 21;
             colEnteredDate.Name = "colEnteredDate";
+            colEnteredDate.OptionsColumn.AllowEdit = false;
             colEnteredDate.Visible = true;
             colEnteredDate.VisibleIndex = 6;
             colEnteredDate.Width = 81;
@@ -736,6 +753,7 @@
             colEditedBy.FieldName = "EditedBy";
             colEditedBy.MinWidth = 21;
             colEditedBy.Name = "colEditedBy";
+            colEditedBy.OptionsColumn.AllowEdit = false;
             colEditedBy.Width = 81;
             // 
             // colEditedDate
@@ -744,6 +762,7 @@
             colEditedDate.FieldName = "EditedDate";
             colEditedDate.MinWidth = 21;
             colEditedDate.Name = "colEditedDate";
+            colEditedDate.OptionsColumn.AllowEdit = false;
             colEditedDate.OptionsColumn.ReadOnly = true;
             colEditedDate.Width = 81;
             // 
@@ -753,6 +772,7 @@
             colMSRNO.FieldName = "MSRNO";
             colMSRNO.MinWidth = 21;
             colMSRNO.Name = "colMSRNO";
+            colMSRNO.OptionsColumn.AllowEdit = false;
             colMSRNO.Visible = true;
             colMSRNO.VisibleIndex = 7;
             colMSRNO.Width = 81;
@@ -763,6 +783,7 @@
             colMSRPDF.FieldName = "MSRPDF";
             colMSRPDF.MinWidth = 21;
             colMSRPDF.Name = "colMSRPDF";
+            colMSRPDF.OptionsColumn.AllowEdit = false;
             colMSRPDF.Width = 81;
             // 
             // colMSRDate
@@ -771,6 +792,7 @@
             colMSRDate.FieldName = "MSRDate";
             colMSRDate.MinWidth = 21;
             colMSRDate.Name = "colMSRDate";
+            colMSRDate.OptionsColumn.AllowEdit = false;
             colMSRDate.Visible = true;
             colMSRDate.VisibleIndex = 8;
             colMSRDate.Width = 81;
@@ -781,6 +803,7 @@
             colMSREnteredBy.FieldName = "MSREnteredBy";
             colMSREnteredBy.MinWidth = 21;
             colMSREnteredBy.Name = "colMSREnteredBy";
+            colMSREnteredBy.OptionsColumn.AllowEdit = false;
             colMSREnteredBy.Visible = true;
             colMSREnteredBy.VisibleIndex = 9;
             colMSREnteredBy.Width = 81;
@@ -791,6 +814,7 @@
             colMSRStatus.FieldName = "MSRStatus";
             colMSRStatus.MinWidth = 21;
             colMSRStatus.Name = "colMSRStatus";
+            colMSRStatus.OptionsColumn.AllowEdit = false;
             colMSRStatus.Width = 81;
             // 
             // colMSRRev
@@ -799,6 +823,7 @@
             colMSRRev.FieldName = "MSRRev";
             colMSRRev.MinWidth = 21;
             colMSRRev.Name = "colMSRRev";
+            colMSRRev.OptionsColumn.AllowEdit = false;
             colMSRRev.Width = 81;
             // 
             // colMSRRevEnteredBy
@@ -807,6 +832,7 @@
             colMSRRevEnteredBy.FieldName = "MSRRevEnteredBy";
             colMSRRevEnteredBy.MinWidth = 21;
             colMSRRevEnteredBy.Name = "colMSRRevEnteredBy";
+            colMSRRevEnteredBy.OptionsColumn.AllowEdit = false;
             colMSRRevEnteredBy.Width = 81;
             // 
             // colMSRRevDate
@@ -815,6 +841,7 @@
             colMSRRevDate.FieldName = "MSRRevDate";
             colMSRRevDate.MinWidth = 21;
             colMSRRevDate.Name = "colMSRRevDate";
+            colMSRRevDate.OptionsColumn.AllowEdit = false;
             colMSRRevDate.Width = 81;
             // 
             // repositoryItemLookUpEdit1
@@ -869,6 +896,7 @@
             ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridcontrol).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemCalcEdit1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEdit1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -938,5 +966,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private Label label1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
     }
 }

@@ -19,8 +19,8 @@ namespace AWMS.app.Forms
 
         public frmMain(IServiceProvider serviceProvider, int userId)
         {
-            _serviceProvider = serviceProvider;
             InitializeComponent();
+            _serviceProvider = serviceProvider;
             this.Icon = Properties.Resources.warehouse2024;
             barStaticItem2.Caption = " :: " + DateMiladiShamsi.DateMiladi() + " : " + DateMiladiShamsi.DateShamsi();
             _userId = userId;
@@ -113,6 +113,18 @@ namespace AWMS.app.Forms
                 barStaticItem3.Caption = $"Welcome, {_session.Username}"; //+ " " + $"Role: {_session.RoleID}";
                 //RoleLabel.Text = $"Role: {_session.Role}";
             }
+        }
+
+        private void barbtnImportPackingList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+
+            // ایجاد فرم جدید و پاس دادن userId
+            var ImportPackingListForm = ActivatorUtilities.CreateInstance<frmImportPackingList>(_serviceProvider, _userId);
+            ImportPackingListForm.MdiParent = this;
+            ImportPackingListForm.Show();
+
+            SplashScreenManager.CloseForm();
         }
     }
 }

@@ -63,6 +63,26 @@ namespace AWMS.app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap about_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("about_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap adateoccurring_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("adateoccurring_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap adateoccurring_32x32 {
             get {
                 object obj = ResourceManager.GetObject("adateoccurring_32x32", resourceCulture);
@@ -116,6 +136,16 @@ namespace AWMS.app.Properties {
         internal static System.Drawing.Bitmap BACKlOCITEM {
             get {
                 object obj = ResourceManager.GetObject("BACKlOCITEM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bouser_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("bouser_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +296,16 @@ namespace AWMS.app.Properties {
         internal static System.Drawing.Bitmap exporttoxls_16x163 {
             get {
                 object obj = ResourceManager.GetObject("exporttoxls_16x163", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttoxls_16x164 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxls_16x164", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -215,11 +215,28 @@ namespace AWMS.dapper
             using (var connection = CreateConnection())
             {
                 var parameters = new DynamicParameters();
+                decimal netW = 0.00m;
+                decimal grossW = 0.00m;
+
+                // تبدیل مقادیر به نوع decimal و مدیریت مقادیر نادرست
+                if (decimal.TryParse(updatedPackage.NetW?.ToString() ?? "0", out netW) == false)
+                {
+                    // لاگ یا هشدار در صورت نیاز
+                    Console.WriteLine($"Invalid NetW value: {updatedPackage.NetW}");
+                }
+
+                if (decimal.TryParse(updatedPackage.GrossW?.ToString() ?? "0", out grossW) == false)
+                {
+                    // لاگ یا هشدار در صورت نیاز
+                    Console.WriteLine($"Invalid GrossW value: {updatedPackage.GrossW}");
+                }
+
+                // افزودن پارامترها به درخواست پروسیجر
                 parameters.Add("@PKID", packageId);
                 parameters.Add("@PLId", updatedPackage.PLId);
                 parameters.Add("@PK", updatedPackage.PK);
-                parameters.Add("@NetW", updatedPackage.NetW);
-                parameters.Add("@GrossW", updatedPackage.GrossW);
+                parameters.Add("@NetW", netW);
+                parameters.Add("@GrossW", grossW);
                 parameters.Add("@Dimension", updatedPackage.Dimension);
                 parameters.Add("@Volume", updatedPackage.Volume);
                 parameters.Add("@ArrivalDate", updatedPackage.ArrivalDate);
@@ -265,7 +282,7 @@ namespace AWMS.dapper
         {
             using (var connection = CreateConnection())
             {
-                 connection.Open();
+                connection.Open();
                 using (var transaction = connection.BeginTransaction())
                 {
                     try
@@ -293,5 +310,62 @@ namespace AWMS.dapper
                 }
             }
         }
+
+
+
+        private void SendDataToStoredProcedure(DataTable packages)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("AddPackagesFromTempTable", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // ایجاد پارامتر برای داده‌های Package
+                    var packageParam = command.Parameters.AddWithValue("@Packages", packages);
+                    packageParam.SqlDbType = SqlDbType.Structured;
+                    packageParam.TypeName = "dbo.PackageType";
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // متد برای تبدیل لیست به DataTable
+        private DataTable ConvertToDataTable(IEnumerable<PackageDto> packages)
+        {
+            var table = new DataTable();
+            table.Columns.Add("PK", typeof(int));
+            table.Columns.Add("NetW", typeof(decimal));
+            table.Columns.Add("GrossW", typeof(decimal));
+            table.Columns.Add("Dimension", typeof(string));
+            table.Columns.Add("Volume", typeof(string));
+            table.Columns.Add("ArrivalDate", typeof(DateTime));
+            table.Columns.Add("Desciption", typeof(string));
+            table.Columns.Add("Remark", typeof(string));
+            table.Columns.Add("PLId", typeof(int)); // اضافه کردن PLId
+            table.Columns.Add("EnteredBy", typeof(int)); // اضافه کردن EnteredBy
+            table.Columns.Add("EnteredDate", typeof(DateTime)); // اضافه کردن EnteredDate
+
+            foreach (var package in packages)
+            {
+                table.Rows.Add(package.PK, package.NetW, package.GrossW, package.Dimension, package.Volume, package.ArrivalDate, package.Desciption, package.Remark, package.PLId, package.EnteredBy, package.EnteredDate);
+            }
+
+            return table;
+        }
+
+
+        // متد برای افزودن لیست بسته‌ها
+        public void AddPackages(IEnumerable<PackageDto> packages)
+        {
+            var dataTable = ConvertToDataTable(packages);
+            SendDataToStoredProcedure(dataTable);
+        }
+
+
+
     }
 }

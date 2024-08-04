@@ -42,7 +42,7 @@
             barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            barbtnImportPackingList = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
@@ -50,6 +50,7 @@
             CompanybarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -69,13 +70,15 @@
             ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
             repositoryItemHypertextLabel2 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
+            repositoryItemHypertextLabel3 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
             ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
-            barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
+            barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)documentManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tabbedView1).BeginInit();
             SuspendLayout();
@@ -85,17 +88,17 @@
             ribbonControl1.Cursor = Cursors.Hand;
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(22, 24, 22, 24);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barbtnImportPackingList, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3, barStaticItem4 });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(3, 2, 3, 2);
-            ribbonControl1.MaxItemId = 38;
+            ribbonControl1.MaxItemId = 42;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 248;
             ribbonControl1.PageHeaderItemLinks.Add(skinPaletteDropDownButtonItem1);
             ribbonControl1.PageHeaderItemLinks.Add(skinDropDownButtonItem1);
             ribbonControl1.PageHeaderItemLinks.Add(barStaticItem3);
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage3, ribbonPage5, ribbonPage6, ribbonPage4, ribbonPage2, ribbonPage7 });
-            ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemHypertextLabel1, repositoryItemHypertextLabel2 });
+            ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemHypertextLabel1, repositoryItemHypertextLabel2, repositoryItemHypertextLabel3 });
             ribbonControl1.Size = new Size(1203, 177);
             ribbonControl1.StatusBar = ribbonStatusBar1;
             // 
@@ -190,14 +193,15 @@
             barButtonItem9.Name = "barButtonItem9";
             barButtonItem9.ItemClick += barButtonItem9_ItemClick;
             // 
-            // barButtonItem10
+            // barbtnImportPackingList
             // 
-            barButtonItem10.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            barButtonItem10.Caption = "Import Excel , Packing List Add";
-            barButtonItem10.Id = 22;
-            barButtonItem10.ImageOptions.Image = (Image)resources.GetObject("barButtonItem10.ImageOptions.Image");
-            barButtonItem10.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem10.ImageOptions.LargeImage");
-            barButtonItem10.Name = "barButtonItem10";
+            barbtnImportPackingList.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            barbtnImportPackingList.Caption = "Import Excel , Packing List Add";
+            barbtnImportPackingList.Id = 22;
+            barbtnImportPackingList.ImageOptions.Image = (Image)resources.GetObject("barbtnImportPackingList.ImageOptions.Image");
+            barbtnImportPackingList.ImageOptions.LargeImage = (Image)resources.GetObject("barbtnImportPackingList.ImageOptions.LargeImage");
+            barbtnImportPackingList.Name = "barbtnImportPackingList";
+            barbtnImportPackingList.ItemClick += barbtnImportPackingList_ItemClick;
             // 
             // barButtonItem11
             // 
@@ -246,7 +250,10 @@
             // 
             barStaticItem2.Caption = "barStaticItem2";
             barStaticItem2.Id = 32;
+            barStaticItem2.ImageOptions.Image = Properties.Resources.adateoccurring_16x16;
+            barStaticItem2.ImageOptions.LargeImage = Properties.Resources.adateoccurring_16x16;
             barStaticItem2.Name = "barStaticItem2";
+            barStaticItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // skinDropDownButtonItem1
             // 
@@ -254,6 +261,15 @@
             skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             skinDropDownButtonItem1.Id = 36;
             skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            // 
+            // barStaticItem3
+            // 
+            barStaticItem3.Caption = "barStaticItem3";
+            barStaticItem3.Id = 37;
+            barStaticItem3.ImageOptions.Image = Properties.Resources.bouser_16x16;
+            barStaticItem3.ImageOptions.LargeImage = Properties.Resources.bouser_16x16;
+            barStaticItem3.Name = "barStaticItem3";
+            barStaticItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // ribbonPage1
             // 
@@ -300,7 +316,7 @@
             // 
             ribbonPageGroup7.AllowTextClipping = false;
             ribbonPageGroup7.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            ribbonPageGroup7.ItemLinks.Add(barButtonItem10);
+            ribbonPageGroup7.ItemLinks.Add(barbtnImportPackingList);
             ribbonPageGroup7.Name = "ribbonPageGroup7";
             ribbonPageGroup7.Text = "Import Packing List";
             // 
@@ -382,9 +398,15 @@
             // 
             repositoryItemHypertextLabel2.Name = "repositoryItemHypertextLabel2";
             // 
+            // repositoryItemHypertextLabel3
+            // 
+            repositoryItemHypertextLabel3.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            repositoryItemHypertextLabel3.Name = "repositoryItemHypertextLabel3";
+            // 
             // ribbonStatusBar1
             // 
             ribbonStatusBar1.ItemLinks.Add(barStaticItem2);
+            ribbonStatusBar1.ItemLinks.Add(barStaticItem4);
             ribbonStatusBar1.Location = new Point(0, 615);
             ribbonStatusBar1.Name = "ribbonStatusBar1";
             ribbonStatusBar1.Ribbon = ribbonControl1;
@@ -397,11 +419,14 @@
             documentManager1.View = tabbedView1;
             documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView1 });
             // 
-            // barStaticItem3
+            // barStaticItem4
             // 
-            barStaticItem3.Caption = "barStaticItem3";
-            barStaticItem3.Id = 37;
-            barStaticItem3.Name = "barStaticItem3";
+            barStaticItem4.Caption = "Marcus Aurelius once said that “everything we do now, echoes in eternity.” Every step you take can affect generations, for better or worse.";
+            barStaticItem4.Id = 41;
+            barStaticItem4.ImageOptions.Image = Properties.Resources.about_16x16;
+            barStaticItem4.ImageOptions.LargeImage = Properties.Resources.about_16x16;
+            barStaticItem4.Name = "barStaticItem4";
+            barStaticItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // frmMain
             // 
@@ -423,6 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel3).EndInit();
             ((System.ComponentModel.ISupportInitialize)documentManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)tabbedView1).EndInit();
             ResumeLayout(false);
@@ -455,7 +481,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem barbtnImportPackingList;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
@@ -475,5 +501,7 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel3;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem4;
     }
 }

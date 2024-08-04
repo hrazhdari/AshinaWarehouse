@@ -254,6 +254,13 @@ namespace AWMS.dapper
             }
         }
 
-
+        public async Task<IEnumerable<PackingListAllPlNameDto>> GetPackingListsWithoutPackagesAsync()
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string storedProc = "GetPackingListsWithoutPackages";
+                return await db.QueryAsync<PackingListAllPlNameDto>(storedProc, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

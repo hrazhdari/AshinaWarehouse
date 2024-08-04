@@ -12,6 +12,7 @@ namespace AWMS.dapper.Repositories
         Task<IEnumerable<PackingListDto>> GetAllAsync();
         Task<IEnumerable<PackingListAllPlNameDto>> GetAllPlNameAsync();
         Task<IEnumerable<AllItemSelectedPlDto>> AllItemSelectedPlAsync(int plId);
+        Task<IEnumerable<PackingListAllPlNameDto>> GetPackingListsWithoutPackagesAsync();
         Task<PackingListDto> GetByIdAsync(int PlId);
         Task<PackingListDto> GetByPlNameAsync(string PlName);
         Task<bool> ExistsByPlNameAsync(string plName);

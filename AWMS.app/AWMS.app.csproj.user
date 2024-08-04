@@ -34,6 +34,9 @@
     <Compile Update="Forms\frmSmall\frmVendor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonMaterial\frmImportPackingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonMaterial\frmItemLoc.cs">
       <SubType>Form</SubType>
     </Compile>

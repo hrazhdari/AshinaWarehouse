@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AWMS.dapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a7c1d6d91d82ddf55c2fc0bacac4cda45b253aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d092ea32642b910d1b1ebfe19647127147b5a93")]
 [assembly: System.Reflection.AssemblyProductAttribute("AWMS.dapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AWMS.dapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

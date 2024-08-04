@@ -104,6 +104,7 @@ namespace AWMS.app
                     services.AddTransient<frmItemLoc>();
                     services.AddTransient<frmViewPackingList>();
                     services.AddTransient<frmLogin>();
+                    services.AddTransient<frmImportPackingList>();
                 });
 
         // بارگذاری تنظیمات از فایل appsettings.json

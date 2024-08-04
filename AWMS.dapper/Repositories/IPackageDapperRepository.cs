@@ -12,6 +12,7 @@ namespace AWMS.dapper.Repositories
         Task<IEnumerable<PackageDto>> GetAllPackageAsync();
         PackageDto GetPackageById(int packageId);
         IEnumerable<PackageDto> GetPackageByPLId(int plId);
+        void AddPackages(IEnumerable<PackageDto> packages);
         PackageDto GetPackageByPK(int pk);
         bool GetPackageByPackageNameBool(string packageName);
         int GetLastPackage(int plId);
