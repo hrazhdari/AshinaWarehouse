@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmpk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmpk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmviewpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmviewpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\packagedapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\packagedapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\repositories\\iitemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\repositories\\iitemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\repositories\\ipackagedapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\repositories\\ipackagedapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dto\\importitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|solutionrelative:awms.dto\\importitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmimportpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmimportpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\itemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\itemdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmimportpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmimportpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|D:\\MyBigProject\\AshinaWarehouse\\awms.app\\forms\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmimportpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmimportpackinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,52 +47,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmPK.cs [Design]",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs [Design]",
-              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs [Design]",
+              "Title": "frmViewPackingList.cs [Design]",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmViewPackingList.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmViewPackingList.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmViewPackingList.cs [Design]",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmViewPackingList.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T12:21:13.159Z",
+              "WhenOpened": "2024-08-04T16:47:49.363Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IPackageDapperRepository.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IPackageDapperRepository.cs",
-              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\IPackageDapperRepository.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IPackageDapperRepository.cs",
-              "RelativeToolTip": "AWMS.dapper\\Repositories\\IPackageDapperRepository.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAA1wBAAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T11:34:32.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PackageDapperRepository.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\PackageDapperRepository.cs",
-              "RelativeDocumentMoniker": "AWMS.dapper\\PackageDapperRepository.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\PackageDapperRepository.cs",
-              "RelativeToolTip": "AWMS.dapper\\PackageDapperRepository.cs",
-              "ViewState": "AQIAAM8AAAAAAAAAAAAWwOsAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T10:52:21.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "frmImportPackingList.cs [Design]",
               "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmImportPackingList.cs",
               "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmImportPackingList.cs",
               "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmImportPackingList.cs [Design]",
               "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmImportPackingList.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T04:40:07.846Z",
+              "WhenOpened": "2024-08-04T16:22:08.671Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ImportItemDto.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\ImportItemDto.cs",
+              "RelativeDocumentMoniker": "AWMS.dto\\ImportItemDto.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\ImportItemDto.cs",
+              "RelativeToolTip": "AWMS.dto\\ImportItemDto.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAYwAoAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T14:14:05.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IItemDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IItemDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\IItemDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IItemDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\Repositories\\IItemDapperRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T13:58:41.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ItemDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\ItemDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\ItemDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\ItemDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\ItemDapperRepository.cs",
+              "ViewState": "AQIAAJMBAAAAAAAAAAAnwLcBAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T13:57:54.681Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -98,7 +115,7 @@
               "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmImportPackingList.cs",
               "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmImportPackingList.cs",
               "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmImportPackingList.cs",
-              "ViewState": "AQIAAK8AAAAAAAAAAAAkwMgAAAAAAAAA",
+              "ViewState": "AQIAAPUAAAAAAAAAAAAUwAsBAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T04:36:11.818Z",
               "EditorCaption": ""

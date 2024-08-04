@@ -373,5 +373,83 @@ namespace AWMS.dapper
         }
 
 
+
+        private DataTable ConvertToDataTable(IEnumerable<ImportItemDto> items)
+        {
+            var table = new DataTable();
+            table.Columns.Add("PK", typeof(int)); // تغییر به PK
+            table.Columns.Add("Tag", typeof(string));
+            table.Columns.Add("Description", typeof(string));
+            table.Columns.Add("UnitID", typeof(string)); // تغییر به string
+            table.Columns.Add("Qty", typeof(decimal));
+            table.Columns.Add("OverQty", typeof(decimal));
+            table.Columns.Add("ShortageQty", typeof(decimal));
+            table.Columns.Add("DamageQty", typeof(decimal));
+            table.Columns.Add("IncorectQty", typeof(decimal));
+            table.Columns.Add("ScopeID", typeof(string)); // تغییر به string
+            table.Columns.Add("HeatNo", typeof(string));
+            table.Columns.Add("BatchNo", typeof(string));
+            table.Columns.Add("Remark", typeof(string));
+            table.Columns.Add("Price", typeof(decimal));
+            table.Columns.Add("UnitPriceID", typeof(string)); // تغییر به string
+            table.Columns.Add("NetW", typeof(decimal));
+            table.Columns.Add("GrossW", typeof(decimal));
+            table.Columns.Add("BaseMaterial", typeof(string));
+            table.Columns.Add("EnteredBy", typeof(string));
+            table.Columns.Add("EnteredDate", typeof(DateTime));
+
+            foreach (var item in items)
+            {
+                table.Rows.Add(item.PK, item.Tag, item.Description, item.UnitID, item.Qty, item.OverQty,
+                    item.ShortageQty, item.DamageQty, item.IncorectQty, item.ScopeID, item.HeatNo, item.BatchNo,
+                    item.Remark, item.Price, item.UnitPriceID, item.NetW, item.GrossW, item.BaseMaterial, item.EnteredBy, item.EnteredDate);
+            }
+
+            return table;
+        }
+        private void SendDataToStoredProcedure(DataTable items, int plId, int locationId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("AddItemsFromTempTable", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // ایجاد پارامتر برای داده‌های Item
+                    var itemParam = command.Parameters.AddWithValue("@Items", items);
+                    itemParam.SqlDbType = SqlDbType.Structured;
+                    itemParam.TypeName = "dbo.ItemTableType"; // نام نوع جدول در SQL Server
+
+                    // اضافه کردن پارامتر PLId
+                    var plIdParam = command.Parameters.AddWithValue("@PLId", plId);
+                    plIdParam.SqlDbType = SqlDbType.Int;
+
+                    // اضافه کردن پارامتر LocationID
+                    var locationIdParam = command.Parameters.AddWithValue("@LocationID", locationId);
+                    locationIdParam.SqlDbType = SqlDbType.Int;
+
+                    // پارامتر خروجی برای ItemId جدید
+                    var newItemIdParam = new SqlParameter("@NewItemId", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(newItemIdParam);
+
+                    command.ExecuteNonQuery();
+
+                    int newItemId = (int)newItemIdParam.Value; // مقدار ItemId جدید
+                }
+            }
+        }
+        public void AddItems(IEnumerable<ImportItemDto> items, int plId, int locationId)
+        {
+            var dataTable = ConvertToDataTable(items);
+            SendDataToStoredProcedure(dataTable, plId, locationId);
+        }
+
+
+
     }
 }

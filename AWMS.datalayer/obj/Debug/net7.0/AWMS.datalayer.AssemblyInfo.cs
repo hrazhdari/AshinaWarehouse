@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AWMS.datalayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a7c1d6d91d82ddf55c2fc0bacac4cda45b253aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9b419e158d64a56962bd559b0b46c9f7c6ec0e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("AWMS.datalayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AWMS.datalayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

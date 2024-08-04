@@ -30,6 +30,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly ILocationDapperRepository _locationDapperRepository;
         private readonly IPackingListDapperRepository _packingListDapperRepository;
         private readonly IPackageDapperRepository _packageDapperRepository;
+        private readonly IItemDapperRepository _itemDapperRepository;
         private readonly IConfiguration _configuration; // افزودن این فیلد
         private readonly int _userId;
         private readonly UserSession _session; // اضافه کردن متغیر سراسری برای UserSession
@@ -37,7 +38,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         public frmImportPackingList(IServiceProvider serviceProvider, int userId,
             ILocationDapperRepository locationDapperRepository,
             IPackingListDapperRepository packingListDapperRepository,
-            IPackageDapperRepository packageDapperRepository,
+            IPackageDapperRepository packageDapperRepository,IItemDapperRepository itemDapperRepository,
             IConfiguration configuration) // افزودن IConfiguration به سازنده
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             _locationDapperRepository = locationDapperRepository;
             _packingListDapperRepository = packingListDapperRepository;
             _packageDapperRepository = packageDapperRepository;
+            _itemDapperRepository= itemDapperRepository;
             _configuration = configuration; // مقداردهی فیلد
 
             // گرفتن نشست کاربر و ذخیره آن در متغیر سراسری
@@ -114,26 +116,46 @@ namespace AWMS.app.Forms.RibbonMaterial
                 {
                     using (var package = new OfficeOpenXml.ExcelPackage(new FileInfo(openFileDialog.FileName)))
                     {
-                        var worksheet = package.Workbook.Worksheets["Pk"];
-                        if (worksheet == null)
-                        {
-                            MessageBox.Show("Sheet named 'Pk' not found in the selected Excel file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        var pkWorksheet = package.Workbook.Worksheets["Pk"];
+                        var detailWorksheet = package.Workbook.Worksheets["Detail"];
 
-                        var packages = ReadPackagesFromExcel(worksheet, (int)lookUpEditPL.EditValue);
-
-                        // بررسی کنید که بسته‌ها قبل از ارسال به مخزن پر شده باشند
-                        if (packages.Any())
+                        if (pkWorksheet != null)
                         {
-                            _packageDapperRepository.AddPackages(packages);
-                            // بارگذاری و نمایش داده‌ها در گرید
-                            LoadPackagesForPL((int)lookUpEditPL.EditValue);
-                            MessageBox.Show("Packages imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            var packages = ReadPackagesFromExcel(pkWorksheet, (int)lookUpEditPL.EditValue);
+
+                            if (packages.Any())
+                            {
+                                _packageDapperRepository.AddPackages(packages);
+                                LoadPackagesForPL((int)lookUpEditPL.EditValue);
+                                MessageBox.Show("Packages imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No valid data found in the 'Pk' sheet.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("No valid data found in the Excel file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Sheet named 'Pk' not found in the selected Excel file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        if (detailWorksheet != null)
+                        {
+                            var details = ReadDetailsFromExcel(detailWorksheet, (int)lookUpEditPL.EditValue);
+
+                            if (details.Any())
+                            {
+                                _itemDapperRepository.AddItems(details, (int)lookUpEditPL.EditValue, locationLookupValue);
+                                MessageBox.Show("Details imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No valid data found in the 'Detail' sheet.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sheet named 'Detail' not found in the selected Excel file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -143,7 +165,6 @@ namespace AWMS.app.Forms.RibbonMaterial
                 }
             }
         }
-
         private IEnumerable<PackageDto> ReadPackagesFromExcel(ExcelWorksheet worksheet, int plId)
         {
             if (worksheet == null)
@@ -164,20 +185,17 @@ namespace AWMS.app.Forms.RibbonMaterial
                 var cellValue7 = worksheet.Cells[row, 7].Value; // Desciption
                 var cellValue8 = worksheet.Cells[row, 8].Value; // Remark
 
-                // بررسی اینکه مقدار PK خالی نباشد
                 if (cellValue1 == null || string.IsNullOrWhiteSpace(cellValue1.ToString()))
                 {
                     continue; // اگر PK خالی بود، ردیف را نادیده بگذارید
                 }
 
-                // مقدار پیش‌فرض برای ArrivalDate
                 DateTime arrivalDate;
                 if (cellValue6 == null || !DateTime.TryParse(cellValue6.ToString(), out arrivalDate))
                 {
                     arrivalDate = DateTime.Now;
                 }
 
-                // تبدیل مقادیر به نوع مناسب و اضافه کردن به لیست
                 var packageDto = new PackageDto
                 {
                     PK = Convert.ToInt32(cellValue1),
@@ -190,7 +208,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     Remark = cellValue8 != null ? cellValue8.ToString() : string.Empty,
                     EnteredBy = _session.UserID,
                     EnteredDate = DateTime.Now,
-                    PLId = plId // مقدار PLId از پارامتر ورودی متد
+                    PLId = plId
                 };
 
                 packages.Add(packageDto);
@@ -198,6 +216,71 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             return packages;
         }
+        private IEnumerable<ImportItemDto> ReadDetailsFromExcel(ExcelWorksheet worksheet, int plId)
+        {
+            if (worksheet == null)
+            {
+                throw new ArgumentNullException(nameof(worksheet), "Worksheet cannot be null.");
+            }
+
+            var items = new List<ImportItemDto>();
+
+            for (int row = 2; row <= worksheet.Dimension.End.Row; row++)
+            {
+                var cellValue1 = worksheet.Cells[row, 1].Value; // PK
+                var cellValue2 = worksheet.Cells[row, 2].Value; // Tag
+                var cellValue3 = worksheet.Cells[row, 3].Value; // Description
+                var cellValue4 = worksheet.Cells[row, 4].Value; // Unit
+                var cellValue5 = worksheet.Cells[row, 5].Value; // Qty
+                var cellValue6 = worksheet.Cells[row, 6].Value; // Over
+                var cellValue7 = worksheet.Cells[row, 7].Value; // Shortage
+                var cellValue8 = worksheet.Cells[row, 8].Value; // Damage
+                var cellValue9 = worksheet.Cells[row, 9].Value; // Incorrect
+                var cellValue10 = worksheet.Cells[row, 10].Value; // Scope
+                var cellValue11 = worksheet.Cells[row, 11].Value; // HeatNo
+                var cellValue12 = worksheet.Cells[row, 12].Value; // BatchNo
+                var cellValue13 = worksheet.Cells[row, 13].Value; // Remark
+                var cellValue14 = worksheet.Cells[row, 14].Value; // Price
+                var cellValue15 = worksheet.Cells[row, 15].Value; // UnitPrice
+                var cellValue16 = worksheet.Cells[row, 16].Value; // NetW
+                var cellValue17 = worksheet.Cells[row, 17].Value; // GrossW
+                var cellValue18 = worksheet.Cells[row, 18].Value; // BaseMaterial
+
+                if (cellValue1 == null || string.IsNullOrWhiteSpace(cellValue1.ToString()))
+                {
+                    continue; // اگر PK خالی بود، ردیف را نادیده بگذارید
+                }
+
+                var itemDto = new ImportItemDto
+                {
+                    PK = cellValue1 != null ? (int?)Convert.ToInt32(cellValue1) : null,
+                    Tag = cellValue2 != null ? cellValue2.ToString() : string.Empty,
+                    Description = cellValue3 != null ? cellValue3.ToString() : string.Empty,
+                    UnitID = cellValue4 != null ? cellValue4.ToString() : string.Empty,
+                    Qty = cellValue5 != null ? (decimal?)Convert.ToDecimal(cellValue5) : null,
+                    OverQty = cellValue6 != null ? (decimal?)Convert.ToDecimal(cellValue6) : null,
+                    ShortageQty = cellValue7 != null ? (decimal?)Convert.ToDecimal(cellValue7) : null,
+                    DamageQty = cellValue8 != null ? (decimal?)Convert.ToDecimal(cellValue8) : null,
+                    IncorectQty = cellValue9 != null ? (decimal?)Convert.ToDecimal(cellValue9) : null,
+                    ScopeID = cellValue10 != null ? cellValue10.ToString() : string.Empty,
+                    HeatNo = cellValue11 != null ? cellValue11.ToString() : string.Empty,
+                    BatchNo = cellValue12 != null ? cellValue12.ToString() : string.Empty,
+                    Remark = cellValue13 != null ? cellValue13.ToString() : string.Empty,
+                    Price = cellValue14 != null ? (decimal?)Convert.ToDecimal(cellValue14) : null,
+                    UnitPriceID = cellValue15 != null ? cellValue15.ToString() : string.Empty,
+                    NetW = cellValue16 != null ? (decimal?)Convert.ToDecimal(cellValue16) : null,
+                    GrossW = cellValue17 != null ? (decimal?)Convert.ToDecimal(cellValue17) : null,
+                    BaseMaterial = cellValue18 != null ? cellValue18.ToString() : string.Empty,
+                    EnteredBy = _session.UserID,
+                    EnteredDate = DateTime.Now
+                };
+
+                items.Add(itemDto);
+            }
+
+            return items;
+        }
+
 
         private void btnAddIrn_Click(object sender, EventArgs e)
         {

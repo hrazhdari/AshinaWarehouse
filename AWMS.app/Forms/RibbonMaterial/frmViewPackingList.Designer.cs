@@ -1294,7 +1294,6 @@
             repositoryItemCheckEditHold.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
             repositoryItemCheckEditHold.AutoHeight = false;
             repositoryItemCheckEditHold.Name = "repositoryItemCheckEditHold";
-            repositoryItemCheckEditHold.NullText = "False";
             repositoryItemCheckEditHold.ValueGrayed = false;
             // 
             // gridColumn28
