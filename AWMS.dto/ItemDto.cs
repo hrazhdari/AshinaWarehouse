@@ -29,7 +29,7 @@ namespace AWMS.dto
         public int? EnteredBy { get; set; }
         public DateTime? EnteredDate { get; set; }
         public int? EditedBy { get; set; }
-        public DateTime? EditedDate { get; private set; }
+        public DateTime? EditedDate { get; set; }
         public decimal? Price { get; set; }
         public int? UnitPriceID { get; set; }
         public decimal? NetW { get; set; }
@@ -38,6 +38,7 @@ namespace AWMS.dto
         public string? BaseMaterial { get; set; }
         public bool? Hold { get; set; }
         public decimal? NIS { get; set; }
+        public string? StorageCode { get; set; }
 
     }
 }

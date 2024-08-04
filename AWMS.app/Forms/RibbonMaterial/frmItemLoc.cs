@@ -18,6 +18,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using DevExpress.XtraVerticalGrid;
 using AWMS.datalayer.Entities;
+using AWMS.app.Forms.RibbonUser;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {
@@ -35,11 +36,14 @@ namespace AWMS.app.Forms.RibbonMaterial
         private decimal itemQty;
         private int repositorylocationId = 0;
         private int locationId = 1;
+        private readonly UserSession _session; // اضافه کردن UserSession
+
         private bool isNewRowAdded = false;
 
         public frmItemLoc(IPackingListDapperRepository packingListDapperRepository, IUnitDapperRepository unitDapperRepository,
             IScopeDapperRepository scopeDapperRepository, ILocationDapperRepository locationDapperRepository,
-            IPackageDapperRepository packageDapperRepository, IItemDapperRepository itemDapperRepository, ILocItemDapperRepository locItemDapperRepository)
+            IPackageDapperRepository packageDapperRepository, IItemDapperRepository itemDapperRepository,
+            ILocItemDapperRepository locItemDapperRepository, int userId)
         {
             InitializeComponent();
             this._packingListDapperRepository = packingListDapperRepository;
@@ -49,6 +53,8 @@ namespace AWMS.app.Forms.RibbonMaterial
             this._packageDapperRepository = packageDapperRepository;
             this._itemDapperRepository = itemDapperRepository;
             this._locitemDapperRepository = locItemDapperRepository;
+            _session = SessionManager.GetSession(userId); // گرفتن نشست کاربر بر اساس userId
+
             LookUPLoad();
 
             gridcontrolItem.DoubleClick += gridcontrol_DoubleClick;
@@ -56,10 +62,6 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             chkEdit.CheckedChanged += chkEdit_CheckedChanged;
             chkEdit_CheckedChanged(null, null);
-
-            ///Locitem Section
-            // رویداد برای محاسبه مقدار ستون محاسباتی
-            gridView2.CustomUnboundColumnData += gridView2_CustomUnboundColumnData;
         }
 
         private void chkEdit_CheckedChanged(object sender, EventArgs e)
@@ -220,6 +222,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     // Create new item
                     var newItem = new ItemDto
                     {
+                        EnteredBy= _session.UserID,
                         EnteredDate = DateTime.Now,
                         PKID = LASTPKID,
                         UnitID = 1, // Set default value or based on your needs
@@ -308,21 +311,127 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         /////////////////// End Of Item , Start LocItem
 
-        private void gridView2_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
-        {
-            if (e.Column.FieldName == "QtyInLoc" && e.IsGetData)
-            {
-                LocItemDto locItem = (LocItemDto)e.Row;
-                // محاسبه مقدار QtyInLoc
-                decimal qtyInLoc = locItem.Qty ?? 0;
-                qtyInLoc += locItem.OverQty ?? 0;
-                qtyInLoc -= locItem.ShortageQty ?? 0;
-                e.Value = qtyInLoc;
-            }
-        }
+        private bool isUpdatingQty = false;
+
         private async void gridView2_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            if (isUpdatingQty) return;
+            
             GridView view = sender as GridView;
+            if (e.Column.FieldName == "Qty")
+            {
+                try
+                {
+                    isUpdatingQty = true;
+
+                    var rowHandle = e.RowHandle;
+
+                    // استفاده از شرط‌های اضافی برای بررسی رشته‌های خالی و جلوگیری از خطا
+                    var overQtyString = view.GetRowCellValue(rowHandle, "OverQty")?.ToString();
+                    var shortageQtyString = view.GetRowCellValue(rowHandle, "ShortageQty")?.ToString();
+                    var qtyString = view.GetRowCellValue(rowHandle, "Qty")?.ToString();
+
+                    var overQty = string.IsNullOrEmpty(overQtyString) ? 0 : Convert.ToDecimal(overQtyString);
+                    var shortageQty = string.IsNullOrEmpty(shortageQtyString) ? 0 : Convert.ToDecimal(shortageQtyString);
+                    var qty = string.IsNullOrEmpty(qtyString) ? 0 : Convert.ToDecimal(qtyString);
+
+                    if (e.Column.FieldName == "OverQty")
+                    {
+                        overQty = Convert.ToDecimal(e.Value ?? 0);
+                    }
+                    else if (e.Column.FieldName == "ShortageQty")
+                    {
+                        shortageQty = Convert.ToDecimal(e.Value ?? 0);
+                    }
+                    else if (e.Column.FieldName == "Qty")
+                    {
+                        qty = Convert.ToDecimal(e.Value ?? 0);
+                    }
+
+                    // به‌روزرسانی مقدار Qty
+                    gridView2.SetRowCellValue(rowHandle, "Qty", qty + overQty - shortageQty);
+
+                    // Force the grid to update the Qty column when OverQty or ShortageQty changes
+                    view.PostEditor();
+                    view.UpdateCurrentRow();
+                }
+                finally
+                {
+                    isUpdatingQty = false;
+                }
+            }
+            if (e.Column.FieldName == "ShortageQty")
+            {
+                try
+                {
+                    isUpdatingQty = true;
+
+                    var rowHandle = e.RowHandle;
+
+                    // استفاده از شرط‌های اضافی برای بررسی رشته‌های خالی و جلوگیری از خطا
+                    var shortageQtyString = view.GetRowCellValue(rowHandle, "ShortageQty")?.ToString();
+                    var qtyString = view.GetRowCellValue(rowHandle, "Qty")?.ToString();
+                    var shortageQty = string.IsNullOrEmpty(shortageQtyString) ? 0 : Convert.ToDecimal(shortageQtyString);
+                    var qty = string.IsNullOrEmpty(qtyString) ? 0 : Convert.ToDecimal(qtyString);
+
+                    if (e.Column.FieldName == "ShortageQty")
+                    {
+                        shortageQty = Convert.ToDecimal(e.Value ?? 0);
+                    }
+                    else if (e.Column.FieldName == "Qty")
+                    {
+                        qty = Convert.ToDecimal(e.Value ?? 0);
+                    }
+
+                    // به‌روزرسانی مقدار Qty
+                    gridView2.SetRowCellValue(rowHandle, "Qty", qty - shortageQty);
+
+                    // Force the grid to update the Qty column when OverQty or ShortageQty changes
+                    view.PostEditor();
+                    view.UpdateCurrentRow();
+                }
+                finally
+                {
+                    isUpdatingQty = false;
+                }
+            }
+            if (e.Column.FieldName == "OverQty")
+            {
+                try
+                {
+                    isUpdatingQty = true;
+
+                    var rowHandle = e.RowHandle;
+
+                    // استفاده از شرط‌های اضافی برای بررسی رشته‌های خالی و جلوگیری از خطا
+                    var overQtyString = view.GetRowCellValue(rowHandle, "OverQty")?.ToString();
+                    var qtyString = view.GetRowCellValue(rowHandle, "Qty")?.ToString();
+
+                    var overQty = string.IsNullOrEmpty(overQtyString) ? 0 : Convert.ToDecimal(overQtyString);
+                    var qty = string.IsNullOrEmpty(qtyString) ? 0 : Convert.ToDecimal(qtyString);
+
+                    if (e.Column.FieldName == "OverQty")
+                    {
+                        overQty = Convert.ToDecimal(e.Value ?? 0);
+                    }
+                    else if (e.Column.FieldName == "Qty")
+                    {
+                        qty = Convert.ToDecimal(e.Value ?? 0);
+                    }
+
+                    // به‌روزرسانی مقدار Qty
+                    gridView2.SetRowCellValue(rowHandle, "Qty", qty + overQty);
+
+                    // Force the grid to update the Qty column when OverQty or ShortageQty changes
+                    view.PostEditor();
+                    view.UpdateCurrentRow();
+                }
+                finally
+                {
+                    isUpdatingQty = false;
+                }
+            }
+
             if (view != null && e.Column.FieldName == "LocationID")
             {
                 int newLocationId = (int)e.Value;
@@ -396,9 +505,11 @@ namespace AWMS.app.Forms.RibbonMaterial
                     totalOverQty += updatedLocItem.OverQty ?? 0;
                     totalShortageQty += updatedLocItem.ShortageQty ?? 0;
 
-                    if (totalQty > labelControl9Value)
+                    decimal actualQty = totalQty - totalOverQty + totalShortageQty;
+
+                    if (actualQty > labelControl9Value)
                     {
-                        MessageBox.Show($"The total Qty ({totalQty}) exceeds the allowed amount in ItemQty ({labelControl9Value}).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"The total Qty ({actualQty}) exceeds the allowed amount in ItemQty ({labelControl9Value}).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (totalOverQty > labelControl10Value)
@@ -422,7 +533,6 @@ namespace AWMS.app.Forms.RibbonMaterial
                 }
             }
         }
-
         private async Task UpdateLocItemAsync(LocItemDto locItem)
         {
             try
@@ -436,6 +546,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                 // به روزرسانی نمایش GridControl
                 var bindingListLocItems = new BindingList<LocItemDto>(locItems.ToList());
                 gridControl1.DataSource = bindingListLocItems;
+                gridControl1.Refresh(); // اطمینان از به روزرسانی
             }
             catch (Exception ex)
             {
@@ -443,6 +554,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void repositoryItemLookUpEditLocation_EditValueChanged(object sender, EventArgs e)
         {
@@ -478,6 +590,8 @@ namespace AWMS.app.Forms.RibbonMaterial
                 view.SetRowCellValue(e.RowHandle, "NISQty", 0); // مقدار پیش‌فرض برای NISQty
                 view.SetRowCellValue(e.RowHandle, "RejectQty", 0); // مقدار پیش‌فرض برای RejectQty
                 view.SetRowCellValue(e.RowHandle, "LocationID", 1); // تنظیم LocationID به 1 به‌عنوان مقدار پیش‌فرض
+                view.SetRowCellValue(e.RowHandle, "EnteredBy", _session.UserID); // تنظیم LocationID به 1 به‌عنوان مقدار پیش‌فرض
+                view.SetRowCellValue(e.RowHandle, "EnteredDate", DateTime.Now); // تنظیم LocationID به 1 به‌عنوان مقدار پیش‌فرض
             }
         }
 
@@ -496,7 +610,9 @@ namespace AWMS.app.Forms.RibbonMaterial
                 DamageQty = 0,
                 NISQty = 0,
                 RejectQty = 0,
-                LocationID = 1 // باید از جایی که LocationID تنظیم می‌شود، مقداردهی شود
+                LocationID = 1, // باید از جایی که LocationID تنظیم می‌شود، مقداردهی شود
+                EnteredBy= _session.UserID,
+                EnteredDate = DateTime.Now
             };
 
             if (newLocItem.LocationID == null || newLocItem.LocationID == 0)

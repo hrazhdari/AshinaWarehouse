@@ -101,52 +101,56 @@ namespace AWMS.dapper
         }
 
 
-        public async Task UpdateAsync(PackingListDto packingListDto)
+        public async Task<(bool Success, string ErrorMessage)> UpdateAsync(PackingListDto packingListDto)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                await db.ExecuteAsync(
-                    "UpdatePackingList",
-                    new
-                    {
-                        packingListDto.PLId,
-                        packingListDto.ShId,
-                        packingListDto.MrId,
-                        packingListDto.PoId,
-                        packingListDto.IrnId,
-                        packingListDto.PLName,
-                        packingListDto.ArchiveNO,
-                        packingListDto.PLNO,
-                        packingListDto.OPINO,
-                        packingListDto.Project,
-                        packingListDto.AreaUnitID,
-                        packingListDto.SupplierId,
-                        packingListDto.DesciplineId,
-                        packingListDto.VendorId,
-                        packingListDto.DescriptionForPkId,
-                        packingListDto.NetW,
-                        packingListDto.GrossW,
-                        packingListDto.Volume,
-                        packingListDto.Vessel,
-                        packingListDto.EnteredBy,
-                        packingListDto.EnteredDate,
-                        packingListDto.MARDate,
-                        packingListDto.Remark,
-                        packingListDto.LocalForeign,
-                        packingListDto.RTINO,
-                        packingListDto.InvoiceNO,
-                        packingListDto.IRCNO,
-                        packingListDto.LCNO,
-                        packingListDto.BLNO,
-                        packingListDto.Remarkcustoms,
-                        packingListDto.EditedBy,
-                        packingListDto.EditedDate,
-                        packingListDto.PLDPF,
-                        packingListDto.Balance,
-                        packingListDto.Attachment,
-                        packingListDto.SitePL
-                    },
-                    commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("PLId", packingListDto.PLId);
+                parameters.Add("ShId", packingListDto.ShId);
+                parameters.Add("MrId", packingListDto.MrId);
+                parameters.Add("PoId", packingListDto.PoId);
+                parameters.Add("IrnId", packingListDto.IrnId);
+                parameters.Add("PLName", packingListDto.PLName);
+                parameters.Add("ArchiveNO", packingListDto.ArchiveNO);
+                parameters.Add("PLNO", packingListDto.PLNO);
+                parameters.Add("OPINO", packingListDto.OPINO);
+                parameters.Add("Project", packingListDto.Project);
+                parameters.Add("AreaUnitID", packingListDto.AreaUnitID);
+                parameters.Add("SupplierId", packingListDto.SupplierId);
+                parameters.Add("DesciplineId", packingListDto.DesciplineId);
+                parameters.Add("VendorId", packingListDto.VendorId);
+                parameters.Add("DescriptionForPkId", packingListDto.DescriptionForPkId);
+                parameters.Add("NetW", packingListDto.NetW);
+                parameters.Add("GrossW", packingListDto.GrossW);
+                parameters.Add("Volume", packingListDto.Volume);
+                parameters.Add("Vessel", packingListDto.Vessel);
+                parameters.Add("EnteredBy", packingListDto.EnteredBy);
+                parameters.Add("EnteredDate", packingListDto.EnteredDate);
+                parameters.Add("MARDate", packingListDto.MARDate);
+                parameters.Add("Remark", packingListDto.Remark);
+                parameters.Add("LocalForeign", packingListDto.LocalForeign);
+                parameters.Add("RTINO", packingListDto.RTINO);
+                parameters.Add("InvoiceNO", packingListDto.InvoiceNO);
+                parameters.Add("IRCNO", packingListDto.IRCNO);
+                parameters.Add("LCNO", packingListDto.LCNO);
+                parameters.Add("BLNO", packingListDto.BLNO);
+                parameters.Add("Remarkcustoms", packingListDto.Remarkcustoms);
+                parameters.Add("EditedBy", packingListDto.EditedBy);
+                parameters.Add("EditedDate", packingListDto.EditedDate);
+                parameters.Add("PLDPF", packingListDto.PLDPF);
+                parameters.Add("Balance", packingListDto.Balance);
+                parameters.Add("Attachment", packingListDto.Attachment);
+                parameters.Add("SitePL", packingListDto.SitePL);
+                parameters.Add("Success", dbType: DbType.Boolean, direction: ParameterDirection.Output);
+                parameters.Add("ErrorMessage", dbType: DbType.String, size: 255, direction: ParameterDirection.Output);
+
+                await db.ExecuteAsync("UpdatePackingList", parameters, commandType: CommandType.StoredProcedure);
+
+                bool success = parameters.Get<bool>("Success");
+                string errorMessage = parameters.Get<string>("ErrorMessage");
+
+                return (success, errorMessage);
             }
         }
 
@@ -234,5 +238,22 @@ namespace AWMS.dapper
                 return await db.QueryAsync<PackingListAllPlNameDto>("GetAllPackingListsNames", commandType: CommandType.StoredProcedure);
             }
         }
+
+        public async Task<IEnumerable<AllItemSelectedPlDto>> AllItemSelectedPlAsync(int plId)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@PLId", plId, DbType.Int32);
+
+                return await db.QueryAsync<AllItemSelectedPlDto>(
+                    "AllItemSelectedPl",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+        }
+
+
     }
 }

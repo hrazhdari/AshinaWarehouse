@@ -16,6 +16,8 @@ using AWMS.dapper.Repositories;
 using AWMS.dapper;
 using AWMS.app.Forms.frmSmall;
 using AWMS.core.Services;
+using System.Text;
+using AWMS.app.Forms.RibbonUser;
 
 namespace AWMS.app
 {
@@ -24,6 +26,9 @@ namespace AWMS.app
         [STAThread]
         static void Main()
         {
+            // Register encoding provider for supporting different code pages
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -37,7 +42,7 @@ namespace AWMS.app
                 try
                 {
                     // دریافت فرم اصلی از سرویس‌ها
-                    var form = services.GetRequiredService<frmMain>();
+                    var form = services.GetRequiredService<frmLogin>();
                     Application.Run(form);
                 }
                 catch (Exception ex)
@@ -81,6 +86,7 @@ namespace AWMS.app
                     services.AddScoped<ILocationDapperRepository, LocationDapperRepository>();
                     services.AddScoped<IItemDapperRepository , ItemDapperRepository > ();
                     services.AddScoped<ILocItemDapperRepository , LocItemDapperRepository > ();
+                    services.AddScoped<IUserDapperRepository , UserDapperRepository > ();
 
                     // افزودن سرویس‌های فرم‌ها به سرویس‌ها
                     services.AddTransient<frmMain>();
@@ -96,6 +102,8 @@ namespace AWMS.app
                     services.AddTransient<frmVendor>();
                     services.AddTransient<frmPK>();
                     services.AddTransient<frmItemLoc>();
+                    services.AddTransient<frmViewPackingList>();
+                    services.AddTransient<frmLogin>();
                 });
 
         // بارگذاری تنظیمات از فایل appsettings.json

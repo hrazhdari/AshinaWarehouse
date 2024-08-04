@@ -338,5 +338,40 @@ namespace AWMS.dapper
             }
         }
 
+        public async Task UpdateStorageCodesAsync(IEnumerable<int> itemIds, string newStorageCode)
+        {
+            using (var connection = CreateConnection())
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        var table = new DataTable();
+                        table.Columns.Add("ItemID", typeof(int));
+
+                        foreach (var itemId in itemIds)
+                        {
+                            table.Rows.Add(itemId);
+                        }
+
+                        var parameters = new DynamicParameters();
+                        parameters.Add("@ItemIds", table.AsTableValuedParameter("dbo.ItemIDList"));
+                        parameters.Add("@NewStorageCode", newStorageCode);
+
+                        await connection.ExecuteAsync("UpdateStorageCodes", parameters, transaction: transaction, commandType: CommandType.StoredProcedure);
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+
     }
 }

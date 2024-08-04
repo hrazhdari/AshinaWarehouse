@@ -124,19 +124,38 @@ namespace AWMS.dapper
 
                 try
                 {
-                    // چاپ مقادیر پارامترها برای اشکال‌زدایی
-                    Console.WriteLine($"LocItemID: {locItem.LocItemID}");
-                    Console.WriteLine($"LocationID: {locItem.LocationID}");
-                    Console.WriteLine($"Qty: {locItem.Qty}");
-                    Console.WriteLine($"OverQty: {locItem.OverQty}");
-                    Console.WriteLine($"ShortageQty: {locItem.ShortageQty}");
-                    Console.WriteLine($"DamageQty: {locItem.DamageQty}");
-                    Console.WriteLine($"RejectQty: {locItem.RejectQty}");
-                    Console.WriteLine($"NISQty: {locItem.NISQty}");
-                    Console.WriteLine($"EditedBy: {locItem.EditedBy}");
-                    Console.WriteLine($"EditedDate: {locItem.EditedDate}");
-
                     await connection.ExecuteAsync("UpdateLocItem", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    // ثبت خطا برای اشکال‌زدایی
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
+
+        public async Task UpdateLocationsAsync(List<UpdateLocitemLocationDto> updateDtos)
+        {
+            using (var connection = CreateConnection())
+            {
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("LocItemID", typeof(int));
+                dataTable.Columns.Add("LocationID", typeof(int));
+                dataTable.Columns.Add("EditedBy", typeof(string));
+                dataTable.Columns.Add("EditedDate", typeof(DateTime));
+
+                foreach (var dto in updateDtos)
+                {
+                    dataTable.Rows.Add(dto.LocItemID, dto.LocationID, dto.EditedBy, dto.EditedDate);
+                }
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@UpdateLocItemLocationTVP", dataTable.AsTableValuedParameter("dbo.UpdateLocItemLocationType"));
+
+                try
+                {
+                    await connection.ExecuteAsync("UpdateLocItemLocation", parameters, commandType: CommandType.StoredProcedure);
                 }
                 catch (Exception ex)
                 {

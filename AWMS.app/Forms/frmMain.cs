@@ -1,4 +1,6 @@
 ﻿using AWMS.app.Forms.frmBase;
+using AWMS.app.Forms.RibbonMaterial;
+using AWMS.app.Forms.RibbonUser;
 using AWMS.app.Utility;
 using DevExpress.XtraBars;
 using DevExpress.XtraSplashScreen;
@@ -12,13 +14,19 @@ namespace AWMS.app.Forms
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private readonly IServiceProvider _serviceProvider;
+        private readonly int _userId;
+        private readonly UserSession _session; // اضافه کردن متغیر سراسری برای UserSession
 
-        public frmMain(IServiceProvider serviceProvider)
+        public frmMain(IServiceProvider serviceProvider, int userId)
         {
             _serviceProvider = serviceProvider;
             InitializeComponent();
             this.Icon = Properties.Resources.warehouse2024;
             barStaticItem2.Caption = " :: " + DateMiladiShamsi.DateMiladi() + " : " + DateMiladiShamsi.DateShamsi();
+            _userId = userId;
+
+            // گرفتن نشست کاربر و ذخیره آن در متغیر سراسری
+            _session = SessionManager.GetSession(_userId);
         }
 
         private void CompanybarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -30,43 +38,81 @@ namespace AWMS.app.Forms
 
         private void MrbarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
+            SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+
             var MrManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmMr>();
             MrManagementForm.MdiParent = this;
             MrManagementForm.Show();
+
+            SplashScreenManager.CloseForm();
         }
+
 
         private void PoBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
+            SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
             var PoManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmPo>();
             PoManagementForm.MdiParent = this;
             PoManagementForm.Show();
+            SplashScreenManager.CloseForm();
         }
 
         private void barBtnPl_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
-            var PlManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmPl>();
+
+            // ایجاد فرم جدید و پاس دادن userId
+            var PlManagementForm = ActivatorUtilities.CreateInstance<frmPl>(_serviceProvider, _userId);
             PlManagementForm.MdiParent = this;
             PlManagementForm.Show();
+
             SplashScreenManager.CloseForm();
         }
 
         private void barBtnPk_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
-            var PkManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmPK>();
+
+            // ایجاد فرم جدید و پاس دادن userId
+            var PkManagementForm = ActivatorUtilities.CreateInstance<frmPK>(_serviceProvider, _userId);
             PkManagementForm.MdiParent = this;
             PkManagementForm.Show();
+
             SplashScreenManager.CloseForm();
         }
+
 
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
-            var ItemLocManagementForm = _serviceProvider.GetRequiredService<Forms.RibbonMaterial.frmItemLoc>();
+
+            // ایجاد فرم جدید و پاس دادن userId
+            var ItemLocManagementForm = ActivatorUtilities.CreateInstance<frmItemLoc>(_serviceProvider, _userId);
             ItemLocManagementForm.MdiParent = this;
             ItemLocManagementForm.Show();
+
             SplashScreenManager.CloseForm();
+        }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+
+            // ایجاد فرم جدید و پاس دادن userId
+            var viewPackingListForm = ActivatorUtilities.CreateInstance<frmViewPackingList>(_serviceProvider, _userId);
+            viewPackingListForm.MdiParent = this;
+            viewPackingListForm.Show();
+
+            SplashScreenManager.CloseForm();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if (_session != null)
+            {
+                barStaticItem3.Caption = $"Welcome, {_session.Username}"; //+ " " + $"Role: {_session.RoleID}";
+                //RoleLabel.Text = $"Role: {_session.Role}";
+            }
         }
     }
 }

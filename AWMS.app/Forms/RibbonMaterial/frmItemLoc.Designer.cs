@@ -30,8 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemLoc));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             sidePanel2 = new DevExpress.XtraEditors.SidePanel();
@@ -125,8 +125,6 @@
             repositoryItemLookUpEditLocation = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             colItemId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colQty1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            colQtyInLoc1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colOverQty1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colShortageQty1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colDamageQty1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -136,6 +134,7 @@
             colEnteredDate1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colEditedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
             colEditedDate1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             bar4 = new DevExpress.XtraBars.Bar();
             barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             bar3 = new DevExpress.XtraBars.Bar();
@@ -173,7 +172,7 @@
             // 
             xtraTabControl1.Appearance.ForeColor = Color.Teal;
             xtraTabControl1.Appearance.Options.UseForeColor = true;
-            xtraTabControl1.BackgroundImage = Properties.Resources.BACKlOCITEM;
+            xtraTabControl1.BackgroundImageLayout = ImageLayout.Stretch;
             xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             xtraTabControl1.Dock = DockStyle.Fill;
@@ -730,9 +729,9 @@
             barButtonItemDelete.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItemDelete.ImageOptions.LargeImage");
             barButtonItemDelete.Name = "barButtonItemDelete";
             barButtonItemDelete.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipItem3.Text = "Delete Selected Row's";
-            superToolTip3.Items.Add(toolTipItem3);
-            barButtonItemDelete.SuperTip = superToolTip3;
+            toolTipItem1.Text = "Delete Selected Row's";
+            superToolTip1.Items.Add(toolTipItem1);
+            barButtonItemDelete.SuperTip = superToolTip1;
             // 
             // lblLastPK
             // 
@@ -1147,7 +1146,6 @@
             gridControl1.Size = new Size(1101, 511);
             gridControl1.TabIndex = 2;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
-           
             // 
             // gridView2
             // 
@@ -1157,7 +1155,7 @@
             gridView2.Appearance.Row.Options.UseTextOptions = true;
             gridView2.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             gridView2.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colLocItemID, colLocationID, colItemId1, colQty1, colQtyInLoc1, colOverQty1, colShortageQty1, colDamageQty1, colRejectQty, colNISQty, colEnteredBy1, colEnteredDate1, colEditedBy1, colEditedDate1 });
+            gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colLocItemID, colLocationID, colItemId1, colQty1, colOverQty1, colShortageQty1, colDamageQty1, colRejectQty, colNISQty, colEnteredBy1, colEnteredDate1, colEditedBy1, colEditedDate1 });
             gridView2.DetailHeight = 284;
             gridView2.GridControl = gridControl1;
             gridView2.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
@@ -1214,31 +1212,14 @@
             // 
             // colQty1
             // 
-            colQty1.Caption = "Qty";
-            colQty1.ColumnEdit = repositoryItemCalcEdit1;
+            colQty1.Caption = "Qty In Loc";
             colQty1.FieldName = "Qty";
+            colQty1.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.Value;
             colQty1.MinWidth = 21;
             colQty1.Name = "colQty1";
             colQty1.Visible = true;
             colQty1.VisibleIndex = 2;
             colQty1.Width = 81;
-            // 
-            // repositoryItemCalcEdit1
-            // 
-            repositoryItemCalcEdit1.AutoHeight = false;
-            repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
-            // 
-            // colQtyInLoc1
-            // 
-            colQtyInLoc1.Caption = "Qty In Loc";
-            colQtyInLoc1.FieldName = "QtyInLoc";
-            colQtyInLoc1.MinWidth = 21;
-            colQtyInLoc1.Name = "colQtyInLoc1";
-            colQtyInLoc1.UnboundDataType = typeof(decimal);
-            colQtyInLoc1.Visible = true;
-            colQtyInLoc1.VisibleIndex = 3;
-            colQtyInLoc1.Width = 81;
             // 
             // colOverQty1
             // 
@@ -1247,7 +1228,7 @@
             colOverQty1.MinWidth = 21;
             colOverQty1.Name = "colOverQty1";
             colOverQty1.Visible = true;
-            colOverQty1.VisibleIndex = 4;
+            colOverQty1.VisibleIndex = 3;
             colOverQty1.Width = 81;
             // 
             // colShortageQty1
@@ -1257,7 +1238,7 @@
             colShortageQty1.MinWidth = 21;
             colShortageQty1.Name = "colShortageQty1";
             colShortageQty1.Visible = true;
-            colShortageQty1.VisibleIndex = 5;
+            colShortageQty1.VisibleIndex = 4;
             colShortageQty1.Width = 81;
             // 
             // colDamageQty1
@@ -1267,7 +1248,7 @@
             colDamageQty1.MinWidth = 21;
             colDamageQty1.Name = "colDamageQty1";
             colDamageQty1.Visible = true;
-            colDamageQty1.VisibleIndex = 6;
+            colDamageQty1.VisibleIndex = 5;
             colDamageQty1.Width = 81;
             // 
             // colRejectQty
@@ -1277,7 +1258,7 @@
             colRejectQty.MinWidth = 21;
             colRejectQty.Name = "colRejectQty";
             colRejectQty.Visible = true;
-            colRejectQty.VisibleIndex = 7;
+            colRejectQty.VisibleIndex = 6;
             colRejectQty.Width = 81;
             // 
             // colNISQty
@@ -1287,7 +1268,7 @@
             colNISQty.MinWidth = 21;
             colNISQty.Name = "colNISQty";
             colNISQty.Visible = true;
-            colNISQty.VisibleIndex = 8;
+            colNISQty.VisibleIndex = 7;
             colNISQty.Width = 81;
             // 
             // colEnteredBy1
@@ -1296,7 +1277,7 @@
             colEnteredBy1.MinWidth = 21;
             colEnteredBy1.Name = "colEnteredBy1";
             colEnteredBy1.Visible = true;
-            colEnteredBy1.VisibleIndex = 9;
+            colEnteredBy1.VisibleIndex = 8;
             colEnteredBy1.Width = 81;
             // 
             // colEnteredDate1
@@ -1305,7 +1286,7 @@
             colEnteredDate1.MinWidth = 21;
             colEnteredDate1.Name = "colEnteredDate1";
             colEnteredDate1.Visible = true;
-            colEnteredDate1.VisibleIndex = 10;
+            colEnteredDate1.VisibleIndex = 9;
             colEnteredDate1.Width = 81;
             // 
             // colEditedBy1
@@ -1314,7 +1295,7 @@
             colEditedBy1.MinWidth = 21;
             colEditedBy1.Name = "colEditedBy1";
             colEditedBy1.Visible = true;
-            colEditedBy1.VisibleIndex = 11;
+            colEditedBy1.VisibleIndex = 10;
             colEditedBy1.Width = 81;
             // 
             // colEditedDate1
@@ -1324,8 +1305,14 @@
             colEditedDate1.Name = "colEditedDate1";
             colEditedDate1.OptionsColumn.ReadOnly = true;
             colEditedDate1.Visible = true;
-            colEditedDate1.VisibleIndex = 12;
+            colEditedDate1.VisibleIndex = 11;
             colEditedDate1.Width = 99;
+            // 
+            // repositoryItemCalcEdit1
+            // 
+            repositoryItemCalcEdit1.AutoHeight = false;
+            repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // bar4
             // 
@@ -1506,7 +1493,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colItemId1;
         private DevExpress.XtraGrid.Columns.GridColumn colQty1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn colQtyInLoc1;
         private DevExpress.XtraGrid.Columns.GridColumn colOverQty1;
         private DevExpress.XtraGrid.Columns.GridColumn colShortageQty1;
         private DevExpress.XtraGrid.Columns.GridColumn colDamageQty1;

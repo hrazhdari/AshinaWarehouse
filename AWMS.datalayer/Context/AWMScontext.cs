@@ -28,6 +28,8 @@ namespace AWMS.datalayer.Context
         public DbSet<UnitPrice> UnitPrices { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<LocItem> LocItems { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
@@ -61,6 +63,8 @@ namespace AWMS.datalayer.Context
             modelBuilder.ApplyConfiguration(new ScopeConfiguration());
             modelBuilder.ApplyConfiguration(new LocationConfiguration());
             modelBuilder.ApplyConfiguration(new LocItemConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
 
             // Seed initial data
             modelBuilder.Entity<Mr>().HasData(

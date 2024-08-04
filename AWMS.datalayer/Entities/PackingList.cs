@@ -23,11 +23,15 @@ namespace AWMS.datalayer.Entities
         public int? PoId { get; set; }
         public int? IrnId { get; set; }
         [Required]
-        [MaxLength(200)]
+        [MaxLength(300)]
         public string PLName { get; set; }
+        [MaxLength(50)]
         public string? ArchiveNO { get; set; }
+        [MaxLength(50)]
         public string? PLNO { get; set; }
+        [MaxLength(50)]
         public string? OPINO { get; set; }
+        [MaxLength(50)]
         public string? Project { get; set; }
         public int? AreaUnitID { get; set; }
         public int? SupplierId { get; set; }

@@ -22,6 +22,116 @@ namespace AWMS.datalayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.ApplicationRole", b =>
+                {
+                    b.Property<int>("RoleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleID"));
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("RoleID");
+
+                    b.ToTable("ApplicationRole", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            RoleID = 1,
+                            RoleName = "Admin"
+                        },
+                        new
+                        {
+                            RoleID = 2,
+                            RoleName = "Manager"
+                        },
+                        new
+                        {
+                            RoleID = 3,
+                            RoleName = "Master"
+                        },
+                        new
+                        {
+                            RoleID = 4,
+                            RoleName = "Amateur"
+                        },
+                        new
+                        {
+                            RoleID = 5,
+                            RoleName = "Viewer"
+                        });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.ApplicationUser", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"));
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("RoleID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("UserID");
+
+                    b.HasIndex("RoleID");
+
+                    b.ToTable("ApplicationUser", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            PasswordHash = "123",
+                            RoleID = 1,
+                            Username = "Admin"
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            PasswordHash = "123",
+                            RoleID = 4,
+                            Username = "Amateur"
+                        },
+                        new
+                        {
+                            UserID = 3,
+                            PasswordHash = "123",
+                            RoleID = 3,
+                            Username = "Master"
+                        },
+                        new
+                        {
+                            UserID = 4,
+                            PasswordHash = "123",
+                            RoleID = 5,
+                            Username = "Viewer"
+                        },
+                        new
+                        {
+                            UserID = 5,
+                            PasswordHash = "123",
+                            RoleID = 2,
+                            Username = "Manager"
+                        });
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.AreaUnit", b =>
                 {
                     b.Property<int>("AreaUnitID")
@@ -99,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 7, 21, 23, 46, 40, 418, DateTimeKind.Local).AddTicks(6617)
+                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(8077)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 7, 21, 23, 46, 40, 418, DateTimeKind.Local).AddTicks(6627)
+                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(8112)
                         });
                 });
 
@@ -521,21 +631,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 7, 21, 23, 46, 40, 418, DateTimeKind.Local).AddTicks(5353),
+                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(477),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 7, 21, 23, 46, 40, 418, DateTimeKind.Local).AddTicks(5405),
+                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(535),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 7, 21, 23, 46, 40, 418, DateTimeKind.Local).AddTicks(5408),
+                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(540),
                             LocationName = "W02A02B"
                         });
                 });
@@ -672,7 +782,8 @@ namespace AWMS.datalayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PLId"));
 
                     b.Property<string>("ArchiveNO")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("AreaUnitID")
                         .HasColumnType("int");
@@ -732,24 +843,27 @@ namespace AWMS.datalayer.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("OPINO")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PLDPF")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PLNO")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PLName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<int?>("PoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Project")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("RTINO")
                         .HasColumnType("nvarchar(max)");
@@ -1519,6 +1633,17 @@ namespace AWMS.datalayer.Migrations
                             VendorContractNO = "-",
                             VendorName = "-"
                         });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.ApplicationUser", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.ApplicationRole", "ApplicationRole")
+                        .WithMany()
+                        .HasForeignKey("RoleID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationRole");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.CompanyContract", b =>

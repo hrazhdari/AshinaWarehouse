@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -50,6 +49,7 @@
             barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             CompanybarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
+            skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -72,7 +72,7 @@
             ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
-            skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).BeginInit();
@@ -85,14 +85,15 @@
             ribbonControl1.Cursor = Cursors.Hand;
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(22, 24, 22, 24);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3 });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(3, 2, 3, 2);
-            ribbonControl1.MaxItemId = 37;
+            ribbonControl1.MaxItemId = 38;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 248;
             ribbonControl1.PageHeaderItemLinks.Add(skinPaletteDropDownButtonItem1);
             ribbonControl1.PageHeaderItemLinks.Add(skinDropDownButtonItem1);
+            ribbonControl1.PageHeaderItemLinks.Add(barStaticItem3);
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage3, ribbonPage5, ribbonPage6, ribbonPage4, ribbonPage2, ribbonPage7 });
             ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemHypertextLabel1, repositoryItemHypertextLabel2 });
             ribbonControl1.Size = new Size(1203, 177);
@@ -187,6 +188,7 @@
             barButtonItem9.ImageOptions.Image = (Image)resources.GetObject("barButtonItem9.ImageOptions.Image");
             barButtonItem9.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem9.ImageOptions.LargeImage");
             barButtonItem9.Name = "barButtonItem9";
+            barButtonItem9.ItemClick += barButtonItem9_ItemClick;
             // 
             // barButtonItem10
             // 
@@ -245,6 +247,13 @@
             barStaticItem2.Caption = "barStaticItem2";
             barStaticItem2.Id = 32;
             barStaticItem2.Name = "barStaticItem2";
+            // 
+            // skinDropDownButtonItem1
+            // 
+            skinDropDownButtonItem1.ActAsDropDown = true;
+            skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            skinDropDownButtonItem1.Id = 36;
+            skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
             // 
             // ribbonPage1
             // 
@@ -388,12 +397,11 @@
             documentManager1.View = tabbedView1;
             documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView1 });
             // 
-            // skinDropDownButtonItem1
+            // barStaticItem3
             // 
-            skinDropDownButtonItem1.ActAsDropDown = true;
-            skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            skinDropDownButtonItem1.Id = 36;
-            skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            barStaticItem3.Caption = "barStaticItem3";
+            barStaticItem3.Id = 37;
+            barStaticItem3.Name = "barStaticItem3";
             // 
             // frmMain
             // 
@@ -411,6 +419,7 @@
             StatusBar = ribbonStatusBar1;
             Text = "AWMS :: Ashina Warehouse Management Software";
             WindowState = FormWindowState.Maximized;
+            Load += frmMain_Load;
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).EndInit();
@@ -465,5 +474,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel2;
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem3;
     }
 }

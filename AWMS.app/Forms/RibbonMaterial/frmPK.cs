@@ -18,6 +18,7 @@ using AWMS.dto;
 using AWMS.dapper.Repositories;
 using AWMS.app.Utility;
 using AWMS.core.Interfaces;
+using AWMS.app.Forms.RibbonUser;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {
@@ -25,12 +26,16 @@ namespace AWMS.app.Forms.RibbonMaterial
     {
         private readonly IPackageDapperRepository _packageDapperRepository;
         private readonly IPackingListDapperRepository _packingListDapperRepository;
+        private readonly UserSession _session; // اضافه کردن UserSession
         private bool _isRowAdded;
-        public frmPK(IPackageDapperRepository packageDapperRepository, IPackingListDapperRepository packingListDapperRepository)
+
+        public frmPK(IPackageDapperRepository packageDapperRepository, IPackingListDapperRepository packingListDapperRepository,
+            int userId)
         {
             InitializeComponent();
             this._packageDapperRepository = packageDapperRepository;
             this._packingListDapperRepository = packingListDapperRepository;
+            _session = SessionManager.GetSession(userId); // گرفتن نشست کاربر بر اساس userId
             LoadLookup();
         }
         private async void LoadLookup()
@@ -127,6 +132,8 @@ namespace AWMS.app.Forms.RibbonMaterial
             {
                 ArDate = ArrivalDate.DateTime;
             }
+            var userId = _session.UserID; // گرفتن UserID از نشست کاربر
+
             var newpack = new PackageDto()
             {
                 PLId = plid,
@@ -136,8 +143,11 @@ namespace AWMS.app.Forms.RibbonMaterial
                 Volume = Volume,
                 Desciption = descripPK,
                 Remark = RemarkPl,
-                ArrivalDate = ArDate
+                ArrivalDate = ArDate,
+                EnteredBy = userId, // اضافه کردن UserID به فیلد EditedBy
+                EnteredDate=DateTime.Now
             };
+
 
             btnAddPK.Enabled = false;
 
@@ -298,6 +308,8 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             // Update the corresponding property in the data source
             var package = (PackageDto)gridView1.GetRow(rowHandle);
+            package.EditedBy = _session.UserID; // تنظیم شناسه کاربر ویرایش‌کننده
+            package.EditedDate = DateTime.Now; // تنظیم تاریخ و زمان فعلی
             switch (columnName)
             {
                 case "PK":

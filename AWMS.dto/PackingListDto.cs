@@ -33,7 +33,7 @@
         public string? BLNO { get; set; }
         public string? Remarkcustoms { get; set; }
         public int? EditedBy { get; set; }
-        public DateTime? EditedDate { get; private set; }
+        public DateTime? EditedDate { get; set; }
         public string? PLDPF { get; set; }
         public bool? Balance { get; set; }
         public bool? Attachment { get; set; }

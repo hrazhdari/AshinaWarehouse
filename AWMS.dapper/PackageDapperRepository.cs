@@ -242,6 +242,24 @@ namespace AWMS.dapper
                 return affectedRows > 0;
             }
         }
+        public bool UpdatePackage(int packageId, UpdatePackageDto updatedPackage)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@PKID", packageId);
+                parameters.Add("@ArrivalDate", updatedPackage.ArrivalDate);
+                parameters.Add("@MSRNO", updatedPackage.MSRNO);
+                parameters.Add("@MSRPDF", updatedPackage.MSRPDF);
+
+                // افزودن پارامترهای ویرایش
+                parameters.Add("@EditedBy", updatedPackage.EditedBy);
+                parameters.Add("@EditedDate", updatedPackage.EditedDate);
+
+                var affectedRows = connection.Execute("UpdatePackageINPackingList", parameters, commandType: CommandType.StoredProcedure);
+                return affectedRows > 0;
+            }
+        }
 
         public async Task DeleteMultiplePKsWithTransactionAsync(IEnumerable<PackagePKIDDto> PKIDs)
         {

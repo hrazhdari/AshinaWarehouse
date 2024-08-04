@@ -1,4 +1,5 @@
-﻿using AWMS.core.Interfaces;
+﻿using AWMS.app.Forms.RibbonUser;
+using AWMS.core.Interfaces;
 using AWMS.dapper;
 using AWMS.dapper.Repositories;
 using AWMS.dto;
@@ -33,11 +34,12 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly IDesciplineService _desciplineService;
         private readonly IMrService _mrService;
         private readonly IPoService _poService;
+        private readonly UserSession _session; // اضافه کردن UserSession
         public frmPl(IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider,
             IDescriptionForPkService descriptionForPkService,
             IIrnService irnService, IShipmentService shipmentService, IAreaUnitService areaUnitService,
             IVendorService vendorService, ISupplierService supplierService, IDesciplineService desciplineService,
-            IMrService mrService, IPoService poService)
+            IMrService mrService, IPoService poService, int userId)
         {
             InitializeComponent();
             _packingListDapperRepository = PackingListDapperRepository;
@@ -53,6 +55,8 @@ namespace AWMS.app.Forms.RibbonMaterial
             this._desciplineService = desciplineService;
             this._mrService = mrService;
             this._poService = poService;
+            _session = SessionManager.GetSession(userId); // گرفتن نشست کاربر بر اساس userId
+
             LoadLookUps();
         }
         #region showing load panel in main form
@@ -340,6 +344,8 @@ namespace AWMS.app.Forms.RibbonMaterial
                     LCNO = txtlcNumber.Text.Trim(),
                     BLNO = txtBLNumber.Text.Trim(),
                     Remarkcustoms = txtRemarkCustom.Text.Trim(),
+                    EnteredBy=  _session.UserID,
+                    EnteredDate=DateTime.Now,
                     SitePL = chkSite.Checked,
                     Balance = chkBalance.Checked
                 };

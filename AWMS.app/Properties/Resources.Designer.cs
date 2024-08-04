@@ -143,6 +143,16 @@ namespace AWMS.app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clear_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("clear_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap company_img {
             get {
                 object obj = ResourceManager.GetObject("company-img", resourceCulture);
@@ -166,6 +176,26 @@ namespace AWMS.app.Properties {
         internal static System.Drawing.Bitmap deleteheader_32x32 {
             get {
                 object obj = ResourceManager.GetObject("deleteheader_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap editrangepermission_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("editrangepermission_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap editrangepermission_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("editrangepermission_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -516,6 +546,26 @@ namespace AWMS.app.Properties {
         internal static System.Drawing.Bitmap image_50px {
             get {
                 object obj = ResourceManager.GetObject("image_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Login {
+            get {
+                object obj = ResourceManager.GetObject("Login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Login2 {
+            get {
+                object obj = ResourceManager.GetObject("Login2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

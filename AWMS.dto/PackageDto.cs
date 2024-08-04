@@ -16,7 +16,7 @@ namespace AWMS.dto
         public int? EnteredBy { get; set; }
         public DateTime? EnteredDate { get; set; }
         public int? EditedBy { get; set; }
-        public DateTime? EditedDate { get; private set; }
+        public DateTime? EditedDate { get; set; }
         public string? MSRNO { get; set; }
         public string? MSRPDF { get; set; }
         public DateTime? MSRDate { get; set; }

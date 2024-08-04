@@ -11,6 +11,7 @@ namespace AWMS.dapper.Repositories
         Task<bool> IsLocationUsedAsync(int locationID, int itemId);
         Task AddAsync(LocItemDto Locitem);
         Task UpdateAsync(LocItemDto Locitem);
+        Task UpdateLocationsAsync(List<UpdateLocitemLocationDto> updateDtos);
         Task DeleteAsync(int LocItemid);
         Task DeleteMultipleLocItemsWithTransactionAsync(IEnumerable<LocItemDto> Locitems);
         Task<IEnumerable<LocItemDto>> GetLocItemsByItemIdAsync(int itemId);

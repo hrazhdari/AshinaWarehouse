@@ -11,6 +11,7 @@ namespace AWMS.dapper.Repositories
     {
         Task<IEnumerable<PackingListDto>> GetAllAsync();
         Task<IEnumerable<PackingListAllPlNameDto>> GetAllPlNameAsync();
+        Task<IEnumerable<AllItemSelectedPlDto>> AllItemSelectedPlAsync(int plId);
         Task<PackingListDto> GetByIdAsync(int PlId);
         Task<PackingListDto> GetByPlNameAsync(string PlName);
         Task<bool> ExistsByPlNameAsync(string plName);
@@ -18,7 +19,7 @@ namespace AWMS.dapper.Repositories
         bool ExistsByOpiNumber(string OpiNumber);
         string LastArchiveNo();
         Task<bool> AddAsync(PackingListDto PackingList);
-        Task UpdateAsync(PackingListDto PackingList);
+        Task<(bool Success, string ErrorMessage)> UpdateAsync(PackingListDto packingListDto);
         Task DeleteAsync(int PlId);
     }
 }
