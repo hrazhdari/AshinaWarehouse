@@ -202,12 +202,14 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Fo
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmSmall.frmShipment.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmSmall.frmSupplier.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.frmSmall.frmVendor.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmImportPackingList.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmItemLoc.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmMr.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPK.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPl.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPo.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmViewPackingList.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonUser.frmLogin.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Properties.Resources.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Utility.CustomMessageBox.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.csproj.GenerateResource.cache
@@ -222,5 +224,3 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\refint\AWMS
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.pdb
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.genruntimeconfig.cache
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\ref\AWMS.app.dll
-D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonUser.frmLogin.resources
-D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmImportPackingList.resources

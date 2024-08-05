@@ -24,6 +24,8 @@ using AWMS.core.Interfaces;
 using AWMS.core.Services;
 using Dapper;
 using AWMS.app.Forms.RibbonUser;
+using AWMS.app.Utility;
+using DevExpress.XtraBars;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {
@@ -50,13 +52,15 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         int PLid;
         string PLname;
+        private bool _isAllSelected = false;
+        //private bool _isAllHoldSelected = false;
 
         public frmViewPackingList(ISupplierService supplierService, IServiceProvider serviceProvider, IIrnService irnService,
             IShipmentService shipmentService, IMrService mrService, IPoService poService, IAreaUnitService areaunitService,
             IVendorService vendorService, IDesciplineService desciplineService, IDescriptionForPkService descriptionforpkService,
             IUnitDapperRepository unitService, IScopeDapperRepository scopeDapperRepository, IPackageDapperRepository packageDapperRepository,
             ILocationDapperRepository locationDapperRepository, IPackingListDapperRepository packingListDapperRepository,
-            ILocItemDapperRepository locitemRepository,IItemDapperRepository itemDapperRepository, int userId)
+            ILocItemDapperRepository locitemRepository, IItemDapperRepository itemDapperRepository, int userId)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
@@ -80,6 +84,7 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             initGrid();
             _LocitemRepository = locitemRepository;
+            checkEdit3_CheckedChanged(null, null);
         }
         async void initGrid()
         {
@@ -92,7 +97,20 @@ namespace AWMS.app.Forms.RibbonMaterial
                     var data = await _packingRepository.GetAllAsync();
                     if (data != null)
                     {
+                        // فرض می‌کنیم که dataSource، داده‌ها را فراهم می‌کند و به GridControl داده شده است
                         gridControl1.DataSource = data;
+
+                        // مرتب‌سازی بر اساس ستون PLId به ترتیب نزولی
+                        gridView1.SortInfo.Clear();
+                        gridView1.SortInfo.Add(new GridColumnSortInfo(gridView1.Columns["PLId"], DevExpress.Data.ColumnSortOrder.Descending));
+
+                        // اطمینان حاصل کنید که GridView داده‌ها دارد
+                        if (gridView1.RowCount > 0)
+                        {
+                            // تنظیم نشانگر به اولین ردیف
+                            gridView1.FocusedRowHandle = 0;
+                        }
+
                     }
                     else
                     {
@@ -274,7 +292,19 @@ namespace AWMS.app.Forms.RibbonMaterial
                             labelControl9.Text = "PLName:  " + PLname.ToString();
 
                             repositoryItemLookUpEditpk.DataSource = _packageRepository.GetPackageByPLId(PLid);
+                            // مرتب‌سازی بر اساس یک ستون
+                            gridView2.SortInfo.Clear();
+                            gridView2.SortInfo.Add(new GridColumnSortInfo(gridView1.Columns["LocItemID"], DevExpress.Data.ColumnSortOrder.Descending));
 
+                            // اطمینان حاصل کنید که GridView داده‌ها دارد
+                            if (gridView2.RowCount > 0)
+                            {
+                                // تنظیم نشانگر به اولین ردیف
+                                gridView2.FocusedRowHandle = 0;
+                            }
+                            _isAllSelected = false;
+                            btnSelectAll.Text = "Select All";
+                            // _isAllHoldSelected = false;
                         }
                     }
                 }
@@ -306,7 +336,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     {
                         int locItemIdValue = Convert.ToInt32(locItemId);
                         int locationIdValue = Convert.ToInt32(newLocationValue);
-                       
+
                         var updateDto = new UpdateLocitemLocationDto
                         {
                             LocItemID = locItemIdValue,
@@ -327,7 +357,6 @@ namespace AWMS.app.Forms.RibbonMaterial
 
                 UpdateLocationsInDatabase(updateDtos);
             }
-
             if (!updatingQtyInLoc && (e.Column.FieldName == "OverQty" || e.Column.FieldName == "ShortageQty" || e.Column.FieldName == "Qty"))
             {
                 try
@@ -340,11 +369,13 @@ namespace AWMS.app.Forms.RibbonMaterial
                     updatingQtyInLoc = false;
                 }
             }
-
-            object LocItemObj = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "LocItemID");
-            object ItemIdObj = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "ItemId");
-            object PKIDObj = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "PKID");
-            UpdateDatabase(Convert.ToInt32(LocItemObj), Convert.ToInt32(ItemIdObj), Convert.ToInt32(PKIDObj));
+            if (e.Column.FieldName != "StorageCode")
+            {
+                object LocItemObj = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "LocItemID");
+                object ItemIdObj = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "ItemId");
+                object PKIDObj = gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "PKID");
+                UpdateDatabase(Convert.ToInt32(LocItemObj), Convert.ToInt32(ItemIdObj), Convert.ToInt32(PKIDObj));
+            }
         }
 
         private async void UpdateLocationsInDatabase(List<UpdateLocitemLocationDto> updateDtos)
@@ -429,8 +460,11 @@ namespace AWMS.app.Forms.RibbonMaterial
                     entityItemToUpdate.BatchNo = GetCellValue<string>(focusedRowHandle, "BatchNo", gridView2) ?? string.Empty;
                     entityItemToUpdate.Remark = GetCellValue<string>(focusedRowHandle, "Remark", gridView2) ?? string.Empty;
                     entityItemToUpdate.NIS = GetCellValue<decimal?>(focusedRowHandle, "NIS", gridView2).GetValueOrDefault(0.00m);
-                    entityItemToUpdate.Hold = GetCellValue<bool?>(focusedRowHandle, "Hold", gridView2);//.GetValueOrDefault(false);
-                    //entityItemToUpdate.StorageCode = GetCellValue<string>(focusedRowHandle, "StorageCode", gridView2) ?? string.Empty;
+                    //entityItemToUpdate.Hold = GetCellValue<bool?>(focusedRowHandle, "Hold", gridView2);
+                    //var holdValue = GetCellValue<bool?>(focusedRowHandle, "Hold", gridView2);
+                    //entityItemToUpdate.Hold = holdValue.HasValue ? holdValue.Value : (bool?)null;
+                    entityItemToUpdate.Hold = gridView2.GetRowCellValue(focusedRowHandle, "Hold") as bool? ?? false;
+
 
                     // به‌روزرسانی ویژگی‌های ویرایش
                     entityItemToUpdate.EditedBy = _session.UserID; // فرض می‌کنیم متغیری به نام currentUser دارید که کاربر جاری را نگه می‌دارد
@@ -568,18 +602,18 @@ namespace AWMS.app.Forms.RibbonMaterial
                 {
                     // User directly changed "Qtyinloc"
                     newQty = (newqtyInLoc + newoverQty) - newshortageQty;
-                    MessageBox.Show("direct change: " + newQty);
+                    //MessageBox.Show("direct change: " + newQty);
                 }
                 else if (e.Column.FieldName == "OverQty" && newoverQty - oldoverQty != 0)
                 {
                     newQty = (newqtyInLoc - oldoverQty) + newoverQty;
-                    MessageBox.Show("over : " + newQty);
+                    //MessageBox.Show("over : " + newQty);
                     newqtyInLoc = newQty;
                 }
                 else if (e.Column.FieldName == "ShortageQty" && newshortageQty - oldshortageQty != 0)
                 {
                     newQty = (newqtyInLoc + oldshortageQty) - newshortageQty;
-                    MessageBox.Show("shortage : " + newQty);
+                    //MessageBox.Show("shortage : " + newQty);
                     newqtyInLoc = newQty;
                 }
 
@@ -600,7 +634,9 @@ namespace AWMS.app.Forms.RibbonMaterial
         {
             gridControl2.DataSource = await _packingRepository.AllItemSelectedPlAsync(PLid);
             repositoryItemLookUpEditpk.DataSource = _packageRepository.GetPackageByPLId(PLid);
-            XtraMessageBox.Show("All Data Refreshed ;)");
+            _isAllSelected = false;
+            btnSelectAll.Text = "Select All";
+            XtraMessageBox.Show("All Data Refreshed ;)", "Success Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void labelControl7_Click(object sender, EventArgs e)
@@ -625,13 +661,12 @@ namespace AWMS.app.Forms.RibbonMaterial
 
                 if (!string.IsNullOrEmpty(newStorageValue))
                 {
-                    // Get the selected rows
+                    // Get all item IDs from selected rows
                     int[] selectedRows = view.GetSelectedRows();
                     List<int> itemIds = new List<int>();
 
                     foreach (int rowHandle in selectedRows)
                     {
-                        // Get the ItemId from the selected rows
                         object itemIdObj = view.GetRowCellValue(rowHandle, "ItemId");
                         if (itemIdObj != null && int.TryParse(itemIdObj.ToString(), out int itemId))
                         {
@@ -642,18 +677,122 @@ namespace AWMS.app.Forms.RibbonMaterial
                     // Apply the new storage value to all selected rows
                     if (itemIds.Count > 0)
                     {
-                        await _itemRepository.UpdateStorageCodesAsync(itemIds, newStorageValue);
-
-                        // Update the grid view
-                        foreach (int rowHandle in selectedRows)
+                        try
                         {
-                            view.SetRowCellValue(rowHandle, "StorageCode", newStorageValue);
+                            await _itemRepository.UpdateStorageCodesAsync(itemIds, newStorageValue);
+
+                            // Update the grid view
+                            view.BeginDataUpdate();
+                            try
+                            {
+                                foreach (int rowHandle in selectedRows)
+                                {
+                                    view.SetRowCellValue(rowHandle, "StorageCode", newStorageValue);
+                                }
+                            }
+                            finally
+                            {
+                                view.EndDataUpdate();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show($"An error occurred while updating storage codes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
         }
 
+        private void btnSelectAll_Click(object sender, EventArgs e)
+        {
+            gridView2.BeginUpdate();
+            try
+            {
+                if (_isAllSelected)
+                {
+                    // لغو انتخاب همه ردیف‌ها
+                    gridView2.ClearSelection();
+                    // تغییر متن دکمه به "Select All"
+                    btnSelectAll.Text = "Select All";
+                }
+                else
+                {
+                    // انتخاب همه ردیف‌ها
+                    gridView2.SelectAll();
+                    // تغییر متن دکمه به "Unselect All"
+                    btnSelectAll.Text = "Unselect All";
+                }
+                // به‌روزرسانی وضعیت انتخاب
+                _isAllSelected = !_isAllSelected;
+            }
+            finally
+            {
+                gridView2.EndUpdate();
+            }
+        }
+
+        private void btnHoldAll_Click(object sender, EventArgs e)
+        {
+            //    gridView2.BeginUpdate();
+            //    try
+            //    {
+            //        if (_isAllHoldSelected)
+            //        {
+            //            // لغو انتخاب همه ردیف‌ها
+            //            for (int i = 0; i < gridView2.RowCount; i++)
+            //            {
+            //                gridView2.SetRowCellValue(i, "Hold", false);
+            //            }
+            //            // تغییر متن دکمه به "Select All"
+            //            btnHoldAll.Text = "Hold All";
+            //        }
+            //        else
+            //        {
+            //            // انتخاب همه ردیف‌ها
+            //            for (int i = 0; i < gridView2.RowCount; i++)
+            //            {
+            //                gridView2.SetRowCellValue(i, "Hold", true);
+            //            }
+            //            // تغییر متن دکمه به "Unselect All"
+            //            btnHoldAll.Text = "UnHold All";
+            //        }
+            //        // به‌روزرسانی وضعیت انتخاب
+            //        _isAllHoldSelected = !_isAllSelected;
+            //    }
+            //    finally
+            //    {
+            //        gridView2.EndUpdate();
+            //    }
+
+        }
+
+        private void gridControl2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            //using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx", FileName = "ViewPackingExcelOutPut.xlsx" })
+            //{
+            //    if (sfd.ShowDialog() == DialogResult.OK)
+            //    {
+            //        ExportFromGridViewDevexpress.ExportToExcel(gridView2, sfd.FileName); // فرض می‌کنیم gridView1 نام GridView DevExpress شماست
+            //    }
+            //}
+
+
+            ExportFromGridViewDevexpress.SaveGridData("Excel Files|*.xlsx", "Save Excel File", fileName => gridView2.ExportToXlsx(fileName));
+        
+        }
+
+        private void checkEdit3_CheckedChanged(object sender, EventArgs e)
+        {
+            gridView2.OptionsBehavior.ReadOnly = !checkEdit3.Checked;
+            //if (checkEdit2.Checked) { gridView1.OptionsBehavior.ReadOnly = false; } else { gridView1.OptionsBehavior.ReadOnly = true; }
+
+        }
     }
 }
 

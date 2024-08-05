@@ -105,6 +105,13 @@ namespace AWMS.app
                     services.AddTransient<frmViewPackingList>();
                     services.AddTransient<frmLogin>();
                     services.AddTransient<frmImportPackingList>();
+                    services.AddTransient<ICompanyService, CompanyService>();
+                    // ثبت سایر سرویس‌ها
+                    services.AddTransient<frmCompanyManagment>();
+
+
+
+                    services.AddScoped<UserContext>(); // اضافه کردن UserContext به صورت Scoped
                 });
 
         // بارگذاری تنظیمات از فایل appsettings.json

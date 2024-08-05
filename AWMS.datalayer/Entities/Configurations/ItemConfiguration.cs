@@ -21,6 +21,7 @@ namespace AWMS.datalayer.Entities.Configurations
             builder.Property(i => i.NetW).HasColumnType("decimal(18,2)");
             builder.Property(i => i.GrossW).HasColumnType("decimal(18,2)");
             builder.Property(i => i.NIS).HasColumnType("decimal(18,2)");
+            //builder.Property(i => i.Hold).HasColumnType(" ");
 
             // تنظیم حداکثر طول برای فیلدهای مختلف
             builder.Property(i => i.Tag).HasMaxLength(500);
@@ -32,6 +33,7 @@ namespace AWMS.datalayer.Entities.Configurations
             builder.Property(i => i.ColorCode).HasMaxLength(50);
             builder.Property(i => i.LabelNo).HasMaxLength(50);
             builder.Property(i => i.StorageCode).HasMaxLength(50);
+            //builder.Property(i => i.BaseMaterial).HasMaxLength(50);
 
             // تنظیم نوع داده برای تاریخ‌ها
             builder.Property(i => i.EnteredDate).HasColumnType("date");

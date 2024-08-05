@@ -61,5 +61,49 @@ namespace AWMS.app.Utility
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        public static void SaveGridData2(string filter, string title, Action<string> exportAction)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = filter,
+                Title = title
+            })
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = saveFileDialog.FileName;
+
+                    // اجرای اکشن صادرات با نام فایل انتخاب شده
+                    exportAction.Invoke(fileName);
+
+                    // نمایش پیغام موفقیت با نام فایل
+                    DevExpress.XtraEditors.XtraMessageBox.Show($"{fileName} file saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        public static void SaveGridData(string filter, string title, Action<string> exportAction)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = filter,
+                Title = title
+            })
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+                    string fileName = Path.GetFileName(filePath); // استخراج نام فایل از مسیر کامل
+
+                    // اجرای اکشن صادرات با نام فایل انتخاب شده
+                    exportAction.Invoke(filePath);
+
+                    // نمایش پیغام موفقیت با نام فایل فقط
+                    DevExpress.XtraEditors.XtraMessageBox.Show($"{fileName} file saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
     }
 }

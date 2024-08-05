@@ -143,6 +143,16 @@ namespace AWMS.app.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap borules_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("borules_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bouser_16x16 {
             get {
                 object obj = ResourceManager.GetObject("bouser_16x16", resourceCulture);
@@ -686,6 +696,26 @@ namespace AWMS.app.Properties {
         internal static System.Drawing.Bitmap properties_32x32 {
             get {
                 object obj = ResourceManager.GetObject("properties_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap selectlabelsandvaluespivottable_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("selectlabelsandvaluespivottable_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap selectvaluespivottable_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("selectvaluespivottable_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -3,7 +3,6 @@ using AWMS.dapper.Repositories;
 using DevExpress.XtraEditors;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,10 +19,7 @@ namespace AWMS.app.Forms.RibbonUser
             _serviceProvider = serviceProvider;
             _userDapperRepository = userDapperRepository;
 
-            // اتصال رویداد KeyDown به متد
             this.KeyDown += new KeyEventHandler(frmLogin_KeyDown);
-
-            // تنظیم AcceptButton برای فرم
             this.AcceptButton = btnEnter;
         }
 
@@ -41,24 +37,24 @@ namespace AWMS.app.Forms.RibbonUser
 
             if (user != null && user.PasswordHash == passwordHash)
             {
-                // ایجاد و ذخیره اطلاعات کاربر
                 var session = new UserSession
                 {
                     UserID = user.UserID,
                     Username = user.Username,
-                    RoleID = user.RoleID // اگر رول هم دارید
+                    RoleID = user.RoleID
                 };
 
                 SessionManager.AddSession(user.UserID, session);
 
-                // اضافه کردن UserSession به DI
-                var serviceProvider = _serviceProvider.CreateScope().ServiceProvider;
-                var services = new ServiceCollection();
-                services.AddSingleton(session);
-                services.BuildServiceProvider();
+                var scope = _serviceProvider.CreateScope();
+                var serviceProvider = scope.ServiceProvider;
+                var userContext = serviceProvider.GetRequiredService<UserContext>();
+                userContext.UserId = user.UserID;
+                userContext.Username = user.Username;
+                userContext.RoleID = user.RoleID;
 
-                // نمایش فرم اصلی یا هر فرم دیگری
-                var mainForm = new frmMain(serviceProvider, user.UserID);
+                var mainForm = serviceProvider.GetRequiredService<frmMain>();
+                mainForm.MdiParent = this.MdiParent; // برای تنظیم فرم اصلی به عنوان والد
                 mainForm.Show();
                 this.Hide();
             }

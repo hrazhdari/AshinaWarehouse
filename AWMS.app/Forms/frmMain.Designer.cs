@@ -51,6 +51,7 @@
             barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
+            barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -74,7 +75,6 @@
             ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
-            barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).BeginInit();
@@ -99,7 +99,7 @@
             ribbonControl1.PageHeaderItemLinks.Add(barStaticItem3);
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage3, ribbonPage5, ribbonPage6, ribbonPage4, ribbonPage2, ribbonPage7 });
             ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemHypertextLabel1, repositoryItemHypertextLabel2, repositoryItemHypertextLabel3 });
-            ribbonControl1.Size = new Size(1203, 177);
+            ribbonControl1.Size = new Size(1205, 177);
             ribbonControl1.StatusBar = ribbonStatusBar1;
             // 
             // barButtonItem1
@@ -271,6 +271,15 @@
             barStaticItem3.Name = "barStaticItem3";
             barStaticItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // barStaticItem4
+            // 
+            barStaticItem4.Caption = "Marcus Aurelius once said that “everything we do now, echoes in eternity.” Every step you take can affect generations, for better or worse.";
+            barStaticItem4.Id = 41;
+            barStaticItem4.ImageOptions.Image = Properties.Resources.about_16x16;
+            barStaticItem4.ImageOptions.LargeImage = Properties.Resources.about_16x16;
+            barStaticItem4.Name = "barStaticItem4";
+            barStaticItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
@@ -407,10 +416,10 @@
             // 
             ribbonStatusBar1.ItemLinks.Add(barStaticItem2);
             ribbonStatusBar1.ItemLinks.Add(barStaticItem4);
-            ribbonStatusBar1.Location = new Point(0, 615);
+            ribbonStatusBar1.Location = new Point(0, 616);
             ribbonStatusBar1.Name = "ribbonStatusBar1";
             ribbonStatusBar1.Ribbon = ribbonControl1;
-            ribbonStatusBar1.Size = new Size(1203, 24);
+            ribbonStatusBar1.Size = new Size(1205, 24);
             // 
             // documentManager1
             // 
@@ -419,20 +428,11 @@
             documentManager1.View = tabbedView1;
             documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView1 });
             // 
-            // barStaticItem4
-            // 
-            barStaticItem4.Caption = "Marcus Aurelius once said that “everything we do now, echoes in eternity.” Every step you take can affect generations, for better or worse.";
-            barStaticItem4.Id = 41;
-            barStaticItem4.ImageOptions.Image = Properties.Resources.about_16x16;
-            barStaticItem4.ImageOptions.LargeImage = Properties.Resources.about_16x16;
-            barStaticItem4.Name = "barStaticItem4";
-            barStaticItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1203, 639);
+            ClientSize = new Size(1205, 640);
             Controls.Add(ribbonStatusBar1);
             Controls.Add(ribbonControl1);
             FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;

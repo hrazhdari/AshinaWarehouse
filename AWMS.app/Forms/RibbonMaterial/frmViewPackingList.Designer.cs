@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewPackingList));
             xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -130,9 +129,8 @@
             gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
-            gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
-            repositoryItemCheckEditHold = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
             gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -141,6 +139,7 @@
             gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
             gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
             gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
+            repositoryItemCheckEditHold = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             repositoryItemCheckEditselect = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             panelControl7 = new DevExpress.XtraEditors.PanelControl();
             panelControl10 = new DevExpress.XtraEditors.PanelControl();
@@ -153,11 +152,12 @@
             labelControl7 = new DevExpress.XtraEditors.LabelControl();
             simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             panelControl8 = new DevExpress.XtraEditors.PanelControl();
+            btnHoldAll = new DevExpress.XtraEditors.SimpleButton();
+            btnSelectAll = new DevExpress.XtraEditors.SimpleButton();
             comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             labelControl10 = new DevExpress.XtraEditors.LabelControl();
             labelControl9 = new DevExpress.XtraEditors.LabelControl();
             labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(components);
             ((System.ComponentModel.ISupportInitialize)xtraTabControl1).BeginInit();
             xtraTabControl1.SuspendLayout();
             xtraTabPage1.SuspendLayout();
@@ -192,8 +192,8 @@
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditpk).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditunit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditscope).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEditHold).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditlocation).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEditHold).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEditselect).BeginInit();
             ((System.ComponentModel.ISupportInitialize)panelControl7).BeginInit();
             panelControl7.SuspendLayout();
@@ -206,7 +206,6 @@
             ((System.ComponentModel.ISupportInitialize)panelControl8).BeginInit();
             panelControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)comboBoxEdit1.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)behaviorManager1).BeginInit();
             SuspendLayout();
             // 
             // xtraTabControl1
@@ -876,7 +875,7 @@
             // 
             // checkEdit2
             // 
-            checkEdit2.Location = new Point(29, 8);
+            checkEdit2.Location = new Point(29, 9);
             checkEdit2.Margin = new Padding(3, 2, 3, 2);
             checkEdit2.Name = "checkEdit2";
             checkEdit2.Properties.Caption = "Allow Edit";
@@ -897,7 +896,7 @@
             // 
             // checkEdit1
             // 
-            checkEdit1.Location = new Point(146, 8);
+            checkEdit1.Location = new Point(146, 9);
             checkEdit1.Margin = new Padding(3, 2, 3, 2);
             checkEdit1.Name = "checkEdit1";
             checkEdit1.Properties.Caption = "Allow Delete";
@@ -913,7 +912,7 @@
             xtraTabPage2.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage2.ImageOptions.Image");
             xtraTabPage2.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage2.Name = "xtraTabPage2";
-            xtraTabPage2.Size = new Size(1262, 600);
+            xtraTabPage2.Size = new Size(1264, 598);
             xtraTabPage2.Text = "All Item Of Selected PackingList";
             // 
             // panelControl6
@@ -925,7 +924,7 @@
             panelControl6.Location = new Point(0, 0);
             panelControl6.Margin = new Padding(3, 2, 3, 2);
             panelControl6.Name = "panelControl6";
-            panelControl6.Size = new Size(1262, 600);
+            panelControl6.Size = new Size(1264, 598);
             panelControl6.TabIndex = 0;
             // 
             // gridControl2
@@ -937,9 +936,10 @@
             gridControl2.Margin = new Padding(3, 2, 3, 2);
             gridControl2.Name = "gridControl2";
             gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditunit, repositoryItemLookUpEditscope, repositoryItemLookUpEditlocation, repositoryItemCheckEditHold, repositoryItemLookUpEditpk, repositoryItemCheckEditselect });
-            gridControl2.Size = new Size(1262, 558);
+            gridControl2.Size = new Size(1264, 556);
             gridControl2.TabIndex = 1;
             gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
+            gridControl2.Click += gridControl2_Click;
             // 
             // gridView2
             // 
@@ -965,7 +965,7 @@
             gridView2.Appearance.SelectedRow.Options.UseTextOptions = true;
             gridView2.Appearance.SelectedRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             gridView2.Appearance.SelectedRow.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridColumn35, gridColumn1, gridColumn2, gridColumn3, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14, gridColumn15, gridColumn16, gridColumn17, gridColumn18, gridColumn19, gridColumn20, gridColumn22, gridColumn21, gridColumn23, gridColumn24, gridColumn25, gridColumn26, gridColumn27, gridColumn28, gridColumn29, gridColumn30, gridColumn31, gridColumn32, gridColumn33, gridColumn34 });
+            gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridColumn35, gridColumn1, gridColumn2, gridColumn3, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14, gridColumn15, gridColumn16, gridColumn17, gridColumn18, gridColumn19, gridColumn20, gridColumn22, gridColumn21, gridColumn23, gridColumn24, gridColumn25, gridColumn4, gridColumn26, gridColumn28, gridColumn29, gridColumn30, gridColumn31, gridColumn32, gridColumn33, gridColumn34 });
             gridView2.DetailHeight = 284;
             gridView2.GridControl = gridControl2;
             gridView2.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
@@ -1267,6 +1267,14 @@
             gridColumn25.VisibleIndex = 21;
             gridColumn25.Width = 81;
             // 
+            // gridColumn4
+            // 
+            gridColumn4.Caption = "Hold";
+            gridColumn4.FieldName = "Hold";
+            gridColumn4.Name = "gridColumn4";
+            gridColumn4.Visible = true;
+            gridColumn4.VisibleIndex = 2;
+            // 
             // gridColumn26
             // 
             gridColumn26.Caption = "GrossW";
@@ -1277,33 +1285,12 @@
             gridColumn26.VisibleIndex = 22;
             gridColumn26.Width = 81;
             // 
-            // gridColumn27
-            // 
-            gridColumn27.Caption = "Hold";
-            gridColumn27.ColumnEdit = repositoryItemCheckEditHold;
-            gridColumn27.FieldName = "Hold";
-            gridColumn27.MinWidth = 21;
-            gridColumn27.Name = "gridColumn27";
-            gridColumn27.Visible = true;
-            gridColumn27.VisibleIndex = 2;
-            gridColumn27.Width = 39;
-            // 
-            // repositoryItemCheckEditHold
-            // 
-            repositoryItemCheckEditHold.AllowGrayed = true;
-            repositoryItemCheckEditHold.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
-            repositoryItemCheckEditHold.AutoHeight = false;
-            repositoryItemCheckEditHold.Name = "repositoryItemCheckEditHold";
-            repositoryItemCheckEditHold.ValueGrayed = false;
-            // 
             // gridColumn28
             // 
             gridColumn28.Caption = "NIS";
             gridColumn28.FieldName = "NIS";
             gridColumn28.MinWidth = 21;
             gridColumn28.Name = "gridColumn28";
-            gridColumn28.Visible = true;
-            gridColumn28.VisibleIndex = 23;
             gridColumn28.Width = 81;
             // 
             // gridColumn29
@@ -1333,7 +1320,7 @@
             gridColumn31.MinWidth = 21;
             gridColumn31.Name = "gridColumn31";
             gridColumn31.Visible = true;
-            gridColumn31.VisibleIndex = 24;
+            gridColumn31.VisibleIndex = 23;
             gridColumn31.Width = 81;
             // 
             // repositoryItemLookUpEditlocation
@@ -1372,6 +1359,15 @@
             gridColumn34.Name = "gridColumn34";
             gridColumn34.Width = 81;
             // 
+            // repositoryItemCheckEditHold
+            // 
+            repositoryItemCheckEditHold.AllowGrayed = true;
+            repositoryItemCheckEditHold.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
+            repositoryItemCheckEditHold.AutoHeight = false;
+            repositoryItemCheckEditHold.Name = "repositoryItemCheckEditHold";
+            repositoryItemCheckEditHold.NullText = "0";
+            repositoryItemCheckEditHold.ValueGrayed = false;
+            // 
             // repositoryItemCheckEditselect
             // 
             repositoryItemCheckEditselect.AutoHeight = false;
@@ -1381,8 +1377,6 @@
             // 
             // panelControl7
             // 
-            panelControl7.Appearance.BackColor = Color.MediumAquamarine;
-            panelControl7.Appearance.Options.UseBackColor = true;
             panelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             panelControl7.Controls.Add(panelControl10);
             panelControl7.Controls.Add(panelControl9);
@@ -1391,7 +1385,7 @@
             panelControl7.Location = new Point(0, 0);
             panelControl7.Margin = new Padding(3, 2, 3, 2);
             panelControl7.Name = "panelControl7";
-            panelControl7.Size = new Size(1262, 42);
+            panelControl7.Size = new Size(1264, 42);
             panelControl7.TabIndex = 0;
             // 
             // panelControl10
@@ -1404,7 +1398,7 @@
             panelControl10.Controls.Add(checkEdit3);
             panelControl10.Controls.Add(labelControl6);
             panelControl10.Controls.Add(checkEdit4);
-            panelControl10.Location = new Point(1017, 7);
+            panelControl10.Location = new Point(1019, 7);
             panelControl10.Margin = new Padding(3, 2, 3, 2);
             panelControl10.Name = "panelControl10";
             panelControl10.Size = new Size(237, 28);
@@ -1429,6 +1423,7 @@
             checkEdit3.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
             checkEdit3.Size = new Size(91, 20);
             checkEdit3.TabIndex = 14;
+            checkEdit3.CheckedChanged += checkEdit3_CheckedChanged;
             // 
             // labelControl6
             // 
@@ -1459,7 +1454,7 @@
             panelControl9.Controls.Add(simpleButton6);
             panelControl9.Controls.Add(labelControl7);
             panelControl9.Controls.Add(simpleButton7);
-            panelControl9.Location = new Point(786, 7);
+            panelControl9.Location = new Point(788, 7);
             panelControl9.Margin = new Padding(3, 2, 3, 2);
             panelControl9.Name = "panelControl9";
             panelControl9.Size = new Size(223, 28);
@@ -1467,6 +1462,7 @@
             // 
             // simpleButton6
             // 
+            simpleButton6.Cursor = Cursors.Hand;
             simpleButton6.ImageOptions.Image = (Image)resources.GetObject("simpleButton6.ImageOptions.Image");
             simpleButton6.Location = new Point(193, 4);
             simpleButton6.Margin = new Padding(3, 2, 3, 2);
@@ -1474,6 +1470,7 @@
             simpleButton6.Size = new Size(20, 19);
             simpleButton6.TabIndex = 141;
             simpleButton6.ToolTip = "EXPORT EXCEL";
+            simpleButton6.Click += simpleButton6_Click;
             // 
             // labelControl7
             // 
@@ -1494,6 +1491,7 @@
             // 
             // simpleButton7
             // 
+            simpleButton7.Cursor = Cursors.Hand;
             simpleButton7.ImageOptions.Image = (Image)resources.GetObject("simpleButton7.ImageOptions.Image");
             simpleButton7.Location = new Point(5, 4);
             simpleButton7.Margin = new Padding(3, 2, 3, 2);
@@ -1507,6 +1505,8 @@
             panelControl8.Appearance.BackColor = Color.WhiteSmoke;
             panelControl8.Appearance.Options.UseBackColor = true;
             panelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            panelControl8.Controls.Add(btnHoldAll);
+            panelControl8.Controls.Add(btnSelectAll);
             panelControl8.Controls.Add(comboBoxEdit1);
             panelControl8.Controls.Add(labelControl10);
             panelControl8.Controls.Add(labelControl9);
@@ -1517,9 +1517,35 @@
             panelControl8.Size = new Size(772, 28);
             panelControl8.TabIndex = 0;
             // 
+            // btnHoldAll
+            // 
+            btnHoldAll.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHoldAll.Cursor = Cursors.Hand;
+            btnHoldAll.ImageOptions.Image = Properties.Resources.borules_16x16;
+            btnHoldAll.Location = new Point(401, 3);
+            btnHoldAll.Name = "btnHoldAll";
+            btnHoldAll.Size = new Size(87, 23);
+            btnHoldAll.TabIndex = 9;
+            btnHoldAll.Text = "HoldAll";
+            btnHoldAll.Visible = false;
+            btnHoldAll.Click += btnHoldAll_Click;
+            // 
+            // btnSelectAll
+            // 
+            btnSelectAll.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSelectAll.Cursor = Cursors.Hand;
+            btnSelectAll.ImageOptions.Image = Properties.Resources.selectlabelsandvaluespivottable_16x16;
+            btnSelectAll.Location = new Point(494, 3);
+            btnSelectAll.Name = "btnSelectAll";
+            btnSelectAll.Size = new Size(94, 23);
+            btnSelectAll.TabIndex = 8;
+            btnSelectAll.Text = "SelectAll";
+            btnSelectAll.Click += btnSelectAll_Click;
+            // 
             // comboBoxEdit1
             // 
             comboBoxEdit1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            comboBoxEdit1.Cursor = Cursors.Hand;
             comboBoxEdit1.Location = new Point(681, 5);
             comboBoxEdit1.Margin = new Padding(3, 2, 3, 2);
             comboBoxEdit1.Name = "comboBoxEdit1";
@@ -1556,7 +1582,7 @@
             labelControl9.Appearance.Options.UseFont = true;
             labelControl9.Appearance.Options.UseForeColor = true;
             labelControl9.LineColor = Color.FromArgb(255, 128, 0);
-            labelControl9.Location = new Point(181, 7);
+            labelControl9.Location = new Point(181, 6);
             labelControl9.Margin = new Padding(3, 2, 3, 2);
             labelControl9.Name = "labelControl9";
             labelControl9.Size = new Size(102, 14);
@@ -1572,7 +1598,7 @@
             labelControl8.Appearance.Options.UseFont = true;
             labelControl8.Appearance.Options.UseForeColor = true;
             labelControl8.LineColor = Color.FromArgb(255, 128, 0);
-            labelControl8.Location = new Point(11, 7);
+            labelControl8.Location = new Point(11, 6);
             labelControl8.Margin = new Padding(3, 2, 3, 2);
             labelControl8.Name = "labelControl8";
             labelControl8.Size = new Size(102, 14);
@@ -1626,8 +1652,8 @@
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditpk).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditunit).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditscope).EndInit();
-            ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEditHold).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditlocation).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEditHold).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEditselect).EndInit();
             ((System.ComponentModel.ISupportInitialize)panelControl7).EndInit();
             panelControl7.ResumeLayout(false);
@@ -1643,7 +1669,6 @@
             panelControl8.ResumeLayout(false);
             panelControl8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)comboBoxEdit1.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)behaviorManager1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1760,7 +1785,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
@@ -1771,11 +1795,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn34;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEditHold;
-        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditpk;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEditselect;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn RowNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.SimpleButton btnSelectAll;
+        private DevExpress.XtraEditors.SimpleButton btnHoldAll;
     }
 }

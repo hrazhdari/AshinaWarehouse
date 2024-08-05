@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWMS.app.Forms.RibbonUser
-{
+namespace AWMS.app.Forms.RibbonUser 
+{ 
     public class UserSession
     {
         public int UserID { get; set; }

@@ -299,6 +299,7 @@ namespace AWMS.dapper
                 parameters.Add("@ItemCodeId", item.ItemCodeId);
                 parameters.Add("@BaseMaterial", item.BaseMaterial);
                 parameters.Add("@Hold", item.Hold);
+                //parameters.Add("@Hold", item.Hold ?? false);
                 parameters.Add("@NIS", item.NIS);
 
                 await connection.ExecuteAsync("sp_UpdateItem", parameters, commandType: CommandType.StoredProcedure);
@@ -338,6 +339,7 @@ namespace AWMS.dapper
             }
         }
 
+
         public async Task UpdateStorageCodesAsync(IEnumerable<int> itemIds, string newStorageCode)
         {
             using (var connection = CreateConnection())
@@ -371,8 +373,6 @@ namespace AWMS.dapper
                 }
             }
         }
-
-
 
         private DataTable ConvertToDataTable(IEnumerable<ImportItemDto> items)
         {
@@ -439,7 +439,8 @@ namespace AWMS.dapper
 
                     command.ExecuteNonQuery();
 
-                    int newItemId = (int)newItemIdParam.Value; // مقدار ItemId جدید
+                    // بررسی وجود مقدار DBNull
+                    int newItemId = Convert.IsDBNull(newItemIdParam.Value) ? -1 : (int)newItemIdParam.Value;
                 }
             }
         }
