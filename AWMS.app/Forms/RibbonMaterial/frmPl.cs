@@ -35,11 +35,11 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly IMrService _mrService;
         private readonly IPoService _poService;
         private readonly UserSession _session; // اضافه کردن UserSession
-        public frmPl(IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider,
+        public frmPl(int userId,IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider,
             IDescriptionForPkService descriptionForPkService,
             IIrnService irnService, IShipmentService shipmentService, IAreaUnitService areaUnitService,
             IVendorService vendorService, ISupplierService supplierService, IDesciplineService desciplineService,
-            IMrService mrService, IPoService poService, int userId)
+            IMrService mrService, IPoService poService)
         {
             InitializeComponent();
             _packingListDapperRepository = PackingListDapperRepository;
@@ -59,6 +59,7 @@ namespace AWMS.app.Forms.RibbonMaterial
 
             LoadLookUps();
         }
+
         #region showing load panel in main form
         public void InitializeAndShow()
         {

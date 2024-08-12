@@ -16,8 +16,7 @@ namespace AWMS.datalayer.Entities
         {
             EnteredDate= DateTime.Now;
         }
-        //[NotMapped] // This attribute marks the property as not mapped to a database column
-        //public int RowNumber { get; set; }
+
         [Key]
         public int CompanyID { get; set; }
         public string CompanyName { get; set; }
@@ -30,6 +29,6 @@ namespace AWMS.datalayer.Entities
         //public virtual ICollection<RequestMiv> RequestMivs { get; set; }
         //public virtual ICollection<RequestMRvHmv> ReturnFromCompaneis { get; set; }
         //public virtual ICollection<RequestMRvHmv> ReceiveByCompaneis { get; set; }
-        //public virtual ICollection<CompanyContract> Contracts { get; set; }
+        public virtual ICollection<CompanyContract> Contracts { get; set; }
     }
 }

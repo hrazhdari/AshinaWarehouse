@@ -21,10 +21,13 @@ namespace AWMS.datalayer.Repositories
         {
             return await _context.Companies.ToListAsync();
         }
-
-        public async Task<Company> GetByIdAsync(int id)
+        public IEnumerable<Company> GetAll()
         {
-            return await _context.Companies.FindAsync(id);
+            return  _context.Companies.ToList();
+        }
+        public Company GetByIdAsync(int id)
+        {
+            return  _context.Companies.Find(id);
         }
 
         public void Update(Company company)

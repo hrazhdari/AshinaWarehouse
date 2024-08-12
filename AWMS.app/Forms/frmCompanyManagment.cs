@@ -199,7 +199,9 @@ namespace AWMS.app.Forms
 
                 // تنظیم داده‌ها به DataGridView
                 //gridControl1.ToolTipController.Active = true;
-                gridControl1.DataSource = Companies;
+                //gridControl1.DataSource = Companies;
+                dataGridView1.ShowCellToolTips = true;
+                dataGridView1.DataSource = Companies;
             }
             catch (Exception ex)
             {
@@ -319,7 +321,7 @@ namespace AWMS.app.Forms
         {
             lblid.Text = companyId.ToString();
             // Load company data into the form fields
-            var company = await _CompanyService.GetCompanyByIdAsync(companyId);
+            var company = _CompanyService.GetCompanyByIdAsync(companyId);
 
             if (company != null)
             {
@@ -444,14 +446,7 @@ namespace AWMS.app.Forms
 
         private void button5_Click(object sender, EventArgs e)
         {
-            // Display confirmation message
-            DialogResult result = MessageBox.Show("Are you sure you want to close the form?", "Confirm Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Check the result
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -513,7 +508,7 @@ namespace AWMS.app.Forms
                 int companyId = Convert.ToInt32(selectedRow.Cells["CompanyId"].Value);
 
                 // Get the company object from the grid
-                Company companyToDelete = await _CompanyService.GetCompanyByIdAsync(companyId);
+                Company companyToDelete = _CompanyService.GetCompanyByIdAsync(companyId);
                 if (companyToDelete == null)
                 {
                     MessageBox.Show("Selected company not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -552,19 +547,7 @@ namespace AWMS.app.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            btndelete.Enabled = false;
-            button1.Enabled = true;
-            button2.Enabled = false;
-            txtCompanyName.Text = "";
-            txtAbbreviation.Text = "";
-            richTextBox1.Text = "";
-            pictureBox1.Image = Properties.Resources.No_Image_Placeholder_svg;
-            _path = "";
-            _fileNameImage = "";
-            lblid.Text = "";
-            dataGridView1.Refresh();
-            dataGridView1.ClearSelection();
-            txtCompanyName.Focus();
+
         }
 
         private async void button2_Click(object sender, EventArgs e)
@@ -578,7 +561,7 @@ namespace AWMS.app.Forms
                 int companyId = Convert.ToInt32(selectedRow.Cells[0].Value);
 
                 // Get the existing company from the database
-                var existingCompany = await _CompanyService.GetCompanyByIdAsync(companyId);
+                var existingCompany = _CompanyService.GetCompanyByIdAsync(companyId);
 
                 if (existingCompany != null)
                 {
@@ -669,14 +652,49 @@ namespace AWMS.app.Forms
             }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void btndelete_Click_1(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
+            btndelete.Enabled = false;
+            button1.Enabled = true;
+            button2.Enabled = false;
+            txtCompanyName.Text = "";
+            txtAbbreviation.Text = "";
+            richTextBox1.Text = "";
+            pictureBox1.Image = Properties.Resources.No_Image_Placeholder_svg;
+            _path = "";
+            _fileNameImage = "";
+            lblid.Text = "";
+            dataGridView1.Refresh();
+            dataGridView1.ClearSelection();
+            txtCompanyName.Focus();
+        }
 
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            // Display confirmation message
+            DialogResult result = MessageBox.Show("Are you sure you want to close the form?", "Confirm Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Check the result
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            button1_Click(null, null);
+        }
+
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            await gridDataLoad();
         }
     }
 }

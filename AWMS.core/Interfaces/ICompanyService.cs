@@ -7,7 +7,8 @@ namespace AWMS.core.Interfaces
     public interface ICompanyService
     {
         Task<IEnumerable<Company>> GetAllCompaniesAsync();
-        Task<Company> GetCompanyByIdAsync(int id);
+        IEnumerable<Company> GetAllCompanies();
+        Company GetCompanyByIdAsync(int id);
         Task<int?> GetByCompanyNameAsync(string Companyname);
         Task<int> AddCompanyAsync(Company company);
         Task UpdateCompanyAsync(Company company);

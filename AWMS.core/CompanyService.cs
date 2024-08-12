@@ -19,10 +19,14 @@ namespace AWMS.core
         {
             return await _unitOfWork.Companies.GetAllAsync();
         }
-
-        public async Task<Company> GetCompanyByIdAsync(int id)
+        public IEnumerable<Company> GetAllCompanies()
         {
-            return await _unitOfWork.Companies.GetByIdAsync(id);
+            return  _unitOfWork.Companies.GetAll();
+        }
+
+        public Company GetCompanyByIdAsync(int id)
+        {
+            return  _unitOfWork.Companies.GetByIdAsync(id);
         }
 
         public async Task<int> AddCompanyAsync(Company company)
@@ -40,7 +44,7 @@ namespace AWMS.core
 
         public async Task DeleteCompanyAsync(int id)
         {
-            var company = await _unitOfWork.Companies.GetByIdAsync(id);
+            var company =  _unitOfWork.Companies.GetByIdAsync(id);
             if (company != null)
             {
                 _unitOfWork.Companies.Delete(company);

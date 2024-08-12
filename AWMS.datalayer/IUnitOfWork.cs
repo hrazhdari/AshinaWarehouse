@@ -8,6 +8,7 @@ namespace AWMS.datalayer
     public interface IUnitOfWork : IDisposable
     {
         ICompanyRepository Companies { get; }
+        ICompanyContract Contratcs { get; }
         IMrRepository Mrs { get; }
         IPoRepository Pos { get; }
         IDescriptionForPkRepository DescriptionForPks { get; }

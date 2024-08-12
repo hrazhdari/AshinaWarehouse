@@ -40,10 +40,10 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         private bool isNewRowAdded = false;
 
-        public frmItemLoc(IPackingListDapperRepository packingListDapperRepository, IUnitDapperRepository unitDapperRepository,
+        public frmItemLoc(int userId,IPackingListDapperRepository packingListDapperRepository, IUnitDapperRepository unitDapperRepository,
             IScopeDapperRepository scopeDapperRepository, ILocationDapperRepository locationDapperRepository,
             IPackageDapperRepository packageDapperRepository, IItemDapperRepository itemDapperRepository,
-            ILocItemDapperRepository locItemDapperRepository, int userId)
+            ILocItemDapperRepository locItemDapperRepository)
         {
             InitializeComponent();
             this._packingListDapperRepository = packingListDapperRepository;

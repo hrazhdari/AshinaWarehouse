@@ -77,6 +77,9 @@ namespace AWMS.app
                     services.AddScoped<ISupplierService, SupplierService>();
                     services.AddScoped<IVendorService, VendorService>();
                     services.AddScoped<IDesciplineService, DesciplineService>();
+                    services.AddScoped<ICompanyService, CompanyService>();
+                    services.AddScoped<IContractService, ContractService>();
+                    
 
                     //Dapper Repositories
                     services.AddScoped<IPackingListDapperRepository, PackingListDapperRepository>();
@@ -91,6 +94,7 @@ namespace AWMS.app
                     // افزودن سرویس‌های فرم‌ها به سرویس‌ها
                     services.AddTransient<frmMain>();
                     services.AddTransient<frmCompanyManagment>();
+                    services.AddTransient<frmCompanyContract>();
                     services.AddTransient<frmMr>();
                     services.AddTransient<frmPo>();
                     services.AddTransient<frmPl>();
@@ -105,9 +109,8 @@ namespace AWMS.app
                     services.AddTransient<frmViewPackingList>();
                     services.AddTransient<frmLogin>();
                     services.AddTransient<frmImportPackingList>();
-                    services.AddTransient<ICompanyService, CompanyService>();
-                    // ثبت سایر سرویس‌ها
-                    services.AddTransient<frmCompanyManagment>();
+
+                    
 
 
 

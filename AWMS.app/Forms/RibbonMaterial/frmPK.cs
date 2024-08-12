@@ -29,8 +29,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly UserSession _session; // اضافه کردن UserSession
         private bool _isRowAdded;
 
-        public frmPK(IPackageDapperRepository packageDapperRepository, IPackingListDapperRepository packingListDapperRepository,
-            int userId)
+        public frmPK(int userId,IPackageDapperRepository packageDapperRepository, IPackingListDapperRepository packingListDapperRepository)
         {
             InitializeComponent();
             this._packageDapperRepository = packageDapperRepository;

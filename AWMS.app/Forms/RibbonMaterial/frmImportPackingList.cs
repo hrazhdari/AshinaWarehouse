@@ -35,7 +35,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly int _userId;
         private readonly UserSession _session; // اضافه کردن متغیر سراسری برای UserSession
 
-        public frmImportPackingList(IServiceProvider serviceProvider, int userId,
+        public frmImportPackingList(int userId, IServiceProvider serviceProvider,
             ILocationDapperRepository locationDapperRepository,
             IPackingListDapperRepository packingListDapperRepository,
             IPackageDapperRepository packageDapperRepository,IItemDapperRepository itemDapperRepository,

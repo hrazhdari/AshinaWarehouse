@@ -160,7 +160,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("AreaUnitID");
 
-                    b.ToTable("AreaUnits", (string)null);
+                    b.ToTable("AreaUnits");
 
                     b.HasData(
                         new
@@ -201,7 +201,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("CompanyID");
 
-                    b.ToTable("Companies", (string)null);
+                    b.ToTable("Companies");
 
                     b.HasData(
                         new
@@ -209,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(8077)
+                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 704, DateTimeKind.Local).AddTicks(5223)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(8112)
+                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 704, DateTimeKind.Local).AddTicks(5244)
                         });
                 });
 
@@ -243,6 +243,15 @@ namespace AWMS.datalayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("EditedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EditedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EnteredBy")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("EnteredDate")
                         .HasColumnType("datetime2");
 
@@ -250,7 +259,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasIndex("CompanyID");
 
-                    b.ToTable("CompanyContracts", (string)null);
+                    b.ToTable("CompanyContracts");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Descipline", b =>
@@ -268,7 +277,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("DesciplineId");
 
-                    b.ToTable("Desciplines", (string)null);
+                    b.ToTable("Desciplines");
 
                     b.HasData(
                         new
@@ -368,7 +377,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("DescriptionForPkId");
 
-                    b.ToTable("DescriptionForPks", (string)null);
+                    b.ToTable("DescriptionForPks");
 
                     b.HasData(
                         new
@@ -403,7 +412,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("IrnId");
 
-                    b.ToTable("Irns", (string)null);
+                    b.ToTable("Irns");
 
                     b.HasData(
                         new
@@ -536,7 +545,7 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("UnitPriceID")
                         .HasDatabaseName("IX_Item_UnitPriceID");
 
-                    b.ToTable("Items", (string)null);
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.LocItem", b =>
@@ -591,7 +600,7 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("LocationID")
                         .HasDatabaseName("IX_LocItem_LocationID");
 
-                    b.ToTable("LocItems", (string)null);
+                    b.ToTable("LocItems");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Location", b =>
@@ -624,28 +633,28 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("LocationName")
                         .HasDatabaseName("IX_Location_LocationName");
 
-                    b.ToTable("Locations", (string)null);
+                    b.ToTable("Locations");
 
                     b.HasData(
                         new
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(477),
+                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 703, DateTimeKind.Local).AddTicks(9813),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(535),
+                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 703, DateTimeKind.Local).AddTicks(9869),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 8, 3, 20, 27, 39, 935, DateTimeKind.Local).AddTicks(540),
+                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 703, DateTimeKind.Local).AddTicks(9871),
                             LocationName = "W02A02B"
                         });
                 });
@@ -672,7 +681,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("MrId");
 
-                    b.ToTable("Mrs", (string)null);
+                    b.ToTable("Mrs");
 
                     b.HasData(
                         new
@@ -770,7 +779,7 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("PLId")
                         .HasDatabaseName("IX_Package_PLId");
 
-                    b.ToTable("Packages", (string)null);
+                    b.ToTable("Packages");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.PackingList", b =>
@@ -934,7 +943,7 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("VendorId")
                         .HasDatabaseName("IX_PackingList_VendorId");
 
-                    b.ToTable("PackingLists", (string)null);
+                    b.ToTable("PackingLists");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Po", b =>
@@ -964,7 +973,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasIndex("MrId");
 
-                    b.ToTable("Pos", (string)null);
+                    b.ToTable("Pos");
 
                     b.HasData(
                         new
@@ -993,7 +1002,7 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("ScopeName")
                         .HasDatabaseName("IX_Scope_ScopeName");
 
-                    b.ToTable("Scopes", (string)null);
+                    b.ToTable("Scopes");
 
                     b.HasData(
                         new
@@ -1045,7 +1054,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasIndex("PoId");
 
-                    b.ToTable("Shipments", (string)null);
+                    b.ToTable("Shipments");
 
                     b.HasData(
                         new
@@ -1079,7 +1088,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("SupplierId");
 
-                    b.ToTable("Suppliers", (string)null);
+                    b.ToTable("Suppliers");
 
                     b.HasData(
                         new
@@ -1108,7 +1117,7 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("UnitName")
                         .HasDatabaseName("IX_Unit_UnitName");
 
-                    b.ToTable("Units", (string)null);
+                    b.ToTable("Units");
 
                     b.HasData(
                         new
@@ -1281,7 +1290,7 @@ namespace AWMS.datalayer.Migrations
                     b.HasIndex("UnitPriceName")
                         .HasDatabaseName("IX_UnitPrice_UnitPriceName");
 
-                    b.ToTable("UnitPrices", (string)null);
+                    b.ToTable("UnitPrices");
 
                     b.HasData(
                         new
@@ -1622,7 +1631,7 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasKey("VendorID");
 
-                    b.ToTable("Vendors", (string)null);
+                    b.ToTable("Vendors");
 
                     b.HasData(
                         new
@@ -1649,7 +1658,7 @@ namespace AWMS.datalayer.Migrations
             modelBuilder.Entity("AWMS.datalayer.Entities.CompanyContract", b =>
                 {
                     b.HasOne("AWMS.datalayer.Entities.Company", "Company")
-                        .WithMany()
+                        .WithMany("Contracts")
                         .HasForeignKey("CompanyID");
 
                     b.Navigation("Company");
@@ -1812,6 +1821,11 @@ namespace AWMS.datalayer.Migrations
             modelBuilder.Entity("AWMS.datalayer.Entities.AreaUnit", b =>
                 {
                     b.Navigation("PackingLists");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Company", b =>
+                {
+                    b.Navigation("Contracts");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Descipline", b =>
