@@ -18,6 +18,7 @@ using AWMS.app.Forms.frmSmall;
 using AWMS.core.Services;
 using System.Text;
 using AWMS.app.Forms.RibbonUser;
+using AWMS.app.Forms.RibbonVoucher;
 
 namespace AWMS.app
 {
@@ -90,6 +91,7 @@ namespace AWMS.app
                     services.AddScoped<IItemDapperRepository , ItemDapperRepository > ();
                     services.AddScoped<ILocItemDapperRepository , LocItemDapperRepository > ();
                     services.AddScoped<IUserDapperRepository , UserDapperRepository > ();
+                    services.AddScoped<IRequestDapperRepository , RequestDapperRepository > ();
 
                     // افزودن سرویس‌های فرم‌ها به سرویس‌ها
                     services.AddTransient<frmMain>();
@@ -109,6 +111,7 @@ namespace AWMS.app
                     services.AddTransient<frmViewPackingList>();
                     services.AddTransient<frmLogin>();
                     services.AddTransient<frmImportPackingList>();
+                    services.AddTransient<frmIssueVoucher>();
 
                     
 

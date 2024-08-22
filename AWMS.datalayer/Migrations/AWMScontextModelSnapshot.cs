@@ -209,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 704, DateTimeKind.Local).AddTicks(5223)
+                            EnteredDate = new DateTime(2024, 8, 18, 23, 13, 21, 643, DateTimeKind.Local).AddTicks(7322)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 704, DateTimeKind.Local).AddTicks(5244)
+                            EnteredDate = new DateTime(2024, 8, 18, 23, 13, 21, 643, DateTimeKind.Local).AddTicks(7339)
                         });
                 });
 
@@ -640,21 +640,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 703, DateTimeKind.Local).AddTicks(9813),
+                            EnteredDate = new DateTime(2024, 8, 18, 23, 13, 21, 642, DateTimeKind.Local).AddTicks(7556),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 703, DateTimeKind.Local).AddTicks(9869),
+                            EnteredDate = new DateTime(2024, 8, 18, 23, 13, 21, 642, DateTimeKind.Local).AddTicks(7609),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 8, 12, 11, 58, 1, 703, DateTimeKind.Local).AddTicks(9871),
+                            EnteredDate = new DateTime(2024, 8, 18, 23, 13, 21, 642, DateTimeKind.Local).AddTicks(7611),
                             LocationName = "W02A02B"
                         });
                 });
@@ -981,6 +981,177 @@ namespace AWMS.datalayer.Migrations
                             PoId = 1,
                             MrId = 1,
                             PoName = "-"
+                        });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Request", b =>
+                {
+                    b.Property<int>("ReqLocItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReqLocItemID"));
+
+                    b.Property<int?>("ApprovedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ApprovedDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("AreaUnitID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompanyID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompanyID2")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ContractId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ContractId2")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DelDate")
+                        .HasColumnType("date");
+
+                    b.Property<decimal?>("DelHmvQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("DelHmvRejQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("DelMivQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("DelMivRejQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("DelMrvQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("DelMrvRejQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("HMVNO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IssuedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("IssuedDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("Item")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LocItemID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("MRCNO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MRVNO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ReqDate")
+                        .HasColumnType("date");
+
+                    b.Property<decimal?>("ReqHmvQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("ReqMivQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("ReqMivRejQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("ReqMrvQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("RequestNO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestPDF")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RequestTypeTypeID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("ReserveMivQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("ReserveMivRejQty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("TypeID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VendorID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReqLocItemID");
+
+                    b.HasIndex("CompanyID")
+                        .HasDatabaseName("IX_Request_CompanyID");
+
+                    b.HasIndex("LocItemID")
+                        .HasDatabaseName("IX_Request_LocItemID");
+
+                    b.HasIndex("RequestTypeTypeID");
+
+                    b.HasIndex("TypeID")
+                        .HasDatabaseName("IX_Request_TypeID");
+
+                    b.ToTable("Requests");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.RequestType", b =>
+                {
+                    b.Property<int>("TypeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TypeID"));
+
+                    b.Property<string>("TypeName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("TypeID");
+
+                    b.HasIndex("TypeName")
+                        .HasDatabaseName("IX_RequestType_TypeName");
+
+                    b.ToTable("RequestTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            TypeID = 1,
+                            TypeName = "MIV"
+                        },
+                        new
+                        {
+                            TypeID = 2,
+                            TypeName = "MIVReject"
+                        },
+                        new
+                        {
+                            TypeID = 3,
+                            TypeName = "HMV"
+                        },
+                        new
+                        {
+                            TypeID = 4,
+                            TypeName = "MRV"
                         });
                 });
 
@@ -1808,6 +1979,21 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("Mr");
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.Request", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.LocItem", "LocItem")
+                        .WithMany("Requests")
+                        .HasForeignKey("LocItemID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("AWMS.datalayer.Entities.RequestType", null)
+                        .WithMany("Requests")
+                        .HasForeignKey("RequestTypeTypeID");
+
+                    b.Navigation("LocItem");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.Shipment", b =>
                 {
                     b.HasOne("AWMS.datalayer.Entities.Po", "Po")
@@ -1848,6 +2034,11 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("LocItems");
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.LocItem", b =>
+                {
+                    b.Navigation("Requests");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.Location", b =>
                 {
                     b.Navigation("LocItems");
@@ -1875,6 +2066,11 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("PackingLists");
 
                     b.Navigation("Shipments");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.RequestType", b =>
+                {
+                    b.Navigation("Requests");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Scope", b =>

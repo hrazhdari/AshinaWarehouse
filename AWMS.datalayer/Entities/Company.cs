@@ -26,9 +26,7 @@ namespace AWMS.datalayer.Entities
         public DateTime EnteredDate { get; set; }
         public int? Local_Foreign { get; set; }
         public string? Remark { get; set; }
-        //public virtual ICollection<RequestMiv> RequestMivs { get; set; }
-        //public virtual ICollection<RequestMRvHmv> ReturnFromCompaneis { get; set; }
-        //public virtual ICollection<RequestMRvHmv> ReceiveByCompaneis { get; set; }
+        
         public virtual ICollection<CompanyContract> Contracts { get; set; }
     }
 }

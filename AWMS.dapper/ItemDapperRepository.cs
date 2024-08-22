@@ -417,6 +417,9 @@ namespace AWMS.dapper
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
+                    // تنظیم CommandTimeout به 300 ثانیه (5 دقیقه)
+                    command.CommandTimeout = 300;
+
                     // ایجاد پارامتر برای داده‌های Item
                     var itemParam = command.Parameters.AddWithValue("@Items", items);
                     itemParam.SqlDbType = SqlDbType.Structured;
@@ -444,6 +447,41 @@ namespace AWMS.dapper
                 }
             }
         }
+        //private void SendDataToStoredProcedure(DataTable items, int plId, int locationId)
+        //{
+        //    using (var connection = new SqlConnection(_connectionString))
+        //    {
+        //        connection.Open();
+
+        //        // اضافه کردن ستون‌های PLId و LocationID به DataTable
+        //        if (!items.Columns.Contains("PLId"))
+        //        {
+        //            items.Columns.Add("PLId", typeof(int));
+        //        }
+        //        if (!items.Columns.Contains("LocationID"))
+        //        {
+        //            items.Columns.Add("LocationID", typeof(int));
+        //        }
+
+        //        foreach (DataRow row in items.Rows)
+        //        {
+        //            row["PLId"] = plId;
+        //            row["LocationID"] = locationId;
+        //        }
+
+        //        using (var bulkCopy = new SqlBulkCopy(connection))
+        //        {
+        //            bulkCopy.DestinationTableName = "Items"; // نام جدول مقصد
+
+        //            // مطابقت ستون‌ها
+        //            bulkCopy.ColumnMappings.Add("ColumnNameInDataTable", "ColumnNameInDestinationTable");
+        //            // ... اضافه کردن سایر ستون‌ها به همین روش
+
+        //            bulkCopy.WriteToServer(items);
+        //        }
+        //    }
+        //}
+
         public void AddItems(IEnumerable<ImportItemDto> items, int plId, int locationId)
         {
             var dataTable = ConvertToDataTable(items);

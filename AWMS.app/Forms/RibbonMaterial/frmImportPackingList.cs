@@ -32,26 +32,25 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly IPackageDapperRepository _packageDapperRepository;
         private readonly IItemDapperRepository _itemDapperRepository;
         private readonly IConfiguration _configuration; // افزودن این فیلد
-        private readonly int _userId;
         private readonly UserSession _session; // اضافه کردن متغیر سراسری برای UserSession
 
-        public frmImportPackingList(int userId, IServiceProvider serviceProvider,
+        public frmImportPackingList(IServiceProvider serviceProvider,
             ILocationDapperRepository locationDapperRepository,
             IPackingListDapperRepository packingListDapperRepository,
             IPackageDapperRepository packageDapperRepository,IItemDapperRepository itemDapperRepository,
-            IConfiguration configuration) // افزودن IConfiguration به سازنده
+            IConfiguration configuration, int? UserId = null) // افزودن IConfiguration به سازنده
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
-            _userId = userId;
             _locationDapperRepository = locationDapperRepository;
             _packingListDapperRepository = packingListDapperRepository;
             _packageDapperRepository = packageDapperRepository;
             _itemDapperRepository= itemDapperRepository;
             _configuration = configuration; // مقداردهی فیلد
 
-            // گرفتن نشست کاربر و ذخیره آن در متغیر سراسری
-            _session = SessionManager.GetSession(_userId);
+            // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
+            int finalUserId = UserId ?? 1;
+            _session = SessionManager.GetSession(finalUserId);
             initgrid();
         }
 

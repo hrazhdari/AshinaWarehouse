@@ -28,12 +28,14 @@ namespace AWMS.app.Forms
 
 
         private int _highlightedRowHandle = GridControl.InvalidRowHandle;
-        public frmCompanyContract(int UserId, ICompanyService companyService, IContractService companyContract)
+        public frmCompanyContract(ICompanyService companyService , IContractService companyContract, int? UserId = null)
         {
             InitializeComponent();
             this._CompanyService = companyService;
             this._CompanyContactService = companyContract;
-            _session = SessionManager.GetSession(UserId); // گرفتن نشست کاربر بر اساس userId
+            // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
+            int finalUserId = UserId ?? 1;
+            _session = SessionManager.GetSession(finalUserId);
 
             labelControl4.Text = DateTime.Now.ToString();
 

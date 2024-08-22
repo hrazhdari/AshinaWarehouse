@@ -29,12 +29,14 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly UserSession _session; // اضافه کردن UserSession
         private bool _isRowAdded;
 
-        public frmPK(int userId,IPackageDapperRepository packageDapperRepository, IPackingListDapperRepository packingListDapperRepository)
+        public frmPK(IPackageDapperRepository packageDapperRepository, IPackingListDapperRepository packingListDapperRepository,int? UserId=null)
         {
             InitializeComponent();
             this._packageDapperRepository = packageDapperRepository;
             this._packingListDapperRepository = packingListDapperRepository;
-            _session = SessionManager.GetSession(userId); // گرفتن نشست کاربر بر اساس userId
+            // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
+            int finalUserId = UserId ?? 1;
+            _session = SessionManager.GetSession(finalUserId);
             LoadLookup();
         }
         private async void LoadLookup()

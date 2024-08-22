@@ -60,7 +60,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             IVendorService vendorService, IDesciplineService desciplineService, IDescriptionForPkService descriptionforpkService,
             IUnitDapperRepository unitService, IScopeDapperRepository scopeDapperRepository, IPackageDapperRepository packageDapperRepository,
             ILocationDapperRepository locationDapperRepository, IPackingListDapperRepository packingListDapperRepository,
-            ILocItemDapperRepository locitemRepository, IItemDapperRepository itemDapperRepository, int userId)
+            ILocItemDapperRepository locitemRepository, IItemDapperRepository itemDapperRepository, int? userId=null)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
@@ -80,7 +80,9 @@ namespace AWMS.app.Forms.RibbonMaterial
             this._packageRepository = packageDapperRepository;
             this._LocitemRepository = locitemRepository;
             this._itemRepository = itemDapperRepository;
-            _session = SessionManager.GetSession(userId); // گرفتن نشست کاربر بر اساس userId
+            // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
+            int finalUserId = userId ?? 1;
+            _session = SessionManager.GetSession(finalUserId);
 
             initGrid();
             _LocitemRepository = locitemRepository;

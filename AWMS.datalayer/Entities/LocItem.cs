@@ -35,7 +35,7 @@ namespace AWMS.datalayer.Entities
         [ForeignKey(nameof(LocationID))]
         public virtual Location Location { get; set; }
 
-        //public virtual ICollection<RequestMiv> RequestMivs { get; set; }
-        //
+        public virtual ICollection<Request> Requests { get; set; }
+        
     }
 }

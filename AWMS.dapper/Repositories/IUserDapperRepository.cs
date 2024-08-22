@@ -23,5 +23,6 @@ namespace AWMS.dapper.Repositories
 
         // متد برای دریافت تمامی کاربران
         Task<IEnumerable<UserDto>> GetAllUsersAsync();
+        IEnumerable<UserDto> GetAllUsers();
     }
 }

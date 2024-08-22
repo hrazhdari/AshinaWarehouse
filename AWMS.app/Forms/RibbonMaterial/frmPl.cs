@@ -35,11 +35,11 @@ namespace AWMS.app.Forms.RibbonMaterial
         private readonly IMrService _mrService;
         private readonly IPoService _poService;
         private readonly UserSession _session; // اضافه کردن UserSession
-        public frmPl(int userId,IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider,
+        public frmPl(IPackingListDapperRepository PackingListDapperRepository, IServiceProvider serviceProvider,
             IDescriptionForPkService descriptionForPkService,
             IIrnService irnService, IShipmentService shipmentService, IAreaUnitService areaUnitService,
             IVendorService vendorService, ISupplierService supplierService, IDesciplineService desciplineService,
-            IMrService mrService, IPoService poService)
+            IMrService mrService, IPoService poService,int? UserId= null)
         {
             InitializeComponent();
             _packingListDapperRepository = PackingListDapperRepository;
@@ -55,7 +55,9 @@ namespace AWMS.app.Forms.RibbonMaterial
             this._desciplineService = desciplineService;
             this._mrService = mrService;
             this._poService = poService;
-            _session = SessionManager.GetSession(userId); // گرفتن نشست کاربر بر اساس userId
+            // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
+            int finalUserId = UserId ?? 1;
+            _session = SessionManager.GetSession(finalUserId);
 
             LoadLookUps();
         }

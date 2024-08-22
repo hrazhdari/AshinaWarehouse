@@ -1,6 +1,7 @@
 ﻿using AWMS.app.Forms.frmBase;
 using AWMS.app.Forms.RibbonMaterial;
 using AWMS.app.Forms.RibbonUser;
+using AWMS.app.Forms.RibbonVoucher;
 using AWMS.app.Utility;
 using AWMS.core.Interfaces;
 using AWMS.dapper.Repositories;
@@ -204,6 +205,25 @@ namespace AWMS.app.Forms
             {
                 SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
                 var ImportPackingListForm = ActivatorUtilities.CreateInstance<frmImportPackingList>(_serviceProvider, _userContext.UserId);
+                ImportPackingListForm.MdiParent = this;
+                ImportPackingListForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void btnmiv_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var ImportPackingListForm = ActivatorUtilities.CreateInstance<frmIssueVoucher>(_serviceProvider);//, _userContext.UserId);
                 ImportPackingListForm.MdiParent = this;
                 ImportPackingListForm.Show();
             }

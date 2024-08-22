@@ -30,6 +30,8 @@ namespace AWMS.datalayer.Context
         public DbSet<LocItem> LocItems { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<RequestType> RequestTypes { get; set; }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
@@ -65,6 +67,8 @@ namespace AWMS.datalayer.Context
             modelBuilder.ApplyConfiguration(new LocItemConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestTypeConfiguration());
 
             // Seed initial data
             modelBuilder.Entity<Mr>().HasData(

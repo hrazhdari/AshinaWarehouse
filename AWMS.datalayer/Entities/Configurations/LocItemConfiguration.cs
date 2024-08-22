@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using AWMS.datalayer.Entities;
 
 namespace AWMS.datalayer.Entities.Configurations
 {
@@ -45,6 +44,12 @@ namespace AWMS.datalayer.Entities.Configurations
                 .WithMany(l => l.LocItems)
                 .HasForeignKey(li => li.LocationID)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // پیکربندی رابطه بین LocItem و Request
+            builder.HasMany(li => li.Requests)
+                .WithOne(r => r.LocItem)
+                .HasForeignKey(r => r.LocItemID)
+                .OnDelete(DeleteBehavior.Restrict); // ممکن است نیاز به Restrict باشد، بسته به نیاز شما
 
             // اضافه کردن ایندکس‌ها
             builder.HasIndex(li => li.LocationID).HasDatabaseName("IX_LocItem_LocationID");

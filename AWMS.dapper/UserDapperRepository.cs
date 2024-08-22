@@ -60,6 +60,16 @@ namespace AWMS.dapper
             }
         }
 
+        public IEnumerable<UserDto> GetAllUsers()
+        {
+            const string spName = "sp_GetAllUsers";
+
+            using (var connection = CreateConnection())
+            {
+                return  connection.Query<UserDto>(spName, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public async Task<UserDto> GetUserByIdAsync(int userId)
         {
             const string spName = "sp_GetUserById";

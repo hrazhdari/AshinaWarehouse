@@ -448,6 +448,7 @@
             // repositoryItemLookUpEditarea
             // 
             repositoryItemLookUpEditarea.AutoHeight = false;
+            repositoryItemLookUpEditarea.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
             repositoryItemLookUpEditarea.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             repositoryItemLookUpEditarea.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] { new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaUnitID", "AreaUnitID", 17, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default), new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaUnitName", "AreaUnit", 17, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default) });
             repositoryItemLookUpEditarea.DisplayMember = "AreaUnitName";
@@ -912,7 +913,7 @@
             xtraTabPage2.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage2.ImageOptions.Image");
             xtraTabPage2.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage2.Name = "xtraTabPage2";
-            xtraTabPage2.Size = new Size(1264, 598);
+            xtraTabPage2.Size = new Size(1262, 600);
             xtraTabPage2.Text = "All Item Of Selected PackingList";
             // 
             // panelControl6
@@ -924,7 +925,7 @@
             panelControl6.Location = new Point(0, 0);
             panelControl6.Margin = new Padding(3, 2, 3, 2);
             panelControl6.Name = "panelControl6";
-            panelControl6.Size = new Size(1264, 598);
+            panelControl6.Size = new Size(1262, 600);
             panelControl6.TabIndex = 0;
             // 
             // gridControl2
@@ -936,7 +937,7 @@
             gridControl2.Margin = new Padding(3, 2, 3, 2);
             gridControl2.Name = "gridControl2";
             gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditunit, repositoryItemLookUpEditscope, repositoryItemLookUpEditlocation, repositoryItemCheckEditHold, repositoryItemLookUpEditpk, repositoryItemCheckEditselect });
-            gridControl2.Size = new Size(1264, 556);
+            gridControl2.Size = new Size(1262, 558);
             gridControl2.TabIndex = 1;
             gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
             gridControl2.Click += gridControl2_Click;
@@ -1385,7 +1386,7 @@
             panelControl7.Location = new Point(0, 0);
             panelControl7.Margin = new Padding(3, 2, 3, 2);
             panelControl7.Name = "panelControl7";
-            panelControl7.Size = new Size(1264, 42);
+            panelControl7.Size = new Size(1262, 42);
             panelControl7.TabIndex = 0;
             // 
             // panelControl10
@@ -1398,7 +1399,7 @@
             panelControl10.Controls.Add(checkEdit3);
             panelControl10.Controls.Add(labelControl6);
             panelControl10.Controls.Add(checkEdit4);
-            panelControl10.Location = new Point(1019, 7);
+            panelControl10.Location = new Point(1017, 7);
             panelControl10.Margin = new Padding(3, 2, 3, 2);
             panelControl10.Name = "panelControl10";
             panelControl10.Size = new Size(237, 28);
@@ -1454,7 +1455,7 @@
             panelControl9.Controls.Add(simpleButton6);
             panelControl9.Controls.Add(labelControl7);
             panelControl9.Controls.Add(simpleButton7);
-            panelControl9.Location = new Point(788, 7);
+            panelControl9.Location = new Point(786, 7);
             panelControl9.Margin = new Padding(3, 2, 3, 2);
             panelControl9.Name = "panelControl9";
             panelControl9.Size = new Size(223, 28);

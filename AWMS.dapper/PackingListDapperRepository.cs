@@ -246,13 +246,18 @@ namespace AWMS.dapper
                 var parameters = new DynamicParameters();
                 parameters.Add("@PLId", plId, DbType.Int32);
 
+                // Increase command timeout to 300 seconds (5 minutes)
+                var commandTimeout = 300; // in seconds
+
                 return await db.QueryAsync<AllItemSelectedPlDto>(
                     "AllItemSelectedPl",
                     parameters,
-                    commandType: CommandType.StoredProcedure
+                    commandType: CommandType.StoredProcedure,
+                    commandTimeout: commandTimeout
                 );
             }
         }
+
 
         public async Task<IEnumerable<PackingListAllPlNameDto>> GetPackingListsWithoutPackagesAsync()
         {

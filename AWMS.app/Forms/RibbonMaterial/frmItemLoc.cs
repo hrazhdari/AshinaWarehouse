@@ -40,10 +40,10 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         private bool isNewRowAdded = false;
 
-        public frmItemLoc(int userId,IPackingListDapperRepository packingListDapperRepository, IUnitDapperRepository unitDapperRepository,
+        public frmItemLoc(IPackingListDapperRepository packingListDapperRepository, IUnitDapperRepository unitDapperRepository,
             IScopeDapperRepository scopeDapperRepository, ILocationDapperRepository locationDapperRepository,
             IPackageDapperRepository packageDapperRepository, IItemDapperRepository itemDapperRepository,
-            ILocItemDapperRepository locItemDapperRepository)
+            ILocItemDapperRepository locItemDapperRepository,int? UserId=null)
         {
             InitializeComponent();
             this._packingListDapperRepository = packingListDapperRepository;
@@ -53,7 +53,9 @@ namespace AWMS.app.Forms.RibbonMaterial
             this._packageDapperRepository = packageDapperRepository;
             this._itemDapperRepository = itemDapperRepository;
             this._locitemDapperRepository = locItemDapperRepository;
-            _session = SessionManager.GetSession(userId); // گرفتن نشست کاربر بر اساس userId
+            // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
+            int finalUserId = UserId ?? 1;
+            _session = SessionManager.GetSession(finalUserId);
 
             LookUPLoad();
 

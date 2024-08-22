@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -44,7 +45,7 @@
             barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             barbtnImportPackingList = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            btnmiv = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             CompanybarButtonItem = new DevExpress.XtraBars.BarButtonItem();
@@ -52,6 +53,7 @@
             skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
             barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
+            barBtnContracts = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -75,7 +77,6 @@
             ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
-            barBtnContracts = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).BeginInit();
@@ -89,7 +90,7 @@
             ribbonControl1.Cursor = Cursors.Hand;
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(22, 24, 22, 24);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barbtnImportPackingList, barButtonItem11, barButtonItem12, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3, barStaticItem4, barBtnContracts });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barbtnImportPackingList, barButtonItem11, btnmiv, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3, barStaticItem4, barBtnContracts });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(3, 2, 3, 2);
             ribbonControl1.MaxItemId = 43;
@@ -212,15 +213,16 @@
             barButtonItem11.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem11.ImageOptions.LargeImage");
             barButtonItem11.Name = "barButtonItem11";
             // 
-            // barButtonItem12
+            // btnmiv
             // 
-            barButtonItem12.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
-            barButtonItem12.Caption = "Issue Voucher ( MIV )";
-            barButtonItem12.Hint = "Material Issue Voucher";
-            barButtonItem12.Id = 24;
-            barButtonItem12.ImageOptions.Image = (Image)resources.GetObject("barButtonItem12.ImageOptions.Image");
-            barButtonItem12.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem12.ImageOptions.LargeImage");
-            barButtonItem12.Name = "barButtonItem12";
+            btnmiv.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
+            btnmiv.Caption = "Issue Voucher ( MIV )";
+            btnmiv.Hint = "Material Issue Voucher";
+            btnmiv.Id = 24;
+            btnmiv.ImageOptions.Image = (Image)resources.GetObject("barButtonItem12.ImageOptions.Image");
+            btnmiv.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem12.ImageOptions.LargeImage");
+            btnmiv.Name = "btnmiv";
+            btnmiv.ItemClick += btnmiv_ItemClick;
             // 
             // barButtonItem13
             // 
@@ -281,6 +283,15 @@
             barStaticItem4.Name = "barStaticItem4";
             barStaticItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // barBtnContracts
+            // 
+            barBtnContracts.Caption = "Contract's";
+            barBtnContracts.Id = 42;
+            barBtnContracts.ImageOptions.Image = Properties.Resources.functionsmore_32x321;
+            barBtnContracts.ImageOptions.LargeImage = Properties.Resources.functionsmore_32x321;
+            barBtnContracts.Name = "barBtnContracts";
+            barBtnContracts.ItemClick += barBtnContracts_ItemClick;
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
@@ -340,7 +351,7 @@
             // ribbonPageGroup9
             // 
             ribbonPageGroup9.AllowTextClipping = false;
-            ribbonPageGroup9.ItemLinks.Add(barButtonItem12);
+            ribbonPageGroup9.ItemLinks.Add(btnmiv);
             ribbonPageGroup9.Name = "ribbonPageGroup9";
             ribbonPageGroup9.Text = "Issue";
             // 
@@ -430,15 +441,6 @@
             documentManager1.View = tabbedView1;
             documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView1 });
             // 
-            // barBtnContracts
-            // 
-            barBtnContracts.Caption = "Contract's";
-            barBtnContracts.Id = 42;
-            barBtnContracts.ImageOptions.Image = Properties.Resources.functionsmore_32x321;
-            barBtnContracts.ImageOptions.LargeImage = Properties.Resources.functionsmore_32x321;
-            barBtnContracts.Name = "barBtnContracts";
-            barBtnContracts.ItemClick += barBtnContracts_ItemClick;
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
@@ -499,7 +501,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem btnmiv;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
