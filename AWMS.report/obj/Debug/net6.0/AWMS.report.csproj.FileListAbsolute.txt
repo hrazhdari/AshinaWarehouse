@@ -1,0 +1,16 @@
+D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\MivReportFront.cs
+D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\AWMS.report.deps.json
+D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\AWMS.report.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\AWMS.report.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.csproj.AssemblyReference.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.MivReportFront.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.csproj.GenerateResource.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.AssemblyInfoInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.AssemblyInfo.cs
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.csproj.CoreCompileInputs.cache
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.sourcelink.json
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\refint\AWMS.report.dll
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\AWMS.report.pdb
+D:\MyBigProject\AshinaWarehouse\AWMS.report\obj\Debug\net6.0\ref\AWMS.report.dll
